@@ -66,8 +66,8 @@ test('physician publishes a result and the patient opens it',async({page,browser
  await page.getByRole('button',{name:'Laboratory results',exact:true}).click();
  await page.getByRole('button',{name:'Create record'}).click();
  const name='Synthetic glucose '+Date.now();
- await page.getByLabel('Patient',{exact:true}).selectOption({label:'Jordan Vale'});
- await page.getByLabel('Provider',{exact:true}).selectOption({label:'Dr. Maya Rowan'});
+ await page.locator('select[name=patient]').selectOption({label:'Jordan Vale'});
+ await page.locator('select[name=provider]').selectOption({label:'Dr. Maya Rowan'});
  await page.getByLabel('Test name').fill(name);
  await page.getByLabel('Collection date').fill('2026-01-10');
  await page.getByLabel('Value',{exact:true}).fill('90');
@@ -93,7 +93,7 @@ test('patient submits a refill and a physician approves it',async({page,browser}
  await page.getByRole('link',{name:'Medications',exact:true}).click();
  await page.getByRole('link',{name:/Cetirizine/}).click();
  await page.getByRole('button',{name:'Request refill'}).click();
- await expect(page.getByText('Requested',{exact:true})).toBeVisible();
+ await expect(page.getByText('Requested',{exact:true}).first()).toBeVisible();
  const context=await browser.newContext();
  const staff=await context.newPage();
  await login(staff,'physician');
@@ -116,7 +116,7 @@ test('billing staff issues a statement and the patient pays and downloads a rece
  await page.getByRole('button',{name:'Create record'}).click();
  const stamp=Date.now();
  const name='Synthetic billing visit '+stamp;
- await page.getByLabel('Patient',{exact:true}).selectOption({label:'Jordan Vale'});
+ await page.locator('select[name=patient]').selectOption({label:'Jordan Vale'});
  await page.getByLabel('Invoice number').fill('BROWSER-'+stamp);
  await page.getByLabel('Service date').fill('2026-01-10');
  await page.getByLabel('Description').fill(name);
