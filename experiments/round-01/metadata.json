@@ -1,0 +1,25 @@
+{
+  "round": 1,
+  "date": "2026-11-13",
+  "timezone": "America/Chicago",
+  "model": "GPT-6 (Codex, exact variant unavailable)",
+  "test_commit": "3c13281bb51e8bca6053d045928a766fe00ad023",
+  "release_tag": "v0.1.0-r1",
+  "repository": "https://github.com/KateK77/mychart-clone",
+  "database": "SQLite",
+  "checks": {
+    "pytest": {
+      "passed": 8
+    },
+    "vitest": {
+      "passed": 3
+    },
+    "playwright": {
+      "passed": 6
+    },
+    "typescript": "passed",
+    "vite": "passed",
+    "django_check": "passed",
+    "migration_drift": "none"
+  }
+}
