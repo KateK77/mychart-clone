@@ -262,3 +262,12 @@ class AuditEvent(models.Model):
     action = models.CharField(max_length=60, db_index=True)
     target = models.CharField(max_length=120, blank=True)
     created_at = models.DateTimeField(auto_now_add=True, db_index=True)
+
+
+class PasswordReset(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    token_hash = models.CharField(max_length=64, unique=True)
+    password_fingerprint = models.CharField(max_length=64)
+    created_at = models.DateTimeField(auto_now_add=True)
+    expires_at = models.DateTimeField()
+    used_at = models.DateTimeField(null=True, blank=True)

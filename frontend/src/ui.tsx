@@ -1,17 +1,29 @@
-import {useState,type FormEvent,type ReactNode} from 'react';
-import {Link} from 'react-router-dom';
+import {useEffect,useRef,useState,type FormEvent,type ReactNode} from 'react';
+import {Link,useLocation} from 'react-router-dom';
 import {useMutation,useQuery,useQueryClient} from '@tanstack/react-query';
-import {ArrowUpRight,ChevronRight, CircleAlert, FolderOpen} from 'lucide-react';
+import {ArrowUpRight,ChevronRight, CircleAlert, FolderOpen, X, Check} from 'lucide-react';
 import {api,date,type RecordData} from './api';
 
 export function Loading(){return <div className="panel loading" role="status">Loading…</div>}
 export function ErrorNotice({error}:{error:unknown}){return <div className="notice error" role="alert"><CircleAlert size={17}/>{error instanceof Error ? error.message : 'The request could not be completed.'}</div>}
 export function Empty({text='There are no records to show.'}:{text?:string}){return <div className="empty"><FolderOpen size={24}/><p>{text}</p></div>}
 export function Data({path,children}:{path:string;children:(value:any)=>ReactNode}){
-  const query = useQuery({queryKey:['api',path],queryFn:()=>api(path)});
+  const query = useQuery({queryKey:['api',path],queryFn:()=>api(path),refetchOnMount:'always'});
   if(query.isPending) return <Loading/>;
-  if(query.isError) return <ErrorNotice error={query.error}/>;
+  if(query.isError) return <DataError error={query.error}/>;
   return <>{children(query.data)}</>;
+}
+function DataError({error}:{error:unknown}){
+ const location=useLocation();
+ const base='/'+location.pathname.split('/')[1];
+ return <div className="panel error-state"><ErrorNotice error={error}/><Link className="button secondary" to={base+location.search}>Back to list</Link><Link className="text-button" to="/">Return to overview</Link></div>;
+}
+export function Modal({title,children,onClose,drawer=false}:{title:string;children:ReactNode;onClose:()=>void;drawer?:boolean}){
+ const ref=useRef<HTMLDialogElement>(null);
+ useEffect(()=>{const dialog=ref.current!;const trigger=document.activeElement as HTMLElement;const overflow=document.body.style.overflow;dialog.showModal();document.body.style.overflow='hidden';return()=>{dialog.close();document.body.style.overflow=overflow;trigger?.focus();};},[]);
+ return <dialog ref={ref} className={drawer?'record-drawer':'confirm-dialog'} onCancel={event=>{event.preventDefault();onClose();}} aria-label={title}>
+  <header className="drawer-header"><div><span className="eyebrow">{drawer?'RECORD WORKSPACE':'PLEASE CONFIRM'}</span><h2>{title}</h2></div><button type="button" className="icon-button" onClick={onClose} aria-label={drawer?'Close record':'Close confirmation'}><X size={20}/></button></header><div className="drawer-body">{children}</div>
+ </dialog>;
 }
 export function Heading({title,description,children,back}:{title:string;description?:string;children?:ReactNode;back?:[string,string]}){
   return <header className="page-heading">{back && <Link className="back" to={back[0]}>{back[1]} <ChevronRight size={14}/></Link>}<div className="heading-line"><div><h1>{title}</h1>{description && <p>{description}</p>}</div>{children}</div></header>;
@@ -55,15 +67,22 @@ export function Action({path,label,fields=[],fixed={},confirm,method='POST',onSu
   onSuccess?:(response:any)=>void;success?:string;
 }){
   const client=useQueryClient();
+  const formRef=useRef<HTMLFormElement>(null);
+  const [pendingValues,setPendingValues]=useState<object|null>(null);
   const mutation=useMutation({mutationFn:(values:object)=>api(path,{...values,...fixed},method),
-    onSuccess:async response=>{await client.invalidateQueries();onSuccess?.(response);}});
-  return <form className="action-form" onSubmit={event=>{
+    onSuccess:async response=>{
+      if(fields.some(field=>field.kind==='textarea')&&!fields.some(field=>field.value!==undefined))formRef.current?.reset();
+      await client.invalidateQueries({queryKey:['api']});
+      onSuccess?.(response);}});
+  return <form ref={formRef} className="action-form" onSubmit={event=>{
     event.preventDefault();
-    if(confirm&&!window.confirm(confirm))return;
-    mutation.mutate(readForm(event,fields));
-  }}><Controls fields={fields}/><button className="button" disabled={mutation.isPending}>{mutation.isPending?'Saving…':label}</button>
+    const values=readForm(event,fields);
+    if(confirm){setPendingValues(values);return;}
+    mutation.mutate(values);
+  }}><fieldset className="action-fields" disabled={mutation.isPending}><Controls fields={fields}/></fieldset><button className="button" disabled={mutation.isPending}>{mutation.isPending?'Saving…':label}</button>
     {mutation.isError&&<ErrorNotice error={mutation.error}/>}
-    {mutation.isSuccess&&<p className="notice success" role="status">{success}</p>}
+    {mutation.isSuccess&&<p className="notice success" role="status"><Check size={16}/>{success}</p>}
+    {pendingValues&&<Modal title={label} onClose={()=>setPendingValues(null)}><p>{confirm}</p><div className="dialog-actions"><button type="button" className="button secondary" onClick={()=>setPendingValues(null)}>Keep unchanged</button><button type="button" className="button" onClick={()=>{mutation.mutate(pendingValues);setPendingValues(null);}}>Confirm</button></div></Modal>}
   </form>;
 }
 export function Filters({fields,onChange,label='Apply filters'}:{fields:Field[];onChange:(values:any)=>void;label?:string}){

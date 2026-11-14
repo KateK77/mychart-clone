@@ -128,6 +128,8 @@ def medications(request, pk=None):
         today = timezone.localdate()
         if row.status != "Active" or row.start_date > today or (row.end_date and row.end_date < today):
             raise ValidationError("Refills require a current medication.")
+        if m.Refill.objects.filter(medication=row, status__in=["Requested", "Under Review", "Approved"]).exists():
+            raise ValidationError("A refill request for this medication is already in progress. You can track it in Refills below.")
         refill = m.Refill.objects.create(medication=row, note=data.get("note", ""))
         audit(request.user, "Refill requested", patient, refill.pk)
         return Response(serialize(refill), status=201)

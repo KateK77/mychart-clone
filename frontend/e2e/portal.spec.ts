@@ -1,5 +1,10 @@
 import {expect,test,type Page} from '@playwright/test';
 
+async function confirmAction(page:Page, name:string) {
+ await page.getByRole('button',{name,exact:true}).first().click();
+ await page.getByRole('dialog').last().getByRole('button',{name:'Confirm',exact:true}).click();
+}
+
 async function login(page:Page,username:string) {
  await page.goto('/');
  await page.getByLabel('Username').fill(username);
@@ -13,13 +18,13 @@ test('patient books, requests a different slot, and cancels an appointment',asyn
  await login(page,'patient');
  await expect(page.getByRole('heading',{name:'Welcome, Jordan'})).toBeVisible();
  await page.getByRole('link',{name:'Schedule appointment'}).click();
- await page.getByRole('button',{name:'Book',exact:true}).first().click();
+ await confirmAction(page,'Book');
  await expect(page.getByRole('heading',{name:'Appointment details'})).toBeVisible();
  await page.getByLabel('Preferred dates or times').fill('Friday afternoon');
  await page.getByRole('button',{name:'Request rescheduling'}).click();
  await expect(page.getByText('Friday afternoon',{exact:true})).toBeVisible();
  await page.getByLabel('Cancellation reason').fill('A scheduling conflict');
- await page.getByRole('button',{name:'Cancel appointment'}).click();
+ await confirmAction(page,'Cancel appointment');
  await expect(page.getByText('A scheduling conflict',{exact:true})).toBeVisible();
 });
 
@@ -54,7 +59,7 @@ test('family switching and mobile portal navigation',async({page})=>{
  await page.getByRole('link',{name:'Family Access',exact:true}).click();
  await expect(page.getByRole('heading',{name:'Avery Vale'})).toBeVisible();
  await page.getByRole('link',{name:'Test Results',exact:true}).click();
- await expect(page.getByText('Viewing a linked family profile')).toBeVisible();
+ await expect(page.getByText('Viewing Avery Vale')).toBeVisible();
  await expect(page.getByRole('link',{name:/Hemoglobin/})).toBeVisible();
 });
 
@@ -75,7 +80,7 @@ test('physician publishes a result and the patient opens it',async({page,browser
  await page.getByLabel('Result status').selectOption('Final');
  await page.getByRole('button',{name:'Save record'}).click();
  await expect(page.getByRole('button',{name:'Publish to patient'})).toBeVisible();
- await page.getByRole('button',{name:'Publish to patient'}).click();
+ await confirmAction(page,'Publish to patient');
  await expect(page.getByRole('button',{name:'Unpublish',exact:true})).toBeVisible();
  const context=await browser.newContext();
  const patient=await context.newPage();
@@ -92,7 +97,7 @@ test('patient submits a refill and a physician approves it',async({page,browser}
  await login(page,'patient');
  await page.getByRole('link',{name:'Medications',exact:true}).click();
  await page.getByRole('link',{name:/Cetirizine/}).click();
- await page.getByRole('button',{name:'Request refill'}).click();
+ await confirmAction(page,'Request refill');
  await expect(page.getByText('Requested',{exact:true}).first()).toBeVisible();
  const context=await browser.newContext();
  const staff=await context.newPage();
@@ -101,10 +106,10 @@ test('patient submits a refill and a physician approves it',async({page,browser}
  await staff.getByRole('button',{name:/Cetirizine.*Requested/}).first().click();
  await staff.getByLabel('New status').selectOption('Approved');
  await staff.getByRole('button',{name:'Save refill decision'}).click();
- await expect(staff.getByRole('button',{name:/Cetirizine.*Approved/})).toBeVisible();
+ await expect(staff.getByRole('dialog').getByText('Approved',{exact:true})).toBeVisible();
  await staff.getByLabel('New status').selectOption('Completed');
  await staff.getByRole('button',{name:'Save refill decision'}).click();
- await expect(staff.getByRole('button',{name:/Cetirizine.*Completed/})).toBeVisible();
+ await expect(staff.getByRole('dialog').getByText('Completed',{exact:true})).toBeVisible();
  await page.reload();
  await expect(page.getByText('Completed',{exact:true}).first()).toBeVisible();
  await context.close();
@@ -131,7 +136,7 @@ test('billing staff issues a statement and the patient pays and downloads a rece
  await login(patient,'patient');
  await patient.getByRole('link',{name:'Billing',exact:true}).click();
  await patient.getByRole('link',{name:new RegExp(name)}).click();
- await patient.getByRole('button',{name:'Submit simulated payment'}).click();
+ await confirmAction(patient,'Submit simulated payment');
  await expect(patient.getByText('Paid',{exact:true}).first()).toBeVisible();
  await patient.getByRole('link',{name:/\$25\.00/}).click();
  const download=patient.waitForEvent('download');

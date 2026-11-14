@@ -2,7 +2,7 @@ from django.http import JsonResponse
 from django.urls import path
 from django.db import connection
 
-from portal import auth, messages, patient, staff
+from portal import auth, messages, patient, staff, recovery
 
 
 def healthcheck(request):
@@ -19,6 +19,9 @@ urlpatterns = [
     path("api/register/", auth.register),
     path("api/profile/", auth.profile),
     path("api/password/", auth.password),
+    path("api/password/request-reset/", recovery.request_reset),
+    path("api/password/reset/", recovery.reset_password),
+    path("api/demo-mailbox/", recovery.mailbox),
     path("api/dashboard/", patient.dashboard),
     path("api/slots/", patient.slots),
     path("api/report/", patient.report),

@@ -38,9 +38,13 @@ def patient_scope(request, section):
         if own:
             return own
         raise PermissionDenied
-    grant = get_object_or_404(m.ProxyAccess.objects.select_related("patient"), proxy=user, patient_id=requested, active=True)
+    if not requested.isdigit():
+        raise PermissionDenied("This family profile is not available to your account.")
+    grant = m.ProxyAccess.objects.select_related("patient").filter(proxy=user, patient_id=requested, active=True).first()
+    if not grant:
+        raise PermissionDenied("Access to this family profile is no longer available. Choose another profile from Family Access.")
     if section not in grant.sections:
-        raise PermissionDenied
+        raise PermissionDenied("This part of the family profile has not been shared with you. Choose a permitted section from Family Access.")
     return grant.patient
 
 

@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.contrib.auth import authenticate, get_user_model, login, logout, update_session_auth_hash
 from django.contrib.auth.password_validation import validate_password
 from django.core.exceptions import ValidationError as DjangoValidationError
@@ -25,7 +26,7 @@ def identity(user):
 
 @ensure_csrf_cookie
 def session(request):
-    return JsonResponse({"user": identity(request.user) if request.user.is_authenticated else None})
+    return JsonResponse({"user": identity(request.user) if request.user.is_authenticated else None, "demo_mailbox": settings.DEMO_MAILBOX})
 
 
 @require_POST
@@ -60,14 +61,18 @@ def password_rules(password, user):
 def register(request):
     try:
         data = validated(JSONParser().parse(request), username=s.RegexField(r"^[a-zA-Z0-9_.-]+$", max_length=150),
-                         first_name=text(length=150), last_name=text(length=150), email=s.EmailField(), password=text(length=128))
+                         first_name=text(length=150), last_name=text(length=150), email=s.EmailField(), password=text(length=128), confirm_password=text(length=128))
         password = data.pop("password")
+        if data.pop("confirm_password") != password:
+            raise ValidationError("The new passwords do not match.")
         user = User(**data)
         password_rules(password, user)
     except Exception as exc:
         return JsonResponse({"detail": getattr(exc, "detail", "Check the account details.")}, status=400)
     if User.objects.filter(username=user.username).exists():
         return JsonResponse({"detail": "This username is already in use."}, status=400)
+    if User.objects.filter(email__iexact=user.email).exists():
+        return JsonResponse({"detail": "This email is already associated with another account."}, status=400)
     user.set_password(password)
     from django.db import IntegrityError, transaction
     try:
@@ -91,6 +96,8 @@ def profile(request):
                          address=text(False, 240), birth_date=s.DateField(required=False, allow_null=True),
                          muted_notifications=s.ListField(child=s.ChoiceField(choices=m.EVENT_TYPES), required=False))
         if "email" in data:
+            if User.objects.filter(email__iexact=data["email"]).exclude(pk=user.pk).exists():
+                raise ValidationError("This email is already associated with another account.")
             user.email = data.pop("email")
             user.save(update_fields=["email"])
         if data and patient:
@@ -105,10 +112,12 @@ def profile(request):
 
 @api_view(["POST"])
 def password(request):
-    data = validated(request.data, current=text(length=128), password=text(length=128))
+    data = validated(request.data, current=text(length=128), password=text(length=128), confirm_password=text(length=128))
     user = request.user
     if not user.check_password(data["current"]):
         raise ValidationError("Current password is incorrect.")
+    if data["password"] != data["confirm_password"]:
+        raise ValidationError("The new passwords do not match.")
     password_rules(data["password"], user)
     user.set_password(data["password"])
     user.save(update_fields=["password"])

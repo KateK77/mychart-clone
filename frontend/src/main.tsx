@@ -1,68 +1,62 @@
-import {useState} from 'react';
+import {useEffect,useState} from 'react';
 import {createRoot} from 'react-dom/client';
 import {BrowserRouter,Link,NavLink,Navigate,Route,Routes,useLocation,useNavigate} from 'react-router-dom';
 import {QueryClient,QueryClientProvider,useQuery,useQueryClient} from '@tanstack/react-query';
-import {Activity,Bell,CalendarDays,ClipboardList,FileText,FlaskConical,HeartPulse,House,LogOut,Menu,MessageCircle,Pill,Settings,Users,Wallet,X} from 'lucide-react';
+import {Bell,CalendarDays,ClipboardList,FileText,FlaskConical,HeartPulse,House,LogOut,Menu,MessageCircle,Pill,Settings,Users,Wallet,X,ChevronRight,ShieldCheck} from 'lucide-react';
 import {api,type User} from './api';
-import {Action,ErrorNotice,Heading,Loading,Panel} from './ui';
+import {ErrorNotice,Heading,Loading} from './ui';
 import {Dashboard,PatientPageRoute} from './patient';
 import {Staff} from './staff';
+import {Authentication,Brand,banner} from './authentication';
 import './style.css';
 
 const queryClient=new QueryClient({defaultOptions:{queries:{retry:false,staleTime:1000}}});
-const items=[
- ['','Dashboard',House],['appointments','Appointments',CalendarDays],['messages','Messages',MessageCircle],
- ['results','Test Results',FlaskConical],['medications','Medications',Pill],['health','Health Summary',HeartPulse],
- ['visits','Visits',ClipboardList],['billing','Billing',Wallet],['documents','Documents',FileText],
- ['family','Family Access',Users],['settings','Account Settings',Settings],
+const groups=[
+ {title:'OVERVIEW',items:[['','Dashboard',House],['appointments','Appointments',CalendarDays],['messages','Messages',MessageCircle]]},
+ {title:'MY HEALTH',items:[['results','Test Results',FlaskConical],['medications','Medications',Pill],['health','Health Summary',HeartPulse],['visits','Visits',ClipboardList],['documents','Documents',FileText]]},
+ {title:'MY ACCOUNT',items:[['billing','Billing',Wallet],['family','Family Access',Users],['settings','Account Settings',Settings]]},
 ] as const;
-export const sectionLabels=Object.fromEntries(items.map(([route,label])=>[route,label]));
-export const banner='DEMO — SYNTHETIC DATA ONLY — NOT FOR CLINICAL USE.';
+const items=groups.reduce<Array<readonly [string,string,typeof House]>>((all,group)=>[...all,...group.items],[]);
+const labels:Record<string,string>=Object.fromEntries(items.map(([route,label])=>[route,label]));
 
-function Brand(){return <Link to="/" className="brand"><span><Activity size={23}/></span><div>CareConnect<small>PATIENT PORTAL</small></div></Link>}
-function Login(){
- const [registration,setRegistration]=useState(false);
- const client=useQueryClient();
- return <div className="login-page"><Brand/><div className="login-main">
-   <div className="login-intro"><div className="login-symbol"><HeartPulse size={58}/></div><h1>Your health,<br/>within reach.</h1><p>Manage appointments, view test results and stay in touch with your care team.</p></div>
-   <Panel title={registration?'Create your account':'Welcome to CareConnect'}>
-    <p className="muted">{registration?'Register for the synthetic patient portal.':'Sign in to access your patient or staff account.'}</p>
-    <Action key={String(registration)} path={registration?'register/':'login/'} label={registration?'Create account':'Sign in'} onSuccess={response=>client.setQueryData(['session'],response)}
-      fields={[{name:'username',label:'Username'},...(registration?[{name:'first_name',label:'First name'},{name:'last_name',label:'Last name'},{name:'email',label:'Email',kind:'email'}]:[]),{name:'password',label:'Password',kind:'password'}]}/>
-    <button className="text-button" onClick={()=>setRegistration(!registration)}>{registration?'Back to sign in':'Create a patient account'}</button>
-   </Panel>
- </div><div className="demo-banner">{banner}</div></div>;
-}
 function Shell({user}:{user:User}){
- const [menu,setMenu]=useState(false);
- const client=useQueryClient();
- const location=useLocation();
- const navigate=useNavigate();
- const proxy=new URLSearchParams(location.search).get('patient');
- const staff=!user.patient;
- const sidebar=staff?[['','Staff workspace',House],['messages','Messages',MessageCircle],['settings','Account Settings',Settings]] as const:items;
- const [logoutError,setLogoutError]=useState<unknown>(null);
- const leave=async()=>{try{await api('logout/',{});client.clear();client.setQueryData(['session'],{user:null});navigate('/');}catch(error){setLogoutError(error);}};
- const badge=useQuery({queryKey:['api','notifications/'],queryFn:()=>api('notifications/'),enabled:!staff});
- return <div className="app"><aside className={'sidebar '+(menu?'open':'')}><Brand/><nav aria-label="Main navigation">{sidebar.map(([route,label,Icon])=>
-   <NavLink onClick={()=>setMenu(false)} key={route} end={!route} to={'/'+route+(proxy&&['appointments','results','medications','health','visits','billing','documents'].includes(route)?'?patient='+proxy:'')}><Icon size={18}/>{label}</NavLink>
- )}</nav><div className="side-footer"><div className="avatar">{user.name.split(' ').slice(0,2).map(word=>word[0]).join('')}</div><div><strong>{user.name}</strong><small>{user.roles[0]}</small></div><button aria-label="Sign out" title="Sign out" onClick={()=>void leave()}><LogOut size={17}/></button></div></aside>
- <div className="workspace"><div className="topbar"><button className="menu-toggle icon-button" aria-label={menu?'Close menu':'Open menu'} onClick={()=>setMenu(!menu)}>{menu?<X/>:<Menu/>}</button><span className="top-title">{staff?'Staff workspace':'Patient portal'}</span>
- {!staff&&<Link to="/notifications" className="icon-button bell" aria-label="Notifications"><Bell size={20}/>{badge.data?.some((notice:{read:boolean})=>!notice.read)&&<i/>}</Link>}
- </div><div className="demo-banner">{banner}</div><main>
- {logoutError!=null&&<ErrorNotice error={logoutError}/>}
- {proxy&&<div className="notice proxy">Viewing a linked family profile <Link to="/family">Switch profile</Link></div>}
- <Routes>
- <Route path="/" element={staff?<Staff/>:<Dashboard/>}/>
- <Route path="/staff" element={staff?<Staff/>:<Navigate to="/" replace/>}/>
- <Route path="/:section/:id?" element={<PatientPageRoute staff={staff}/>}/>
- <Route path="*" element={<Heading title="Page unavailable"><Link to="/">Return home</Link></Heading>}/>
- </Routes></main></div></div>;
+ const [menu,setMenu]=useState(false),[busy,setBusy]=useState(false),[logoutError,setLogoutError]=useState<unknown>();
+ const client=useQueryClient(),location=useLocation(),navigate=useNavigate();
+ const proxy=new URLSearchParams(location.search).get('patient'),staff=!user.patient;
+ const section=location.pathname.split('/')[1]||'';
+ const navigation=staff?[{title:'WORKSPACE',items:[['','Staff workspace',House],['messages','Messages',MessageCircle],['settings','Account Settings',Settings]] as const}]:groups;
+ const notices=useQuery({queryKey:['api','notifications/'],queryFn:()=>api('notifications/'),enabled:!staff,refetchInterval:30000});
+ const family=useQuery({queryKey:['api','family/'],queryFn:()=>api('family/'),enabled:!staff&&!!proxy});
+ const familyName=family.data?.find((row:any)=>String(row.patient)===proxy)?.name;
+ useEffect(()=>{setMenu(false);window.scrollTo(0,0);},[location.pathname]);
+ useEffect(()=>{if(!menu)return;const close=(event:KeyboardEvent)=>{if(event.key==='Escape')setMenu(false);};document.addEventListener('keydown',close);return()=>document.removeEventListener('keydown',close);},[menu]);
+ async function leave(){
+  setBusy(true);setLogoutError(undefined);
+  try{await api('logout/',{});await client.cancelQueries();client.setQueryData(['session'],(previous:any)=>({...previous,user:null}));client.removeQueries({queryKey:['api']});navigate('/login',{replace:true});}
+  catch(error){setLogoutError(error);setBusy(false);}
+ }
+ return <div className="app">
+  {menu&&<button className="sidebar-backdrop" onClick={()=>setMenu(false)} aria-label="Close navigation"/>}
+  <aside className={'sidebar '+(menu?'open':'')}><Brand/><div className="sidebar-context"><span className="context-dot"/>{staff?'Care team workspace':'Patient portal'}<span className="version-pill">2.0</span></div>
+   <nav aria-label="Main navigation">{navigation.map(group=><div className="nav-group" key={group.title}><span className="nav-label">{group.title}</span>{group.items.map(([route,label,Icon])=><NavLink onClick={()=>setMenu(false)} key={route} end={!route} to={'/'+route+(proxy&&['appointments','results','medications','health','visits','billing','documents'].includes(route)?'?patient='+proxy:'')}><Icon size={19}/><span>{label}</span>{route==='messages'&&!staff&&notices.data?.some((row:any)=>!row.read&&row.kind==='Message')&&<span className="nav-dot"/>}</NavLink>)}</div>)}</nav>
+   <div className="side-footer"><div className="identity"><div className="avatar">{user.name.split(' ').slice(0,2).map(word=>word[0]).join('')}</div><div><strong>{user.name}</strong><small>{staff?user.roles.join(' · '):'Personal account'}</small></div></div><button className="signout" aria-label="Sign out" onClick={()=>void leave()} disabled={busy}><LogOut size={17}/>{busy?'Signing out…':'Sign out'}</button></div>
+  </aside>
+  <div className="workspace"><header className="topbar"><button className="menu-toggle icon-button" aria-label={menu?'Close menu':'Open menu'} onClick={()=>setMenu(!menu)}>{menu?<X/>:<Menu/>}</button><div className="top-crumb"><span>{staff?'Care team':'My portal'}</span><ChevronRight size={13}/><strong>{section==='notifications'?'Notifications':staff&&!section?'Workspace':labels[section]??'Workspace'}</strong></div><div className="top-tools"><span className="secure-label"><ShieldCheck size={15}/>Secure session</span>{!staff&&<Link to="/notifications" className="icon-button bell" aria-label="Notifications"><Bell size={20}/>{notices.data?.some((notice:{read:boolean})=>!notice.read)&&<i/>}</Link>}<div className="avatar small-avatar" aria-hidden="true">{user.name.split(' ').map(n=>n[0]).slice(0,2).join('')}</div></div></header>
+   <div className="demo-banner">{banner}</div><main id="main-content">
+    {logoutError!=null&&<ErrorNotice error={logoutError}/>}
+    {proxy&&<div className="notice proxy"><div><Users size={20}/><span><strong>{familyName?'Viewing '+familyName:'Family profile'}</strong><small>{familyName?'Only records shared with your account are available.':'Choose an available profile to continue.'}</small></span></div><Link to="/family">Switch profile <ChevronRight size={15}/></Link></div>}
+    <Routes><Route path="/" element={staff?<Staff/>:<Dashboard/>}/><Route path="/staff" element={staff?<Staff/>:<Navigate to="/" replace/>}/><Route path="/login" element={<Navigate to="/" replace/>}/><Route path="/:section/:id?" element={<PatientPageRoute staff={staff}/>}/><Route path="*" element={<Heading title="Page unavailable"><Link to="/">Return home</Link></Heading>}/></Routes>
+    <footer className="app-footer"><span>CareConnect 2.0</span><span>Independent demonstration · Synthetic records only</span></footer>
+   </main></div>
+ </div>;
 }
 function App(){
- const session=useQuery({queryKey:['session'],queryFn:()=>api<{user:User|null}>('session/')});
+ const location=useLocation(),client=useQueryClient();
+ const session=useQuery({queryKey:['session'],queryFn:()=>api<{user:User|null;demo_mailbox:boolean}>('session/')});
+ useEffect(()=>{const expire=()=>{void client.cancelQueries({queryKey:['api']});client.setQueryData(['session'],{user:null,demo_mailbox:session.data?.demo_mailbox});client.removeQueries({queryKey:['api']});};window.addEventListener('careconnect:session-expired',expire);return()=>window.removeEventListener('careconnect:session-expired',expire);},[client,session.data?.demo_mailbox]);
  if(session.isPending)return <Loading/>;
- if(session.isError)return <ErrorNotice error={session.error}/>;
- return session.data.user?<Shell key={session.data.user.id} user={session.data.user}/>:<Login/>;
+ if(session.isError)return <div className="connection-error"><ErrorNotice error={session.error}/><button className="button" onClick={()=>void session.refetch()}>Try again</button></div>;
+ if(['/forgot-password','/reset-password','/demo-mailbox'].includes(location.pathname)||!session.data.user)return <Authentication key={location.pathname} demo={session.data.demo_mailbox}/>;
+ return <Shell key={session.data.user.id} user={session.data.user}/>;
 }
 createRoot(document.getElementById('root')!).render(<QueryClientProvider client={queryClient}><BrowserRouter><App/></BrowserRouter></QueryClientProvider>);

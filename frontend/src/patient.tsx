@@ -1,3 +1,4 @@
+import {ChangePassword} from './authentication';
 import {useState} from 'react';
 import {Link,useLocation,useNavigate,useParams} from 'react-router-dom';
 import {ArrowRight,Bell,CalendarDays,Clock3,FlaskConical,MessageCircle,Pill,Plus,Wallet,Download,ChevronRight,HeartPulse} from 'lucide-react';
@@ -66,7 +67,7 @@ export function PatientPage({staff=false}:{staff?:boolean}){
   return <>{header('View or manage your upcoming and past visits.',<Link className="button" to={nested('new')}><Plus size={17}/>Schedule appointment</Link>)}{list('appointments/',(rows:RecordData[])=>{
     const upcoming=(row:RecordData)=>new Date(row.starts_at)>new Date()&&!['Cancelled','Completed','No Show'].includes(row.status);
     const render=(row:RecordData)=><Row key={row.id} title={row.kind} detail={row.provider_name+' · '+date(row.starts_at)} status={row.status} to={open(row.id)}/>;
-    return <><Panel title="Upcoming appointments">{items(rows.filter(upcoming),render)}</Panel><Panel title="Past appointments and cancellations">{items(rows.filter(row=>!upcoming(row)),render)}</Panel></>;
+    return <><Panel title="Upcoming appointments">{items(rows.filter(upcoming).sort((a,b)=>a.starts_at.localeCompare(b.starts_at)),render)}</Panel><Panel title="Past appointments and cancellations">{items(rows.filter(row=>!upcoming(row)),render)}</Panel></>;
   })}</>;
  }
  case 'results':
@@ -90,7 +91,7 @@ export function PatientPage({staff=false}:{staff?:boolean}){
   const refill=(row:RecordData)=><Row key={row.id} title={row.medication_name} detail={row.decision||date(row.created_at)} status={row.status}/>;
   if(id)return detail(row=><><Heading title={row.name} description={row.strength+' · '+row.status} back={back}/>
    <Panel title="Prescription details"><Facts values={[['Dosage',row.dosage],['Route',row.route],['Frequency',row.frequency],['Started',date(row.start_date)],['Ended',date(row.end_date)],['Prescriber',row.provider_name],['Pharmacy',row.pharmacy],['Instructions',row.instructions]]}/></Panel>
-   <div className="dashboard-grid"><Panel title="Refills">{items(row.refills,refill)}{row.status==='Active'&&action('Request refill',[note('Note for your care team','note',true)],{},'Submit this simulated refill request?')}</Panel><Panel title="Report information discrepancy"><Action path={path('report/')} label="Send report" fields={[note('What information should be reviewed?','details')]} fixed={{topic:'Medication'}}/></Panel></div></>);
+   <div className="dashboard-grid"><Panel title="Refills">{items(row.refills,refill)}{row.refills.some((r:RecordData)=>['Requested','Under Review','Approved'].includes(r.status))&&<p className="notice">Your refill request is in progress. Your care team will update its status here.</p>}{row.status==='Active'&&!row.refills.some((r:RecordData)=>['Requested','Under Review','Approved'].includes(r.status))&&action('Request refill',[note('Note for your care team','note',true)],{},'Submit this simulated refill request?')}</Panel><Panel title="Report information discrepancy"><Action path={path('report/')} label="Send report" fields={[note('What information should be reviewed?','details')]} fixed={{topic:'Medication'}}/></Panel></div></>);
   return <>{header('Review prescriptions and track refill requests.')}<Panel><Filters fields={[{name:'q',label:'Medication name',optional:true}]} onChange={setFilter}/></Panel>
    {list('medications/',data=><>{['Active','Discontinued'].map(status=><Panel key={status} title={status==='Active'?'Active medications':'Medication history'}>{items(data.medications.filter((row:RecordData)=>row.status===status),row=><Row key={row.id} title={row.name} detail={row.strength+' · '+row.frequency} to={open(row.id)} icon={<Pill size={17}/>}/>)}</Panel>)}<Panel title="Refill requests">{items(data.refills,refill)}</Panel></>)}</>;
  }
@@ -123,7 +124,7 @@ export function PatientPage({staff=false}:{staff?:boolean}){
   return <>{header('Manage your contact information, password, and preferences.')}<Data path="profile/">{profile=><>
    <Panel title="Profile"><Action path="profile/" method="PATCH" label="Save profile" fields={[
     {name:'email',label:'Email',kind:'email',value:profile.email},...(!staff?[{name:'phone',label:'Phone',value:profile.phone,optional:true},{name:'address',label:'Address',value:profile.address,optional:true}]:[]),
-   ]}/></Panel><Panel title="Change password"><Action path="password/" label="Change password" fields={[{name:'current',label:'Current password',kind:'password'},{name:'password',label:'New password',kind:'password'}]}/></Panel>
+   ]}/></Panel><Panel title="Change password"><ChangePassword/></Panel>
    {!staff&&<Panel title="Notification preferences"><p className="muted">Mute categories individually. Existing notifications remain visible.</p>{profile.notification_types.map((kind:string)=><div className="slot" key={kind}><Row title={kind}/><Action path="profile/" method="PATCH" label={profile.muted_notifications.includes(kind)?'Unmute':'Mute'} fixed={{muted_notifications:profile.muted_notifications.includes(kind)?profile.muted_notifications.filter((item:string)=>item!==kind):[...profile.muted_notifications,kind]}}/></div>)}</Panel>}</>}</Data></>;
  default:return <Heading title="Page unavailable" back={['/','Home']}/>;
  }

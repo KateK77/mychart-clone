@@ -1,0 +1,49 @@
+{
+  "checks": [
+    {
+      "name": "01-sign-in",
+      "overflow": false
+    },
+    {
+      "name": "02-patient-dashboard",
+      "overflow": false
+    },
+    {
+      "name": "03-patient-390",
+      "overflow": false
+    },
+    {
+      "name": "03-patient-768",
+      "overflow": false
+    },
+    {
+      "name": "04-staff-workspace",
+      "overflow": false
+    },
+    {
+      "name": "05-record-drawer",
+      "overflow": false
+    },
+    {
+      "name": "06-mobile-drawer",
+      "overflow": false
+    },
+    {
+      "name": "07-mobile-record-list",
+      "overflow": false
+    },
+    {
+      "name": "08-mobile-workspace",
+      "overflow": false
+    },
+    {
+      "name": "09-demo-mailbox",
+      "overflow": false
+    },
+    {
+      "name": "10-mobile-sign-in",
+      "overflow": false
+    }
+  ],
+  "errors": []
+}
