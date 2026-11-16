@@ -25,12 +25,12 @@ jobs:
         run: |
           python backend/manage.py migrate
           python backend/manage.py seed_demo
-          python backend/manage.py runserver 127.0.0.1:18260 --noreload &
+          python backend/manage.py runserver 127.0.0.1:18270 --noreload &
           cd frontend
           pnpm exec playwright install --with-deps chromium
           pnpm dev --host 127.0.0.1 --strictPort &
           for tries in $(seq 1 30); do
-            if curl -fsS http://127.0.0.1:15260/api/healthcheck/; then break; fi
+            if curl -fsS http://127.0.0.1:15270/api/healthcheck/; then break; fi
             sleep 1
           done
           pnpm e2e

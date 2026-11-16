@@ -1,0 +1,27 @@
+[
+  {
+    "file": "document.pdf",
+    "pages": 1,
+    "text_characters": 462
+  },
+  {
+    "file": "invoice.pdf",
+    "pages": 1,
+    "text_characters": 406
+  },
+  {
+    "file": "lab.pdf",
+    "pages": 1,
+    "text_characters": 417
+  },
+  {
+    "file": "long-summary.pdf",
+    "pages": 7,
+    "text_characters": 13328
+  },
+  {
+    "file": "receipt.pdf",
+    "pages": 1,
+    "text_characters": 460
+  }
+]

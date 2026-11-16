@@ -1,0 +1,28 @@
+{
+  "round": 3,
+  "version": "3.0.0",
+  "date": "2026-11-15",
+  "timezone": "America/Chicago",
+  "model": "Codex (exact runtime model identifier not exposed)",
+  "baseline_commit": "acd53e8bd1243038c324fe89028c3f49233d2764",
+  "release_tag": "v3.0.0",
+  "repository": "https://github.com/KateK77/mychart-clone",
+  "development_branch": "version-3",
+  "database_tested": "SQLite",
+  "browser_tested": "Microsoft Edge (Chromium), headless",
+  "checks": {
+    "pytest_passed": 23,
+    "vitest_passed": 3,
+    "playwright_passed": 16,
+    "final_preview_regression_passed": 1,
+    "typescript": "passed",
+    "vite": "passed",
+    "django_check": "passed",
+    "migration_drift": "none",
+    "visual_captures": 15,
+    "horizontal_overflow_checks_failed": 0,
+    "browser_page_errors": 0,
+    "pdf_samples": 5,
+    "pdf_pages_inspected": 11
+  }
+}

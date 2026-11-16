@@ -2,10 +2,10 @@ export type RecordData = {
   id: number;
   [field: string]: any;
 };
-export type User = {id:number; name:string; roles:string[]; patient:number|null};
+export type User = {id:number; name:string; roles:string[]; patient:number|null;account_kind?:string;application?:{status:string;role:string;decision:string}|null};
 
 export async function api<T = any>(path: string, data?: unknown, method = 'POST'): Promise<T> {
-  const csrf = document.cookie.split('; ').find(value => value.startsWith('csrftoken_v2='))?.split('=').slice(1).join('=');
+  const csrf = document.cookie.split('; ').find(value => value.startsWith('csrftoken_v3='))?.split('=').slice(1).join('=');
   const response = await fetch('/api/' + path, {
     credentials: 'same-origin',
     ...(data === undefined ? {} : {method, body: JSON.stringify(data), headers: {'Content-Type':'application/json','X-CSRFToken':csrf ?? ''}}),

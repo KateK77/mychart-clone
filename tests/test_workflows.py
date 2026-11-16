@@ -141,11 +141,11 @@ def test_authentication_csrf_and_validation(demo):
     client = APIClient(enforce_csrf_checks=True)
     assert get(client, "dashboard/").status_code == 403
     assert post(client, "login", username="patient", password="wrong").status_code == 403
-    csrf = get(client, "session/").cookies["csrftoken_v2"].value
+    csrf = get(client, "session/").cookies["csrftoken_v3"].value
     client.credentials(HTTP_X_CSRFTOKEN=csrf)
     assert post(client, "login", username="patient", password="wrong").status_code == 400
     assert post(client, "login", username="patient", password="CareConnect-Demo-2026!").status_code == 200
-    client.credentials(HTTP_X_CSRFTOKEN=client.cookies["csrftoken_v2"].value)
+    client.credentials(HTTP_X_CSRFTOKEN=client.cookies["csrftoken_v3"].value)
     assert get(client, "dashboard/").status_code == 200
     assert post(client, "appointments", slot=-5).status_code == 400
     assert post(client, "logout").status_code == 200

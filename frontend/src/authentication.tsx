@@ -37,28 +37,38 @@ export function Authentication({demo}:{demo:boolean}){
  const mode=location.pathname==='/register'?'register':location.pathname==='/forgot-password'?'forgot':location.pathname==='/reset-password'?'reset':location.pathname==='/demo-mailbox'?'mailbox':'login';
  const [busy,setBusy]=useState(false),[error,setError]=useState<unknown>(),[done,setDone]=useState(false);
  const token=new URLSearchParams(location.search).get('token');
+ const role=new URLSearchParams(location.search).get('role');
+ const accountRole=['patient','caregiver','careteam'].includes(role||'')?role:null;
  async function submit(event:FormEvent<HTMLFormElement>){
   event.preventDefault();const form=event.currentTarget;const data=Object.fromEntries(new FormData(form));setError(undefined);
   if(['register','reset'].includes(mode)&&data.password!==data.confirm_password){setError(new Error('The new passwords do not match.'));return;}
   setBusy(true);
   try{
-   const response=await api(mode==='login'?'login/':mode==='register'?'register/':mode==='forgot'?'password/request-reset/':'password/reset/',mode==='reset'?{...data,token}:data);
+   const response=await api(mode==='login'?'login/':mode==='register'?'register/':mode==='forgot'?'password/request-reset/':'password/reset/',mode==='reset'?{...data,token}:mode==='register'?{...data,account_type:accountRole}:data);
    if(mode==='login'||mode==='register'){
     await client.cancelQueries({queryKey:['api']});client.removeQueries({queryKey:['api']});
-    client.setQueryData(['session'],{...response,demo_mailbox:demo});navigate('/',{replace:true});
+    client.setQueryData(['session'],{...response,demo_mailbox:demo});navigate(response.user?.account_kind==='Caregiver'?'/family':'/',{replace:true});
    }else{form.reset();setDone(true);if(mode==='reset')await client.invalidateQueries({queryKey:['session']});}
   }catch(e){setError(e);}finally{setBusy(false);}
  }
  const title={login:'Welcome back',register:'A little closer to better care',forgot:'Forgot your password?',reset:'Choose a new password',mailbox:'Your demo mailbox'}[mode];
  return <div className="auth-page"><div className="auth-story"><Brand/><div className="auth-story-copy"><span className="eyebrow light"><Heart size={15}/> CARE THAT STAYS WITH YOU</span><h1>One place.<br/>{' '}Your whole<br/>{' '}<em>health picture.</em></h1><p>More clarity. Less to keep track of. Connect with your care team and take the next step with confidence.</p>
   <div className="story-features"><span><CalendarDays/>Appointments that fit your life</span><span><FlaskConical/>Your results, clearly explained</span><span><MessageCircle/>A conversation with your care team</span></div></div><div className="story-foot"><ShieldCheck size={18}/>An independent, synthetic-data demonstration.</div><div className="story-orbit" aria-hidden="true"/></div>
-  <div className="auth-content"><div className="auth-top"><span className="version-pill">CareConnect 2.0</span><span><LockKeyhole size={14}/> Patient & staff access</span></div>
+  <div className="auth-content"><div className="auth-top"><span className="version-pill">CareConnect 3.0</span><span><LockKeyhole size={14}/> Patient & staff access</span></div>
    <div className="auth-card"><span className="auth-mark">{mode==='mailbox'?<Mail/>:mode==='forgot'||mode==='reset'?<LockKeyhole/>:<Heart/>}</span><h2>{title}</h2>
-    <p className="muted">{mode==='login'?'Sign in to manage your health, all in one place.':mode==='register'?'Create your patient account to get started.':mode==='forgot'?'Enter your account email. We will send a link to reset your password.':mode==='reset'?'Choose a strong password and enter it twice to confirm.':'Simulated messages requested from this browser. No external email is sent.'}</p>
+    <p className="muted">{mode==='login'?'Sign in to manage your health, all in one place.':mode==='register'?'Choose an account type, then enter your details.':mode==='forgot'?'Enter your account email. We will send a link to reset your password.':mode==='reset'?'Choose a strong password and enter it twice to confirm.':'Simulated messages requested from this browser. No external email is sent.'}</p>
     {mode==='mailbox'?demo?<Data path="demo-mailbox/">{data=>data.messages.length?data.messages.map((message:any)=><article key={message.id} className="mail-card"><span className="eyebrow">CARECONNECT ACCOUNT SUPPORT</span><h3>{message.subject}</h3><small>To: {message.to} · {date(message.created_at)}</small><p>{message.body}</p><Link className="button" to={message.link}>Reset password <ArrowRight size={16}/></Link><small>Expires {date(message.expires_at)}</small></article>):<Empty text="No reset messages yet. Request a password reset first."/>}</Data>:<p className="notice">The simulated mailbox is only available in local demo mode.</p>:
     done?<div className="auth-done"><span className="done-icon"><Check/></span><h3>{mode==='forgot'?'Check your email':'Password reset complete'}</h3><p>{mode==='forgot'?'If an account matches that email, a password reset message has been sent.':'You can now sign in with your new password.'}</p>{mode==='forgot'&&demo?<Link className="button" to="/demo-mailbox">Open demo mailbox <Mail size={16}/></Link>:<Link className="button" to="/login">Back to sign in</Link>}</div>:
     mode==='reset'&&!token?<p className="notice error">This reset link is incomplete. Request a new link below.</p>:
+    mode==='register'&&!accountRole?<div className="role-options">{[
+     ['patient','Patient','Manage your appointments, records, messages, and bills.'],
+     ['caregiver','Family caregiver','Connect to a family member with their permission.'],
+     ['careteam','Care team','Apply as a physician, nurse, front desk, or billing staff member.'],
+    ].map(([value,label,description])=><Link key={value} className="role-card" to={'/register?role='+value}><strong>{label}<ArrowRight size={18}/></strong><span>{description}</span></Link>)}</div>:
     <form className="auth-form" onSubmit={submit}>
+     {mode==='register'&&<div className="role-selection"><strong>{accountRole==='careteam'?'Care team':accountRole==='caregiver'?'Family caregiver':'Patient'} account</strong><Link to="/register">Change account type</Link></div>}
+     {mode==='register'&&accountRole==='careteam'&&<><label>Care-team role<select name="requested_role" required defaultValue=""><option value="" disabled>Select your role</option>{['Physician','Nurse','Front Desk','Billing Staff'].map(role=><option key={role}>{role}</option>)}</select></label><label>Organization<input name="organization" required maxLength={150}/></label><label>Application note<textarea name="reason" maxLength={2000}/></label><p className="notice">An administrator must approve your application before you can access the staff workspace.</p></>}
+
      {(mode==='login'||mode==='register')&&<label>Username<input name="username" required maxLength={150} autoComplete="username"/></label>}
      {mode==='register'&&<div className="two-fields"><label>First name<input name="first_name" required autoComplete="given-name"/></label><label>Last name<input name="last_name" required autoComplete="family-name"/></label></div>}
      {(mode==='forgot'||mode==='register')&&<label>Email<input name="email" type="email" required autoComplete="email"/></label>}

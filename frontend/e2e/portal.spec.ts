@@ -140,7 +140,7 @@ test('billing staff issues a statement and the patient pays and downloads a rece
  await expect(patient.getByText('Paid',{exact:true}).first()).toBeVisible();
  await patient.getByRole('link',{name:/\$25\.00/}).click();
  const download=patient.waitForEvent('download');
- await patient.getByRole('link',{name:'Download receipt'}).click();
- expect((await download).suggestedFilename()).toMatch(/^receipt-\d+\.txt$/);
+ await patient.getByRole('link',{name:'Download PDF'}).click();
+ expect((await download).suggestedFilename()).toMatch(/^careconnect-receipt-.*\.pdf$/);
  await context.close();
 });

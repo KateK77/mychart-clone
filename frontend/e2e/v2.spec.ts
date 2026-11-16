@@ -14,7 +14,7 @@ async function confirm(page:Page,label:string){
 }
 async function register(page:Page){
  const username='v2_'+Date.now();
- await page.goto('/register');
+ await page.goto('/register?role=patient');
  await page.getByLabel('Username',{exact:true}).fill(username);
  await page.getByLabel('First name').fill('River');
  await page.getByLabel('Last name').fill('Demo');

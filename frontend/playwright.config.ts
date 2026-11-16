@@ -1,6 +1,6 @@
 import {defineConfig} from '@playwright/test';
 export default defineConfig({
  testDir:'./e2e', workers:1, retries:0,
- use:{baseURL:process.env.CC_WEB_URL ?? 'http://127.0.0.1:15260',headless:true,launchOptions:{executablePath:process.env.CC_BROWSER_BIN}},
+ use:{baseURL:process.env.CC_WEB_URL ?? 'http://127.0.0.1:15270',headless:true,launchOptions:{executablePath:process.env.CC_BROWSER_BIN}},
  reporter:'list',
 });

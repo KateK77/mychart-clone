@@ -19,6 +19,7 @@ def choices(values):
 
 class Patient(models.Model):
     user = models.OneToOneField(User, on_delete=models.PROTECT, related_name="patient")
+    account_kind = models.CharField(max_length=20, default="Patient")
     birth_date = models.DateField(null=True, blank=True)
     phone = models.CharField(max_length=40, blank=True)
     address = models.CharField(max_length=240, blank=True)
@@ -26,6 +27,31 @@ class Patient(models.Model):
 
     def __str__(self):
         return self.user.get_full_name() or self.user.username
+
+
+class StaffApplication(models.Model):
+    user = models.OneToOneField(User, on_delete=models.PROTECT, related_name="staff_application")
+    requested_role = models.CharField(max_length=30, choices=choices(ROLES[:-1]))
+    organization = models.CharField(max_length=150)
+    reason = models.TextField(blank=True)
+    status = models.CharField(max_length=25, default="Pending")
+    decision = models.TextField(blank=True)
+    reviewer = models.ForeignKey(User, null=True, on_delete=models.SET_NULL, related_name="reviewed_applications")
+    created_at = models.DateTimeField(auto_now_add=True)
+
+
+class FamilyRequest(models.Model):
+    requester = models.ForeignKey(User, on_delete=models.PROTECT, related_name="family_requests")
+    recipient_email = models.EmailField()
+    recipient = models.ForeignKey(User, null=True, on_delete=models.PROTECT, related_name="received_family_requests")
+    owner = models.ForeignKey("Patient", null=True, on_delete=models.PROTECT)
+    direction = models.CharField(max_length=20)
+    relationship = models.CharField(max_length=100)
+    sections = models.JSONField(default=list)
+    status = models.CharField(max_length=25, default="Pending")
+    decision = models.TextField(blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    expires_at = models.DateTimeField()
 
 
 class Department(models.Model):

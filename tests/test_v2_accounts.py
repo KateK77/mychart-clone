@@ -90,7 +90,7 @@ def test_recovery_csrf_rate_limit_and_production_disabled(settings):
     client = APIClient(enforce_csrf_checks=True)
     assert post(client, 'password/request-reset', email='patient@careconnect.example').status_code == 403
     client.get('/api/session/')
-    client.credentials(HTTP_X_CSRFTOKEN=client.cookies['csrftoken_v2'].value)
+    client.credentials(HTTP_X_CSRFTOKEN=client.cookies['csrftoken_v3'].value)
     for _ in range(8):
         assert post(client, 'password/request-reset', email='missing@example.com').status_code == 200
     assert post(client, 'password/request-reset', email='missing@example.com').status_code == 429

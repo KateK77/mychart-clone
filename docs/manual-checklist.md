@@ -1,10 +1,12 @@
-# Short v2 review
+# CareConnect 3.0 — short manual review
 
-Automated checks cover the repeated workflows. This is an optional design review, not another exhaustive test session.
+Open http://127.0.0.1:15270. All seeded accounts use `CareConnect-Demo-2026!`.
+Use separate browser profiles or a private window for the second account. Tabs in the same browser share one signed-in account.
 
-1. Open http://127.0.0.1:15260 and sign in as `patient`. Review the dashboard and menu, then use the visible **Sign out** button.
-2. Sign in as `admin`. Select Jordan Vale in **Patient context**, search for **Laboratory results**, and open a record. Its drawer appears immediately. Close it with **X** or Escape.
-3. Narrow the window and check that navigation and record actions remain readable without horizontal scrolling.
-4. To try recovery, sign out, choose **Forgot password?**, enter a synthetic demo email, then open **Demo mailbox** and use the reset link. Choose a password you will remember; you do not need to change it back.
+1. **Messages:** sign in as `patient`, open a conversation, Archive and confirm, reopen it from Archive, then Restore to inbox and confirm. The Inbox should open with the restored item and a specific success notice.
+2. **PDFs:** open any Test Result → View report → Download PDF. The preview and PDF should agree. Documents, Billing → View statement, and payment receipts use the same preview controls.
+3. **Registration:** sign out → Create an account → choose a role. Care-team registration should show Pending. In the `admin` account, open Access reviews, select a decision and add a verification note. Check application status in the applicant's window.
+4. **Family linking:** as `patient`, open Family Access → Link a family member → invite `caregiver@careconnect.example`. Sign in as `caregiver` in a separate browser profile, accept the incoming invitation, and open the shared records. Revoke from the patient account to remove access.
+5. **General usability:** browse any area you want at desktop or mobile width. Existing workflows have already been regression-tested; report anything confusing without repeating the full previous checklist.
 
-Default seeded password: `CareConnect-Demo-2026!`. Use separate browser profiles or a private window for simultaneous patient and staff sessions. Tabs in one browser profile share the same login.
+No real email, payment, prescription, or hospital connection is used. Stop after these checks and share feedback; no password-reset round trip is necessary.

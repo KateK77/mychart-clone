@@ -22,7 +22,7 @@ class Command(BaseCommand):
         today = now.date()
         password = os.getenv("CC_DEMO_PASSWORD", "CareConnect-Demo-2026!")
         people = (
-            ("patient", "Jordan", "Vale", None), ("dependent", "Avery", "Vale", None),
+            ("caregiver", "Taylor", "Vale", None), ("patient", "Jordan", "Vale", None), ("dependent", "Avery", "Vale", None),
             ("physician", "Maya", "Rowan", "Physician"), ("nurse", "Theo", "Lark", "Nurse"),
             ("frontdesk", "Riley", "Quill", "Front Desk"), ("billing", "Sam", "Voss", "Billing Staff"),
             ("admin", "Morgan", "Wren", "Administrator"),
@@ -39,6 +39,7 @@ class Command(BaseCommand):
                     user.groups.add(Group.objects.get_or_create(name=role)[0])
             accounts[username] = user
         patient, _ = m.Patient.objects.get_or_create(user=accounts["patient"], defaults={"birth_date": "1989-04-14", "phone": "(312) 555-0148"})
+        m.Patient.objects.get_or_create(user=accounts["caregiver"], defaults={"account_kind": "Caregiver", "birth_date": "1985-06-10"})
         dependent, _ = m.Patient.objects.get_or_create(user=accounts["dependent"], defaults={"birth_date": "2016-09-22"})
         m.ProxyAccess.objects.get_or_create(patient=dependent, proxy=accounts["patient"], defaults={"sections": ["appointments", "results", "visits"]})
         providers = []

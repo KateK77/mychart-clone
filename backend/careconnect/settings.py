@@ -5,7 +5,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 DEBUG = os.getenv("CC_PRODUCTION") != "1"
 SECRET_KEY = os.environ["CC_SECRET_KEY"] if not DEBUG else os.getenv("CC_SECRET_KEY", "careconnect-local-synthetic-only")
 ALLOWED_HOSTS = os.getenv("CC_HOSTS", "localhost,127.0.0.1,testserver").split(",")
-CSRF_TRUSTED_ORIGINS = os.getenv("CC_TRUSTED_ORIGINS", "http://localhost:15260,http://127.0.0.1:15260").split(",")
+CSRF_TRUSTED_ORIGINS = os.getenv("CC_TRUSTED_ORIGINS", "http://localhost:15270,http://127.0.0.1:15270").split(",")
 INSTALLED_APPS = [
     "django.contrib.admin", "django.contrib.auth", "django.contrib.contenttypes",
     "django.contrib.sessions", "django.contrib.messages", "django.contrib.staticfiles",
@@ -44,8 +44,8 @@ SECURE_CONTENT_TYPE_NOSNIFF = True
 REST_FRAMEWORK = {"DEFAULT_PERMISSION_CLASSES": ["rest_framework.permissions.IsAuthenticated"],
                   "DEFAULT_AUTHENTICATION_CLASSES": ["rest_framework.authentication.SessionAuthentication"]}
 
-# Each local version uses separate cookies, so signing into v2 cannot change v1 sessions.
-SESSION_COOKIE_NAME = os.getenv("CC_SESSION_COOKIE", "careconnect_v2_session")
-CSRF_COOKIE_NAME = "csrftoken_v2"
+# Each local version uses separate cookies, so signing into v3 cannot change v1 or v2 sessions.
+SESSION_COOKIE_NAME = os.getenv("CC_SESSION_COOKIE", "careconnect_v3_session")
+CSRF_COOKIE_NAME = "csrftoken_v3"
 DEMO_MAILBOX = DEBUG and os.getenv("CC_DEMO_MAILBOX", "1") == "1"
 REST_FRAMEWORK["EXCEPTION_HANDLER"] = "portal.errors.portal_exception_handler"

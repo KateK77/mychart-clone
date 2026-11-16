@@ -1,7 +1,6 @@
 from decimal import Decimal
 
 from django.db.models import Q
-from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
 from django.utils import timezone
 from rest_framework import serializers as s
@@ -16,13 +15,6 @@ from .services import atomic_change, audit, available_slots, book, change_appoin
 
 def listing(rows, exclude=()):
     return [serialize(row, exclude) for row in rows]
-
-
-def download(content, filename, inline=False):
-    response = HttpResponse(content, content_type="text/plain; charset=utf-8")
-    response["Content-Disposition"] = f'{"inline" if inline else "attachment"}; filename="{filename}"'
-    response["Cache-Control"] = "private, no-store"
-    return response
 
 
 @api_view(["GET"])
@@ -100,9 +92,8 @@ def results(request, pk=None, file=False):
         row = get_object_or_404(rows, pk=pk)
         record = serialize(row)
         if file:
-            keys = ("name", "collected_at", "resulted_at", "value", "unit", "reference_low", "reference_high", "flag", "status", "provider_name", "comments")
-            report = "\n".join(f"{key.replace('_', ' ').title()}: {record[key] if record[key] is not None else ''}" for key in keys)
-            return download("CareConnect · Synthetic laboratory report\n\n" + report, f"lab-{pk}.txt")
+            from .exports import document_data, pdf_response
+            return pdf_response(document_data(request, "lab", pk))
         record["history"] = listing(rows.filter(name__iexact=row.name, unit=row.unit, value__isnull=False).order_by("collected_at", "pk"))
         return Response(record)
     args = validated(request.query_params, patient=s.IntegerField(required=False),
@@ -192,7 +183,8 @@ def receipt(request, pk):
     patient = patient_scope(request, "billing")
     row = get_object_or_404(m.Payment.objects.select_related("invoice"), pk=pk, invoice__patient=patient)
     read_audit(request, patient, "receipt", pk)
-    return download(f"CareConnect · Simulated payment receipt\nReceipt: {row.pk}\nInvoice: {row.invoice.number}\nAmount: ${row.amount}\nDate: {row.created_at.isoformat()}", f"receipt-{pk}.txt")
+    from .exports import document_data, pdf_response
+    return pdf_response(document_data(request, "receipt", pk))
 
 
 @api_view(["GET"])
@@ -202,7 +194,10 @@ def documents(request, pk=None, file=False):
     rows = patient.document_set.filter(published=True).filter(Q(encounter__published=True) | Q(encounter__isnull=True))
     if pk:
         row = get_object_or_404(rows, pk=pk)
-        return download(f"{row.title}\n\n{row.content}", f"document-{pk}.txt") if file else Response(serialize(row))
+        if file:
+            from .exports import document_data, pdf_response
+            return pdf_response(document_data(request, "document", pk))
+        return Response(serialize(row))
     return Response(listing(rows.order_by("-pk"), ("content",)))
 
 

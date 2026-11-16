@@ -21,7 +21,10 @@ User = get_user_model()
 def identity(user):
     patient = getattr(user, "patient", None)
     return {"id": user.pk, "name": user.get_full_name() or user.username,
-            "roles": sorted(roles(user)) or ["Patient"], "patient": patient.pk if patient else None}
+            "roles": sorted(roles(user)) or (["Patient"] if patient else []), "patient": patient.pk if patient else None,
+            "account_kind": patient.account_kind if patient else "Care team",
+            "application": ({"status": user.staff_application.status, "role": user.staff_application.requested_role,
+                             "decision": user.staff_application.decision} if hasattr(user, "staff_application") else None)}
 
 
 @ensure_csrf_cookie
@@ -61,10 +64,16 @@ def password_rules(password, user):
 def register(request):
     try:
         data = validated(JSONParser().parse(request), username=s.RegexField(r"^[a-zA-Z0-9_.-]+$", max_length=150),
-                         first_name=text(length=150), last_name=text(length=150), email=s.EmailField(), password=text(length=128), confirm_password=text(length=128))
+                         first_name=text(length=150), last_name=text(length=150), email=s.EmailField(), password=text(length=128), confirm_password=text(length=128),
+                         account_type=s.ChoiceField(choices=("patient", "caregiver", "careteam"), default="patient"),
+                         requested_role=s.ChoiceField(choices=m.ROLES[:-1], required=False), organization=text(False, 150), reason=text(False))
         password = data.pop("password")
         if data.pop("confirm_password") != password:
             raise ValidationError("The new passwords do not match.")
+        account_type = data.pop("account_type")
+        requested_role, organization, reason = data.pop("requested_role", ""), data.pop("organization", ""), data.pop("reason", "")
+        if account_type == "careteam" and (not requested_role or not organization):
+            raise ValidationError("Select your care-team role and enter your organization.")
         user = User(**data)
         password_rules(password, user)
     except Exception as exc:
@@ -78,11 +87,16 @@ def register(request):
     try:
         with transaction.atomic():
             user.save()
-            m.Patient.objects.create(user=user)
+            if account_type == "careteam":
+                m.StaffApplication.objects.create(user=user, requested_role=requested_role, organization=organization, reason=reason)
+            else:
+                m.Patient.objects.create(user=user, account_kind="Caregiver" if account_type == "caregiver" else "Patient")
     except IntegrityError:
         return JsonResponse({"detail": "This username is already in use."}, status=409)
+    from .access import bind_invitations
+    bind_invitations(user)
     login(request, user)
-    audit(user, "Registration", user.patient)
+    audit(user, "Registration", getattr(user, "patient", None))
     return JsonResponse({"user": identity(user)}, status=201)
 
 

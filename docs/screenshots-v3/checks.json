@@ -1,0 +1,65 @@
+{
+  "checks": [
+    {
+      "name": "01-registration-roles",
+      "overflow": false
+    },
+    {
+      "name": "02-registration-mobile",
+      "overflow": false
+    },
+    {
+      "name": "03-staff-registration-mobile",
+      "overflow": false
+    },
+    {
+      "name": "04-dashboard",
+      "overflow": false
+    },
+    {
+      "name": "05-family",
+      "overflow": false
+    },
+    {
+      "name": "06-family-link",
+      "overflow": false
+    },
+    {
+      "name": "07-family-link-mobile",
+      "overflow": false
+    },
+    {
+      "name": "08-preview-lab",
+      "overflow": false
+    },
+    {
+      "name": "08-preview-document",
+      "overflow": false
+    },
+    {
+      "name": "08-preview-invoice",
+      "overflow": false
+    },
+    {
+      "name": "08-preview-receipt",
+      "overflow": false
+    },
+    {
+      "name": "09-preview-390",
+      "overflow": false
+    },
+    {
+      "name": "09-preview-768",
+      "overflow": false
+    },
+    {
+      "name": "10-access-reviews",
+      "overflow": false
+    },
+    {
+      "name": "11-access-reviews-mobile",
+      "overflow": false
+    }
+  ],
+  "errors": []
+}

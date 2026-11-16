@@ -1,3 +1,4 @@
+import {DocumentPreview} from './documents';
 import {ChangePassword} from './authentication';
 import {useState} from 'react';
 import {Link,useLocation,useNavigate,useParams} from 'react-router-dom';
@@ -41,7 +42,7 @@ export function PatientPage({staff=false}:{staff?:boolean}){
  const root=href(section);
  const back:[string,string]=[root,titles[section]];
  const [filter,setFilter]=useState<Record<string,string>>({});
- const [mode,setMode]=useState('');
+ const [mode,setMode]=useState(new URLSearchParams(location.search).get('box')||'inbox');
  const [paymentKey,setPaymentKey]=useState(()=>crypto.randomUUID());
  const list=(route:string,children:(data:any)=>React.ReactNode)=> <Data path={path(route,filter)}>{children}</Data>;
  const detail=(children:(data:RecordData)=>React.ReactNode)=><Data path={path(section+'/'+id+'/')}>{children}</Data>;
@@ -71,7 +72,7 @@ export function PatientPage({staff=false}:{staff?:boolean}){
   })}</>;
  }
  case 'results':
-  if(id)return detail(row=><><Heading title={row.name} description={row.provider_name} back={back}><DownloadLink href={'/api/'+path('results/'+id+'/download/')} label="Download summary"/></Heading><Panel title="Result details">
+  if(id)return detail(row=><><Heading title={row.name} description={row.provider_name} back={back}><Link className="button secondary" to={href('preview/lab/'+id)}>View report</Link><DownloadLink href={'/api/'+path('results/'+id+'/download/')} label="Download PDF"/></Heading><Panel title="Result details">
     <div className="result-value">{row.value??'—'} <small>{row.unit}</small> {row.flag&&<Tag value={row.flag}/>}</div>
     <Facts values={[['Status',row.status],['Collected',date(row.collected_at)],['Resulted',date(row.resulted_at)],['Reference range',row.reference_low===null&&row.reference_high===null?'—':(row.reference_low??'—')+' to '+(row.reference_high??'—')+' '+row.unit],['Comments',row.comments]]}/></Panel><Panel title="Historical measurements"><Trend rows={row.history}/></Panel></>);
   return <>{header('Review published lab reports and historical measurements.')}<Panel><Filters onChange={setFilter} fields={[{name:'q',label:'Test name',optional:true},{name:'after',label:'Collected from',kind:'date',optional:true},{name:'before',label:'Collected through',kind:'date',optional:true}]}/></Panel>
@@ -83,9 +84,9 @@ export function PatientPage({staff=false}:{staff?:boolean}){
   if(id)return detail(row=><><Heading title={row.subject} description={row.category+' · '+row.team} back={back}/><Panel title="Conversation">
    {items(row.messages,message=><article className={'message '+(message.mine?'mine':'')} key={message.id}><strong>{message.sender}</strong><small>{date(message.created_at)}</small><p>{message.body}</p></article>)}
    <p className="notice">Use this inbox for non-emergency communication.</p>{action('Send reply',[note('Reply','body')],{action:'reply'})}
-   <div className="inline-actions"><Action path={'messages/'+id+'/'} label="Archive" fixed={{action:'archive'}} confirm="Archive this conversation?" onSuccess={()=>go('messages')}/><Action path={'messages/'+id+'/'} label="Restore to inbox" fixed={{action:'restore'}}/></div></Panel></>);
+   <div className="inline-actions">{row.archived?<Action path={'messages/'+id+'/'} label="Restore to inbox" fixed={{action:'restore'}} confirm="Restore this conversation to your inbox?" onSuccess={()=>navigate('/messages?box=inbox',{state:{notice:'Conversation restored to inbox.'}})}/>:<Action path={'messages/'+id+'/'} label="Archive" fixed={{action:'archive'}} confirm="Archive this conversation?" onSuccess={()=>navigate('/messages?box=archive',{state:{notice:'Conversation archived.'}})}/>}</div></Panel></>);
   return <>{header('Secure, non-emergency conversations with your care team.',!staff&&<Link className="button" to="/messages/new"><Plus size={17}/>New message</Link>)}
-   <Panel><div className="tabs">{['inbox','sent','archive'].map(box=><button key={box} aria-pressed={(mode||'inbox')===box} onClick={()=>setMode(box)}>{box}</button>)}</div>
+   {location.state?.notice&&<p className="notice success" role="status">{location.state.notice}</p>}<Panel><div className="tabs">{['inbox','sent','archive'].map(box=><button key={box} aria-pressed={(mode||'inbox')===box} onClick={()=>setMode(box)}>{box}</button>)}</div>
    <Data path={withParams('messages/',{box:mode||'inbox'})}>{rows=>items(rows,row=><Row key={row.id} title={row.subject} detail={(staff?row.patient_name+' · ':'')+row.category+' · '+row.team} status={row.unread?row.unread+' unread':undefined} to={open(row.id)} icon={<MessageCircle size={18}/>}/>)}</Data></Panel></>;
  case 'medications': {
   const refill=(row:RecordData)=><Row key={row.id} title={row.medication_name} detail={row.decision||date(row.created_at)} status={row.status}/>;
@@ -106,15 +107,15 @@ export function PatientPage({staff=false}:{staff?:boolean}){
   return <>{header('Find encounter summaries and shared clinical notes.')}<Panel title="Past visits">{list('visits/',rows=>items(rows,row=><Row key={row.id} title={row.kind} detail={date(row.date)+' · '+row.provider_name} to={open(row.id)}/>))}</Panel></>;
  case 'billing': {
   const receipt=new URLSearchParams(location.search).get('receipt');
-  if(receipt)return <><Heading title="Payment receipt" back={back}/><Panel><DownloadLink href={'/api/'+path('billing/receipt/'+encodeURIComponent(receipt)+'/')} label="Download receipt"/></Panel></>;
-  if(id)return detail(row=><><Heading title={row.description} description={row.number} back={back}/><Panel title="Invoice details"><Tag value={row.status}/><Facts values={[['Service date',date(row.service_date)],['Due date',date(row.due_date)],['Charges',money(row.amount)],['Insurance adjustment',money(row.adjustment)],['Patient responsibility',money(row.responsibility)],['Paid',money(row.paid)],['Remaining',money(row.balance)]]}/></Panel>
+  if(receipt)return <DocumentPreview kind="receipt" id={receipt}/>;
+  if(id)return detail(row=><><Heading title={row.description} description={row.number} back={back}><Link className="button secondary" to={href('preview/invoice/'+id)}>View statement</Link></Heading><Panel title="Invoice details"><Tag value={row.status}/><Facts values={[['Service date',date(row.service_date)],['Due date',date(row.due_date)],['Charges',money(row.amount)],['Insurance adjustment',money(row.adjustment)],['Patient responsibility',money(row.responsibility)],['Paid',money(row.paid)],['Remaining',money(row.balance)]]}/></Panel>
    {Number(row.balance)>0&&<Panel title="Simulated payment"><Action path={path('billing/'+id+'/')} label="Submit simulated payment" confirm="Record this synthetic payment?" fixed={{key:paymentKey}} fields={[{name:'amount',label:'Payment amount (USD)',kind:'number',min:0.01,step:'0.01',value:row.balance}]} onSuccess={()=>setPaymentKey(crypto.randomUUID())}/></Panel>}
    <Panel title="Payment history">{paymentRows(row.payments)}</Panel></>);
   return <>{header('View invoices, insurance, and simulated transactions.')}<Data path={path('billing/')}>{row=><><Panel title="Outstanding balance"><div className="result-value">{money(row.balance)}</div></Panel>
    <Panel title="Invoices">{invoiceRows(row.invoices)}</Panel><Panel title="Payment history">{paymentRows(row.payments)}</Panel><Panel title="Insurance">{items(row.insurance,record=><Row key={record.id} title={record.carrier} detail={record.plan+' · '+record.member_id}/>)}</Panel></>}</Data></>;
  }
  case 'documents':
-  if(id)return detail(row=><><Heading title={row.title} description={row.kind+' · '+date(row.created_at)} back={back}><DownloadLink href={'/api/'+path('documents/'+id+'/download/')} label="Download document"/></Heading><Panel><p className="pre-wrap">{row.content}</p>{row.encounter&&<Link to={href('visits/'+row.encounter)}>Associated visit</Link>}</Panel></>);
+  if(id)return <DocumentPreview kind="document" id={id}/>;
   return <>{header('Open and download your published medical documents.')}<Panel><Filters onChange={setFilter} fields={[{name:'kind',label:'Document type',options:documentTypes,optional:true}]}/><Data path={path('documents/')}>{rows=>items(rows.filter((row:RecordData)=>!filter.kind||row.kind===filter.kind),row=><Row key={row.id} title={row.title} detail={row.kind+' · '+date(row.created_at)+(row.encounter?' · Linked visit':'')} to={open(row.id)}/>)}</Data></Panel></>;
  case 'family':
   return <>{header('Open records shared with you through an authorized proxy relationship.')}<Panel title="Linked profiles"><Data path="family/">{rows=>items(rows,row=><div key={row.patient} className="family-profile"><h3>{row.name}</h3><div className="inline-actions">{row.sections.map((part:string)=><Link className="button secondary" key={part} to={withParams('/'+part,{patient:row.patient})}>{titles[part]}</Link>)}</div></div>,'No profiles have been shared with you.')}</Data></Panel></>;

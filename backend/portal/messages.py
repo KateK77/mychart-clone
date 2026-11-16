@@ -27,7 +27,7 @@ def threads(request, pk=None):
             for message in messages:
                 if message.sender_id != user.id:
                     message.read_by.add(user)
-            return Response({**serialize(thread), "messages": [
+            return Response({**serialize(thread), "archived": thread.archived_by.filter(pk=user.pk).exists(), "messages": [
                 {"id": msg.id, "sender": msg.sender.get_full_name() or msg.sender.username,
                  "body": msg.body, "created_at": msg.created_at, "mine": msg.sender_id == user.id} for msg in messages]})
         box = request.query_params.get("box", "inbox")
@@ -51,7 +51,8 @@ def threads(request, pk=None):
                 thread.archived_by.add(user)
             else:
                 thread.archived_by.remove(user)
-            return Response({"detail": "Conversation updated."})
+            audit(user, "Conversation " + data["action"], thread.patient, thread.pk)
+            return Response({"detail": "Conversation archived." if data["action"] == "archive" else "Conversation restored to inbox."})
         body = validated({"body": data.get("body", "")}, body=text())["body"]
     m.Message.objects.create(thread=thread, sender=user, body=body)
     if not patient:

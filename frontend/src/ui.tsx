@@ -15,7 +15,8 @@ export function Data({path,children}:{path:string;children:(value:any)=>ReactNod
 }
 function DataError({error}:{error:unknown}){
  const location=useLocation();
- const base='/'+location.pathname.split('/')[1];
+ const parts=location.pathname.split('/');
+ const base=parts[1]==='preview'?({lab:'/results',document:'/documents',invoice:'/billing',receipt:'/billing'}[parts[2]]||'/documents'):'/'+parts[1];
  return <div className="panel error-state"><ErrorNotice error={error}/><Link className="button secondary" to={base+location.search}>Back to list</Link><Link className="text-button" to="/">Return to overview</Link></div>;
 }
 export function Modal({title,children,onClose,drawer=false}:{title:string;children:ReactNode;onClose:()=>void;drawer?:boolean}){
@@ -47,7 +48,7 @@ export type Field = {name:string; label:string; kind?:string; options?:ReadonlyA
 export function Controls({fields}:{fields:Field[]}){
   return <>{fields.map(field=><label key={field.name}>{field.label}
     {field.kind==='textarea' ? <textarea name={field.name} required={!field.optional} defaultValue={String(field.value??'')} rows={4}/> :
-    field.options ? <select name={field.name} required={!field.optional} defaultValue={String(field.value??'')}><option value="">{field.optional?'Any':'Select an option'}</option>{field.options.map(item=>{
+    field.options ? <select aria-label={field.label} name={field.name} required={!field.optional} defaultValue={String(field.value??'')}><option value="">{field.optional?'Any':'Select an option'}</option>{field.options.map(item=>{
       const option=typeof item==='string'?{value:item,label:item}:item;
       return <option key={option.value} value={option.value}>{option.label}</option>;
     })}</select> : field.kind==='checkbox' ? <input type="checkbox" name={field.name} defaultChecked={Boolean(field.value)}/> :
