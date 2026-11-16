@@ -1,0 +1,706 @@
+{
+  "method": "Character lengths of full frozen test plus losslessly compacted actual fixture and system instructions. Token lengths and request counts are forecasts, not API measurements.",
+  "suite_sha256": "0803c84e0272d89f96ffadc0d288aad4145a79f13beb95baf6ba8458b5517207",
+  "tests": [
+    {
+      "test_id": "T001",
+      "difficulty": "Easy",
+      "central_requests": 6,
+      "initial_prompt_characters": 5784,
+      "central_output_tokens_per_request": 60
+    },
+    {
+      "test_id": "T002",
+      "difficulty": "Easy",
+      "central_requests": 15,
+      "initial_prompt_characters": 5795,
+      "central_output_tokens_per_request": 60
+    },
+    {
+      "test_id": "T003",
+      "difficulty": "Easy",
+      "central_requests": 12,
+      "initial_prompt_characters": 5766,
+      "central_output_tokens_per_request": 60
+    },
+    {
+      "test_id": "T004",
+      "difficulty": "Easy",
+      "central_requests": 5,
+      "initial_prompt_characters": 5772,
+      "central_output_tokens_per_request": 60
+    },
+    {
+      "test_id": "T005",
+      "difficulty": "Easy",
+      "central_requests": 7,
+      "initial_prompt_characters": 5746,
+      "central_output_tokens_per_request": 60
+    },
+    {
+      "test_id": "T006",
+      "difficulty": "Easy",
+      "central_requests": 6,
+      "initial_prompt_characters": 5867,
+      "central_output_tokens_per_request": 60
+    },
+    {
+      "test_id": "T007",
+      "difficulty": "Easy",
+      "central_requests": 6,
+      "initial_prompt_characters": 5743,
+      "central_output_tokens_per_request": 60
+    },
+    {
+      "test_id": "T008",
+      "difficulty": "Easy",
+      "central_requests": 7,
+      "initial_prompt_characters": 5764,
+      "central_output_tokens_per_request": 60
+    },
+    {
+      "test_id": "T009",
+      "difficulty": "Easy",
+      "central_requests": 7,
+      "initial_prompt_characters": 5779,
+      "central_output_tokens_per_request": 60
+    },
+    {
+      "test_id": "T010",
+      "difficulty": "Easy",
+      "central_requests": 7,
+      "initial_prompt_characters": 5793,
+      "central_output_tokens_per_request": 60
+    },
+    {
+      "test_id": "T011",
+      "difficulty": "Easy",
+      "central_requests": 4,
+      "initial_prompt_characters": 5729,
+      "central_output_tokens_per_request": 60
+    },
+    {
+      "test_id": "T012",
+      "difficulty": "Easy",
+      "central_requests": 5,
+      "initial_prompt_characters": 5743,
+      "central_output_tokens_per_request": 60
+    },
+    {
+      "test_id": "T013",
+      "difficulty": "Easy",
+      "central_requests": 5,
+      "initial_prompt_characters": 5758,
+      "central_output_tokens_per_request": 60
+    },
+    {
+      "test_id": "T014",
+      "difficulty": "Easy",
+      "central_requests": 5,
+      "initial_prompt_characters": 5705,
+      "central_output_tokens_per_request": 60
+    },
+    {
+      "test_id": "T015",
+      "difficulty": "Easy",
+      "central_requests": 5,
+      "initial_prompt_characters": 5665,
+      "central_output_tokens_per_request": 60
+    },
+    {
+      "test_id": "T016",
+      "difficulty": "Easy",
+      "central_requests": 6,
+      "initial_prompt_characters": 5718,
+      "central_output_tokens_per_request": 60
+    },
+    {
+      "test_id": "T017",
+      "difficulty": "Easy",
+      "central_requests": 6,
+      "initial_prompt_characters": 5728,
+      "central_output_tokens_per_request": 60
+    },
+    {
+      "test_id": "T018",
+      "difficulty": "Easy",
+      "central_requests": 6,
+      "initial_prompt_characters": 5760,
+      "central_output_tokens_per_request": 60
+    },
+    {
+      "test_id": "T019",
+      "difficulty": "Easy",
+      "central_requests": 5,
+      "initial_prompt_characters": 5723,
+      "central_output_tokens_per_request": 60
+    },
+    {
+      "test_id": "T020",
+      "difficulty": "Easy",
+      "central_requests": 7,
+      "initial_prompt_characters": 5745,
+      "central_output_tokens_per_request": 60
+    },
+    {
+      "test_id": "T021",
+      "difficulty": "Easy",
+      "central_requests": 5,
+      "initial_prompt_characters": 5687,
+      "central_output_tokens_per_request": 60
+    },
+    {
+      "test_id": "T022",
+      "difficulty": "Easy",
+      "central_requests": 5,
+      "initial_prompt_characters": 5717,
+      "central_output_tokens_per_request": 60
+    },
+    {
+      "test_id": "T023",
+      "difficulty": "Easy",
+      "central_requests": 5,
+      "initial_prompt_characters": 5673,
+      "central_output_tokens_per_request": 60
+    },
+    {
+      "test_id": "T024",
+      "difficulty": "Easy",
+      "central_requests": 5,
+      "initial_prompt_characters": 5688,
+      "central_output_tokens_per_request": 60
+    },
+    {
+      "test_id": "T025",
+      "difficulty": "Easy",
+      "central_requests": 5,
+      "initial_prompt_characters": 5768,
+      "central_output_tokens_per_request": 60
+    },
+    {
+      "test_id": "T026",
+      "difficulty": "Easy",
+      "central_requests": 6,
+      "initial_prompt_characters": 5748,
+      "central_output_tokens_per_request": 60
+    },
+    {
+      "test_id": "T027",
+      "difficulty": "Easy",
+      "central_requests": 6,
+      "initial_prompt_characters": 5733,
+      "central_output_tokens_per_request": 60
+    },
+    {
+      "test_id": "T028",
+      "difficulty": "Easy",
+      "central_requests": 7,
+      "initial_prompt_characters": 5796,
+      "central_output_tokens_per_request": 60
+    },
+    {
+      "test_id": "T029",
+      "difficulty": "Easy",
+      "central_requests": 9,
+      "initial_prompt_characters": 5796,
+      "central_output_tokens_per_request": 60
+    },
+    {
+      "test_id": "T030",
+      "difficulty": "Easy",
+      "central_requests": 7,
+      "initial_prompt_characters": 5726,
+      "central_output_tokens_per_request": 60
+    },
+    {
+      "test_id": "T031",
+      "difficulty": "Medium",
+      "central_requests": 12,
+      "initial_prompt_characters": 5871,
+      "central_output_tokens_per_request": 90
+    },
+    {
+      "test_id": "T032",
+      "difficulty": "Medium",
+      "central_requests": 9,
+      "initial_prompt_characters": 5724,
+      "central_output_tokens_per_request": 90
+    },
+    {
+      "test_id": "T033",
+      "difficulty": "Medium",
+      "central_requests": 12,
+      "initial_prompt_characters": 5855,
+      "central_output_tokens_per_request": 90
+    },
+    {
+      "test_id": "T034",
+      "difficulty": "Medium",
+      "central_requests": 9,
+      "initial_prompt_characters": 5720,
+      "central_output_tokens_per_request": 90
+    },
+    {
+      "test_id": "T035",
+      "difficulty": "Medium",
+      "central_requests": 15,
+      "initial_prompt_characters": 5846,
+      "central_output_tokens_per_request": 90
+    },
+    {
+      "test_id": "T036",
+      "difficulty": "Medium",
+      "central_requests": 17,
+      "initial_prompt_characters": 5872,
+      "central_output_tokens_per_request": 90
+    },
+    {
+      "test_id": "T037",
+      "difficulty": "Medium",
+      "central_requests": 9,
+      "initial_prompt_characters": 5778,
+      "central_output_tokens_per_request": 90
+    },
+    {
+      "test_id": "T038",
+      "difficulty": "Medium",
+      "central_requests": 12,
+      "initial_prompt_characters": 5754,
+      "central_output_tokens_per_request": 90
+    },
+    {
+      "test_id": "T039",
+      "difficulty": "Medium",
+      "central_requests": 10,
+      "initial_prompt_characters": 5747,
+      "central_output_tokens_per_request": 90
+    },
+    {
+      "test_id": "T040",
+      "difficulty": "Medium",
+      "central_requests": 8,
+      "initial_prompt_characters": 5692,
+      "central_output_tokens_per_request": 90
+    },
+    {
+      "test_id": "T041",
+      "difficulty": "Medium",
+      "central_requests": 9,
+      "initial_prompt_characters": 5747,
+      "central_output_tokens_per_request": 90
+    },
+    {
+      "test_id": "T042",
+      "difficulty": "Medium",
+      "central_requests": 16,
+      "initial_prompt_characters": 5780,
+      "central_output_tokens_per_request": 90
+    },
+    {
+      "test_id": "T043",
+      "difficulty": "Medium",
+      "central_requests": 20,
+      "initial_prompt_characters": 5804,
+      "central_output_tokens_per_request": 90
+    },
+    {
+      "test_id": "T044",
+      "difficulty": "Medium",
+      "central_requests": 11,
+      "initial_prompt_characters": 5760,
+      "central_output_tokens_per_request": 90
+    },
+    {
+      "test_id": "T045",
+      "difficulty": "Medium",
+      "central_requests": 12,
+      "initial_prompt_characters": 5821,
+      "central_output_tokens_per_request": 90
+    },
+    {
+      "test_id": "T046",
+      "difficulty": "Medium",
+      "central_requests": 12,
+      "initial_prompt_characters": 5799,
+      "central_output_tokens_per_request": 90
+    },
+    {
+      "test_id": "T047",
+      "difficulty": "Medium",
+      "central_requests": 11,
+      "initial_prompt_characters": 5767,
+      "central_output_tokens_per_request": 90
+    },
+    {
+      "test_id": "T048",
+      "difficulty": "Medium",
+      "central_requests": 11,
+      "initial_prompt_characters": 5776,
+      "central_output_tokens_per_request": 90
+    },
+    {
+      "test_id": "T049",
+      "difficulty": "Medium",
+      "central_requests": 11,
+      "initial_prompt_characters": 5816,
+      "central_output_tokens_per_request": 90
+    },
+    {
+      "test_id": "T050",
+      "difficulty": "Medium",
+      "central_requests": 12,
+      "initial_prompt_characters": 5749,
+      "central_output_tokens_per_request": 90
+    },
+    {
+      "test_id": "T051",
+      "difficulty": "Medium",
+      "central_requests": 9,
+      "initial_prompt_characters": 5738,
+      "central_output_tokens_per_request": 90
+    },
+    {
+      "test_id": "T052",
+      "difficulty": "Medium",
+      "central_requests": 10,
+      "initial_prompt_characters": 5719,
+      "central_output_tokens_per_request": 90
+    },
+    {
+      "test_id": "T053",
+      "difficulty": "Medium",
+      "central_requests": 15,
+      "initial_prompt_characters": 5775,
+      "central_output_tokens_per_request": 90
+    },
+    {
+      "test_id": "T054",
+      "difficulty": "Medium",
+      "central_requests": 16,
+      "initial_prompt_characters": 5806,
+      "central_output_tokens_per_request": 90
+    },
+    {
+      "test_id": "T055",
+      "difficulty": "Medium",
+      "central_requests": 16,
+      "initial_prompt_characters": 5800,
+      "central_output_tokens_per_request": 90
+    },
+    {
+      "test_id": "T056",
+      "difficulty": "Medium",
+      "central_requests": 12,
+      "initial_prompt_characters": 5793,
+      "central_output_tokens_per_request": 90
+    },
+    {
+      "test_id": "T057",
+      "difficulty": "Medium",
+      "central_requests": 20,
+      "initial_prompt_characters": 5809,
+      "central_output_tokens_per_request": 90
+    },
+    {
+      "test_id": "T058",
+      "difficulty": "Medium",
+      "central_requests": 10,
+      "initial_prompt_characters": 5752,
+      "central_output_tokens_per_request": 90
+    },
+    {
+      "test_id": "T059",
+      "difficulty": "Medium",
+      "central_requests": 12,
+      "initial_prompt_characters": 5802,
+      "central_output_tokens_per_request": 90
+    },
+    {
+      "test_id": "T060",
+      "difficulty": "Medium",
+      "central_requests": 12,
+      "initial_prompt_characters": 5743,
+      "central_output_tokens_per_request": 90
+    },
+    {
+      "test_id": "T061",
+      "difficulty": "Medium",
+      "central_requests": 11,
+      "initial_prompt_characters": 5794,
+      "central_output_tokens_per_request": 90
+    },
+    {
+      "test_id": "T062",
+      "difficulty": "Medium",
+      "central_requests": 11,
+      "initial_prompt_characters": 5803,
+      "central_output_tokens_per_request": 90
+    },
+    {
+      "test_id": "T063",
+      "difficulty": "Medium",
+      "central_requests": 11,
+      "initial_prompt_characters": 5733,
+      "central_output_tokens_per_request": 90
+    },
+    {
+      "test_id": "T064",
+      "difficulty": "Medium",
+      "central_requests": 10,
+      "initial_prompt_characters": 5711,
+      "central_output_tokens_per_request": 90
+    },
+    {
+      "test_id": "T065",
+      "difficulty": "Medium",
+      "central_requests": 13,
+      "initial_prompt_characters": 5779,
+      "central_output_tokens_per_request": 90
+    },
+    {
+      "test_id": "T066",
+      "difficulty": "Medium",
+      "central_requests": 10,
+      "initial_prompt_characters": 5767,
+      "central_output_tokens_per_request": 90
+    },
+    {
+      "test_id": "T067",
+      "difficulty": "Medium",
+      "central_requests": 19,
+      "initial_prompt_characters": 5914,
+      "central_output_tokens_per_request": 90
+    },
+    {
+      "test_id": "T068",
+      "difficulty": "Medium",
+      "central_requests": 18,
+      "initial_prompt_characters": 5842,
+      "central_output_tokens_per_request": 90
+    },
+    {
+      "test_id": "T069",
+      "difficulty": "Medium",
+      "central_requests": 18,
+      "initial_prompt_characters": 5758,
+      "central_output_tokens_per_request": 90
+    },
+    {
+      "test_id": "T070",
+      "difficulty": "Medium",
+      "central_requests": 18,
+      "initial_prompt_characters": 5795,
+      "central_output_tokens_per_request": 90
+    },
+    {
+      "test_id": "T071",
+      "difficulty": "Hard",
+      "central_requests": 14,
+      "initial_prompt_characters": 5809,
+      "central_output_tokens_per_request": 110
+    },
+    {
+      "test_id": "T072",
+      "difficulty": "Hard",
+      "central_requests": 10,
+      "initial_prompt_characters": 5805,
+      "central_output_tokens_per_request": 110
+    },
+    {
+      "test_id": "T073",
+      "difficulty": "Hard",
+      "central_requests": 16,
+      "initial_prompt_characters": 5946,
+      "central_output_tokens_per_request": 110
+    },
+    {
+      "test_id": "T074",
+      "difficulty": "Hard",
+      "central_requests": 15,
+      "initial_prompt_characters": 5859,
+      "central_output_tokens_per_request": 110
+    },
+    {
+      "test_id": "T075",
+      "difficulty": "Hard",
+      "central_requests": 18,
+      "initial_prompt_characters": 5871,
+      "central_output_tokens_per_request": 110
+    },
+    {
+      "test_id": "T076",
+      "difficulty": "Hard",
+      "central_requests": 20,
+      "initial_prompt_characters": 5835,
+      "central_output_tokens_per_request": 110
+    },
+    {
+      "test_id": "T077",
+      "difficulty": "Hard",
+      "central_requests": 18,
+      "initial_prompt_characters": 5830,
+      "central_output_tokens_per_request": 110
+    },
+    {
+      "test_id": "T078",
+      "difficulty": "Hard",
+      "central_requests": 18,
+      "initial_prompt_characters": 5795,
+      "central_output_tokens_per_request": 110
+    },
+    {
+      "test_id": "T079",
+      "difficulty": "Hard",
+      "central_requests": 18,
+      "initial_prompt_characters": 5804,
+      "central_output_tokens_per_request": 110
+    },
+    {
+      "test_id": "T080",
+      "difficulty": "Hard",
+      "central_requests": 20,
+      "initial_prompt_characters": 5846,
+      "central_output_tokens_per_request": 110
+    },
+    {
+      "test_id": "T081",
+      "difficulty": "Hard",
+      "central_requests": 22,
+      "initial_prompt_characters": 5842,
+      "central_output_tokens_per_request": 110
+    },
+    {
+      "test_id": "T082",
+      "difficulty": "Hard",
+      "central_requests": 22,
+      "initial_prompt_characters": 5968,
+      "central_output_tokens_per_request": 110
+    },
+    {
+      "test_id": "T083",
+      "difficulty": "Hard",
+      "central_requests": 16,
+      "initial_prompt_characters": 5925,
+      "central_output_tokens_per_request": 110
+    },
+    {
+      "test_id": "T084",
+      "difficulty": "Hard",
+      "central_requests": 18,
+      "initial_prompt_characters": 5855,
+      "central_output_tokens_per_request": 110
+    },
+    {
+      "test_id": "T085",
+      "difficulty": "Hard",
+      "central_requests": 12,
+      "initial_prompt_characters": 5785,
+      "central_output_tokens_per_request": 110
+    },
+    {
+      "test_id": "T086",
+      "difficulty": "Hard",
+      "central_requests": 18,
+      "initial_prompt_characters": 5822,
+      "central_output_tokens_per_request": 110
+    },
+    {
+      "test_id": "T087",
+      "difficulty": "Hard",
+      "central_requests": 22,
+      "initial_prompt_characters": 5799,
+      "central_output_tokens_per_request": 110
+    },
+    {
+      "test_id": "T088",
+      "difficulty": "Hard",
+      "central_requests": 20,
+      "initial_prompt_characters": 5863,
+      "central_output_tokens_per_request": 110
+    },
+    {
+      "test_id": "T089",
+      "difficulty": "Hard",
+      "central_requests": 16,
+      "initial_prompt_characters": 5848,
+      "central_output_tokens_per_request": 110
+    },
+    {
+      "test_id": "T090",
+      "difficulty": "Hard",
+      "central_requests": 18,
+      "initial_prompt_characters": 5935,
+      "central_output_tokens_per_request": 110
+    },
+    {
+      "test_id": "T091",
+      "difficulty": "Expert",
+      "central_requests": 34,
+      "initial_prompt_characters": 6135,
+      "central_output_tokens_per_request": 130
+    },
+    {
+      "test_id": "T092",
+      "difficulty": "Expert",
+      "central_requests": 55,
+      "initial_prompt_characters": 6111,
+      "central_output_tokens_per_request": 130
+    },
+    {
+      "test_id": "T093",
+      "difficulty": "Expert",
+      "central_requests": 40,
+      "initial_prompt_characters": 6044,
+      "central_output_tokens_per_request": 130
+    },
+    {
+      "test_id": "T094",
+      "difficulty": "Expert",
+      "central_requests": 40,
+      "initial_prompt_characters": 6074,
+      "central_output_tokens_per_request": 130
+    },
+    {
+      "test_id": "T095",
+      "difficulty": "Expert",
+      "central_requests": 28,
+      "initial_prompt_characters": 6028,
+      "central_output_tokens_per_request": 130
+    },
+    {
+      "test_id": "T096",
+      "difficulty": "Expert",
+      "central_requests": 42,
+      "initial_prompt_characters": 6046,
+      "central_output_tokens_per_request": 130
+    },
+    {
+      "test_id": "T097",
+      "difficulty": "Expert",
+      "central_requests": 36,
+      "initial_prompt_characters": 6110,
+      "central_output_tokens_per_request": 130
+    },
+    {
+      "test_id": "T098",
+      "difficulty": "Expert",
+      "central_requests": 30,
+      "initial_prompt_characters": 6236,
+      "central_output_tokens_per_request": 130
+    },
+    {
+      "test_id": "T099",
+      "difficulty": "Expert",
+      "central_requests": 65,
+      "initial_prompt_characters": 6200,
+      "central_output_tokens_per_request": 130
+    },
+    {
+      "test_id": "T100",
+      "difficulty": "Expert",
+      "central_requests": 32,
+      "initial_prompt_characters": 6183,
+      "central_output_tokens_per_request": 130
+    }
+  ]
+}

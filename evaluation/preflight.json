@@ -1,7 +1,7 @@
 {
-  "checked_at": "2026-11-16T05:01:46.754320+00:00",
+  "checked_at": "2026-11-16T06:22:39.903730+00:00",
   "freeze_valid": true,
-  "api_key_available": false,
+  "api_key_available": true,
   "model": "gpt-5.4-2026-03-05",
   "native_model_entitlement": "not verified",
   "dependencies": {
@@ -10,5 +10,9 @@
     "pyautogui": true
   },
   "frontend_build_present": true,
-  "paid_model_requests": 0
+  "paid_model_requests": 0,
+  "execution_fingerprint": "4d295d7c0228c9059710501f62144027f153b594ccba28accc6d8d5e65067cab",
+  "approval_present": false,
+  "profile": "gpt54-budget-review-v2",
+  "proposed_ceiling_usd": 5
 }

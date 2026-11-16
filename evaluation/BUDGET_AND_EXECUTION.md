@@ -17,22 +17,17 @@ Official sources checked during preparation:
 
 Documentation confirms model/tool compatibility, **not this account's model entitlement**. An API key is required; after local configuration, a metadata-only model availability request can verify access. A paid first native call is permitted only after explicit budget approval and remains part of the recorded attempt, with no invisible retry. If the selected snapshot is unavailable, stop and propose a documented compatible model; never silently switch.
 
-## Cost estimate (USD)
+## Current budget review (supersedes the former $120 proposal)
 
-Standard model rate used for planning: input$2.50/million, output$15/million; cached input$0.25/million, but estimate assumes no cache discount. Image inputs contribute input tokens. No paid hosted computer/container is used; the browser runs locally.
+Target $4; maximum acceptable ceiling $5. **No paid run is authorized.** The $15 feasibility question is not approval for $15. Full comparison, assumptions, per-difficulty forecasts and coverage estimates are in [OPTIMIZED_BUDGET.md](OPTIMIZED_BUDGET.md).
 
-Illustrative100-test total:10–35million cumulative input tokens plus0.5–1.5million output tokens gives **$32.50–$110.00**. This is a planning range, not observed usage or a completion guarantee. Multi-turn context is counted again as billed; the estimate is not just the number of screenshot files.
+The central offline estimate is $15.60 for all 100 unchanged tasks (optimistic $9.45; cautious $29.04). This is not observed native performance. At $4/$5, central forecasts cover 49/56 complete task attempts in the original order, conditional on no early infrastructure/API stop. Completion and PASS are different measurements.
 
-**Proposed total ceiling:$120.** Difficulty-specific token budgets sum to28.5million input and2.85million output tokens, or$114 without cache savings. Remaining headroom does not grant permission for unrecorded retries or unrelated calls. Limits may leave complex tests ERROR/NOT_RUN rather than complete the whole suite.
+The frozen `config.json` records the old plan and is unchanged. The runner loads `optimized_config.json`; approval must match the model, frozen suite hash and **execution fingerprint**, include an explicit user statement and timestamp, and specify at most $5. Historical approval cannot activate this executor. No approval file exists.
 
-| Difficulty | Tests | Requests/test | Native actions/test | Cumulative input/output tokens/test | Runtime/test | Cost guard/test |
-| --- | ---: | ---: | ---: | --- | --- | ---: |
-| Easy |30|30|80|150k /15k|10min|$0.60|
-| Medium |40|50|140|250k /25k|15min|$1.00|
-| Hard |20|80|220|400k /40k|25min|$1.60|
-| Expert |10|120|350|600k /60k|40min|$2.40|
+Before each approved generation, count input tokens and reserve uncached input plus maximum output cost. Persist the reservation before dispatch. Retain unresolved reservations on timeout/unknown usage and stop without retry. Record reported input, cached input and output usage separately. The local ledger estimates token charges; provider invoice/taxes are not available here.
 
-Before each generation, count input tokens using `/responses/input_tokens`, reserve the counted input plus the configured maximum output cost, and refuse calls that exceed remaining per-test or global allowance. Count each model response's reported usage. Stop on timeout/ambiguous billing; do not retry a request whose charge/outcome is unknown. Monetary figures computed from tokens are **estimates** until reconciled with the provider bill. Local guards are not a replacement for project billing controls.
+The optimized protocol preserves every frozen requirement and all literal action history, while sending only the latest native call/output screenshot pair. All raw screenshots remain private review evidence. Local offline checks never invoke the provider endpoints and never score the 100 tasks.
 
 ## Isolation and scoring
 
@@ -48,4 +43,4 @@ Before each generation, count input tokens using `/responses/input_tokens`, rese
 
 Provide `OPENAI_API_KEY` through the operating system's user environment-variable interface, then restart Codex so the process inherits it (the runner can also read the named user variable directly on Windows). Do not paste the key into chat, a tracked file or a command containing its literal value. The runner does not read Codex login tokens and does not treat a ChatGPT subscription as API authorization.
 
-An ignored `approval.local.json` is created only after explicit user approval of the concrete budget. It records approved model, suite hash, dollar ceiling, timestamp and the user's approval text; it never contains the API key.
+An ignored `approval.local.json` is created only after explicit user approval of the concrete budget. It records approved model, suite hash, executor fingerprint, dollar ceiling, timestamp and the user's approval text; it never contains the API key.

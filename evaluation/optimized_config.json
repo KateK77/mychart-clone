@@ -1,0 +1,27 @@
+{
+  "profile": "gpt54-budget-review-v2",
+  "model": "gpt-5.4-2026-03-05",
+  "api_base": "https://api.openai.com/v1",
+  "tool": "computer",
+  "target_origin": "http://127.0.0.1:18380",
+  "pricing_usd_per_million": {"input": 2.5, "cached_input": 0.25, "output": 15},
+  "target_budget_usd": 4,
+  "proposed_total_budget_usd": 5,
+  "max_output_tokens_per_request": 1024,
+  "max_input_tokens_per_request": 16000,
+  "reasoning_effort": "none",
+  "text_verbosity": "low",
+  "service_tier": "default",
+  "api_timeout_seconds": 90,
+  "retries": 0,
+  "history_policy": "full_task_and_lossless_action_text_latest_native_turn_and_screenshot",
+  "screenshot_policy": "native_pixels_original_detail_no_downsampling",
+  "desktop_window": [1280, 880],
+  "narrow_viewport": [390, 844],
+  "limits": {
+    "Easy": {"model_requests": 22, "actions": 80, "input_tokens": 96000, "output_tokens": 8000, "runtime_seconds": 600, "budget_usd": 0.30},
+    "Medium": {"model_requests": 30, "actions": 140, "input_tokens": 192000, "output_tokens": 16000, "runtime_seconds": 900, "budget_usd": 0.60},
+    "Hard": {"model_requests": 45, "actions": 220, "input_tokens": 320000, "output_tokens": 28000, "runtime_seconds": 1500, "budget_usd": 1.00},
+    "Expert": {"model_requests": 95, "actions": 350, "input_tokens": 560000, "output_tokens": 50000, "runtime_seconds": 2400, "budget_usd": 2.50}
+  }
+}

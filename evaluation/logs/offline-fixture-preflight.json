@@ -1,0 +1,912 @@
+{
+  "checked_at": "2026-11-16T06:06:18.405316+00:00",
+  "scope": "Infrastructure prerequisites only; no native CUA tasks executed",
+  "paid_requests": 0,
+  "token_count_api_requests": 0,
+  "scored_tests": 0,
+  "seconds": 230.48,
+  "fixtures_ok": 100,
+  "total": 100,
+  "results": [
+    {
+      "test_id": "T001",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T002",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T003",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T004",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T005",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T006",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T007",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T008",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T009",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T010",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T011",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T012",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T013",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T014",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T015",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T016",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T017",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T018",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T019",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T020",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T021",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T022",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T023",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T024",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T025",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T026",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T027",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T028",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T029",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T030",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T031",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T032",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T033",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T034",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T035",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T036",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T037",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T038",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T039",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T040",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T041",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T042",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T043",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T044",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T045",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T046",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T047",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T048",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T049",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T050",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T051",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T052",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T053",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T054",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T055",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T056",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T057",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T058",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T059",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T060",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T061",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T062",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T063",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T064",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T065",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T066",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T067",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T068",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T069",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T070",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T071",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T072",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T073",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 11,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T074",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 11,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T075",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T076",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T077",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T078",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T079",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T080",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T081",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T082",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T083",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T084",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T085",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T086",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T087",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T088",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T089",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T090",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T091",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T092",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T093",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T094",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T095",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T096",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T097",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T098",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T099",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    },
+    {
+      "test_id": "T100",
+      "fixture_ok": true,
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "user_count": 10,
+      "portal_tables": 27,
+      "isolated_database": true
+    }
+  ]
+}

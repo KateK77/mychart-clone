@@ -1,0 +1,15 @@
+test_ambiguous_charge_is_reserved_without_retry (test_execution_guards.Guards.test_ambiguous_charge_is_reserved_without_retry) ... ok
+test_budget_reserves_maximum_output (test_execution_guards.Guards.test_budget_reserves_maximum_output) ... ok
+test_complete_task_preserved_and_only_latest_frame_sent (test_execution_guards.Guards.test_complete_task_preserved_and_only_latest_frame_sent) ... ok
+test_fixture_factoring_is_lossless (test_execution_guards.Guards.test_fixture_factoring_is_lossless) ... ok
+test_missing_approval_prevents_any_api (test_execution_guards.Guards.test_missing_approval_prevents_any_api) ... ok
+test_native_loop_accounting_and_pairing_with_fake_transport (test_execution_guards.Guards.test_native_loop_accounting_and_pairing_with_fake_transport) ... ok
+test_old_or_excessive_approval_is_rejected (test_execution_guards.Guards.test_old_or_excessive_approval_is_rejected) ... ok
+test_pricing_and_image_math (test_execution_guards.Guards.test_pricing_and_image_math) ... ok
+test_requests_evidence_hashes_images_not_task_text (test_execution_guards.Guards.test_requests_evidence_hashes_images_not_task_text) ... ok
+test_suite_unchanged (test_execution_guards.Guards.test_suite_unchanged) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.173s
+
+OK

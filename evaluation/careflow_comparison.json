@@ -1,0 +1,53 @@
+{
+  "purpose": "Comparison evidence only; never used as CareConnect test results",
+  "repository": "KateK77/careflow-ehr",
+  "commit": "3ae015ec5155ccbb9ca44766f0d13e2a3a8d2070",
+  "source_urls": [
+    "https://github.com/KateK77/careflow-ehr/blob/3ae015ec5155ccbb9ca44766f0d13e2a3a8d2070/docs/testing/cua100-v1/results.json",
+    "https://github.com/KateK77/careflow-ehr/blob/3ae015ec5155ccbb9ca44766f0d13e2a3a8d2070/tools/cua/benchmark.py",
+    "https://github.com/KateK77/careflow-ehr/blob/3ae015ec5155ccbb9ca44766f0d13e2a3a8d2070/tools/cua/driver.py"
+  ],
+  "reported_summary": {
+    "model_requested": "gpt-5.4",
+    "sdk": "OpenAI 3.31.0",
+    "playwright": "1.61.0",
+    "planned": 100,
+    "native_tasks_executed": 100,
+    "passed": 85,
+    "failed": 15,
+    "native_pass_rate_percent": 85,
+    "paid_failure_retries": 0,
+    "initial_zero_request_preflight_blocks": 3,
+    "initial_run_passed": 82,
+    "requests": 336,
+    "responses": 336,
+    "input_tokens": 1279839,
+    "output_tokens": 12025,
+    "estimated_token_cost_usd": 3.379979,
+    "groups": [
+      {
+        "group": "Entry / reads / authorization (CF-001–070)",
+        "passed": 69,
+        "total": 70,
+        "percent": 98.57
+      },
+      {
+        "group": "Validation / writes / clinical workflows (CF-071–100)",
+        "passed": 16,
+        "total": 30,
+        "percent": 53.33
+      }
+    ]
+  },
+  "recomputed_cost_from_aggregate_tokens_usd": 3.3799725,
+  "rounding_difference_usd": 0.0000065,
+  "notes": [
+    "Reported token-rate estimate, not an invoice.",
+    "100 executed does not mean 100 passed: 85 PASS, 15 FAIL.",
+    "70 tasks are entry/read/authorization probes; 30 validation/write workflows.",
+    "Non-login tasks are preauthenticated by the harness through UI before native model work.",
+    "CareConnect preserves its own original login and cross-role steps.",
+    "CareFlow uses native ComputerToolset; Playwright executes native actions and supports independent verification.",
+    "CareFlow screenshot viewport 1280x800, original detail; model alias gpt-5.4; max output 1024, no paid failure retries."
+  ]
+}

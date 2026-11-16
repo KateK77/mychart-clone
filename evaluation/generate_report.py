@@ -52,7 +52,7 @@ def grouped(field):
 totals={k:sum(r[k] for r in results) for k in ['model_requests','token_count_requests','actions','execution_seconds','input_tokens','output_tokens','cached_input_tokens','estimated_cost_usd']}
 report={'evaluation_complete':all_valid,'execution_state':'NOT_STARTED' if not totals['model_requests'] else ('COMPLETE' if all_valid else 'INCOMPLETE'),
     'specification':suite['description'],'application_commit':suite['application_commit'],'suite_frozen_at':frozen['frozen_at'],
-    'cua_model_used':read(HERE/'config.json')['model'] if totals['model_requests'] else None,
+    'cua_model_used':read(HERE/'optimized_config.json')['model'] if totals['model_requests'] else None,
     'total':100,'counts':dict(counts),'primary_overall_pass_rate_percent':counts['PASS'],
     'validly_evaluated_pass_rate_percent':100*counts['PASS']/valid if valid else None,'difficulty_results':grouped('difficulty'),
     'category_results':grouped('functional_category'),'usage':totals,'actual_api_cost_usd':None,'results':results}

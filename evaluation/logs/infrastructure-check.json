@@ -1,8 +1,73 @@
 {
-  "checked_at": "2026-11-16T05:00:46.994318+00:00",
+  "checked_at": "2026-11-16T06:20:51.394623+00:00",
   "paid_requests": 0,
   "scored_tests": 0,
+  "execution_fingerprint": "4d295d7c0228c9059710501f62144027f153b594ccba28accc6d8d5e65067cab",
+  "windows": [
+    {
+      "mode": "desktop",
+      "native_screenshot_pixels": [
+        1280,
+        880
+      ],
+      "screenshot_bytes": 95032,
+      "viewport": {
+        "viewport": {
+          "pageX": 0,
+          "pageY": 0,
+          "clientWidth": 1256,
+          "clientHeight": 788
+        },
+        "visualViewport": {
+          "offsetX": 0,
+          "offsetY": 0,
+          "pageX": 0,
+          "pageY": 0,
+          "clientWidth": 1256,
+          "clientHeight": 788,
+          "scale": 1,
+          "zoom": 1
+        },
+        "emulated": false,
+        "requestedViewport": null,
+        "measurementNote": "CDP layout clientWidth excludes the vertical scrollbar; the requested emulation width includes it."
+      },
+      "viewport_confirmed_after_setup": true
+    },
+    {
+      "mode": "narrow",
+      "native_screenshot_pixels": [
+        516,
+        950
+      ],
+      "screenshot_bytes": 59576,
+      "viewport": {
+        "viewport": {
+          "pageX": 0,
+          "pageY": 0,
+          "clientWidth": 375,
+          "clientHeight": 844
+        },
+        "visualViewport": {
+          "offsetX": 0,
+          "offsetY": 0,
+          "pageX": 0,
+          "pageY": 0,
+          "clientWidth": 375,
+          "clientHeight": 844,
+          "scale": 1,
+          "zoom": 1
+        },
+        "emulated": true,
+        "requestedViewport": {
+          "width": 390,
+          "height": 844
+        },
+        "measurementNote": "CDP layout clientWidth excludes the vertical scrollbar; the requested emulation width includes it."
+      },
+      "viewport_confirmed_after_setup": true
+    }
+  ],
   "server_health": "ok",
-  "native_browser_foreground_verified": true,
-  "native_screenshot_bytes": 97262
+  "native_browser_foreground_verified": true
 }
