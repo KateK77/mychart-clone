@@ -1,0 +1,14 @@
+{
+  "checked_at": "2026-11-16T05:01:46.754320+00:00",
+  "freeze_valid": true,
+  "api_key_available": false,
+  "model": "gpt-5.4-2026-03-05",
+  "native_model_entitlement": "not verified",
+  "dependencies": {
+    "django": true,
+    "PIL": true,
+    "pyautogui": true
+  },
+  "frontend_build_present": true,
+  "paid_model_requests": 0
+}

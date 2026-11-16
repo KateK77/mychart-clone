@@ -1,0 +1,19 @@
+{
+  "frozen_at": "2026-11-16T04:57:30.160204+00:00",
+  "application_commit": "b3a1b0f7dc1e7c7abb0fd18c7cd413007d7aaa89",
+  "native_execution_started": false,
+  "files": {
+    "experiments/round-03/description.md": "cf64450a573c927b34be8bf1abb7a127cf45a6a654ed0665249136f55386ad75",
+    "evaluation/final_test_cases_100.json": "0803c84e0272d89f96ffadc0d288aad4145a79f13beb95baf6ba8458b5517207",
+    "evaluation/FINAL_TEST_CASES.md": "3690ccbf6b372c7887b8c1ac7d47ca3f509af9ec9078605a68220403060192d8",
+    "evaluation/FIXTURES.md": "8f16aaf1429aaa24e908735b1bdc0b51a97c6876772d824798b6498ad5118c79",
+    "evaluation/config.json": "73a05253b1580cdb2ed54ba7f2c22f6e0eed37eaff8b46d3ac7674910baba33a"
+  },
+  "canonical_lf_files": {
+    "experiments/round-03/description.md": "e41de20182ba3613a4c59e5f064dd1654e2341614017091a27d5214912efe25e",
+    "evaluation/final_test_cases_100.json": "7c83a6ca5a7937e9dc1f35a7e91e661f4ea39362a384adec317caa5e670441bb",
+    "evaluation/FINAL_TEST_CASES.md": "1d3a064fbc0b95e53ca8aaa43857857838ca3cb2ffd6d21bd7933cf8d682e08a",
+    "evaluation/FIXTURES.md": "8f16aaf1429aaa24e908735b1bdc0b51a97c6876772d824798b6498ad5118c79",
+    "evaluation/config.json": "73a05253b1580cdb2ed54ba7f2c22f6e0eed37eaff8b46d3ac7674910baba33a"
+  }
+}

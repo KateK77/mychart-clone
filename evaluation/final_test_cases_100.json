@@ -1,0 +1,2796 @@
+{
+  "schema_version": 1,
+  "description": {
+    "path": "experiments/round-03/description.md",
+    "version": "3.0.0 / Round 3",
+    "sha256": "cf64450a573c927b34be8bf1abb7a127cf45a6a654ed0665249136f55386ad75"
+  },
+  "application_commit": "b3a1b0f7dc1e7c7abb0fd18c7cd413007d7aaa89",
+  "derivation": "Only the final consolidated Round 3 Description. Existing implementation/tests/results are not the expectation oracle.",
+  "distribution": {
+    "Easy": 30,
+    "Medium": 40,
+    "Hard": 20,
+    "Expert": 10
+  },
+  "requirements": {
+    "R01": {
+      "source_heading": "Current delivery instruction and precedence; §1; §21",
+      "requirement": "All product copy and synthetic records are English; show the synthetic-only disclaimer; use fictional data."
+    },
+    "R02": {
+      "source_heading": "§5 Design and Navigation",
+      "requirement": "Eleven primary patient areas, consistent navigation, loading/empty/error/success states, confirmations, breadcrumbs, responsive accessible controls."
+    },
+    "R03": {
+      "source_heading": "§6 Patient Dashboard",
+      "requirement": "Personalized persisted overview: appointments, results, unread messages, medications, balance, visits, notifications and five quick actions."
+    },
+    "R04": {
+      "source_heading": "§7 Authentication and Patient Accounts",
+      "requirement": "Registration, login, hashed passwords, logout, profile editing, password change, sessions and role/object access control."
+    },
+    "R05": {
+      "source_heading": "Retained feedback 3",
+      "requirement": "Logout clears cached session/patient records, immediately returns to sign-in and permits account switching without refresh."
+    },
+    "R06": {
+      "source_heading": "Retained feedback 4",
+      "requirement": "Registration/change/recovery confirm password, validate strength/equality, provide accessible visibility controls and clear fields on success."
+    },
+    "R07": {
+      "source_heading": "Retained feedback 4",
+      "requirement": "Forgot password uses a clearly marked local simulated mailbox and expiring single-use reset links."
+    },
+    "R08": {
+      "source_heading": "V2-MT-003 Account-type registration and landing pages",
+      "requirement": "Mutually exclusive Patient, Family caregiver, Care team selection precedes role-specific form; allow choice changes; correct patient/caregiver landing."
+    },
+    "R09": {
+      "source_heading": "V2-MT-003 Account-type registration and landing pages",
+      "requirement": "Physician/Nurse/Front Desk/Billing Staff applications include organization, remain unprivileged pending review; administrator approval/decline needs verification note; no public Administrator."
+    },
+    "R10": {
+      "source_heading": "§8 Appointment Management",
+      "requirement": "Upcoming/past appointments, instructions, slot provider/type/date selection and six appointment types."
+    },
+    "R11": {
+      "source_heading": "§8; §20 Workflow A",
+      "requirement": "Booking persists to patient/dashboard/staff; availability validation, scheduling-conflict and double-booking prevention."
+    },
+    "R12": {
+      "source_heading": "§8 Appointment Management",
+      "requirement": "Cancellation records reason/history; previsit questionnaire and simulated eCheck-In persist; enforce status transitions."
+    },
+    "R13": {
+      "source_heading": "§8; Retained feedback 7",
+      "requirement": "Patients request rescheduling; staff replaces appointment, opens replacement, preserves separate cancellation histories; upcoming earliest first, consistent timezones."
+    },
+    "R14": {
+      "source_heading": "§8; §18 Staff and Administrative Dashboard",
+      "requirement": "Staff manage providers, departments/availability, appointments and statuses."
+    },
+    "R15": {
+      "source_heading": "§9 Test Results",
+      "requirement": "Results display test, collection/result dates, value, unit, reference range, status, flag, provider and comments; no inferred diagnoses."
+    },
+    "R16": {
+      "source_heading": "§9 Test Results",
+      "requirement": "Result name/date filtering, details, historical measurements/trend charts, Pending/Preliminary/Final/Corrected states."
+    },
+    "R17": {
+      "source_heading": "§9; §20 Workflow B; V2-MT-002",
+      "requirement": "Staff create initially unpublished results and publish; patient notification/visibility; withdrawal blocks details and direct exports."
+    },
+    "R18": {
+      "source_heading": "§10 Secure Messaging",
+      "requirement": "Inbox/Sent, new message, recipient/team, five categories, threaded replies, read/unread, staff inbox, persisted messages, non-emergency notice."
+    },
+    "R19": {
+      "source_heading": "V2-MT-001 Message restoration",
+      "requirement": "Archive/restore confirm, navigate to correct selected destination folder, specific success and visible thread; only applicable action, cancel unchanged, error retains detail; per-user state."
+    },
+    "R20": {
+      "source_heading": "§11 Medication Management",
+      "requirement": "Active/history/search and full medication details including strength, dosage, route, frequency, dates, provider, pharmacy, status, instructions."
+    },
+    "R21": {
+      "source_heading": "§11; Retained feedback 6; §20 Workflow D",
+      "requirement": "Simulated refill submission/staff review, Requested/Under Review/Approved/Denied/Completed; prevent duplicate pending requests with clear explanation; show progress/decision."
+    },
+    "R22": {
+      "source_heading": "§11; §12 Health Summary",
+      "requirement": "Medication and health corrections are requests/self-reported, not silent edits to official data; staff maintain official records."
+    },
+    "R23": {
+      "source_heading": "§12 Health Summary",
+      "requirement": "Demographics, conditions, allergies, medications, immunizations, medical/surgical/family/social history, care team, vitals, preventive care."
+    },
+    "R24": {
+      "source_heading": "§13 Visits and Clinical Notes",
+      "requirement": "Visit detail: date/provider/department/type/reason/diagnoses/summary/follow-up/shared notes/AVS; staff creates and publishes; private/unpublished notes hidden."
+    },
+    "R25": {
+      "source_heading": "§14 Billing and Payments; §20 Workflow E",
+      "requirement": "Invoices, insurance, outstanding balance/history, all specified invoice fields and statuses; staff creates; simulated payments update exact balances and transactions."
+    },
+    "R26": {
+      "source_heading": "§14 Billing and Payments",
+      "requirement": "Prevent duplicate processing of same payment request; input validation; no real card collection/live processing."
+    },
+    "R27": {
+      "source_heading": "§15 Medical Documents",
+      "requirement": "Seven document types, list/filter/open/download/date/linked encounter; generated synthetic content; authorization on every file access."
+    },
+    "R28": {
+      "source_heading": "V2-MT-002 Document previews and PDF downloads",
+      "requirement": "Web preview, Download PDF, Print for labs/documents/AVS/statements/receipts; real application/pdf and descriptive .pdf names from same authorized representation."
+    },
+    "R29": {
+      "source_heading": "V2-MT-002 Document previews and PDF downloads",
+      "requirement": "PDF branding, patient/available provider identifiers, reference/dates, values/units/ranges/status/exact amounts, disclaimer/page numbers; wrap and paginate long text."
+    },
+    "R30": {
+      "source_heading": "V2-MT-002 Document previews and PDF downloads",
+      "requirement": "Withdrawn labs, unpublished visits/documents, unrelated patients and disallowed/revoked proxy sections blocked at direct exports and UI."
+    },
+    "R31": {
+      "source_heading": "V2-MT-004 Linking family accounts",
+      "requirement": "Visible Link a family member; invite to own records or request another account; explicit section scopes and incoming/outgoing status, expiry, relationship/actions; local delivery disclosure."
+    },
+    "R32": {
+      "source_heading": "V2-MT-004 Linking family accounts",
+      "requirement": "Authenticated intended recipient explicitly accepts/declines; email/name match alone insufficient; bind invitations including registration, profile email edits cannot claim."
+    },
+    "R33": {
+      "source_heading": "V2-MT-004 Linking family accounts",
+      "requirement": "Cancel pending; block duplicates, expired/reused acceptance; owner revoke/proxy remove; old invitation cannot silently restore revoked access."
+    },
+    "R34": {
+      "source_heading": "§16; §20 Workflow F; V2-MT-004",
+      "requirement": "Linked profile switching exposes only granted sections; staff grants/revokes; enforce permission changes on subsequent requests and audit."
+    },
+    "R35": {
+      "source_heading": "V2-MT-004 Linking family accounts",
+      "requirement": "Dependent/guardian access requires administrator verification, never self-granted; synthetic verification limitations disclosed."
+    },
+    "R36": {
+      "source_heading": "§17 Notifications",
+      "requirement": "Results/messages/upcoming appointments/cancellations/refills/bills/payments notifications; read/unread/list/deep links/mark-read/preferences; local operation no external mail dependency."
+    },
+    "R37": {
+      "source_heading": "Retained feedback 2",
+      "requirement": "Staff categorized searchable/group-filtered work areas and compact selector; immediate focused detail drawer with close/back, patient/module preserved, keyboard/mobile no overflow."
+    },
+    "R38": {
+      "source_heading": "Retained feedback 5; §22; §23",
+      "requirement": "Readable permission/unavailable/validation errors and way back, no internal query/model errors; readable staff names/dates instead of raw IDs where possible."
+    },
+    "R39": {
+      "source_heading": "§7; §22 Security and Auditability",
+      "requirement": "Role/object authorization, sessions, CSRF, input validation, sensitive-data isolation and secure document access."
+    },
+    "R40": {
+      "source_heading": "§22 Security and Auditability",
+      "requirement": "Audit login, record access, appointment changes, lab publication, medication changes, refill decisions, proxy permission and billing changes."
+    }
+  },
+  "tests": [
+    {
+      "id": "T001",
+      "difficulty": "Easy",
+      "functional_category": "Dashboard",
+      "requirement_ids": [
+        "R01",
+        "R03"
+      ],
+      "task": "Review the patient dashboard against the seeded record inventory.",
+      "preconditions": [
+        "F0 patient P has appointments/results/messages/medications/invoice/visit/notification"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "Sign in as P.",
+        "Open Dashboard and inspect each overview card."
+      ],
+      "expected_result": "Dashboard identifies P and accurately summarizes the seeded records.",
+      "pass_fail_criteria": [
+        "Name matches P.",
+        "All seven overview data categories are present.",
+        "Counts and balance match F0 rather than placeholders."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T002",
+      "difficulty": "Easy",
+      "functional_category": "Navigation",
+      "requirement_ids": [
+        "R02"
+      ],
+      "task": "Navigate all eleven patient areas and return to Dashboard.",
+      "preconditions": [
+        "F0 P"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "Sign in as P.",
+        "Use the primary navigation to open each of the eleven areas.",
+        "Return to Dashboard."
+      ],
+      "expected_result": "Every required area is reachable through consistent navigation.",
+      "pass_fail_criteria": [
+        "Dashboard, Appointments, Messages, Test Results, Medications, Health Summary, Visits, Billing, Documents, Family Access and Account Settings load.",
+        "No dead-end navigation or application error."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T003",
+      "difficulty": "Easy",
+      "functional_category": "Dashboard",
+      "requirement_ids": [
+        "R03"
+      ],
+      "task": "Find and open each of the five dashboard quick actions.",
+      "preconditions": [
+        "F0 P"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "Open Dashboard.",
+        "Open Schedule Appointment, Send Message, View Test Results, Request Refill and Pay Bill one at a time, returning between actions."
+      ],
+      "expected_result": "All quick actions lead to the relevant usable workflow.",
+      "pass_fail_criteria": [
+        "Five actions are visible and have correct destinations.",
+        "No action falsely reports a completed mutation merely from navigation."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T004",
+      "difficulty": "Easy",
+      "functional_category": "Authentication",
+      "requirement_ids": [
+        "R04",
+        "R38"
+      ],
+      "task": "Reject incorrect sign-in credentials and accept correct credentials.",
+      "preconditions": [
+        "F0 P; private runtime password"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "Enter P username with a wrong password and submit.",
+        "Read the error.",
+        "Enter the correct password and submit."
+      ],
+      "expected_result": "Wrong password fails; correct password signs in.",
+      "pass_fail_criteria": [
+        "No authenticated records before valid login.",
+        "Error is understandable and contains no internals.",
+        "Correct login opens P portal."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T005",
+      "difficulty": "Easy",
+      "functional_category": "Authentication",
+      "requirement_ids": [
+        "R04",
+        "R05"
+      ],
+      "task": "Sign out and switch from one patient to another without refreshing.",
+      "preconditions": [
+        "F0 P and Q have distinct names/records"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "Sign in as P and open a clinical record.",
+        "Sign out.",
+        "Without refreshing sign in as Q."
+      ],
+      "expected_result": "Logout immediately returns to sign-in; Q sees only Q data.",
+      "pass_fail_criteria": [
+        "Logout navigation is immediate.",
+        "P record is not cached visibly in Q session.",
+        "No manual reload is needed."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T006",
+      "difficulty": "Easy",
+      "functional_category": "Registration",
+      "requirement_ids": [
+        "R08",
+        "R09"
+      ],
+      "task": "Inspect the account-type selection and the care-team role choices.",
+      "preconditions": [
+        "F0 signed out"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "Open registration.",
+        "Inspect Patient, Family caregiver and Care team.",
+        "Select Care team and inspect role choices and organization fields."
+      ],
+      "expected_result": "Mutually exclusive account choices and only the four permitted applicant roles are offered.",
+      "pass_fail_criteria": [
+        "Three account types exist.",
+        "Physician, Nurse, Front Desk and Billing Staff are available.",
+        "Administrator is not a public choice.",
+        "Organization information can be entered."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T007",
+      "difficulty": "Easy",
+      "functional_category": "Registration",
+      "requirement_ids": [
+        "R08"
+      ],
+      "task": "Register a family caregiver and inspect the first landing page.",
+      "preconditions": [
+        "F0; unused synthetic caregiver identity C_NEW"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "Open registration.",
+        "Choose Family caregiver and complete matching strong passwords.",
+        "Submit once."
+      ],
+      "expected_result": "New caregiver lands in Family Access.",
+      "pass_fail_criteria": [
+        "Account is created exactly once.",
+        "Family Access is the first authenticated landing page.",
+        "No staff privileges appear."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T008",
+      "difficulty": "Easy",
+      "functional_category": "Registration",
+      "requirement_ids": [
+        "R09"
+      ],
+      "task": "Submit a care-team application and inspect its pending landing.",
+      "preconditions": [
+        "F0; unused synthetic applicant S_NEW"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "Choose Care team and Physician.",
+        "Enter synthetic organization and valid account data.",
+        "Submit and inspect the destination."
+      ],
+      "expected_result": "Applicant sees a clear pending application page.",
+      "pass_fail_criteria": [
+        "Pending state is explicit.",
+        "Applicant does not receive active staff records or staff privileges before approval."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T009",
+      "difficulty": "Easy",
+      "functional_category": "Appointments",
+      "requirement_ids": [
+        "R10"
+      ],
+      "task": "Review upcoming and past appointment details and instructions.",
+      "preconditions": [
+        "F0 P has one upcoming and one completed appointment"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "Open Appointments.",
+        "Open the upcoming appointment and review instructions.",
+        "Return and open the past appointment."
+      ],
+      "expected_result": "Both groups and their relevant details are readable.",
+      "pass_fail_criteria": [
+        "Upcoming/past groups contain the correct records.",
+        "Provider, appointment type, date/time and instructions are present."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T010",
+      "difficulty": "Easy",
+      "functional_category": "Appointments",
+      "requirement_ids": [
+        "R10"
+      ],
+      "task": "Inspect all six appointment types when looking for a slot.",
+      "preconditions": [
+        "F0 contains available slots for all six specified types"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "Open scheduling from the patient portal.",
+        "Inspect appointment-type selection and available slots."
+      ],
+      "expected_result": "All six specified visit types can be chosen.",
+      "pass_fail_criteria": [
+        "Primary Care, Follow-up, Annual Physical, Specialist Consultation, Telehealth and Laboratory Visit are selectable.",
+        "Slot provider and date/time are readable."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T011",
+      "difficulty": "Easy",
+      "functional_category": "Laboratory",
+      "requirement_ids": [
+        "R15",
+        "R16"
+      ],
+      "task": "Browse the published laboratory result list.",
+      "preconditions": [
+        "F0 P has published normal and abnormal results and one unpublished result"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "Open Test Results.",
+        "Inspect the list and open a published result."
+      ],
+      "expected_result": "Published records are discoverable with clear flags.",
+      "pass_fail_criteria": [
+        "Published results appear.",
+        "Unpublished fixture does not appear.",
+        "Normal/abnormal labels are distinguishable."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T012",
+      "difficulty": "Easy",
+      "functional_category": "Laboratory",
+      "requirement_ids": [
+        "R15"
+      ],
+      "task": "Read every specified field of a laboratory result.",
+      "preconditions": [
+        "F0 fully populated published result LAB_FULL"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "Open LAB_FULL from Test Results.",
+        "Inspect all result information."
+      ],
+      "expected_result": "All required fields match the record.",
+      "pass_fail_criteria": [
+        "Name, collection/result dates, value, unit, range, status, flag, ordering provider and comments are present and correct.",
+        "No unsupported medical diagnosis is inferred."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T013",
+      "difficulty": "Easy",
+      "functional_category": "Laboratory",
+      "requirement_ids": [
+        "R16"
+      ],
+      "task": "Inspect historical measurements and a trend chart.",
+      "preconditions": [
+        "F0 LAB_TREND has three dated measurements of the same test/unit"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "Open LAB_TREND.",
+        "Scroll to historical measurements and chart."
+      ],
+      "expected_result": "The history and chart reflect the three stored values over time.",
+      "pass_fail_criteria": [
+        "All three measurements can be identified.",
+        "Chronological direction and displayed values match fixtures.",
+        "Chart is visible and intelligible."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T014",
+      "difficulty": "Easy",
+      "functional_category": "Medications",
+      "requirement_ids": [
+        "R20"
+      ],
+      "task": "Review active medications and medication history.",
+      "preconditions": [
+        "F0 P has ACTIVE_MED and ENDED_MED"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "Open Medications.",
+        "Inspect active medicines.",
+        "Open the history view."
+      ],
+      "expected_result": "Active and historical medications are correctly distinguishable.",
+      "pass_fail_criteria": [
+        "ACTIVE_MED appears as active.",
+        "ENDED_MED appears as history/ended and is not represented as currently active."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T015",
+      "difficulty": "Easy",
+      "functional_category": "Medications",
+      "requirement_ids": [
+        "R20"
+      ],
+      "task": "Read a complete prescription detail.",
+      "preconditions": [
+        "F0 fully populated ACTIVE_MED"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "Open ACTIVE_MED.",
+        "Review prescription details."
+      ],
+      "expected_result": "Details show the complete medication information.",
+      "pass_fail_criteria": [
+        "Name, strength, dosage, route, frequency, start/end if applicable, provider, pharmacy, status and instructions match fixture."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T016",
+      "difficulty": "Easy",
+      "functional_category": "Health summary",
+      "requirement_ids": [
+        "R23"
+      ],
+      "task": "Review the complete health summary.",
+      "preconditions": [
+        "F0 P has all twelve health-summary sections populated"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "Open Health Summary.",
+        "Scroll through all sections."
+      ],
+      "expected_result": "Required health categories are readable.",
+      "pass_fail_criteria": [
+        "Demographics, conditions, allergies, medications, immunizations, medical/surgical/family/social histories, care team, vitals and preventive care are present."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T017",
+      "difficulty": "Easy",
+      "functional_category": "Visits",
+      "requirement_ids": [
+        "R24"
+      ],
+      "task": "Review a published encounter with shared notes and AVS.",
+      "preconditions": [
+        "F0 published VISIT_FULL with diagnosis/shared note/AVS"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "Open Visits.",
+        "Open VISIT_FULL.",
+        "Inspect the summary and associated AVS."
+      ],
+      "expected_result": "Visit detail is complete and links its AVS.",
+      "pass_fail_criteria": [
+        "Date, provider, department, visit type, reason, diagnoses, summary, follow-up and shared notes match fixture.",
+        "AVS is reachable."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T018",
+      "difficulty": "Easy",
+      "functional_category": "Documents",
+      "requirement_ids": [
+        "R27"
+      ],
+      "task": "Browse the available document-type choices.",
+      "preconditions": [
+        "F0 seven published synthetic document types"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "Open Documents.",
+        "Inspect document-type filter and list."
+      ],
+      "expected_result": "All seven document types are represented.",
+      "pass_fail_criteria": [
+        "AVS, Laboratory Report, Clinical Letter, Visit Instructions, Medication List, Billing Statement and Care Plan can be distinguished.",
+        "Creation date and associated encounter are displayed when present."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T019",
+      "difficulty": "Easy",
+      "functional_category": "Billing",
+      "requirement_ids": [
+        "R25"
+      ],
+      "task": "Read a full unpaid invoice.",
+      "preconditions": [
+        "F0 INVOICE_FULL: charge180.00, adjustment115.50, responsibility64.50, paid0.00"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "Open Billing.",
+        "Open INVOICE_FULL."
+      ],
+      "expected_result": "Invoice fields and arithmetic are correct.",
+      "pass_fail_criteria": [
+        "Invoice number, service date, description, charge, adjustment, responsibility, paid, remaining, due date and status are present.",
+        "Remaining is64.50 and status Unpaid."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T020",
+      "difficulty": "Easy",
+      "functional_category": "Billing",
+      "requirement_ids": [
+        "R25"
+      ],
+      "task": "Review insurance information and prior payment history.",
+      "preconditions": [
+        "F0 synthetic insurance and a historical paid invoice with transaction"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "Open Billing.",
+        "Review insurance.",
+        "Open historical payment history."
+      ],
+      "expected_result": "Patient can review insurance and transaction records.",
+      "pass_fail_criteria": [
+        "Insurance matches fixture.",
+        "Payment date/amount and associated invoice are recognizable.",
+        "No real card fields are required."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T021",
+      "difficulty": "Easy",
+      "functional_category": "Messaging",
+      "requirement_ids": [
+        "R18"
+      ],
+      "task": "Find received and sent conversations.",
+      "preconditions": [
+        "F0 P has incoming MSG_IN and outgoing MSG_OUT"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "Open Messages.",
+        "Inspect Inbox and Sent.",
+        "Open one conversation from each."
+      ],
+      "expected_result": "Both folders expose the corresponding messages.",
+      "pass_fail_criteria": [
+        "MSG_IN is accessible from Inbox.",
+        "MSG_OUT is accessible from Sent.",
+        "Thread contents match their records."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T022",
+      "difficulty": "Easy",
+      "functional_category": "Messaging",
+      "requirement_ids": [
+        "R18"
+      ],
+      "task": "Read a conversation and its non-emergency notice.",
+      "preconditions": [
+        "F0 thread with P and Physician replies"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "Open the conversation.",
+        "Read messages, sender names and notice."
+      ],
+      "expected_result": "Threaded messages have the correct authors and a clear non-emergency notice.",
+      "pass_fail_criteria": [
+        "Both authors and ordered messages are distinguishable.",
+        "Non-emergency notice is visible near messaging controls."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T023",
+      "difficulty": "Easy",
+      "functional_category": "Notifications",
+      "requirement_ids": [
+        "R36"
+      ],
+      "task": "Browse notifications and follow one to its record.",
+      "preconditions": [
+        "F0 notification for a published P laboratory result"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "Open notifications.",
+        "Open the laboratory notification."
+      ],
+      "expected_result": "Notification opens the associated record.",
+      "pass_fail_criteria": [
+        "Notification list includes event/date/read state.",
+        "Destination is the exact linked lab result."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T024",
+      "difficulty": "Easy",
+      "functional_category": "Notifications",
+      "requirement_ids": [
+        "R36"
+      ],
+      "task": "Inspect category-specific notification preferences.",
+      "preconditions": [
+        "F0 P"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "Open Account Settings.",
+        "Inspect Notification preferences."
+      ],
+      "expected_result": "Patient can configure event categories individually.",
+      "pass_fail_criteria": [
+        "Preferences exist for results, messages, appointments, cancellations, refill updates, billing and payments.",
+        "Current state is understandable."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T025",
+      "difficulty": "Easy",
+      "functional_category": "Family access",
+      "requirement_ids": [
+        "R31"
+      ],
+      "task": "Find the family-linking entry point and both consent directions.",
+      "preconditions": [
+        "F0 P; no pending links"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "Open Family Access.",
+        "Open Link a family member.",
+        "Inspect invite-to-my-records and request-their-records paths."
+      ],
+      "expected_result": "Both consent directions and scope selection are available.",
+      "pass_fail_criteria": [
+        "Visible linking action exists.",
+        "Relationship and section scopes can be specified.",
+        "Local delivery/no external email is disclosed."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T026",
+      "difficulty": "Easy",
+      "functional_category": "Family access",
+      "requirement_ids": [
+        "R34"
+      ],
+      "task": "Open an already authorized linked family profile.",
+      "preconditions": [
+        "F0 P proxy has Q appointments/results/visits only"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "Open Family Access.",
+        "Select Q and inspect permitted section links.",
+        "Open Q results."
+      ],
+      "expected_result": "Linked-profile context and permitted records are clear.",
+      "pass_fail_criteria": [
+        "Q records appear rather than P records.",
+        "Only granted sections are offered on the family card.",
+        "User can return to own profile."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T027",
+      "difficulty": "Easy",
+      "functional_category": "Staff navigation",
+      "requirement_ids": [
+        "R37"
+      ],
+      "task": "Find a patient and a staff work area using search and grouping.",
+      "preconditions": [
+        "F0 administrator"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "Sign in as administrator.",
+        "Search P.",
+        "Use work-area search/group filter to locate laboratory management."
+      ],
+      "expected_result": "Compact searchable navigation preserves patient context.",
+      "pass_fail_criteria": [
+        "Search identifies P.",
+        "Work-area search/filter narrows choices.",
+        "Selected module visibly retains P context."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T028",
+      "difficulty": "Easy",
+      "functional_category": "Staff navigation",
+      "requirement_ids": [
+        "R37",
+        "R38"
+      ],
+      "task": "Open and close a staff record without hunting below a list.",
+      "preconditions": [
+        "F0 administrator; P has at least12 lab results"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "Open P laboratory list.",
+        "Select a record near the start.",
+        "Close its detail view."
+      ],
+      "expected_result": "Focused detail appears immediately and returns to the same list/context.",
+      "pass_fail_criteria": [
+        "Detail is not appended out of view below the list.",
+        "Close/back action works.",
+        "Patient/module remain selected.",
+        "Provider/date are human readable."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T029",
+      "difficulty": "Easy",
+      "functional_category": "Navigation",
+      "requirement_ids": [
+        "R01",
+        "R02"
+      ],
+      "task": "Inspect English copy and the synthetic disclaimer across patient and staff pages.",
+      "preconditions": [
+        "F0 P and administrator"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "Open Dashboard, appointment details, Billing and staff workspace.",
+        "Read headings, seeded values and disclaimer."
+      ],
+      "expected_result": "English UI and synthetic-only disclosure are consistent.",
+      "pass_fail_criteria": [
+        "Inspected product text and new seeded records are English.",
+        "Disclaimer is visible.",
+        "No claim of Epic affiliation or clinical certification."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T030",
+      "difficulty": "Easy",
+      "functional_category": "Navigation",
+      "requirement_ids": [
+        "R02"
+      ],
+      "task": "Use patient navigation on a narrow screen.",
+      "preconditions": [
+        "F0 P;390x844 browser content viewport"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "Open mobile navigation.",
+        "Visit Messages, Billing and Account Settings.",
+        "Close/reopen navigation."
+      ],
+      "expected_result": "Primary areas remain reachable without clipped controls.",
+      "pass_fail_criteria": [
+        "Menu opens/closes.",
+        "Main actions stay within the viewport.",
+        "No horizontal page overflow is needed to read or act."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T031",
+      "difficulty": "Medium",
+      "functional_category": "Registration",
+      "requirement_ids": [
+        "R04",
+        "R06",
+        "R08"
+      ],
+      "task": "Register a patient and confirm the account persists after a fresh sign-in.",
+      "preconditions": [
+        "F0;unused synthetic P_NEW"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "Choose Patient and fill valid account data plus matching strong passwords.",
+        "Use a password visibility control.",
+        "Register, sign out and sign in again."
+      ],
+      "expected_result": "A durable patient account with its own portal is created.",
+      "pass_fail_criteria": [
+        "Matching-password registration succeeds once.",
+        "Visibility control works accessibly.",
+        "Re-login succeeds and identifies P_NEW.",
+        "No pre-existing patient data is assigned."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T032",
+      "difficulty": "Medium",
+      "functional_category": "Registration",
+      "requirement_ids": [
+        "R08"
+      ],
+      "task": "Change the registration account type before submitting.",
+      "preconditions": [
+        "F0;unused synthetic identity"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "Choose Care team and begin its form.",
+        "Change choice to Patient.",
+        "Complete valid patient registration."
+      ],
+      "expected_result": "Final choice governs the account and landing.",
+      "pass_fail_criteria": [
+        "Patient account is created.",
+        "No pending staff application or privileged role is created from abandoned choice."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T033",
+      "difficulty": "Medium",
+      "functional_category": "Registration",
+      "requirement_ids": [
+        "R06",
+        "R39"
+      ],
+      "task": "Exercise required, mismatched and weak-password registration validation.",
+      "preconditions": [
+        "F0;unused identity"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "Submit an empty patient registration.",
+        "Enter valid identity but mismatched passwords.",
+        "Enter matching weak passwords.",
+        "Correct to a strong matching password and submit."
+      ],
+      "expected_result": "Invalid submissions do not create accounts; correction works.",
+      "pass_fail_criteria": [
+        "Each invalid condition produces understandable feedback.",
+        "Only final valid submission creates one account.",
+        "Invalid values do not grant access."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T034",
+      "difficulty": "Medium",
+      "functional_category": "Account settings",
+      "requirement_ids": [
+        "R04"
+      ],
+      "task": "Edit and persist contact information.",
+      "preconditions": [
+        "F0 P;new synthetic email/phone/address"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "Change contact fields in Account Settings and save.",
+        "Navigate away and return.",
+        "Sign out/in and inspect the profile."
+      ],
+      "expected_result": "All accepted contact changes persist.",
+      "pass_fail_criteria": [
+        "Saved email, phone and address exactly match input after re-login.",
+        "No unintended identity/role change."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T035",
+      "difficulty": "Medium",
+      "functional_category": "Account settings",
+      "requirement_ids": [
+        "R04",
+        "R06"
+      ],
+      "task": "Change a password with validation and verify old/new sign-in behavior.",
+      "preconditions": [
+        "F0 P;private old/new strong passwords"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "Try incorrect current password, then mismatched confirmation.",
+        "Submit correct current and strong matching new password.",
+        "Sign out; try old then new password."
+      ],
+      "expected_result": "Invalid changes fail; valid change takes effect.",
+      "pass_fail_criteria": [
+        "Invalid attempts preserve old credential.",
+        "Successful change clears sensitive fields.",
+        "Old password is rejected and new password succeeds."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T036",
+      "difficulty": "Medium",
+      "functional_category": "Password recovery",
+      "requirement_ids": [
+        "R06",
+        "R07"
+      ],
+      "task": "Recover a local demo password using the simulated mailbox.",
+      "preconditions": [
+        "F0 P;local simulated delivery enabled"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "Open Forgot password and request reset.",
+        "Open the clearly marked demo mailbox and its link.",
+        "Try mismatched new passwords then correct matching strong passwords.",
+        "Sign in with new password."
+      ],
+      "expected_result": "Local recovery is fully operable without external email.",
+      "pass_fail_criteria": [
+        "Mailbox is explicitly simulated.",
+        "Mismatch is rejected.",
+        "Valid reset succeeds and new login works.",
+        "Password fields clear on success."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T037",
+      "difficulty": "Medium",
+      "functional_category": "Appointments",
+      "requirement_ids": [
+        "R10"
+      ],
+      "task": "Combine provider, appointment-type and date filters.",
+      "preconditions": [
+        "F0 slots with different providers/types/dates plus a known match"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "Open scheduling.",
+        "Select the known provider/type/date and search.",
+        "Choose a date with no matching slots."
+      ],
+      "expected_result": "Combined filters return only matching slots and handle empty results.",
+      "pass_fail_criteria": [
+        "Every returned slot matches all criteria.",
+        "Known match appears.",
+        "Empty case is readable and reversible."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T038",
+      "difficulty": "Medium",
+      "functional_category": "Appointments",
+      "requirement_ids": [
+        "R03",
+        "R11"
+      ],
+      "task": "Book a slot and verify list/dashboard persistence.",
+      "preconditions": [
+        "F0 P;one available Primary Care slot"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "Find the slot and book once.",
+        "Open appointment details.",
+        "Reload and inspect appointments and Dashboard."
+      ],
+      "expected_result": "One scheduled record persists and is reflected on Dashboard.",
+      "pass_fail_criteria": [
+        "Exact provider/time/type match.",
+        "One booking exists.",
+        "Slot is no longer offered to book.",
+        "Dashboard reflects it."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T039",
+      "difficulty": "Medium",
+      "functional_category": "Appointments",
+      "requirement_ids": [
+        "R12"
+      ],
+      "task": "Cancel an appointment with a reason and preserve history.",
+      "preconditions": [
+        "F0 P;scheduled cancellable appointment"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "Open appointment and cancel with a unique reason.",
+        "Confirm.",
+        "Reopen history after reload."
+      ],
+      "expected_result": "Cancellation is persisted with its reason.",
+      "pass_fail_criteria": [
+        "Appointment is absent from upcoming and present in cancellation history.",
+        "Correct reason survives reload.",
+        "No unrelated record changes."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T040",
+      "difficulty": "Medium",
+      "functional_category": "Appointments",
+      "requirement_ids": [
+        "R12"
+      ],
+      "task": "Save and reopen a pre-visit questionnaire.",
+      "preconditions": [
+        "F0 P;future appointment"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "Enter a distinctive synthetic discussion note in questionnaire.",
+        "Save and navigate away.",
+        "Reopen after reload."
+      ],
+      "expected_result": "Questionnaire text persists on the same appointment.",
+      "pass_fail_criteria": [
+        "Exact note is visible after reload.",
+        "Other appointments do not receive the note."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T041",
+      "difficulty": "Medium",
+      "functional_category": "Appointments",
+      "requirement_ids": [
+        "R12"
+      ],
+      "task": "Complete simulated eCheck-In for a prepared appointment.",
+      "preconditions": [
+        "F0 P;confirmed appointment with completed questionnaire"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "Open the appointment.",
+        "Start eCheck-In and follow confirmations.",
+        "Reopen list/detail after reload."
+      ],
+      "expected_result": "The appointment becomes Checked In.",
+      "pass_fail_criteria": [
+        "Checked In is shown consistently in detail and list.",
+        "Persistence is verified.",
+        "No real clinical check-in is claimed."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T042",
+      "difficulty": "Medium",
+      "functional_category": "Appointments",
+      "requirement_ids": [
+        "R13"
+      ],
+      "task": "Submit a patient rescheduling request and inspect staff visibility.",
+      "preconditions": [
+        "F0 P;future scheduled appointment"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "Request a new preferred date/time with a distinctive note.",
+        "Sign in as authorized scheduling staff.",
+        "Open the same appointment."
+      ],
+      "expected_result": "Staff sees the request without silent date reassignment.",
+      "pass_fail_criteria": [
+        "Request/note persist.",
+        "Original time remains until staff reschedules.",
+        "Staff can identify the requested change."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T043",
+      "difficulty": "Medium",
+      "functional_category": "Staff scheduling",
+      "requirement_ids": [
+        "R14",
+        "R11"
+      ],
+      "task": "Create a provider and available slot then find it as a patient.",
+      "preconditions": [
+        "F0 administrator;unique provider;existing department"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "Create provider and configure a future availability slot through staff UI.",
+        "Sign in as P and search that provider/date."
+      ],
+      "expected_result": "Staff configuration makes a real bookable slot discoverable.",
+      "pass_fail_criteria": [
+        "Provider and availability persist.",
+        "Exact slot appears to P.",
+        "Invalid incomplete availability cannot silently save."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T044",
+      "difficulty": "Medium",
+      "functional_category": "Laboratory",
+      "requirement_ids": [
+        "R16"
+      ],
+      "task": "Search laboratory results by name and date range, including an empty result.",
+      "preconditions": [
+        "F0 multiple labs inside/outside range"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "Set test name and collection interval.",
+        "Apply filters.",
+        "Change to a nonexistent test name.",
+        "Clear filters."
+      ],
+      "expected_result": "Filtering and recovery from empty results work.",
+      "pass_fail_criteria": [
+        "Only matching records appear initially.",
+        "Empty state is explicit.",
+        "Clearing restores the full published list."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T045",
+      "difficulty": "Medium",
+      "functional_category": "Laboratory",
+      "requirement_ids": [
+        "R15",
+        "R16"
+      ],
+      "task": "Compare normal/abnormal values and supported result statuses.",
+      "preconditions": [
+        "F0 published Pending/Preliminary/Final/Corrected tests;values below/inside/above their ranges"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "Open each fixture result.",
+        "Compare its status, units, range and flag to the fixture inventory."
+      ],
+      "expected_result": "Statuses and normal/abnormal semantics are accurate.",
+      "pass_fail_criteria": [
+        "All four statuses render correctly.",
+        "In-range/below/above classifications match each test-specific range.",
+        "No diagnosis is invented."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T046",
+      "difficulty": "Medium",
+      "functional_category": "Messaging",
+      "requirement_ids": [
+        "R18"
+      ],
+      "task": "Compose a categorized message to a care team and find it in Sent.",
+      "preconditions": [
+        "F0 P;eligible care team;unique subject/body"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "Start a new message.",
+        "Inspect the five category choices, select Medication Question and recipient/team.",
+        "Send once and open Sent."
+      ],
+      "expected_result": "A single correctly addressed persisted thread is created.",
+      "pass_fail_criteria": [
+        "Five specified categories are available.",
+        "Subject/body/category/recipient match.",
+        "One thread appears in Sent after reload."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T047",
+      "difficulty": "Medium",
+      "functional_category": "Messaging",
+      "requirement_ids": [
+        "R18",
+        "R36"
+      ],
+      "task": "Read an unread thread and reply without losing conversation history.",
+      "preconditions": [
+        "F0 P;unread incoming thread"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "Record unread count.",
+        "Open thread and reply once.",
+        "Return to list/dashboard then reopen."
+      ],
+      "expected_result": "Reading updates unread state and reply extends the same thread.",
+      "pass_fail_criteria": [
+        "Unread count decreases appropriately.",
+        "Original and new reply remain in the same thread with correct sender.",
+        "Reload preserves them."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T048",
+      "difficulty": "Medium",
+      "functional_category": "Messaging",
+      "requirement_ids": [
+        "R19"
+      ],
+      "task": "Archive a conversation with confirmation and destination feedback.",
+      "preconditions": [
+        "F0 P;unarchived thread"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "Open thread and choose Archive.",
+        "Confirm.",
+        "Inspect destination folder and reopen archived thread."
+      ],
+      "expected_result": "User lands in Archive with explicit success.",
+      "pass_fail_criteria": [
+        "Confirmation exists.",
+        "Archive tab is selected and thread visible.",
+        "Specific archived success feedback appears.",
+        "Archived detail offers Restore rather than Archive."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T049",
+      "difficulty": "Medium",
+      "functional_category": "Messaging",
+      "requirement_ids": [
+        "R19"
+      ],
+      "task": "Restore an archived conversation with confirmation and Inbox navigation.",
+      "preconditions": [
+        "F0 P;archived thread with multiple messages"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "Open archived thread and choose Restore to inbox.",
+        "Confirm.",
+        "Inspect Inbox and reopen thread."
+      ],
+      "expected_result": "User lands in Inbox with visible restored conversation and specific success.",
+      "pass_fail_criteria": [
+        "Confirmation and selected Inbox are present.",
+        "Restored thread is visible.",
+        "Messages/participants preserved.",
+        "Only applicable Archive action remains."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T050",
+      "difficulty": "Medium",
+      "functional_category": "Messaging",
+      "requirement_ids": [
+        "R19"
+      ],
+      "task": "Cancel Archive and Restore confirmation without changing state.",
+      "preconditions": [
+        "F0 P;one archived and one unarchived thread"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "Start Archive on unarchived thread and cancel.",
+        "Start Restore on archived thread and cancel.",
+        "Reload both folders."
+      ],
+      "expected_result": "Both cancellations leave state unchanged.",
+      "pass_fail_criteria": [
+        "Original folders and messages remain unchanged.",
+        "No success mutation is reported.",
+        "Detail remains usable."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T051",
+      "difficulty": "Medium",
+      "functional_category": "Medications",
+      "requirement_ids": [
+        "R20"
+      ],
+      "task": "Search active and historical medications and recover from no matches.",
+      "preconditions": [
+        "F0 multiple active/ended medicines"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "Search a known medicine.",
+        "Search nonexistent text.",
+        "Clear search and inspect history."
+      ],
+      "expected_result": "Search limits results accurately with a usable empty state.",
+      "pass_fail_criteria": [
+        "Known result matches query.",
+        "Nonmatch displays no unrelated medicines.",
+        "Clearing restores records/history."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T052",
+      "difficulty": "Medium",
+      "functional_category": "Refills",
+      "requirement_ids": [
+        "R21"
+      ],
+      "task": "Request a simulated refill with a care-team note.",
+      "preconditions": [
+        "F0 ACTIVE_MED;no pending refill"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "Open active medicine, enter unique note and request refill.",
+        "Reload detail."
+      ],
+      "expected_result": "A persistent Requested refill is created.",
+      "pass_fail_criteria": [
+        "Exactly one request exists for the correct medication/patient.",
+        "Submitted note is retained.",
+        "Status is Requested and no real dispensing occurs."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T053",
+      "difficulty": "Medium",
+      "functional_category": "Refills",
+      "requirement_ids": [
+        "R21"
+      ],
+      "task": "Review, approve and complete an existing refill with a decision note.",
+      "preconditions": [
+        "F0 requested refill;authorized clinical staff"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "As staff mark Under Review.",
+        "Mark Approved then Completed with decision note.",
+        "Sign in as P and inspect medicine."
+      ],
+      "expected_result": "Patient sees staff progress and final decision.",
+      "pass_fail_criteria": [
+        "Transitions persist in order.",
+        "Completed and exact final note appear for the same request.",
+        "No duplicated refill record."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T054",
+      "difficulty": "Medium",
+      "functional_category": "Corrections",
+      "requirement_ids": [
+        "R22"
+      ],
+      "task": "Report a medication information discrepancy and review it as staff.",
+      "preconditions": [
+        "F0 ACTIVE_MED with known pharmacy"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "As P request pharmacy correction with unique text.",
+        "As staff open correction request and mark reviewed.",
+        "Reopen patient medicine."
+      ],
+      "expected_result": "Correction is tracked without silently altering verified medication.",
+      "pass_fail_criteria": [
+        "Staff receives exact request for P.",
+        "Reviewed state persists.",
+        "Original pharmacy remains unless explicitly changed by staff."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T055",
+      "difficulty": "Medium",
+      "functional_category": "Corrections",
+      "requirement_ids": [
+        "R22",
+        "R23"
+      ],
+      "task": "Submit a health-summary correction without directly altering official history.",
+      "preconditions": [
+        "F0 P with a known allergy/history entry"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "Open Health Summary and request a correction.",
+        "Reload summary.",
+        "As staff inspect and review request."
+      ],
+      "expected_result": "Patient request and official data remain distinguishable.",
+      "pass_fail_criteria": [
+        "Request persists with correct patient/topic.",
+        "Original clinical value is unchanged by submission.",
+        "Review is visible in staff workflow."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T056",
+      "difficulty": "Medium",
+      "functional_category": "Health summary",
+      "requirement_ids": [
+        "R22",
+        "R23"
+      ],
+      "task": "Maintain an official synthetic clinical-history entry from staff UI.",
+      "preconditions": [
+        "F0 authorized clinical staff;P history fixture"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "Locate P clinical history.",
+        "Edit a clearly identified history entry.",
+        "Sign in as P and inspect Health Summary."
+      ],
+      "expected_result": "Authorized staff edits persist into patient summary.",
+      "pass_fail_criteria": [
+        "Exact edited content appears in correct section.",
+        "Patient identity/context preserved.",
+        "Unrelated patient history unchanged."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T057",
+      "difficulty": "Medium",
+      "functional_category": "Visits",
+      "requirement_ids": [
+        "R24"
+      ],
+      "task": "Create and publish a synthetic encounter with shared information.",
+      "preconditions": [
+        "F0 authorized staff;P;unique encounter content"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "Create encounter, diagnosis and shared note with follow-up.",
+        "Publish through available staff controls.",
+        "As P open Visits and the new encounter."
+      ],
+      "expected_result": "Published encounter information becomes patient-visible.",
+      "pass_fail_criteria": [
+        "Correct patient/provider/date/type/reason/diagnosis/summary/follow-up/shared note appear.",
+        "Record persists after reload."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T058",
+      "difficulty": "Medium",
+      "functional_category": "Documents",
+      "requirement_ids": [
+        "R27"
+      ],
+      "task": "Filter documents by type and follow its associated encounter.",
+      "preconditions": [
+        "F0 document set includes multiple types and one linked AVS"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "Filter Documents to AVS.",
+        "Open the linked AVS and associated visit.",
+        "Clear filter."
+      ],
+      "expected_result": "Filtering and document-encounter navigation are accurate.",
+      "pass_fail_criteria": [
+        "Only AVS appears while filtered.",
+        "Linked encounter matches fixture.",
+        "Clearing restores all published documents."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T059",
+      "difficulty": "Medium",
+      "functional_category": "PDF exports",
+      "requirement_ids": [
+        "R28",
+        "R29"
+      ],
+      "task": "Preview, print and download a laboratory report PDF.",
+      "preconditions": [
+        "F0 LAB_FULL"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "Open lab website preview.",
+        "Use Print and dismiss the print dialog.",
+        "Download PDF and inspect file."
+      ],
+      "expected_result": "Readable preview and a real authorized PDF represent the same lab.",
+      "pass_fail_criteria": [
+        "Print opens.",
+        "File MIME is application/pdf and name is descriptive .pdf.",
+        "Values/units/range/status/patient/provider/reference/dates/branding/disclaimer/page number agree with preview."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T060",
+      "difficulty": "Medium",
+      "functional_category": "PDF exports",
+      "requirement_ids": [
+        "R28",
+        "R29"
+      ],
+      "task": "Preview, print and download an After Visit Summary PDF.",
+      "preconditions": [
+        "F0 VISIT_FULL linked AVS"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "Open AVS website preview from visit.",
+        "Use Print then dismiss.",
+        "Download and inspect PDF."
+      ],
+      "expected_result": "AVS has a professional web preview and matching PDF.",
+      "pass_fail_criteria": [
+        "Print works.",
+        "PDF format/MIME/name correct.",
+        "Patient/provider/reference/dates/summary/follow-up/disclaimer/page number match preview."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T061",
+      "difficulty": "Medium",
+      "functional_category": "PDF exports",
+      "requirement_ids": [
+        "R25",
+        "R28",
+        "R29"
+      ],
+      "task": "Preview and download an exact-amount billing statement.",
+      "preconditions": [
+        "F0 INVOICE_FULL"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "Open invoice statement preview.",
+        "Use Print then dismiss.",
+        "Download statement PDF."
+      ],
+      "expected_result": "Statement preview and PDF preserve exact financial values.",
+      "pass_fail_criteria": [
+        "Real PDF and descriptive filename.",
+        "Charge180.00, adjustment115.50, responsibility64.50, paid0.00, remaining64.50 agree.",
+        "Branding/reference/date/patient/disclaimer/page numbering present."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T062",
+      "difficulty": "Medium",
+      "functional_category": "PDF exports",
+      "requirement_ids": [
+        "R25",
+        "R28",
+        "R29"
+      ],
+      "task": "Preview and download a simulated payment receipt.",
+      "preconditions": [
+        "F0 receipt for payment20.25 against INVOICE_FULL"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "Open payment from history and receipt preview.",
+        "Use Print then dismiss.",
+        "Download receipt PDF."
+      ],
+      "expected_result": "Receipt is readable, identified and accurate.",
+      "pass_fail_criteria": [
+        "Real PDF/MIME/descriptive filename.",
+        "Invoice reference, transaction reference, date, patient and amount20.25 match preview.",
+        "Simulated disclaimer and page number present."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T063",
+      "difficulty": "Medium",
+      "functional_category": "Billing",
+      "requirement_ids": [
+        "R25",
+        "R26",
+        "R03"
+      ],
+      "task": "Make a partial simulated payment and reconcile balances.",
+      "preconditions": [
+        "F0 INVOICE_FULL remaining64.50"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "Pay20.25 once.",
+        "Open invoice/history and Dashboard after reload."
+      ],
+      "expected_result": "Payment persists and balance becomes44.25.",
+      "pass_fail_criteria": [
+        "Exactly one20.25 transaction.",
+        "Paid20.25/remaining44.25/Partially Paid on invoice.",
+        "Dashboard reflects correct total.",
+        "No card information required."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T064",
+      "difficulty": "Medium",
+      "functional_category": "Billing",
+      "requirement_ids": [
+        "R25"
+      ],
+      "task": "Pay the exact remaining balance and inspect paid state.",
+      "preconditions": [
+        "F0 invoice with20.25 already paid and44.25 remaining"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "Submit one44.25 simulated payment.",
+        "Reload invoice and payment history."
+      ],
+      "expected_result": "Invoice becomes fully paid with zero remaining.",
+      "pass_fail_criteria": [
+        "Paid64.50, remaining0.00, Paid status.",
+        "Both distinct transactions remain.",
+        "Receipt for44.25 is available."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T065",
+      "difficulty": "Medium",
+      "functional_category": "Billing",
+      "requirement_ids": [
+        "R25",
+        "R36"
+      ],
+      "task": "Create a synthetic invoice as authorized billing staff.",
+      "preconditions": [
+        "F0 billing staff and P;new invoice responsibility37.80"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "Create invoice with explicit service/due dates, charges and adjustment.",
+        "As P open Billing and notifications."
+      ],
+      "expected_result": "New invoice and outstanding balance are reflected in patient portal.",
+      "pass_fail_criteria": [
+        "Exact invoice values persist.",
+        "Total increases by37.80.",
+        "New statement notification points to this invoice."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T066",
+      "difficulty": "Medium",
+      "functional_category": "Notifications",
+      "requirement_ids": [
+        "R36"
+      ],
+      "task": "Mark one notification read, then mark the remaining notifications read.",
+      "preconditions": [
+        "F0 P has at least3 unread notifications"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "Mark one read.",
+        "Reload.",
+        "Mark remaining/all read using available controls and reload."
+      ],
+      "expected_result": "Read states persist without deleting notifications.",
+      "pass_fail_criteria": [
+        "First operation changes only selected notification.",
+        "Final unread count is zero.",
+        "All original notification records remain accessible."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T067",
+      "difficulty": "Medium",
+      "functional_category": "Notifications",
+      "requirement_ids": [
+        "R36"
+      ],
+      "task": "Mute one category, generate a matching event, then restore that preference.",
+      "preconditions": [
+        "F0 P;notification preferences enabled;staff can publish lab"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "Mute Test result and save.",
+        "Staff publishes a new P lab.",
+        "Inspect patient notifications and existing notices.",
+        "Re-enable Test result and publish a second lab."
+      ],
+      "expected_result": "Category preference governs new notifications and preserves existing ones.",
+      "pass_fail_criteria": [
+        "Muted event creates no new patient result notification.",
+        "Existing notices remain.",
+        "Other categories unchanged.",
+        "Re-enabled event creates a result notification."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T068",
+      "difficulty": "Medium",
+      "functional_category": "Family access",
+      "requirement_ids": [
+        "R31",
+        "R32",
+        "R34"
+      ],
+      "task": "Invite an existing family account to selected own-record sections.",
+      "preconditions": [
+        "F0 P and Q;no relationship"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "As P invite Q with relationship and results/visits scopes.",
+        "Inspect pending outgoing request.",
+        "As Q explicitly accept incoming request.",
+        "Open linked P profile."
+      ],
+      "expected_result": "Explicit consent creates only selected scoped access.",
+      "pass_fail_criteria": [
+        "Before acceptance no access.",
+        "Incoming/outgoing status/expiry/relationship/scopes visible.",
+        "After acceptance Q sees P results/visits only."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T069",
+      "difficulty": "Medium",
+      "functional_category": "Family access",
+      "requirement_ids": [
+        "R31",
+        "R32",
+        "R34"
+      ],
+      "task": "Request access to another adult and obtain that owner consent.",
+      "preconditions": [
+        "F0 P requester,Q owner;no relationship"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "As P request Q records with appointments scope.",
+        "As Q inspect incoming request and accept.",
+        "As P open Q appointments."
+      ],
+      "expected_result": "Owner acceptance grants the requested scope.",
+      "pass_fail_criteria": [
+        "No access before Q acceptance.",
+        "Correct direction ownerQ/proxyP.",
+        "Only appointments scope granted."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T070",
+      "difficulty": "Medium",
+      "functional_category": "Family access",
+      "requirement_ids": [
+        "R31",
+        "R33"
+      ],
+      "task": "Decline one invitation and cancel a different pending invitation.",
+      "preconditions": [
+        "F0 two distinct pending invitations for different synthetic recipients"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "Intended recipient declines first request.",
+        "Sender cancels second pending request.",
+        "Reload both sides."
+      ],
+      "expected_result": "Decline and cancellation persist without granting access.",
+      "pass_fail_criteria": [
+        "Both statuses are clear.",
+        "No proxy links are created.",
+        "Neither request remains actionable for acceptance."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T071",
+      "difficulty": "Hard",
+      "functional_category": "Authorization",
+      "requirement_ids": [
+        "R04",
+        "R30",
+        "R39"
+      ],
+      "task": "Attempt another unrelated patient record and direct PDF access.",
+      "preconditions": [
+        "F0 P and unrelatedQ;private manifest includes Q detail/export URLs"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "Sign in as P.",
+        "Enter Q lab, visit, invoice and document URLs supplied in task data.",
+        "Attempt their PDF URLs."
+      ],
+      "expected_result": "Object authorization denies every unrelated resource.",
+      "pass_fail_criteria": [
+        "No Q protected content/file returned.",
+        "Readable denial/unavailable state with recovery path.",
+        "P own records remain usable."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T072",
+      "difficulty": "Hard",
+      "functional_category": "Authorization",
+      "requirement_ids": [
+        "R04",
+        "R05",
+        "R30",
+        "R39"
+      ],
+      "task": "Verify protected links after logout and through browser Back.",
+      "preconditions": [
+        "F0 P;own lab/document/export URLs"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "Sign in, open protected record, then sign out.",
+        "Use Back and refresh.",
+        "Open direct detail/export URLs without signing in."
+      ],
+      "expected_result": "Signed-out access never reveals authenticated record data.",
+      "pass_fail_criteria": [
+        "No stale protected display after logout/back.",
+        "Requests require authentication.",
+        "Direct exports cannot be downloaded anonymously."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T073",
+      "difficulty": "Hard",
+      "functional_category": "Staff onboarding",
+      "requirement_ids": [
+        "R09",
+        "R39"
+      ],
+      "task": "Approve a care-team applicant only after a required verification note.",
+      "preconditions": [
+        "F0 pending Physician applicant and administrator"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "As applicant try staff workspace.",
+        "As administrator try approval with empty note.",
+        "Provide synthetic verification note and approve.",
+        "Re-login applicant."
+      ],
+      "expected_result": "Only reviewed approval activates staff access.",
+      "pass_fail_criteria": [
+        "Pending access denied.",
+        "Empty-note approval rejected.",
+        "Approved applicant gains Physician workspace only.",
+        "Administrator role was never publicly assignable."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T074",
+      "difficulty": "Hard",
+      "functional_category": "Staff onboarding",
+      "requirement_ids": [
+        "R09",
+        "R39"
+      ],
+      "task": "Decline a care-team application and verify continued access denial.",
+      "preconditions": [
+        "F0 pending Nurse applicant and administrator"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "Decline with required synthetic decision note.",
+        "As applicant reload/re-login and try staff record URLs."
+      ],
+      "expected_result": "Declined account is clearly informed and unprivileged.",
+      "pass_fail_criteria": [
+        "Decline persists.",
+        "Staff records remain unavailable.",
+        "No role escalation or cached pending/approved state grants access."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T075",
+      "difficulty": "Hard",
+      "functional_category": "Family access",
+      "requirement_ids": [
+        "R32",
+        "R39"
+      ],
+      "task": "Try claiming an invitation by changing another account email.",
+      "preconditions": [
+        "F0 invitation to Q original registered identity;unrelatedR"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "As R edit profile email to the invitation email if permitted.",
+        "Inspect incoming requests and attempt supplied invitation accept URL.",
+        "As Q inspect genuine invitation."
+      ],
+      "expected_result": "Profile email editing cannot steal recipient-bound consent.",
+      "pass_fail_criteria": [
+        "R never gains acceptance authority or record access.",
+        "Q remains intended recipient.",
+        "Invalid attempt leaves invitation state unchanged."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T076",
+      "difficulty": "Hard",
+      "functional_category": "Family access",
+      "requirement_ids": [
+        "R31",
+        "R32"
+      ],
+      "task": "Invite a not-yet-registered synthetic family member and accept after signup.",
+      "preconditions": [
+        "F0 P;unused recipient identityN"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "As P invite N email with chosen scope.",
+        "Register N using intended synthetic email.",
+        "Open incoming invitation and explicitly accept."
+      ],
+      "expected_result": "Invitation binds to the intended newly created account.",
+      "pass_fail_criteria": [
+        "Registration alone grants no access.",
+        "Correct invitation appears for N.",
+        "Explicit consent creates correct scoped link.",
+        "Other account cannot claim it."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T077",
+      "difficulty": "Hard",
+      "functional_category": "Family access",
+      "requirement_ids": [
+        "R33"
+      ],
+      "task": "Reject duplicate pending requests and an expired acceptance.",
+      "preconditions": [
+        "F0 active pending invitation and separate expired invitation fixture"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "Sender attempts duplicate of pending request.",
+        "Recipient opens expired invitation and attempts acceptance.",
+        "Inspect status/links."
+      ],
+      "expected_result": "Duplicate and expired requests cannot grant unintended access.",
+      "pass_fail_criteria": [
+        "Only one original pending request remains.",
+        "Expired request cannot accept.",
+        "Feedback is readable and no proxy link created."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T078",
+      "difficulty": "Hard",
+      "functional_category": "Family access",
+      "requirement_ids": [
+        "R33"
+      ],
+      "task": "Prevent reused or old invitations from restoring revoked access.",
+      "preconditions": [
+        "F0 accepted invitation plus link subsequently revoked by owner"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "As former proxy revisit old acceptance link and try accepting again.",
+        "Refresh linked profiles and attempt old protected URL."
+      ],
+      "expected_result": "Consumed consent cannot silently re-enable access.",
+      "pass_fail_criteria": [
+        "No active link restored.",
+        "Old invitation rejected as used/unavailable.",
+        "Formerly shared record remains denied."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T079",
+      "difficulty": "Hard",
+      "functional_category": "Family access",
+      "requirement_ids": [
+        "R30",
+        "R34"
+      ],
+      "task": "Enforce section scopes on visible navigation and direct exports.",
+      "preconditions": [
+        "F0 Q permits P results only;Q also has billing/documents/visits"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "As P open Q family profile and allowed lab.",
+        "Attempt supplied Q billing, visits, document and export URLs."
+      ],
+      "expected_result": "Results permission does not imply access to other sections.",
+      "pass_fail_criteria": [
+        "Allowed result works.",
+        "Disallowed section controls are absent from linked card.",
+        "All disallowed direct pages/files denied."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T080",
+      "difficulty": "Hard",
+      "functional_category": "Family access",
+      "requirement_ids": [
+        "R30",
+        "R33",
+        "R34"
+      ],
+      "task": "Revoke a live proxy grant and check already-open record access.",
+      "preconditions": [
+        "F0 active Q-to-P results grant;two separate authenticated browser profiles"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "As P open Q result and record export link.",
+        "In Q profile revoke grant.",
+        "Return P, refresh detail and try export/linked profile."
+      ],
+      "expected_result": "Revocation takes effect on subsequent requests.",
+      "pass_fail_criteria": [
+        "Refreshed data/export denied.",
+        "Link no longer active.",
+        "Readable recovery path; no internal model/query error.",
+        "Revocation audit recorded."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T081",
+      "difficulty": "Hard",
+      "functional_category": "Appointments",
+      "requirement_ids": [
+        "R11"
+      ],
+      "task": "Attempt to book the same slot from two patients with stale availability.",
+      "preconditions": [
+        "F0 one free slot;two isolated P/Q sessions both opened to slot before booking"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "As P book slot.",
+        "Switch Q stale page and try booking same slot.",
+        "Inspect both appointment lists."
+      ],
+      "expected_result": "Exactly one booking wins and the other receives a conflict.",
+      "pass_fail_criteria": [
+        "One active booking for slot in persisted state.",
+        "Losing patient has no duplicate appointment.",
+        "Error readable and other available slots remain searchable."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T082",
+      "difficulty": "Hard",
+      "functional_category": "Appointments",
+      "requirement_ids": [
+        "R11",
+        "R12",
+        "R14"
+      ],
+      "task": "Reject unavailable scheduling and invalid appointment state changes.",
+      "preconditions": [
+        "F0 unavailable slot and cancelled appointment;authorized scheduling staff"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "Try booking unavailable slot via supplied stale UI.",
+        "As staff inspect cancelled appointment and try an invalid check-in/completion transition if offered.",
+        "Reload records."
+      ],
+      "expected_result": "Availability and transition rules prevent inconsistent records.",
+      "pass_fail_criteria": [
+        "Unavailable slot not bookable.",
+        "Cancelled record cannot silently become Checked In or Completed without a legitimate new scheduling workflow.",
+        "Invalid controls absent or rejected; records unchanged."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T083",
+      "difficulty": "Hard",
+      "functional_category": "Appointments",
+      "requirement_ids": [
+        "R10",
+        "R13"
+      ],
+      "task": "Check earliest-first ordering and timezone consistency across views.",
+      "preconditions": [
+        "F0 three future appointments deliberately created out of chronological order;one crosses UTC/local date boundary"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "Inspect Dashboard and upcoming list.",
+        "Open each detail and staff record.",
+        "Compare displayed instants and zone labels."
+      ],
+      "expected_result": "Ordering follows time and date/timezone presentation is consistent.",
+      "pass_fail_criteria": [
+        "Earliest appointment first in upcoming views.",
+        "All views describe same instant for each appointment.",
+        "Zone is explicit or consistently documented; no day/time shift error."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T084",
+      "difficulty": "Hard",
+      "functional_category": "Password recovery",
+      "requirement_ids": [
+        "R06",
+        "R07"
+      ],
+      "task": "Reject expired and reused local reset links.",
+      "preconditions": [
+        "F0 separate expired reset fixture and unused valid reset link in private simulated mailbox"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "Open expired link and attempt reset.",
+        "Use valid link to reset once.",
+        "Reopen used link and try another reset."
+      ],
+      "expected_result": "Expired/used links cannot reset credentials.",
+      "pass_fail_criteria": [
+        "Expired attempt fails.",
+        "Valid link works once only.",
+        "Reuse fails; password from successful reset remains valid."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T085",
+      "difficulty": "Hard",
+      "functional_category": "Refills",
+      "requirement_ids": [
+        "R21"
+      ],
+      "task": "Reject a second pending refill with patient-friendly feedback.",
+      "preconditions": [
+        "F0 ACTIVE_MED with Requested refill"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "Open medication and attempt another refill.",
+        "Repeat while original is Under Review using separate reset fixture stage."
+      ],
+      "expected_result": "No duplicate pending request is created.",
+      "pass_fail_criteria": [
+        "One request remains in each stage.",
+        "Feedback explains existing request/status, not generic conflict internals.",
+        "Patient can still see original progress."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T086",
+      "difficulty": "Hard",
+      "functional_category": "Billing",
+      "requirement_ids": [
+        "R25",
+        "R26",
+        "R39"
+      ],
+      "task": "Validate payment boundaries and prevent double processing.",
+      "preconditions": [
+        "F0 remaining64.50;isolated simulation"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "Attempt empty, zero, negative and amount64.51.",
+        "Correct to20.25 and trigger rapid double-click on submit.",
+        "Reload history."
+      ],
+      "expected_result": "Invalid amounts are rejected and one intended payment posts once.",
+      "pass_fail_criteria": [
+        "No transaction for invalid attempts.",
+        "Exactly one20.25 transaction after double submit.",
+        "Remaining44.25.",
+        "No real card or payment provider involved."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T087",
+      "difficulty": "Hard",
+      "functional_category": "Laboratory",
+      "requirement_ids": [
+        "R17",
+        "R30"
+      ],
+      "task": "Withdraw a previously published result and test saved detail/PDF links.",
+      "preconditions": [
+        "F0 published LAB_FULL;patient has opened detail and saved export link"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "As staff unpublish LAB_FULL.",
+        "As patient refresh detail, search list and try saved PDF URL."
+      ],
+      "expected_result": "Withdrawn data is inaccessible at every surface.",
+      "pass_fail_criteria": [
+        "Not in published list.",
+        "Direct detail/PDF denied.",
+        "Friendly unavailable message and route back.",
+        "Other published results still work."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T088",
+      "difficulty": "Hard",
+      "functional_category": "Visits and documents",
+      "requirement_ids": [
+        "R24",
+        "R27",
+        "R30"
+      ],
+      "task": "Hide private notes and unpublished visits/documents including direct exports.",
+      "preconditions": [
+        "F0 public encounter with shared/private notes plus unpublished encounter/document"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "As P inspect public encounter.",
+        "Try private/unpublished item URLs and PDF exports supplied in manifest."
+      ],
+      "expected_result": "Only explicitly shared published information is exposed.",
+      "pass_fail_criteria": [
+        "Shared note visible, private note absent.",
+        "Unpublished encounter/document denied through direct page and export.",
+        "Files reveal no private text."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T089",
+      "difficulty": "Hard",
+      "functional_category": "PDF exports",
+      "requirement_ids": [
+        "R28",
+        "R29"
+      ],
+      "task": "Read and export a long multi-page clinical document.",
+      "preconditions": [
+        "F0 LONG_DOC with long paragraphs, long words and end marker;at least3 PDF pages expected"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "Open web preview.",
+        "Download PDF.",
+        "Inspect first/middle/last pages and print preview."
+      ],
+      "expected_result": "Long content wraps and paginates without loss.",
+      "pass_fail_criteria": [
+        "Real PDF has at least3 pages and page numbers.",
+        "No clipped/overlapping text.",
+        "First/middle/end markers retained.",
+        "Branding/disclaimer/identification present; preview and PDF content agree."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T090",
+      "difficulty": "Hard",
+      "functional_category": "Staff navigation",
+      "requirement_ids": [
+        "R02",
+        "R37"
+      ],
+      "task": "Use staff module search and a record drawer on a narrow screen with keyboard.",
+      "preconditions": [
+        "F0 staff;390x844;P multiple records"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "Use keyboard to reach module selector/search.",
+        "Choose P lab module and open a record.",
+        "Navigate focused controls and close drawer using available keyboard action.",
+        "Return to list."
+      ],
+      "expected_result": "Staff navigation is accessible without horizontal overflow or lost context.",
+      "pass_fail_criteria": [
+        "Controls reachable by keyboard with visible focus.",
+        "Drawer opens in viewport and closes.",
+        "Patient/module preserved.",
+        "No clipped essential action or horizontal page overflow."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T091",
+      "difficulty": "Expert",
+      "functional_category": "Scheduling end-to-end",
+      "requirement_ids": [
+        "R03",
+        "R11",
+        "R12",
+        "R13",
+        "R14",
+        "R36"
+      ],
+      "task": "Complete booking, staff rescheduling and cancellation with consistent history.",
+      "preconditions": [
+        "F0 P;two valid future slots;independent older cancelled appointment"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "Book first slot as P and inspect Dashboard.",
+        "Request reschedule.",
+        "As staff move to second slot.",
+        "Verify replacement opens immediately.",
+        "As P inspect replacement then cancel with new reason.",
+        "Inspect history and notifications."
+      ],
+      "expected_result": "Whole scheduling lifecycle remains consistent across roles.",
+      "pass_fail_criteria": [
+        "Original booking becomes cancelled due to reschedule; replacement has correct slot.",
+        "Independent old cancellation is retained.",
+        "Replacement opens after staff action.",
+        "Final upcoming excludes cancelled replacement.",
+        "Reasons, history, dashboard and relevant notifications agree."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T092",
+      "difficulty": "Expert",
+      "functional_category": "Laboratory end-to-end",
+      "requirement_ids": [
+        "R15",
+        "R16",
+        "R17",
+        "R28",
+        "R30",
+        "R36"
+      ],
+      "task": "Create, publish, correct and withdraw a result across staff and patient views.",
+      "preconditions": [
+        "F0 P with same-test history;authorized staff;unique new test record"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "Staff creates unpublished result.",
+        "Patient verifies absence.",
+        "Staff publishes.",
+        "Patient follows notification, checks details/trend and downloads PDF.",
+        "Staff corrects result value/status then patient reopens.",
+        "Staff withdraws; patient retries saved links."
+      ],
+      "expected_result": "Publication/correction/withdrawal consistently governs all representations.",
+      "pass_fail_criteria": [
+        "Unpublished absent; published notified.",
+        "Patient/trend/PDF use current corrected value and status after correction.",
+        "Withdrawal blocks list/detail/export.",
+        "No unsupported diagnosis; unrelated tests unchanged."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T093",
+      "difficulty": "Expert",
+      "functional_category": "Messaging end-to-end",
+      "requirement_ids": [
+        "R18",
+        "R19",
+        "R36"
+      ],
+      "task": "Exchange messages across roles and verify per-user archive independence.",
+      "preconditions": [
+        "F0 P and Physician;unique subject"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "Patient composes Medical Question.",
+        "Physician reads and replies.",
+        "Patient follows notification and reads reply.",
+        "Patient archives thread.",
+        "Physician confirms thread remains accessible.",
+        "Patient restores it to Inbox and reopens."
+      ],
+      "expected_result": "Communication and folder/read states are persistent and user-specific.",
+      "pass_fail_criteria": [
+        "Correct recipients/authors/thread history.",
+        "Notification and unread transition accurate.",
+        "Patient archive does not archive physician view.",
+        "Archive/restore confirmations and destination navigation work.",
+        "No message lost/duplicated."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T094",
+      "difficulty": "Expert",
+      "functional_category": "Refills end-to-end",
+      "requirement_ids": [
+        "R20",
+        "R21",
+        "R36",
+        "R40"
+      ],
+      "task": "Resolve a denied refill then process a separate new request to completion.",
+      "preconditions": [
+        "F0 active medicine;no pending refill;authorized staff"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "Patient requests refill with note.",
+        "Staff reviews and denies with reason.",
+        "Patient reads denial.",
+        "Patient submits a distinct new request.",
+        "Staff reviews, approves and completes it with final note.",
+        "Patient inspects history and notifications."
+      ],
+      "expected_result": "Distinct decisions/history are preserved through the full simulated lifecycle.",
+      "pass_fail_criteria": [
+        "Denied request stays denied with reason.",
+        "New request is separately tracked.",
+        "Final request Completed with correct note.",
+        "Progress/notifications and refill decision audit match.",
+        "No real prescription transmission."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T095",
+      "difficulty": "Expert",
+      "functional_category": "Billing end-to-end",
+      "requirement_ids": [
+        "R03",
+        "R25",
+        "R26",
+        "R28",
+        "R36",
+        "R40"
+      ],
+      "task": "Create an invoice, partially pay, finish paying and reconcile both receipts.",
+      "preconditions": [
+        "F0 billing staff and P;unique invoice responsibility64.50"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "Staff creates invoice.",
+        "Patient follows statement notification and previews bill.",
+        "Pay20.25, inspect partial balance and receipt.",
+        "Pay44.25, inspect final balance and second receipt.",
+        "Reopen Dashboard and history."
+      ],
+      "expected_result": "Ledger, UI, PDFs and notifications reconcile to64.50.",
+      "pass_fail_criteria": [
+        "Exactly two transactions20.25/44.25.",
+        "Intermediate44.25 and final0.00 balances.",
+        "Two correct receipt PDFs.",
+        "Dashboard/notifications reflect changes.",
+        "Billing audit entries exist; no duplicate processing."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T096",
+      "difficulty": "Expert",
+      "functional_category": "Family access end-to-end",
+      "requirement_ids": [
+        "R30",
+        "R31",
+        "R32",
+        "R33",
+        "R34",
+        "R40"
+      ],
+      "task": "Complete scoped invitation, owner revocation and a new consent after revocation.",
+      "preconditions": [
+        "F0 adult P owner,Q proxy;no links"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "P invites Q results only.",
+        "Q accepts and views allowed result but cannot billing export.",
+        "P revokes.",
+        "Q retries old link/old invitation.",
+        "P sends a genuinely new invitation with visits only.",
+        "Q accepts and checks new scopes."
+      ],
+      "expected_result": "Revocation cannot be bypassed; only fresh consent establishes new access.",
+      "pass_fail_criteria": [
+        "Old invite cannot restore access.",
+        "Fresh invitation requires new explicit acceptance.",
+        "New access permits visits only, not prior results/billing.",
+        "Proxy-change audit reflects grants/revocation accurately."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T097",
+      "difficulty": "Expert",
+      "functional_category": "Guardian verification",
+      "requirement_ids": [
+        "R31",
+        "R34",
+        "R35",
+        "R39",
+        "R40"
+      ],
+      "task": "Request dependent access, deny self-approval, then verify an administrator decision.",
+      "preconditions": [
+        "F0 minor D;requesterG;administrator;no grant"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "G requests guardian/dependent access.",
+        "Inspect pending state and attempt dependent record access.",
+        "Administrator tries decision without note, then enters synthetic verification and approves specific scopes.",
+        "G opens permitted dependent section.",
+        "Administrator revokes; G retries."
+      ],
+      "expected_result": "Guardian access is gated by recorded administrator verification.",
+      "pass_fail_criteria": [
+        "No self-grant before decision.",
+        "Required verification note enforced.",
+        "Granted scopes honored; revocation denies next access.",
+        "Synthetic identity/guardian limitations disclosed.",
+        "Audit records decision and revocation."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T098",
+      "difficulty": "Expert",
+      "functional_category": "Account recovery end-to-end",
+      "requirement_ids": [
+        "R04",
+        "R05",
+        "R06",
+        "R07",
+        "R39"
+      ],
+      "task": "Recover access after a failed reset, then validate session/account isolation.",
+      "preconditions": [
+        "F0 P and Q;local mailbox;P authenticated in separate isolated browser profile;expired and valid reset fixtures"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "Attempt expired link then request valid recovery through UI.",
+        "Correct mismatch and complete reset from local mailbox.",
+        "Try old/new password.",
+        "Check already-open P authenticated page after refresh.",
+        "Sign out and sign in as Q without reload."
+      ],
+      "expected_result": "Recovery yields one valid new credential without stale cross-account access.",
+      "pass_fail_criteria": [
+        "Expired/mismatched attempts do not alter password.",
+        "New credential works, old fails.",
+        "Existing sessions do not expose unauthorized post-reset content if invalidated; no cross-account leakage.",
+        "Q sees only Q data.",
+        "No external mail dependency."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T099",
+      "difficulty": "Expert",
+      "functional_category": "Care-team onboarding end-to-end",
+      "requirement_ids": [
+        "R08",
+        "R09",
+        "R14",
+        "R18",
+        "R21",
+        "R25",
+        "R39"
+      ],
+      "task": "Onboard all four permitted staff roles and verify their appropriate workspaces.",
+      "preconditions": [
+        "F0 administrator;four unused applicants with synthetic organizations"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "Register Physician, Nurse, Front Desk and Billing Staff separately.",
+        "Verify each pending restriction.",
+        "Administrator reviews each with verification note and approves.",
+        "Re-login each and perform one role-appropriate action: clinical reply, refill review, scheduling update, invoice creation."
+      ],
+      "expected_result": "Approved roles enter appropriate workspaces and execute authorized workflows.",
+      "pass_fail_criteria": [
+        "All pending users denied staff records.",
+        "Four recorded approvals with notes.",
+        "Each final role equals approved role, not Administrator.",
+        "Role-appropriate changes persist and appear for relevant patient; no privilege from public selection alone."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    },
+    {
+      "id": "T100",
+      "difficulty": "Expert",
+      "functional_category": "Audit and error recovery",
+      "requirement_ids": [
+        "R14",
+        "R17",
+        "R21",
+        "R25",
+        "R34",
+        "R38",
+        "R39",
+        "R40"
+      ],
+      "task": "Verify an audited cross-module staff session and recover from a missing record.",
+      "preconditions": [
+        "F0 authorized administrator and clinical/billing fixtures;read-only audit verifier enabled"
+      ],
+      "test_data": "Independent reset of F0 plus the named fixture; substitute TEST_ID and RUN_ID in all new labels. Credentials are injected privately at runtime, never stored in this suite.",
+      "expected_workflow": [
+        "Log in and open P record.",
+        "Update appointment, publish a result, edit medication, decide refill, change proxy permission and record simulated billing change.",
+        "Open supplied nonexistent record URL.",
+        "Use recovery navigation and reopen P."
+      ],
+      "expected_result": "Important events are auditable and missing-record errors do not strand the user.",
+      "pass_fail_criteria": [
+        "Read-only audit inspection finds actor/time/target/action for login, access and all six mutations.",
+        "Error contains no internal model/query message and has usable return path.",
+        "P context and durable changes remain correct.",
+        "No real medical/payment operation."
+      ],
+      "independent_verification": "Review the screenshots/action trace against EVERY criterion; inspect read-only persisted state or downloaded files where required. Agent self-report alone cannot establish PASS."
+    }
+  ]
+}

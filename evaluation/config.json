@@ -1,0 +1,18 @@
+{
+  "model": "gpt-5.4-2026-03-05",
+  "api_base": "https://api.openai.com/v1",
+  "tool": "computer",
+  "target_origin": "http://127.0.0.1:18380",
+  "pricing_usd_per_million": {"input": 2.5, "cached_input": 0.25, "output": 15},
+  "proposed_total_budget_usd": 120,
+  "max_output_tokens_per_request": 3000,
+  "max_input_tokens_per_request": 64000,
+  "api_timeout_seconds": 90,
+  "retries": 0,
+  "limits": {
+    "Easy": {"model_requests": 30, "actions": 80, "input_tokens": 150000, "output_tokens": 15000, "runtime_seconds": 600, "budget_usd": 0.60},
+    "Medium": {"model_requests": 50, "actions": 140, "input_tokens": 250000, "output_tokens": 25000, "runtime_seconds": 900, "budget_usd": 1.00},
+    "Hard": {"model_requests": 80, "actions": 220, "input_tokens": 400000, "output_tokens": 40000, "runtime_seconds": 1500, "budget_usd": 1.60},
+    "Expert": {"model_requests": 120, "actions": 350, "input_tokens": 600000, "output_tokens": 60000, "runtime_seconds": 2400, "budget_usd": 2.40}
+  }
+}
