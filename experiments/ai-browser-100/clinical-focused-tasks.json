@@ -1,0 +1,26 @@
+[
+  {
+    "id": "B054",
+    "title": "Archive a conversation with explicit list feedback",
+    "difficulty": "medium",
+    "steps": [
+      "Archive test conversation",
+      "Confirm"
+    ],
+    "expected": "Archive tab is selected, saved notice is specific, and conversation is listed.",
+    "depends": []
+  },
+  {
+    "id": "B055",
+    "title": "Restore archived conversation with confirmation and inbox redirect",
+    "difficulty": "hard",
+    "steps": [
+      "Open archived test conversation",
+      "Restore to inbox and confirm"
+    ],
+    "expected": "Inbox is selected, exact restoration notice is visible, conversation remains in inbox after refresh.",
+    "depends": [
+      "B054"
+    ]
+  }
+]

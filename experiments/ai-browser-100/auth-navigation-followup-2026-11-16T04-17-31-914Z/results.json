@@ -1,0 +1,19 @@
+{
+  "group": "auth-navigation-followup",
+  "base": "https://careconnect-demo-rc0t.onrender.com",
+  "runKey": "20261115-r2",
+  "started": "2026-11-16T04:17:31.915Z",
+  "updated": "2026-11-16T04:17:37.681Z",
+  "method": "AI-authored Playwright UI browser automation; no direct API assertions",
+  "results": [
+    {
+      "id": "A024",
+      "title": "Sign-out removes identity and protects browser-back access",
+      "difficulty": "hard",
+      "status": "passed",
+      "durationMs": 5552,
+      "url": "https://careconnect-demo-rc0t.onrender.com/",
+      "screenshot": "A024.png"
+    }
+  ]
+}

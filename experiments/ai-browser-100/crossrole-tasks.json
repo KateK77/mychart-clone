@@ -1,0 +1,399 @@
+[
+  {
+    "id": "C071",
+    "title": "Register an independent synthetic patient",
+    "difficulty": "simple",
+    "steps": [
+      "Open patient registration",
+      "Enter unique invented identity and matching password",
+      "Create account"
+    ],
+    "expected": "Casey reaches their own patient dashboard.",
+    "depends": []
+  },
+  {
+    "id": "C072",
+    "title": "Register a family caregiver into the correct workspace",
+    "difficulty": "simple",
+    "steps": [
+      "Choose Family caregiver registration",
+      "Create a separate invented account"
+    ],
+    "expected": "Caregiver is routed to Family Access with no inherited patient data.",
+    "depends": []
+  },
+  {
+    "id": "C073",
+    "title": "Billing staff creates a patient-specific invoice",
+    "difficulty": "medium",
+    "steps": [
+      "Sign in as billing staff",
+      "Choose Casey as patient context",
+      "Create invoice for $80 with $30 adjustment"
+    ],
+    "expected": "Invoice drawer identifies Casey and $50 patient responsibility.",
+    "depends": [
+      "C071"
+    ]
+  },
+  {
+    "id": "C074",
+    "title": "Patient sees invoice calculations and unpaid status",
+    "difficulty": "medium",
+    "steps": [
+      "Open Billing as Casey",
+      "Open the new invoice"
+    ],
+    "expected": "Charges $80, adjustment $30, responsibility and remaining $50; unpaid.",
+    "depends": [
+      "C073"
+    ]
+  },
+  {
+    "id": "C075",
+    "title": "Cancelling a payment confirmation leaves balance unchanged",
+    "difficulty": "medium",
+    "steps": [
+      "Enter $15 payment",
+      "Open confirmation",
+      "Choose Keep unchanged"
+    ],
+    "expected": "Invoice remains unpaid with no $15 payment history.",
+    "depends": [
+      "C074"
+    ]
+  },
+  {
+    "id": "C076",
+    "title": "Partial simulated payment persists after refresh",
+    "difficulty": "medium",
+    "steps": [
+      "Pay $15 and confirm",
+      "Refresh invoice"
+    ],
+    "expected": "Partially Paid with $15 paid and $35 remaining.",
+    "depends": [
+      "C074"
+    ]
+  },
+  {
+    "id": "C077",
+    "title": "Overpayment is rejected without changing the balance",
+    "difficulty": "hard",
+    "steps": [
+      "Attempt $99 against the $35 balance",
+      "Confirm the attempted payment"
+    ],
+    "expected": "Visible validation rejects overpayment and balance stays $35.",
+    "depends": [
+      "C076"
+    ]
+  },
+  {
+    "id": "C078",
+    "title": "Paying the exact remaining balance closes the invoice",
+    "difficulty": "medium",
+    "steps": [
+      "Pay $35 and confirm"
+    ],
+    "expected": "Invoice is Paid, remaining $0, and payment form is removed.",
+    "depends": [
+      "C076"
+    ]
+  },
+  {
+    "id": "C079",
+    "title": "Download a genuine payment receipt PDF",
+    "difficulty": "medium",
+    "steps": [
+      "Open the $35 payment in history",
+      "Inspect receipt preview",
+      "Download PDF"
+    ],
+    "expected": "Receipt identifies Casey and $35; downloaded file has a PDF signature.",
+    "depends": [
+      "C078"
+    ]
+  },
+  {
+    "id": "C080",
+    "title": "Download a complete paid statement PDF",
+    "difficulty": "medium",
+    "steps": [
+      "Return to invoice",
+      "Open View statement",
+      "Download PDF"
+    ],
+    "expected": "Statement preview contains the invoice number and a genuine PDF is downloaded.",
+    "depends": [
+      "C078"
+    ]
+  },
+  {
+    "id": "C081",
+    "title": "Unpublished clinical document stays out of patient list",
+    "difficulty": "hard",
+    "steps": [
+      "Sign in as physician",
+      "Create private clinical letter for Casey",
+      "Check patient Documents"
+    ],
+    "expected": "Staff sees an unpublished document; patient cannot find it.",
+    "depends": [
+      "C071"
+    ]
+  },
+  {
+    "id": "C082",
+    "title": "Published document becomes readable and downloadable",
+    "difficulty": "hard",
+    "steps": [
+      "Publish the clinical letter and confirm",
+      "Refresh patient Documents",
+      "Open letter and download PDF"
+    ],
+    "expected": "Patient sees correct content and a valid PDF.",
+    "depends": [
+      "C081"
+    ]
+  },
+  {
+    "id": "C083",
+    "title": "Draft lab result is visible only to staff",
+    "difficulty": "hard",
+    "steps": [
+      "Create Final lab value 100 with range 80–120",
+      "Do not publish",
+      "Check patient Test Results"
+    ],
+    "expected": "Staff displays private result; patient list does not expose it.",
+    "depends": [
+      "C071"
+    ]
+  },
+  {
+    "id": "C084",
+    "title": "Publish lab and verify patient values and reference range",
+    "difficulty": "hard",
+    "steps": [
+      "Publish the private lab",
+      "Reload patient Test Results",
+      "Open new result"
+    ],
+    "expected": "Patient sees 100 demo-unit, reference 80–120, In range.",
+    "depends": [
+      "C083"
+    ]
+  },
+  {
+    "id": "C085",
+    "title": "Withdrawing a lab blocks its already-open patient detail",
+    "difficulty": "hard",
+    "steps": [
+      "Unpublish from staff drawer",
+      "Refresh the patient detail URL"
+    ],
+    "expected": "Patient sees readable unavailable message, no result value, and Back to list.",
+    "depends": [
+      "C084"
+    ]
+  },
+  {
+    "id": "C086",
+    "title": "Republishing restores the original report URL",
+    "difficulty": "hard",
+    "steps": [
+      "Republish the same lab",
+      "Refresh original patient detail"
+    ],
+    "expected": "Original result URL works again without creating a second record.",
+    "depends": [
+      "C085"
+    ]
+  },
+  {
+    "id": "C087",
+    "title": "Fresh patient has no unconsented family access",
+    "difficulty": "simple",
+    "steps": [
+      "Open Casey Family Access"
+    ],
+    "expected": "Both incoming access and outgoing sharing show empty states.",
+    "depends": [
+      "C071"
+    ]
+  },
+  {
+    "id": "C088",
+    "title": "Family invitation requires at least one shared section",
+    "difficulty": "medium",
+    "steps": [
+      "Open Link a family member",
+      "Enter caregiver email",
+      "Clear every section",
+      "Send invitation"
+    ],
+    "expected": "Validation says choose at least one section and keeps the form open.",
+    "depends": [
+      "C071",
+      "C072"
+    ]
+  },
+  {
+    "id": "C089",
+    "title": "Results-only invitation stays pending before consent",
+    "difficulty": "hard",
+    "steps": [
+      "Select only Test Results",
+      "Send invitation",
+      "Inspect both accounts"
+    ],
+    "expected": "Pending invitation is shown without granting linked-profile access.",
+    "depends": [
+      "C088"
+    ]
+  },
+  {
+    "id": "C090",
+    "title": "Cancelling consent leaves family access pending",
+    "difficulty": "medium",
+    "steps": [
+      "Choose Accept request",
+      "Choose Keep unchanged"
+    ],
+    "expected": "Invitation remains Pending and no shared profile appears.",
+    "depends": [
+      "C089"
+    ]
+  },
+  {
+    "id": "C091",
+    "title": "Accepting consent activates only selected sections",
+    "difficulty": "hard",
+    "steps": [
+      "Accept and confirm invitation",
+      "Inspect Casey profile card"
+    ],
+    "expected": "Casey becomes linked, with Test Results link but no Billing link in that card.",
+    "depends": [
+      "C090"
+    ]
+  },
+  {
+    "id": "C092",
+    "title": "Family access cannot open an unshared billing section",
+    "difficulty": "hard",
+    "steps": [
+      "Navigate to Billing with Casey family-profile context"
+    ],
+    "expected": "Visible permission denial; invoice details are not exposed.",
+    "depends": [
+      "C091",
+      "C073"
+    ]
+  },
+  {
+    "id": "C093",
+    "title": "Consenting caregiver can open shared patient lab",
+    "difficulty": "hard",
+    "steps": [
+      "Open Casey shared Test Results",
+      "Open the published lab"
+    ],
+    "expected": "Correct family banner and 100 demo-unit result are displayed.",
+    "depends": [
+      "C091",
+      "C086"
+    ]
+  },
+  {
+    "id": "C094",
+    "title": "Revocation removes access from a stale family detail link",
+    "difficulty": "hard",
+    "steps": [
+      "Patient revokes Cameron access",
+      "Caregiver refreshes their existing lab detail"
+    ],
+    "expected": "Caregiver sees unavailable/permission error and cannot read result.",
+    "depends": [
+      "C093"
+    ]
+  },
+  {
+    "id": "C095",
+    "title": "Care-team signup creates a pending application",
+    "difficulty": "medium",
+    "steps": [
+      "Register a Physician with organization and invented identity"
+    ],
+    "expected": "Applicant sees Pending application rather than staff records.",
+    "depends": []
+  },
+  {
+    "id": "C096",
+    "title": "Pending staff cannot bypass review with a direct workspace URL",
+    "difficulty": "hard",
+    "steps": [
+      "Open /staff?area=results while pending"
+    ],
+    "expected": "Pending review remains visible and laboratory records are absent.",
+    "depends": [
+      "C095"
+    ]
+  },
+  {
+    "id": "C097",
+    "title": "Administrator approves only the selected synthetic staff application",
+    "difficulty": "hard",
+    "steps": [
+      "Sign in as admin",
+      "Open Access reviews",
+      "Approve Cory with decision note and confirmation"
+    ],
+    "expected": "Cory application changes to Approved with verification note.",
+    "depends": [
+      "C095"
+    ]
+  },
+  {
+    "id": "C098",
+    "title": "Approved applicant enters physician workspace without a new signup",
+    "difficulty": "hard",
+    "steps": [
+      "Click Check application status as Cory"
+    ],
+    "expected": "Staff workspace and clinical work areas appear.",
+    "depends": [
+      "C097",
+      "C096"
+    ]
+  },
+  {
+    "id": "C099",
+    "title": "Physician role does not gain billing or administrator privileges",
+    "difficulty": "hard",
+    "steps": [
+      "Inspect approved physician work areas",
+      "Try direct billing area and access reviews routes"
+    ],
+    "expected": "No invoice-management or access-review controls become available.",
+    "depends": [
+      "C098"
+    ]
+  },
+  {
+    "id": "C100",
+    "title": "Mobile staff record drawer remains usable and closes with Escape",
+    "difficulty": "hard",
+    "steps": [
+      "Open Casey lab as approved physician at 390px viewport",
+      "Inspect immediate drawer",
+      "Press Escape"
+    ],
+    "expected": "Drawer is on screen, page has no horizontal overflow, Escape closes it.",
+    "depends": [
+      "C098",
+      "C083"
+    ]
+  }
+]

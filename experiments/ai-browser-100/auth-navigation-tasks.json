@@ -1,0 +1,430 @@
+[
+  {
+    "id": "A001",
+    "title": "Signed-out access to a protected record requires sign-in",
+    "difficulty": "simple",
+    "steps": [
+      "Open /results/1 in a fresh browser context."
+    ],
+    "expected": "Sign-in form is visible and patient record content is absent.",
+    "depends": []
+  },
+  {
+    "id": "A002",
+    "title": "Empty sign-in cannot submit",
+    "difficulty": "simple",
+    "steps": [
+      "Open sign-in.",
+      "Click Sign in without credentials."
+    ],
+    "expected": "Username receives native required-field validation.",
+    "depends": []
+  },
+  {
+    "id": "A003",
+    "title": "Incorrect credentials produce readable feedback",
+    "difficulty": "simple",
+    "steps": [
+      "Enter a nonexistent username and wrong password.",
+      "Submit sign-in."
+    ],
+    "expected": "An invalid-credentials alert appears without authenticated navigation.",
+    "depends": []
+  },
+  {
+    "id": "A004",
+    "title": "Password visibility control preserves the entered value",
+    "difficulty": "simple",
+    "steps": [
+      "Enter a sample password.",
+      "Click Show password, then Hide password."
+    ],
+    "expected": "Input switches password → text → password without changing its value.",
+    "depends": []
+  },
+  {
+    "id": "A005",
+    "title": "Registration offers three distinct account routes",
+    "difficulty": "simple",
+    "steps": [
+      "Click Create an account from sign-in."
+    ],
+    "expected": "Patient, Family caregiver, and Care team options are separate navigable choices.",
+    "depends": []
+  },
+  {
+    "id": "A006",
+    "title": "Care-team registration explains approval and limits requested roles",
+    "difficulty": "medium",
+    "steps": [
+      "Choose Care team registration.",
+      "Inspect requested-role options and approval notice."
+    ],
+    "expected": "Role choice includes clinical/office roles but not Administrator; approval requirement is visible.",
+    "depends": []
+  },
+  {
+    "id": "A007",
+    "title": "Registration account choice can be changed before submission",
+    "difficulty": "simple",
+    "steps": [
+      "Open Patient registration.",
+      "Click Change account type.",
+      "Choose Family caregiver."
+    ],
+    "expected": "Family caregiver account form replaces the patient form.",
+    "depends": []
+  },
+  {
+    "id": "A008",
+    "title": "Blank registration identifies required information",
+    "difficulty": "simple",
+    "steps": [
+      "Open Patient registration.",
+      "Submit an empty form."
+    ],
+    "expected": "Username validation blocks account creation.",
+    "depends": []
+  },
+  {
+    "id": "A009",
+    "title": "Malformed registration email is rejected",
+    "difficulty": "simple",
+    "steps": [
+      "Fill registration fields.",
+      "Replace email with not-an-email and submit."
+    ],
+    "expected": "Browser validation identifies invalid email and keeps the user on registration.",
+    "depends": []
+  },
+  {
+    "id": "A010",
+    "title": "Mismatched registration passwords are rejected",
+    "difficulty": "medium",
+    "steps": [
+      "Fill a valid Patient registration with different password confirmation.",
+      "Submit."
+    ],
+    "expected": "A do-not-match error is shown; no account is created.",
+    "depends": []
+  },
+  {
+    "id": "A011",
+    "title": "Weak numeric registration password is rejected",
+    "difficulty": "medium",
+    "steps": [
+      "Fill Patient registration with matching password 12345678.",
+      "Submit."
+    ],
+    "expected": "A password-strength error is visible and registration remains open.",
+    "depends": []
+  },
+  {
+    "id": "A012",
+    "title": "New patient can register and reach their own dashboard",
+    "difficulty": "medium",
+    "steps": [
+      "Fill a valid unique synthetic Patient registration.",
+      "Submit."
+    ],
+    "expected": "Dashboard welcomes Atlas and shows personal account navigation.",
+    "depends": []
+  },
+  {
+    "id": "A013",
+    "title": "Authenticated session survives a page refresh",
+    "difficulty": "medium",
+    "steps": [
+      "Refresh the newly registered patient dashboard."
+    ],
+    "expected": "Atlas remains signed in and is not returned to sign-in.",
+    "depends": [
+      "A012"
+    ]
+  },
+  {
+    "id": "A014",
+    "title": "Duplicate username cannot register a second account",
+    "difficulty": "medium",
+    "steps": [
+      "Use a separate signed-out browser context.",
+      "Submit registration with the existing synthetic username."
+    ],
+    "expected": "An already-in-use error prevents duplicate creation.",
+    "depends": [
+      "A012"
+    ]
+  },
+  {
+    "id": "A015",
+    "title": "Patient contact information can be updated",
+    "difficulty": "medium",
+    "steps": [
+      "Sign in as the synthetic patient.",
+      "Open Account Settings.",
+      "Set phone and address; save profile."
+    ],
+    "expected": "Save confirmation is visible and entered values remain displayed.",
+    "depends": [
+      "A012"
+    ]
+  },
+  {
+    "id": "A016",
+    "title": "Saved profile persists across a new sign-in session",
+    "difficulty": "medium",
+    "steps": [
+      "Open a new browser context.",
+      "Sign in to the synthetic account and open Account Settings."
+    ],
+    "expected": "Previously saved phone and address are prefilled.",
+    "depends": [
+      "A015"
+    ]
+  },
+  {
+    "id": "A017",
+    "title": "Muting one notification category persists without muting others",
+    "difficulty": "medium",
+    "steps": [
+      "Mute Test result in synthetic account settings.",
+      "Refresh settings."
+    ],
+    "expected": "Test result shows Unmute while Message still shows Mute.",
+    "depends": [
+      "A012"
+    ]
+  },
+  {
+    "id": "A018",
+    "title": "A muted category can be re-enabled and stays enabled",
+    "difficulty": "medium",
+    "steps": [
+      "Click Unmute for Test result.",
+      "Refresh settings."
+    ],
+    "expected": "Test result returns to the Mute action after reload.",
+    "depends": [
+      "A017"
+    ]
+  },
+  {
+    "id": "A019",
+    "title": "Password change requires matching confirmation",
+    "difficulty": "medium",
+    "steps": [
+      "Open synthetic account settings.",
+      "Enter current password and different new-password confirmations.",
+      "Submit."
+    ],
+    "expected": "A mismatch alert appears without changing the password.",
+    "depends": [
+      "A012"
+    ]
+  },
+  {
+    "id": "A020",
+    "title": "Password change rejects incorrect current password",
+    "difficulty": "medium",
+    "steps": [
+      "Enter a wrong current password and valid matching new passwords.",
+      "Submit."
+    ],
+    "expected": "Current-password-incorrect alert appears.",
+    "depends": [
+      "A012"
+    ]
+  },
+  {
+    "id": "A021",
+    "title": "Valid password change clears sensitive fields and confirms success",
+    "difficulty": "hard",
+    "steps": [
+      "Enter the correct current password and matching new passwords on the synthetic account.",
+      "Submit."
+    ],
+    "expected": "Password-changed confirmation appears and all three password fields are empty.",
+    "depends": [
+      "A012"
+    ]
+  },
+  {
+    "id": "A022",
+    "title": "Old password no longer grants access after a change",
+    "difficulty": "hard",
+    "steps": [
+      "Start a fresh browser session.",
+      "Attempt sign-in with the old password."
+    ],
+    "expected": "Invalid-credentials alert prevents dashboard access.",
+    "depends": [
+      "A021"
+    ]
+  },
+  {
+    "id": "A023",
+    "title": "New password signs the patient in successfully",
+    "difficulty": "hard",
+    "steps": [
+      "Sign in in a fresh session using the new password."
+    ],
+    "expected": "Atlas dashboard appears.",
+    "depends": [
+      "A021"
+    ]
+  },
+  {
+    "id": "A024",
+    "title": "Sign-out removes identity and protects browser-back access",
+    "difficulty": "hard",
+    "steps": [
+      "Sign in, then open Account Settings to create protected-page browser history.",
+      "Sign out, use browser Back and reload."
+    ],
+    "expected": "Sign-in remains required and Atlas identity is absent.",
+    "depends": [
+      "A023"
+    ]
+  },
+  {
+    "id": "A025",
+    "title": "Mobile sign-in fits a narrow viewport",
+    "difficulty": "simple",
+    "steps": [
+      "Open sign-in at 390 by 844 pixels."
+    ],
+    "expected": "Credentials and submit are visible without horizontal page overflow.",
+    "depends": []
+  },
+  {
+    "id": "A026",
+    "title": "Mobile navigation opens, navigates, and closes correctly",
+    "difficulty": "medium",
+    "steps": [
+      "Sign in at mobile size.",
+      "Open menu and select Account Settings.",
+      "Open menu again and press Escape."
+    ],
+    "expected": "Settings opens; navigation closes on route selection and Escape; no horizontal overflow.",
+    "depends": [
+      "A023"
+    ]
+  },
+  {
+    "id": "A027",
+    "title": "Sign-in can be completed with keyboard navigation",
+    "difficulty": "medium",
+    "steps": [
+      "Focus Username and type username.",
+      "Press Tab to Password and type password.",
+      "Press Enter."
+    ],
+    "expected": "Keyboard-only form submission opens Atlas dashboard.",
+    "depends": [
+      "A023"
+    ]
+  },
+  {
+    "id": "A028",
+    "title": "Registration provides a usable route back to sign-in",
+    "difficulty": "simple",
+    "steps": [
+      "Open patient registration.",
+      "Click Back to sign in."
+    ],
+    "expected": "Sign-in page opens with its credentials form.",
+    "depends": []
+  },
+  {
+    "id": "A029",
+    "title": "Forgot-password form validates a missing email",
+    "difficulty": "simple",
+    "steps": [
+      "Open Forgot password from sign-in.",
+      "Submit without email."
+    ],
+    "expected": "Required email validation prevents submission.",
+    "depends": []
+  },
+  {
+    "id": "A030",
+    "title": "Public forgotten-password recovery can deliver a reset request",
+    "difficulty": "hard",
+    "steps": [
+      "Open Forgot password.",
+      "Enter the synthetic registered email.",
+      "Click Send reset link."
+    ],
+    "expected": "A recovery request is accepted and Check your email is shown. Known deployment limitation: external recovery delivery is not configured.",
+    "depends": [
+      "A012"
+    ]
+  },
+  {
+    "id": "A031",
+    "title": "Incomplete reset URL offers recovery without exposing a form",
+    "difficulty": "medium",
+    "steps": [
+      "Open /reset-password without a token.",
+      "Follow Request a new reset link."
+    ],
+    "expected": "Readable incomplete-link notice appears, then Forgot password opens.",
+    "depends": []
+  },
+  {
+    "id": "A032",
+    "title": "Unavailable record gives understandable feedback and a way back",
+    "difficulty": "medium",
+    "steps": [
+      "Sign in as the synthetic patient.",
+      "Open a nonexistent test-result detail.",
+      "Click Back to list."
+    ],
+    "expected": "Readable unavailable alert appears with no raw model error, and Test Results list opens.",
+    "depends": [
+      "A023"
+    ]
+  },
+  {
+    "id": "A033",
+    "title": "Unknown portal route offers a working home link",
+    "difficulty": "medium",
+    "steps": [
+      "Sign in.",
+      "Open /not-a-careconnect-page.",
+      "Use Home."
+    ],
+    "expected": "Page unavailable appears, and Home returns to the correct dashboard.",
+    "depends": [
+      "A023"
+    ]
+  },
+  {
+    "id": "A034",
+    "title": "New patient sees a clear empty notification state",
+    "difficulty": "simple",
+    "steps": [
+      "Sign in to the synthetic account.",
+      "Click Notifications."
+    ],
+    "expected": "Notification heading and empty-record message appear without an error.",
+    "depends": [
+      "A023"
+    ]
+  },
+  {
+    "id": "A035",
+    "title": "Switching administrator to patient removes privileged workspace state",
+    "difficulty": "hard",
+    "steps": [
+      "Sign in as demo admin.",
+      "Open Laboratory results and sign out.",
+      "Sign in as the synthetic patient without refreshing.",
+      "Try /staff."
+    ],
+    "expected": "Patient dashboard replaces staff shell; staff controls and administrator identity are absent; /staff cannot expose management UI.",
+    "depends": [
+      "A023"
+    ]
+  }
+]

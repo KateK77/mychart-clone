@@ -1,0 +1,321 @@
+{
+  "group": "auth-navigation",
+  "base": "https://careconnect-demo-rc0t.onrender.com",
+  "runKey": "20261115",
+  "started": "2026-11-16T04:12:09.712Z",
+  "updated": "2026-11-16T04:13:20.721Z",
+  "method": "AI-authored Playwright UI browser automation; no direct API assertions",
+  "results": [
+    {
+      "id": "A001",
+      "title": "Signed-out access to a protected record requires sign-in",
+      "difficulty": "simple",
+      "status": "passed",
+      "durationMs": 987,
+      "url": "https://careconnect-demo-rc0t.onrender.com/results/1",
+      "screenshot": "A001.png"
+    },
+    {
+      "id": "A002",
+      "title": "Empty sign-in cannot submit",
+      "difficulty": "simple",
+      "status": "passed",
+      "durationMs": 971,
+      "url": "https://careconnect-demo-rc0t.onrender.com/login",
+      "screenshot": "A002.png"
+    },
+    {
+      "id": "A003",
+      "title": "Incorrect credentials produce readable feedback",
+      "difficulty": "simple",
+      "status": "passed",
+      "durationMs": 3203,
+      "url": "https://careconnect-demo-rc0t.onrender.com/login",
+      "screenshot": "A003.png"
+    },
+    {
+      "id": "A004",
+      "title": "Password visibility control preserves the entered value",
+      "difficulty": "simple",
+      "status": "passed",
+      "durationMs": 1012,
+      "url": "https://careconnect-demo-rc0t.onrender.com/login",
+      "screenshot": "A004.png"
+    },
+    {
+      "id": "A005",
+      "title": "Registration offers three distinct account routes",
+      "difficulty": "simple",
+      "status": "passed",
+      "durationMs": 815,
+      "url": "https://careconnect-demo-rc0t.onrender.com/register",
+      "screenshot": "A005.png"
+    },
+    {
+      "id": "A006",
+      "title": "Care-team registration explains approval and limits requested roles",
+      "difficulty": "medium",
+      "status": "passed",
+      "durationMs": 942,
+      "url": "https://careconnect-demo-rc0t.onrender.com/register?role=careteam",
+      "screenshot": "A006.png"
+    },
+    {
+      "id": "A007",
+      "title": "Registration account choice can be changed before submission",
+      "difficulty": "simple",
+      "status": "passed",
+      "durationMs": 910,
+      "url": "https://careconnect-demo-rc0t.onrender.com/register?role=caregiver",
+      "screenshot": "A007.png"
+    },
+    {
+      "id": "A008",
+      "title": "Blank registration identifies required information",
+      "difficulty": "simple",
+      "status": "passed",
+      "durationMs": 856,
+      "url": "https://careconnect-demo-rc0t.onrender.com/register?role=patient",
+      "screenshot": "A008.png"
+    },
+    {
+      "id": "A009",
+      "title": "Malformed registration email is rejected",
+      "difficulty": "simple",
+      "status": "passed",
+      "durationMs": 1016,
+      "url": "https://careconnect-demo-rc0t.onrender.com/register?role=patient",
+      "screenshot": "A009.png"
+    },
+    {
+      "id": "A010",
+      "title": "Mismatched registration passwords are rejected",
+      "difficulty": "medium",
+      "status": "passed",
+      "durationMs": 961,
+      "url": "https://careconnect-demo-rc0t.onrender.com/register?role=patient",
+      "screenshot": "A010.png"
+    },
+    {
+      "id": "A011",
+      "title": "Weak numeric registration password is rejected",
+      "difficulty": "medium",
+      "status": "passed",
+      "durationMs": 1204,
+      "url": "https://careconnect-demo-rc0t.onrender.com/register?role=patient",
+      "screenshot": "A011.png"
+    },
+    {
+      "id": "A012",
+      "title": "New patient can register and reach their own dashboard",
+      "difficulty": "medium",
+      "status": "passed",
+      "durationMs": 5971,
+      "url": "https://careconnect-demo-rc0t.onrender.com/",
+      "screenshot": "A012.png"
+    },
+    {
+      "id": "A013",
+      "title": "Authenticated session survives a page refresh",
+      "difficulty": "medium",
+      "status": "passed",
+      "durationMs": 1094,
+      "url": "https://careconnect-demo-rc0t.onrender.com/",
+      "screenshot": "A013.png"
+    },
+    {
+      "id": "A014",
+      "title": "Duplicate username cannot register a second account",
+      "difficulty": "medium",
+      "status": "passed",
+      "durationMs": 1199,
+      "url": "https://careconnect-demo-rc0t.onrender.com/register?role=patient",
+      "screenshot": "A014.png"
+    },
+    {
+      "id": "A015",
+      "title": "Patient contact information can be updated",
+      "difficulty": "medium",
+      "status": "passed",
+      "durationMs": 6685,
+      "url": "https://careconnect-demo-rc0t.onrender.com/settings",
+      "screenshot": "A015.png"
+    },
+    {
+      "id": "A016",
+      "title": "Saved profile persists across a new sign-in session",
+      "difficulty": "medium",
+      "status": "passed",
+      "durationMs": 5864,
+      "url": "https://careconnect-demo-rc0t.onrender.com/settings",
+      "screenshot": "A016.png"
+    },
+    {
+      "id": "A017",
+      "title": "Muting one notification category persists without muting others",
+      "difficulty": "medium",
+      "status": "failed",
+      "durationMs": 5947,
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('main')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" locator('main') with timeout 5000ms\n  - waiting for locator('main')\n\n    at captureRawStack (C:\\Users\\jiawe\\Documents\\Codex\\2026-11-13\\mychart-https-www-mychart-org-utm\\outputs\\CareConnect-v3\\frontend\\node_modules\\playwright-core\\lib\\coreBundle.js:9551:17)\n    at callMatcherAsStep (C:\\Users\\jiawe\\Documents\\Codex\\2026-11-13\\mychart-https-www-mychart-org-utm\\outputs\\CareConnect-v3\\frontend\\node_modules\\playwright\\lib\\matchers\\expect.js:13342:57)\n    at Object.toBeVisible (C:\\Users\\jiawe\\Documents\\Codex\\2026-11-13\\mychart-https-www-mychart-org-utm\\outputs\\CareConnect-v3\\frontend\\node_modules\\playwright\\lib\\matchers\\expect.js:13334:23)\n    at login (C:\\Users\\jiawe\\Documents\\Codex\\2026-11-13\\mychart-https-www-mychart-org-utm\\outputs\\CareConnect-v3\\frontend\\ai-tests\\harness.cjs:18:104)\n    at async settings (C:\\Users\\jiawe\\Documents\\Codex\\2026-11-13\\mychart-https-www-mychart-org-utm\\outputs\\CareConnect-v3\\frontend\\ai-tests\\auth-navigation.cjs:11:55)\n    at async Object.run (C:\\Users\\jiawe\\Documents\\Codex\\2026-11-13\\mychart-https-www-mychart-org-utm\\outputs\\CareConnect-v3\\frontend\\ai-tests\\auth-navigation.cjs:29:225)\n    at async runSuite (C:\\Users\\jiawe\\Documents\\Codex\\2026-11-13\\mychart-https-www-mychart-org-utm\\outputs\\CareConnect-v3\\frontend\\ai-tests\\harness.cjs:44:8)\n    at async C:\\Users\\jiawe\\Documents\\Codex\\2026-11-13\\mychart-https-www-mychart-org-utm\\outputs\\CareConnect-v3\\frontend\\ai-tests\\auth-navigation.cjs:48:32",
+      "url": "https://careconnect-demo-rc0t.onrender.com/login",
+      "screenshot": "A017.png",
+      "pageText": "A017.txt"
+    },
+    {
+      "id": "A018",
+      "title": "A muted category can be re-enabled and stays enabled",
+      "difficulty": "medium",
+      "status": "blocked",
+      "durationMs": 0,
+      "error": "Prerequisite did not pass: A017"
+    },
+    {
+      "id": "A019",
+      "title": "Password change requires matching confirmation",
+      "difficulty": "medium",
+      "status": "passed",
+      "durationMs": 4116,
+      "url": "https://careconnect-demo-rc0t.onrender.com/settings",
+      "screenshot": "A019.png"
+    },
+    {
+      "id": "A020",
+      "title": "Password change rejects incorrect current password",
+      "difficulty": "medium",
+      "status": "passed",
+      "durationMs": 9825,
+      "url": "https://careconnect-demo-rc0t.onrender.com/settings",
+      "screenshot": "A020.png"
+    },
+    {
+      "id": "A021",
+      "title": "Valid password change clears sensitive fields and confirms success",
+      "difficulty": "hard",
+      "status": "failed",
+      "durationMs": 6562,
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('main')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" locator('main') with timeout 5000ms\n  - waiting for locator('main')\n\n    at captureRawStack (C:\\Users\\jiawe\\Documents\\Codex\\2026-11-13\\mychart-https-www-mychart-org-utm\\outputs\\CareConnect-v3\\frontend\\node_modules\\playwright-core\\lib\\coreBundle.js:9551:17)\n    at callMatcherAsStep (C:\\Users\\jiawe\\Documents\\Codex\\2026-11-13\\mychart-https-www-mychart-org-utm\\outputs\\CareConnect-v3\\frontend\\node_modules\\playwright\\lib\\matchers\\expect.js:13342:57)\n    at Object.toBeVisible (C:\\Users\\jiawe\\Documents\\Codex\\2026-11-13\\mychart-https-www-mychart-org-utm\\outputs\\CareConnect-v3\\frontend\\node_modules\\playwright\\lib\\matchers\\expect.js:13334:23)\n    at login (C:\\Users\\jiawe\\Documents\\Codex\\2026-11-13\\mychart-https-www-mychart-org-utm\\outputs\\CareConnect-v3\\frontend\\ai-tests\\harness.cjs:18:104)\n    at async settings (C:\\Users\\jiawe\\Documents\\Codex\\2026-11-13\\mychart-https-www-mychart-org-utm\\outputs\\CareConnect-v3\\frontend\\ai-tests\\auth-navigation.cjs:11:55)\n    at async Object.run (C:\\Users\\jiawe\\Documents\\Codex\\2026-11-13\\mychart-https-www-mychart-org-utm\\outputs\\CareConnect-v3\\frontend\\ai-tests\\auth-navigation.cjs:33:278)\n    at async runSuite (C:\\Users\\jiawe\\Documents\\Codex\\2026-11-13\\mychart-https-www-mychart-org-utm\\outputs\\CareConnect-v3\\frontend\\ai-tests\\harness.cjs:44:8)\n    at async C:\\Users\\jiawe\\Documents\\Codex\\2026-11-13\\mychart-https-www-mychart-org-utm\\outputs\\CareConnect-v3\\frontend\\ai-tests\\auth-navigation.cjs:48:32",
+      "url": "https://careconnect-demo-rc0t.onrender.com/login",
+      "screenshot": "A021.png",
+      "pageText": "A021.txt"
+    },
+    {
+      "id": "A022",
+      "title": "Old password no longer grants access after a change",
+      "difficulty": "hard",
+      "status": "blocked",
+      "durationMs": 0,
+      "error": "Prerequisite did not pass: A021"
+    },
+    {
+      "id": "A023",
+      "title": "New password signs the patient in successfully",
+      "difficulty": "hard",
+      "status": "blocked",
+      "durationMs": 0,
+      "error": "Prerequisite did not pass: A021"
+    },
+    {
+      "id": "A024",
+      "title": "Sign-out removes identity and protects browser-back access",
+      "difficulty": "hard",
+      "status": "blocked",
+      "durationMs": 0,
+      "error": "Prerequisite did not pass: A023"
+    },
+    {
+      "id": "A025",
+      "title": "Mobile sign-in fits a narrow viewport",
+      "difficulty": "simple",
+      "status": "passed",
+      "durationMs": 1089,
+      "url": "https://careconnect-demo-rc0t.onrender.com/login",
+      "screenshot": "A025.png"
+    },
+    {
+      "id": "A026",
+      "title": "Mobile navigation opens, navigates, and closes correctly",
+      "difficulty": "medium",
+      "status": "blocked",
+      "durationMs": 0,
+      "error": "Prerequisite did not pass: A023"
+    },
+    {
+      "id": "A027",
+      "title": "Sign-in can be completed with keyboard navigation",
+      "difficulty": "medium",
+      "status": "blocked",
+      "durationMs": 0,
+      "error": "Prerequisite did not pass: A023"
+    },
+    {
+      "id": "A028",
+      "title": "Registration provides a usable route back to sign-in",
+      "difficulty": "simple",
+      "status": "passed",
+      "durationMs": 979,
+      "url": "https://careconnect-demo-rc0t.onrender.com/login",
+      "screenshot": "A028.png"
+    },
+    {
+      "id": "A029",
+      "title": "Forgot-password form validates a missing email",
+      "difficulty": "simple",
+      "status": "passed",
+      "durationMs": 1271,
+      "url": "https://careconnect-demo-rc0t.onrender.com/forgot-password",
+      "screenshot": "A029.png"
+    },
+    {
+      "id": "A030",
+      "title": "Public forgotten-password recovery can deliver a reset request",
+      "difficulty": "hard",
+      "status": "failed",
+      "durationMs": 6626,
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('heading', { name: 'Check your email', exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" getByRole('heading', { name: 'Check your email', exact: true }) with timeout 5000ms\n  - waiting for getByRole('heading', { name: 'Check your email', exact: true })\n\n    at captureRawStack (C:\\Users\\jiawe\\Documents\\Codex\\2026-11-13\\mychart-https-www-mychart-org-utm\\outputs\\CareConnect-v3\\frontend\\node_modules\\playwright-core\\lib\\coreBundle.js:9551:17)\n    at callMatcherAsStep (C:\\Users\\jiawe\\Documents\\Codex\\2026-11-13\\mychart-https-www-mychart-org-utm\\outputs\\CareConnect-v3\\frontend\\node_modules\\playwright\\lib\\matchers\\expect.js:13342:57)\n    at Object.toBeVisible (C:\\Users\\jiawe\\Documents\\Codex\\2026-11-13\\mychart-https-www-mychart-org-utm\\outputs\\CareConnect-v3\\frontend\\node_modules\\playwright\\lib\\matchers\\expect.js:13334:23)\n    at Object.run (C:\\Users\\jiawe\\Documents\\Codex\\2026-11-13\\mychart-https-www-mychart-org-utm\\outputs\\CareConnect-v3\\frontend\\ai-tests\\auth-navigation.cjs:42:567)\n    at async runSuite (C:\\Users\\jiawe\\Documents\\Codex\\2026-11-13\\mychart-https-www-mychart-org-utm\\outputs\\CareConnect-v3\\frontend\\ai-tests\\harness.cjs:44:8)\n    at async C:\\Users\\jiawe\\Documents\\Codex\\2026-11-13\\mychart-https-www-mychart-org-utm\\outputs\\CareConnect-v3\\frontend\\ai-tests\\auth-navigation.cjs:48:32",
+      "url": "https://careconnect-demo-rc0t.onrender.com/forgot-password",
+      "screenshot": "A030.png",
+      "pageText": "A030.txt"
+    },
+    {
+      "id": "A031",
+      "title": "Incomplete reset URL offers recovery without exposing a form",
+      "difficulty": "medium",
+      "status": "passed",
+      "durationMs": 662,
+      "url": "https://careconnect-demo-rc0t.onrender.com/forgot-password",
+      "screenshot": "A031.png"
+    },
+    {
+      "id": "A032",
+      "title": "Unavailable record gives understandable feedback and a way back",
+      "difficulty": "medium",
+      "status": "blocked",
+      "durationMs": 0,
+      "error": "Prerequisite did not pass: A023"
+    },
+    {
+      "id": "A033",
+      "title": "Unknown portal route offers a working home link",
+      "difficulty": "medium",
+      "status": "blocked",
+      "durationMs": 0,
+      "error": "Prerequisite did not pass: A023"
+    },
+    {
+      "id": "A034",
+      "title": "New patient sees a clear empty notification state",
+      "difficulty": "simple",
+      "status": "blocked",
+      "durationMs": 0,
+      "error": "Prerequisite did not pass: A023"
+    },
+    {
+      "id": "A035",
+      "title": "Switching administrator to patient removes privileged workspace state",
+      "difficulty": "hard",
+      "status": "blocked",
+      "durationMs": 0,
+      "error": "Prerequisite did not pass: A023"
+    }
+  ]
+}

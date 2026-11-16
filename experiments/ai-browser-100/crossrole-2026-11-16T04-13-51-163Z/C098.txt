@@ -1,0 +1,95 @@
+CareConnect
+YOUR HEALTH, CONNECTED
+Care team workspace
+3.0
+WORKSPACE
+Staff workspace
+Messages
+Account Settings
+CT
+Cory Test
+Physician
+Sign out
+Care team
+Workspace
+Secure session
+CT
+DEMO — SYNTHETIC DATA ONLY — NOT FOR CLINICAL USE.
+Staff workspace
+
+A clear view of your patients. A simpler way to manage their care.
+
+Physician
+Patient context
+All patients
+River Demo (public-smoke-20261115)
+JIAWEN DENG (jiawen)
+Atlas Test (ai-a-20261115-r2)
+Atlas Test (ai-a-20261115)
+Blair Test (ai-b-20261115-1794802354156)
+Casey Test (ai-c-20261115b)
+Cameron Test (ai-cg-20261115b)
+Casey Test (ai-c-20261115)
+Cameron Test (ai-cg-20261115)
+Avery Vale (dependent)
+Taylor Vale (caregiver)
+Jordan Vale (patient)
+Enze Ye (enze)
+Your care workspace
+Select a patient to focus the record list.
+All work areas
+Work area
+Appointments
+Provider availability
+Providers
+Departments
+Laboratory results
+Medications
+Refill requests
+Clinical history
+Patient correction requests
+Encounters
+Diagnoses
+Clinical notes
+Documents
+ALL PATIENTS
+Laboratory results
+
+Create, review and publish lab results.
+
+Create record
+8 records
+AI Published Lab 20261115b
+Casey Test · Dr. Maya Rowan · Nov 15, 2026
+Final
+Published
+Hemoglobin
+Avery Vale · Dr. Maya Rowan · Nov 16, 2026
+Final
+Published
+Total cholesterol
+Jordan Vale · Dr. Maya Rowan · Nov 4, 2026
+Final
+Published
+Total cholesterol
+Jordan Vale · Dr. Maya Rowan · Aug 6, 2026
+Final
+Published
+Total cholesterol
+Jordan Vale · Dr. Maya Rowan · May 8, 2026
+Final
+Published
+Hemoglobin A1c
+Jordan Vale · Dr. Maya Rowan · Nov 4, 2026
+Final
+Published
+Hemoglobin A1c
+Jordan Vale · Dr. Maya Rowan · Aug 6, 2026
+Final
+Published
+Hemoglobin A1c
+Jordan Vale · Dr. Maya Rowan · May 8, 2026
+Final
+Published
+CareConnect 3.0
+Independent demonstration · Synthetic records only

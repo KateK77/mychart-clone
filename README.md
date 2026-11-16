@@ -74,6 +74,14 @@ Sample exports: [lab report](docs/pdf-samples/lab.pdf) · [visit summary](docs/p
 
 Mobile layouts and more views are available in the [screenshot gallery](docs/screenshots-v3).
 
+## Browser evaluation
+
+An AI-assisted evaluation ran **100 browser tasks** against the public website: 23 simple, 47 medium, and 30 hard. The corrected functional-test result was **99 passed / 100 (99%)**; public password recovery remains unavailable because email delivery is not configured. First scripted attempts scored **69/100**, including test-harness errors and blocked prerequisites. All original attempts and test-only corrections are disclosed; the website implementation was not changed during testing.
+
+[100 task definitions](experiments/ai-browser-100/TASKS.md) · [Results and screenshots](experiments/ai-browser-100/REPORT.md) · [CSV](experiments/ai-browser-100/tests-and-results.csv) · [Runnable browser suites](frontend/ai-tests) · [Methodology and limitations](experiments/ai-browser-100/AGENT-NOTES.md)
+
+The agents used Playwright browser automation with visible controls and DOM assertions, not a screenshot-only desktop computer-use tool. Results apply to the specified tasks and do not imply complete security or production readiness.
+
 ## Architecture
 
 Version 3 adds account-type registration and administrator-reviewed care-team applications, consent-based family linking, explicit message restoration, and website previews with real PDF downloads. It retains the version-2 interface around manual-test feedback: searchable staff work areas, immediate record drawers, clear patient context, reliable sign-out, readable errors, password confirmation and recovery. All interface copy and seeded records are in English.

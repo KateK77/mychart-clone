@@ -1,0 +1,101 @@
+CareConnect
+YOUR HEALTH, CONNECTED
+Patient portal
+3.0
+OVERVIEW
+Dashboard
+Appointments
+Messages
+MY HEALTH
+Test Results
+Medications
+Health Summary
+Visits
+Documents
+MY ACCOUNT
+Billing
+Family Access
+Account Settings
+BT
+Blair Test
+Personal account
+Sign out
+My portal
+Appointments
+Secure session
+BT
+DEMO — SYNTHETIC DATA ONLY — NOT FOR CLINICAL USE.
+Appointments
+Schedule an appointment
+Provider
+Any
+Dr. Elian Moss
+Dr. Maya Rowan
+Jamie Arden, NP
+Appointment type
+Any
+Primary Care
+Follow-up
+Annual Physical
+Specialist Consultation
+Telehealth
+Laboratory Visit
+Date (UTC)
+Find appointments
+Available appointments
+Primary Care
+Dr. Maya Rowan · Nov 19, 2026, 3:30 PM UTC
+Book
+Follow-up
+Dr. Elian Moss · Nov 20, 2026, 3:30 PM UTC
+Book
+Annual Physical
+Jamie Arden, NP · Nov 21, 2026, 3:30 PM UTC
+Book
+Specialist Consultation
+Dr. Maya Rowan · Nov 22, 2026, 3:30 PM UTC
+Book
+Primary Care
+Dr. Maya Rowan · Nov 23, 2026, 3:30 PM UTC
+Book
+Telehealth
+Dr. Elian Moss · Nov 23, 2026, 3:30 PM UTC
+Book
+Laboratory Visit
+Jamie Arden, NP · Nov 24, 2026, 3:30 PM UTC
+Book
+Follow-up
+Dr. Elian Moss · Nov 24, 2026, 3:30 PM UTC
+Book
+Annual Physical
+Jamie Arden, NP · Nov 25, 2026, 3:30 PM UTC
+Book
+Specialist Consultation
+Dr. Maya Rowan · Nov 26, 2026, 3:30 PM UTC
+Book
+Telehealth
+Dr. Elian Moss · Nov 27, 2026, 3:30 PM UTC
+Book
+Laboratory Visit
+Jamie Arden, NP · Nov 28, 2026, 3:30 PM UTC
+Book
+Primary Care
+Dr. Maya Rowan · Nov 28, 2026, 3:30 PM UTC
+Book
+Follow-up
+Dr. Elian Moss · Nov 29, 2026, 3:30 PM UTC
+Book
+Annual Physical
+Jamie Arden, NP · Nov 30, 2026, 3:30 PM UTC
+Book
+Specialist Consultation
+Dr. Maya Rowan · Dec 1, 2026, 3:30 PM UTC
+Book
+Telehealth
+Dr. Elian Moss · Dec 2, 2026, 3:30 PM UTC
+Book
+Laboratory Visit
+Jamie Arden, NP · Dec 3, 2026, 3:30 PM UTC
+Book
+CareConnect 3.0
+Independent demonstration · Synthetic records only

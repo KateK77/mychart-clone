@@ -1,0 +1,57 @@
+CareConnect
+YOUR HEALTH, CONNECTED
+Patient portal
+3.0
+OVERVIEW
+Dashboard
+Appointments
+Messages
+MY HEALTH
+Test Results
+Medications
+Health Summary
+Visits
+Documents
+MY ACCOUNT
+Billing
+Family Access
+Account Settings
+CT
+Casey Test
+Personal account
+Sign out
+My portal
+Test Results
+Secure session
+CT
+DEMO — SYNTHETIC DATA ONLY — NOT FOR CLINICAL USE.
+Test Results
+AI Published Lab 20261115b
+
+Dr. Maya Rowan
+
+View report
+Download PDF
+Result details
+100.000
+demo-unit
+In range
+Status
+Final
+Collected
+Nov 15, 2026
+Resulted
+Nov 15, 2026
+Reference Range
+80.000 to 120.000 demo-unit
+Comments
+Synthetic browser evaluation record.
+Historical measurements
+
+Nov 15, 2026 – Nov 15, 2026
+
+100.000 demo-unit
+Nov 15, 2026
+In range
+CareConnect 3.0
+Independent demonstration · Synthetic records only

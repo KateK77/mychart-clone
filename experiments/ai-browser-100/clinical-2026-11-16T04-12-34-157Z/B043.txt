@@ -1,0 +1,46 @@
+CareConnect
+YOUR HEALTH, CONNECTED
+Patient portal
+3.0
+OVERVIEW
+Dashboard
+Appointments
+Messages
+MY HEALTH
+Test Results
+Medications
+Health Summary
+Visits
+Documents
+MY ACCOUNT
+Billing
+Family Access
+Account Settings
+BT
+Blair Test
+Personal account
+Sign out
+My portal
+Appointments
+Secure session
+BT
+DEMO — SYNTHETIC DATA ONLY — NOT FOR CLINICAL USE.
+Appointments
+Primary Care
+
+Dr. Maya Rowan · Nov 19, 2026, 3:30 PM UTC
+
+Appointment details
+Cancelled
+Department
+Primary Care
+Instructions
+Please arrive 15 minutes before your scheduled visit.
+Cancellation Reason
+Rescheduled by staff
+Reschedule Request
+AI test: please move to another available afternoon.
+Questionnaire
+AI test: discuss synthetic annual care planning.
+CareConnect 3.0
+Independent demonstration · Synthetic records only

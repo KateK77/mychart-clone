@@ -1,0 +1,45 @@
+CareConnect
+YOUR HEALTH, CONNECTED
+CARE THAT STAYS WITH YOU
+One place.
+Your whole
+health picture.
+
+More clarity. Less to keep track of. Connect with your care team and take the next step with confidence.
+
+Appointments that fit your life
+Your results, clearly explained
+A conversation with your care team
+An independent, synthetic-data demonstration.
+CareConnect 3.0
+Patient & staff access
+A little closer to better care
+
+Choose an account type, then enter your details.
+
+Care team account
+Change account type
+Care-team role
+Select your role
+Physician
+Nurse
+Front Desk
+Billing Staff
+Organization
+Application note
+
+An administrator must approve your application before you can access the staff workspace.
+
+Username
+First name
+Last name
+Email
+Password
+Confirm new password
+
+At least 8 characters. Avoid common or entirely numeric passwords.
+
+Please wait…
+Back to sign in
+DEMO — SYNTHETIC DATA ONLY — NOT FOR CLINICAL USE.
+Not affiliated with Epic Systems or MyChart.

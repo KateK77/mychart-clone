@@ -1,0 +1,275 @@
+{
+  "group": "crossrole",
+  "base": "https://careconnect-demo-rc0t.onrender.com",
+  "runKey": "20261115",
+  "started": "2026-11-16T04:12:14.800Z",
+  "updated": "2026-11-16T04:13:11.648Z",
+  "method": "AI-authored Playwright UI browser automation; no direct API assertions",
+  "results": [
+    {
+      "id": "C071",
+      "title": "Register an independent synthetic patient",
+      "difficulty": "simple",
+      "status": "passed",
+      "durationMs": 3641,
+      "url": "https://careconnect-demo-rc0t.onrender.com/",
+      "screenshot": "C071.png"
+    },
+    {
+      "id": "C072",
+      "title": "Register a family caregiver into the correct workspace",
+      "difficulty": "simple",
+      "status": "passed",
+      "durationMs": 3413,
+      "url": "https://careconnect-demo-rc0t.onrender.com/family",
+      "screenshot": "C072.png"
+    },
+    {
+      "id": "C073",
+      "title": "Billing staff creates a patient-specific invoice",
+      "difficulty": "medium",
+      "status": "passed",
+      "durationMs": 8094,
+      "url": "https://careconnect-demo-rc0t.onrender.com/staff?area=billing&person=7&record=2",
+      "screenshot": "C073.png"
+    },
+    {
+      "id": "C074",
+      "title": "Patient sees invoice calculations and unpaid status",
+      "difficulty": "medium",
+      "status": "passed",
+      "durationMs": 1229,
+      "url": "https://careconnect-demo-rc0t.onrender.com/billing/2",
+      "screenshot": "C074.png"
+    },
+    {
+      "id": "C075",
+      "title": "Cancelling a payment confirmation leaves balance unchanged",
+      "difficulty": "medium",
+      "status": "passed",
+      "durationMs": 1208,
+      "url": "https://careconnect-demo-rc0t.onrender.com/billing/2",
+      "screenshot": "C075.png"
+    },
+    {
+      "id": "C076",
+      "title": "Partial simulated payment persists after refresh",
+      "difficulty": "medium",
+      "status": "passed",
+      "durationMs": 2739,
+      "url": "https://careconnect-demo-rc0t.onrender.com/billing/2",
+      "screenshot": "C076.png"
+    },
+    {
+      "id": "C077",
+      "title": "Overpayment is rejected without changing the balance",
+      "difficulty": "hard",
+      "status": "passed",
+      "durationMs": 2608,
+      "url": "https://careconnect-demo-rc0t.onrender.com/billing/2",
+      "screenshot": "C077.png"
+    },
+    {
+      "id": "C078",
+      "title": "Paying the exact remaining balance closes the invoice",
+      "difficulty": "medium",
+      "status": "passed",
+      "durationMs": 1584,
+      "url": "https://careconnect-demo-rc0t.onrender.com/billing/2",
+      "screenshot": "C078.png"
+    },
+    {
+      "id": "C079",
+      "title": "Download a genuine payment receipt PDF",
+      "difficulty": "medium",
+      "status": "passed",
+      "durationMs": 2092,
+      "url": "https://careconnect-demo-rc0t.onrender.com/billing?receipt=2",
+      "screenshot": "C079.png"
+    },
+    {
+      "id": "C080",
+      "title": "Download a complete paid statement PDF",
+      "difficulty": "medium",
+      "status": "passed",
+      "durationMs": 2532,
+      "url": "https://careconnect-demo-rc0t.onrender.com/preview/invoice/2",
+      "screenshot": "C080.png"
+    },
+    {
+      "id": "C081",
+      "title": "Unpublished clinical document stays out of patient list",
+      "difficulty": "hard",
+      "status": "failed",
+      "durationMs": 5496,
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: locator('main')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" locator('main') with timeout 5000ms\n  - waiting for locator('main')\n\n    at captureRawStack (C:\\Users\\jiawe\\Documents\\Codex\\2026-11-13\\mychart-https-www-mychart-org-utm\\outputs\\CareConnect-v3\\frontend\\node_modules\\playwright-core\\lib\\coreBundle.js:9551:17)\n    at callMatcherAsStep (C:\\Users\\jiawe\\Documents\\Codex\\2026-11-13\\mychart-https-www-mychart-org-utm\\outputs\\CareConnect-v3\\frontend\\node_modules\\playwright\\lib\\matchers\\expect.js:13342:57)\n    at Object.toBeVisible (C:\\Users\\jiawe\\Documents\\Codex\\2026-11-13\\mychart-https-www-mychart-org-utm\\outputs\\CareConnect-v3\\frontend\\node_modules\\playwright\\lib\\matchers\\expect.js:13334:23)\n    at login (C:\\Users\\jiawe\\Documents\\Codex\\2026-11-13\\mychart-https-www-mychart-org-utm\\outputs\\CareConnect-v3\\frontend\\ai-tests\\harness.cjs:18:104)\n    at async Object.run (C:\\Users\\jiawe\\Documents\\Codex\\2026-11-13\\mychart-https-www-mychart-org-utm\\outputs\\CareConnect-v3\\frontend\\ai-tests\\crossrole.cjs:24:287)\n    at async runSuite (C:\\Users\\jiawe\\Documents\\Codex\\2026-11-13\\mychart-https-www-mychart-org-utm\\outputs\\CareConnect-v3\\frontend\\ai-tests\\harness.cjs:44:8)\n    at async C:\\Users\\jiawe\\Documents\\Codex\\2026-11-13\\mychart-https-www-mychart-org-utm\\outputs\\CareConnect-v3\\frontend\\ai-tests\\crossrole.cjs:44:32",
+      "url": "https://careconnect-demo-rc0t.onrender.com/login",
+      "screenshot": "C081.png",
+      "pageText": "C081.txt"
+    },
+    {
+      "id": "C082",
+      "title": "Published document becomes readable and downloadable",
+      "difficulty": "hard",
+      "status": "blocked",
+      "durationMs": 0,
+      "error": "Prerequisite did not pass: C081"
+    },
+    {
+      "id": "C083",
+      "title": "Draft lab result is visible only to staff",
+      "difficulty": "hard",
+      "status": "failed",
+      "durationMs": 5216,
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByLabel('Patient context')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" getByLabel('Patient context') with timeout 5000ms\n  - waiting for getByLabel('Patient context')\n\n    at captureRawStack (C:\\Users\\jiawe\\Documents\\Codex\\2026-11-13\\mychart-https-www-mychart-org-utm\\outputs\\CareConnect-v3\\frontend\\node_modules\\playwright-core\\lib\\coreBundle.js:9551:17)\n    at callMatcherAsStep (C:\\Users\\jiawe\\Documents\\Codex\\2026-11-13\\mychart-https-www-mychart-org-utm\\outputs\\CareConnect-v3\\frontend\\node_modules\\playwright\\lib\\matchers\\expect.js:13342:57)\n    at Object.toBeVisible (C:\\Users\\jiawe\\Documents\\Codex\\2026-11-13\\mychart-https-www-mychart-org-utm\\outputs\\CareConnect-v3\\frontend\\node_modules\\playwright\\lib\\matchers\\expect.js:13334:23)\n    at area (C:\\Users\\jiawe\\Documents\\Codex\\2026-11-13\\mychart-https-www-mychart-org-utm\\outputs\\CareConnect-v3\\frontend\\ai-tests\\crossrole.cjs:10:114)\n    at async create (C:\\Users\\jiawe\\Documents\\Codex\\2026-11-13\\mychart-https-www-mychart-org-utm\\outputs\\CareConnect-v3\\frontend\\ai-tests\\crossrole.cjs:11:36)\n    at async Object.run (C:\\Users\\jiawe\\Documents\\Codex\\2026-11-13\\mychart-https-www-mychart-org-utm\\outputs\\CareConnect-v3\\frontend\\ai-tests\\crossrole.cjs:26:241)\n    at async runSuite (C:\\Users\\jiawe\\Documents\\Codex\\2026-11-13\\mychart-https-www-mychart-org-utm\\outputs\\CareConnect-v3\\frontend\\ai-tests\\harness.cjs:44:8)\n    at async C:\\Users\\jiawe\\Documents\\Codex\\2026-11-13\\mychart-https-www-mychart-org-utm\\outputs\\CareConnect-v3\\frontend\\ai-tests\\crossrole.cjs:44:32",
+      "url": "https://careconnect-demo-rc0t.onrender.com/staff?area=results",
+      "screenshot": "C083.png",
+      "pageText": "C083.txt"
+    },
+    {
+      "id": "C084",
+      "title": "Publish lab and verify patient values and reference range",
+      "difficulty": "hard",
+      "status": "blocked",
+      "durationMs": 0,
+      "error": "Prerequisite did not pass: C083"
+    },
+    {
+      "id": "C085",
+      "title": "Withdrawing a lab blocks its already-open patient detail",
+      "difficulty": "hard",
+      "status": "blocked",
+      "durationMs": 0,
+      "error": "Prerequisite did not pass: C084"
+    },
+    {
+      "id": "C086",
+      "title": "Republishing restores the original report URL",
+      "difficulty": "hard",
+      "status": "blocked",
+      "durationMs": 0,
+      "error": "Prerequisite did not pass: C085"
+    },
+    {
+      "id": "C087",
+      "title": "Fresh patient has no unconsented family access",
+      "difficulty": "simple",
+      "status": "passed",
+      "durationMs": 1670,
+      "url": "https://careconnect-demo-rc0t.onrender.com/family",
+      "screenshot": "C087.png"
+    },
+    {
+      "id": "C088",
+      "title": "Family invitation requires at least one shared section",
+      "difficulty": "medium",
+      "status": "passed",
+      "durationMs": 2146,
+      "url": "https://careconnect-demo-rc0t.onrender.com/family",
+      "screenshot": "C088.png"
+    },
+    {
+      "id": "C089",
+      "title": "Results-only invitation stays pending before consent",
+      "difficulty": "hard",
+      "status": "passed",
+      "durationMs": 2109,
+      "url": "https://careconnect-demo-rc0t.onrender.com/family",
+      "screenshot": "C089.png"
+    },
+    {
+      "id": "C090",
+      "title": "Cancelling consent leaves family access pending",
+      "difficulty": "medium",
+      "status": "passed",
+      "durationMs": 216,
+      "url": "https://careconnect-demo-rc0t.onrender.com/family",
+      "screenshot": "C090.png"
+    },
+    {
+      "id": "C091",
+      "title": "Accepting consent activates only selected sections",
+      "difficulty": "hard",
+      "status": "passed",
+      "durationMs": 1665,
+      "url": "https://careconnect-demo-rc0t.onrender.com/family",
+      "screenshot": "C091.png"
+    },
+    {
+      "id": "C092",
+      "title": "Family access cannot open an unshared billing section",
+      "difficulty": "hard",
+      "status": "passed",
+      "durationMs": 1167,
+      "url": "https://careconnect-demo-rc0t.onrender.com/billing?patient=7",
+      "screenshot": "C092.png"
+    },
+    {
+      "id": "C093",
+      "title": "Consenting caregiver can open shared patient lab",
+      "difficulty": "hard",
+      "status": "blocked",
+      "durationMs": 0,
+      "error": "Prerequisite did not pass: C086"
+    },
+    {
+      "id": "C094",
+      "title": "Revocation removes access from a stale family detail link",
+      "difficulty": "hard",
+      "status": "blocked",
+      "durationMs": 0,
+      "error": "Prerequisite did not pass: C093"
+    },
+    {
+      "id": "C095",
+      "title": "Care-team signup creates a pending application",
+      "difficulty": "medium",
+      "status": "failed",
+      "durationMs": 6439,
+      "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('heading', { name: 'Your care-team application', exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" getByRole('heading', { name: 'Your care-team application', exact: true }) with timeout 5000ms\n  - waiting for getByRole('heading', { name: 'Your care-team application', exact: true })\n\n    at captureRawStack (C:\\Users\\jiawe\\Documents\\Codex\\2026-11-13\\mychart-https-www-mychart-org-utm\\outputs\\CareConnect-v3\\frontend\\node_modules\\playwright-core\\lib\\coreBundle.js:9551:17)\n    at callMatcherAsStep (C:\\Users\\jiawe\\Documents\\Codex\\2026-11-13\\mychart-https-www-mychart-org-utm\\outputs\\CareConnect-v3\\frontend\\node_modules\\playwright\\lib\\matchers\\expect.js:13342:57)\n    at Object.toBeVisible (C:\\Users\\jiawe\\Documents\\Codex\\2026-11-13\\mychart-https-www-mychart-org-utm\\outputs\\CareConnect-v3\\frontend\\node_modules\\playwright\\lib\\matchers\\expect.js:13334:23)\n    at Object.run (C:\\Users\\jiawe\\Documents\\Codex\\2026-11-13\\mychart-https-www-mychart-org-utm\\outputs\\CareConnect-v3\\frontend\\ai-tests\\crossrole.cjs:38:907)\n    at async runSuite (C:\\Users\\jiawe\\Documents\\Codex\\2026-11-13\\mychart-https-www-mychart-org-utm\\outputs\\CareConnect-v3\\frontend\\ai-tests\\harness.cjs:44:8)\n    at async C:\\Users\\jiawe\\Documents\\Codex\\2026-11-13\\mychart-https-www-mychart-org-utm\\outputs\\CareConnect-v3\\frontend\\ai-tests\\crossrole.cjs:44:32",
+      "url": "https://careconnect-demo-rc0t.onrender.com/register?role=careteam",
+      "screenshot": "C095.png",
+      "pageText": "C095.txt"
+    },
+    {
+      "id": "C096",
+      "title": "Pending staff cannot bypass review with a direct workspace URL",
+      "difficulty": "hard",
+      "status": "blocked",
+      "durationMs": 0,
+      "error": "Prerequisite did not pass: C095"
+    },
+    {
+      "id": "C097",
+      "title": "Administrator approves only the selected synthetic staff application",
+      "difficulty": "hard",
+      "status": "blocked",
+      "durationMs": 0,
+      "error": "Prerequisite did not pass: C095"
+    },
+    {
+      "id": "C098",
+      "title": "Approved applicant enters physician workspace without a new signup",
+      "difficulty": "hard",
+      "status": "blocked",
+      "durationMs": 0,
+      "error": "Prerequisite did not pass: C097, C096"
+    },
+    {
+      "id": "C099",
+      "title": "Physician role does not gain billing or administrator privileges",
+      "difficulty": "hard",
+      "status": "blocked",
+      "durationMs": 0,
+      "error": "Prerequisite did not pass: C098"
+    },
+    {
+      "id": "C100",
+      "title": "Mobile staff record drawer remains usable and closes with Escape",
+      "difficulty": "hard",
+      "status": "blocked",
+      "durationMs": 0,
+      "error": "Prerequisite did not pass: C098, C083"
+    }
+  ]
+}

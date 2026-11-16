@@ -1,0 +1,109 @@
+{
+  "group": "crossrole",
+  "base": "https://careconnect-demo-rc0t.onrender.com",
+  "runKey": "20261115b",
+  "started": "2026-11-16T04:18:26.055Z",
+  "updated": "2026-11-16T04:18:51.742Z",
+  "method": "AI-authored Playwright UI browser automation; no direct API assertions",
+  "results": [
+    {
+      "id": "C084",
+      "title": "Publish lab and verify patient values and reference range",
+      "difficulty": "hard",
+      "status": "passed",
+      "durationMs": 2409,
+      "url": "https://careconnect-demo-rc0t.onrender.com/results/8",
+      "screenshot": "C084.png"
+    },
+    {
+      "id": "C085",
+      "title": "Withdrawing a lab blocks its already-open patient detail",
+      "difficulty": "hard",
+      "status": "passed",
+      "durationMs": 2182,
+      "url": "https://careconnect-demo-rc0t.onrender.com/results/8",
+      "screenshot": "C085.png"
+    },
+    {
+      "id": "C086",
+      "title": "Republishing restores the original report URL",
+      "difficulty": "hard",
+      "status": "passed",
+      "durationMs": 3746,
+      "url": "https://careconnect-demo-rc0t.onrender.com/results",
+      "screenshot": "C086.png"
+    },
+    {
+      "id": "C093",
+      "title": "Consenting caregiver can open shared patient lab",
+      "difficulty": "hard",
+      "status": "passed",
+      "durationMs": 1572,
+      "url": "https://careconnect-demo-rc0t.onrender.com/results/8?patient=11",
+      "screenshot": "C093.png"
+    },
+    {
+      "id": "C094",
+      "title": "Revocation removes access from a stale family detail link",
+      "difficulty": "hard",
+      "status": "passed",
+      "durationMs": 2721,
+      "url": "https://careconnect-demo-rc0t.onrender.com/results/8?patient=11",
+      "screenshot": "C094.png"
+    },
+    {
+      "id": "C095",
+      "title": "Care-team signup creates a pending application",
+      "difficulty": "medium",
+      "status": "passed",
+      "durationMs": 3399,
+      "url": "https://careconnect-demo-rc0t.onrender.com/",
+      "screenshot": "C095.png"
+    },
+    {
+      "id": "C096",
+      "title": "Pending staff cannot bypass review with a direct workspace URL",
+      "difficulty": "hard",
+      "status": "passed",
+      "durationMs": 433,
+      "url": "https://careconnect-demo-rc0t.onrender.com/staff?area=results",
+      "screenshot": "C096.png"
+    },
+    {
+      "id": "C097",
+      "title": "Administrator approves only the selected synthetic staff application",
+      "difficulty": "hard",
+      "status": "passed",
+      "durationMs": 4260,
+      "url": "https://careconnect-demo-rc0t.onrender.com/access-reviews",
+      "screenshot": "C097.png"
+    },
+    {
+      "id": "C098",
+      "title": "Approved applicant enters physician workspace without a new signup",
+      "difficulty": "hard",
+      "status": "passed",
+      "durationMs": 223,
+      "url": "https://careconnect-demo-rc0t.onrender.com/staff?area=results",
+      "screenshot": "C098.png"
+    },
+    {
+      "id": "C099",
+      "title": "Physician role does not gain billing or administrator privileges",
+      "difficulty": "hard",
+      "status": "passed",
+      "durationMs": 1602,
+      "url": "https://careconnect-demo-rc0t.onrender.com/",
+      "screenshot": "C099.png"
+    },
+    {
+      "id": "C100",
+      "title": "Mobile staff record drawer remains usable and closes with Escape",
+      "difficulty": "hard",
+      "status": "passed",
+      "durationMs": 2450,
+      "url": "https://careconnect-demo-rc0t.onrender.com/staff?area=results&person=11",
+      "screenshot": "C100.png"
+    }
+  ]
+}

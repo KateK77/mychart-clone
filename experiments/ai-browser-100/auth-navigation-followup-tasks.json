@@ -1,0 +1,12 @@
+[
+  {
+    "id": "A024",
+    "title": "Sign-out removes identity and protects browser-back access",
+    "difficulty": "hard",
+    "steps": [
+      "Sign in, then open Account Settings to create protected-page browser history.",
+      "Sign out, use browser Back and reload."
+    ],
+    "expected": "Sign-in remains required and Atlas identity is absent."
+  }
+]

@@ -1,0 +1,28 @@
+{
+  "group": "clinical-focused",
+  "base": "https://careconnect-demo-rc0t.onrender.com",
+  "runKey": "20261115-r2-focused",
+  "started": "2026-11-16T04:18:55.323Z",
+  "updated": "2026-11-16T04:18:58.150Z",
+  "method": "AI-authored Playwright UI browser automation; no direct API assertions",
+  "results": [
+    {
+      "id": "B054",
+      "title": "Archive a conversation with explicit list feedback",
+      "difficulty": "medium",
+      "status": "passed",
+      "durationMs": 973,
+      "url": "https://careconnect-demo-rc0t.onrender.com/messages?box=archive",
+      "screenshot": "B054.png"
+    },
+    {
+      "id": "B055",
+      "title": "Restore archived conversation with confirmation and inbox redirect",
+      "difficulty": "hard",
+      "status": "passed",
+      "durationMs": 1540,
+      "url": "https://careconnect-demo-rc0t.onrender.com/messages?box=inbox",
+      "screenshot": "B055.png"
+    }
+  ]
+}

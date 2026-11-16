@@ -1,0 +1,41 @@
+CareConnect
+YOUR HEALTH, CONNECTED
+Patient portal
+3.0
+OVERVIEW
+Dashboard
+Appointments
+Messages
+MY HEALTH
+Test Results
+Medications
+Health Summary
+Visits
+Documents
+MY ACCOUNT
+Billing
+Family Access
+Account Settings
+BT
+Blair Test
+Personal account
+Sign out
+My portal
+Messages
+Secure session
+BT
+DEMO — SYNTHETIC DATA ONLY — NOT FOR CLINICAL USE.
+Messages
+
+Secure, non-emergency conversations with your care team.
+
+New message
+
+Conversation archived.
+
+Inbox
+Sent
+Archive
+Loading…
+CareConnect 3.0
+Independent demonstration · Synthetic records only
