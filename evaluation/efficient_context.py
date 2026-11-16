@@ -45,7 +45,13 @@ def screenshot_output(png):
     return {'type':'computer_screenshot','image_url':'data:image/png;base64,'+base64.b64encode(png).decode(),'detail':'original'}
 
 def make_input(test,manifest,completed_actions,observations,shot,last_output=None,last_results=None):
-    content=[{'type':'input_text','text':prompt_text(test,manifest,completed_actions,observations)}]
+    # The latest native turn already carries this exact suffix. Remove only an
+    # exact match from the older text history; retain it once in the native pair.
+    latest_actions=[a for item in (last_output or []) if item['type']=='computer_call' for a in item.get('actions',[])]
+    latest_text=[c['text'] for item in (last_output or []) if item['type']=='message' for c in item.get('content',[]) if c.get('type')=='output_text']
+    def older(history,suffix):
+        return history[:-len(suffix)] if suffix and history[-len(suffix):]==suffix else history
+    content=[{'type':'input_text','text':prompt_text(test,manifest,older(completed_actions,latest_actions),older(observations,latest_text))}]
     if not last_output:
         content.append({'type':'input_image','image_url':screenshot_output(shot)['image_url'],'detail':'original'})
         return [{'role':'user','content':content}]
@@ -80,11 +86,14 @@ def image_tokens(width,height):
         raise ValueError('Outside no-resize image estimate limits')
     return math.ceil(math.ceil(width/32)*math.ceil(height/32)*1.2)
 
+class TotalBudgetExhausted(RuntimeError):
+    pass
+
 def reserve_request(count,maxout,result,limits,ledger,approved_budget):
     if result['input_tokens']+count>limits['input_tokens']:raise RuntimeError('Input-token budget exhausted')
     if result['output_tokens']+maxout>limits['output_tokens']:raise RuntimeError('Output-token reservation budget exhausted')
     reservation=token_cost(count,maxout)
     if result['estimated_cost_usd']+reservation>limits['budget_usd']:raise RuntimeError('Per-test dollar budget exhausted')
     if ledger['estimated_cost_usd']+ledger['reserved_unknown_usd']+reservation>approved_budget+1e-10:
-        raise RuntimeError('Total approved dollar budget exhausted')
+        raise TotalBudgetExhausted('Total approved dollar budget exhausted')
     return reservation

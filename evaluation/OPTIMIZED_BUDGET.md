@@ -1,6 +1,6 @@
 # GPT-5.4 native CUA — budget review, not execution
 
-**No paid OpenAI request has been made. New explicit approval is required.** The requested target is **$4**, with a **$5 maximum**. Mentioning $15 for feasibility analysis does not authorize spending $15. No approval file has been created.
+**No paid OpenAI request has been made. New explicit approval is required.** The current research target is **$5**, with a **$10 maximum**. These planning ceilings do not authorize any paid run. $15 figures are feasibility analysis only. No approval file has been created.
 
 All 100 frozen tests remain unchanged: Easy 30, Medium 40, Hard 20, Expert 10. The original difficulty, workflow, expected result and every criterion remain authoritative. The application and specification are unchanged. The frozen `config.json` preserves the former plan; the executor now loads the separate [optimized configuration](optimized_config.json).
 
@@ -8,7 +8,7 @@ All 100 frozen tests remain unchanged: Easy 30, Medium 40, Hard 20, Expert 10. T
 
 The current offline forecast is **$15.60 central**, with an **optimistic $9.45 / cautious $29.04** scenario range for executing all 100 unchanged tasks. These are explicit planning assumptions, **not measured CUA performance, a quote, or a confidence interval**. There has been no paid pilot. Request counts were estimated per task from its workflow; text tokens use measured prompt character lengths and a sensitivity range, not an exact tokenizer.
 
-It is not responsible to promise all 100 within $4–5. Nor can this preparation establish reliable completion within $15: the central estimate already exceeds it, and long cross-role tasks have substantial navigation uncertainty. A favorable run or actual cache hits might bring the total below $15; that possibility is not a commitment. Tests will not be simplified to force a lower number.
+It is not responsible to promise all 100 within $10; only the optimistic scenario fits. Nor can this preparation establish reliable completion within $15: the central estimate already exceeds it, and long cross-role tasks have substantial navigation uncertainty. A favorable run or actual cache hits might bring the total below $15; that possibility is not a commitment. Tests will not be simplified to force a lower number.
 
 ## Why CareFlow cost $3.38
 
@@ -37,7 +37,7 @@ For a concrete complexity comparison, CareConnect T092 includes creating an unpu
 ## Optimizations implemented
 
 - Keep the full frozen test in every model input. Factor repeated fixture fields losslessly and use compact JSON; no grading criterion is summarized away.
-- Retain literal executed actions and model observations. Remove old raster images from subsequent requests, retaining the latest complete native call/output pairing. Raw calls, intermediate screenshots and traces remain in private evidence for review.
+- Retain literal executed actions and model observations. Remove an exactly matching latest-turn suffix from the older text history because the native response already carries it; unmatched text is retained. This saves input text, not model requests. Remove old raster images from subsequent requests, retaining the latest complete native call/output pairing. Raw calls, intermediate screenshots and traces remain in private evidence for review.
 - Reuse the final action screenshot as the batch response instead of capturing it again. The old per-action local screenshots were not all API inputs; **replaying old batch screenshots** was the principal image-token problem.
 - Permit the native model to batch already-understood actions; require observation after navigation or a state change. The harness does not prescribe clicks or solve tasks with DOM/SQL/Playwright.
 - Use native-pixel, original-detail screenshots with controlled window dimensions. Do not shrink text until unreadable. Narrow-screen setup uses CDP only to establish/measure viewport size, never to inspect DOM or choose task actions.
@@ -53,7 +53,7 @@ For a concrete complexity comparison, CareConnect T092 includes creating an unpu
 | Hard | 45 | 220 | 25 minutes | 320k / 28k | $1.00 |
 | Expert | 95 | 350 | 40 minutes | 560k / 50k | $2.50 |
 
-Action and runtime ceilings are unchanged from the original plan. Request limits allow complex exceptions such as T002's eleven-area navigation and T099's four-role onboarding. The **global $5 maximum overrides all per-test allowances**. Hitting any guard produces incomplete execution/ERROR, never a lowered PASS criterion. The cautious all-suite scenario could exceed other per-test guards even when its request count fits.
+Action and runtime ceilings are unchanged from the original plan. Request limits allow complex exceptions such as T002's eleven-area navigation and T099's four-role onboarding. The **global $10 maximum overrides all per-test allowances**. Hitting a guard never lowers a PASS criterion: a partially executed task is incomplete/ERROR; a budget-stopped task with zero generations remains NOT_RUN. The cautious all-suite scenario could exceed other per-test guards even when its request count fits.
 
 ## Forecast by difficulty
 
@@ -85,23 +85,44 @@ Modeled extra tool/hosting expense is **$0**: computer actions execute on the ex
 
 One additional `/responses/input_tokens` request is planned before each generation to make the runtime reservation accurate. It does not generate a model response; no separate token-count price is listed in the cited pricing page. **Neither counting nor generation endpoints were called in this offline review.** The [token-counting guide](https://developers.openai.com/api/docs/guides/token-counting) explains why local character/image calculations are estimates. Interactive calls use standard pricing, not an assumed Batch discount. No cache hit is counted in advance; actual cached usage will be recorded if it occurs.
 
-## Coverage at the requested ceilings
+## Fixed stratified order and coverage
 
-Forecasts below follow the **original T001→T100 order** and reserve headroom for the final generation's output cap. They are conditional on execution progressing without an API/desktop error and with independent reviews completed; they are **not PASS counts** and do not authorize skipping later tests.
+The precommitted [execution_order.json](execution_order.json) contains all 100 original IDs exactly once. Every 10-task block follows **Easy, Medium, Hard, Expert, Medium, Easy, Hard, Medium, Easy, Medium**. Within each difficulty, IDs ascend. This gives 3/4/2/1 tasks per block, matching the full 30/40/20/10 distribution. First four: **T001, T031, T071, T091**. The [complete readable order](EXECUTION_ORDER.md) is fixed before any paid call.
 
-| Budget | Central complete task attempts | Optimistic / cautious | Central coverage |
-| --- | ---: | --- | --- |
-| $4 | 49 | 67 / 35 | 30 Easy + 19 Medium |
-| $5 | 56 | 76 / 40 | 30 Easy + 26 Medium |
-| $15, analysis only | 98 | 100 / 79 | 30 Easy + 40 Medium + 20 Hard + 8 Expert |
+No results, cheap tasks, observed success rates or remaining balance may change this order. Both `--all` and single-task continuation enforce its prefix. No skipped hard task, automatic paid retry or replacement test is allowed. The order and loader are included in the approval fingerprint. Each test retains its independent fresh fixture and complete original workflow.
 
-At the central request count, screenshots alone consume approximately $4.89 before task text or output; adding the central output forecast reaches $7.11 even before text input. That explains why $5 for the entire suite is not a defensible forecast. This is conditional arithmetic, not a universal lower bound: the actual number of requests is not known until a permitted run.
+| Budget | Central complete attempts | Easy / 30 | Medium / 40 | Hard / 20 | Expert / 10 | Optimistic / cautious totals |
+| --- | ---: | --- | --- | --- | --- | --- |
+| $5 target | 32 | 10 (33.3%) | 13 (32.5%) | 6 (30%) | 3 (30%) | 53 / 14 |
+| $10 maximum | 64 | 19 (63.3%) | 25 (62.5%) | 13 (65%) | 7 (70%) | 100 / 33 |
+
+These are projected fully executed attempts, **not PASS predictions**. Forecasts assume no early API/desktop fault and timely independent review. Actual completion can be lower. All scenario distributions are in [budget_estimate.json](budget_estimate.json). Coverage follows the fixed order, reserves one request's maximum output headroom, and never selects a cheaper later task to fill the remaining balance.
+
+At $10, optimistic coverage is 30/40/20/10; cautious coverage is 10/13/7/3. At $5, optimistic coverage is 16/21/11/5; cautious coverage is 4/5/3/2. The first four planned attempts cover all difficulty levels, conditional on progressing that far. The order is proportional, not a claim of random or statistically representative sampling.
+
+The full-suite scenario totals describe hypothetical full workflows. In the cautious scenario, T099 also exceeds its 560k input-token guard; it would stop incomplete rather than receive a relaxed criterion. No scenario exceeds the request-count guards. Action/time requirements cannot be verified without a real run.
+
+### Audit of the 1,454 generation requests
+
+The 1,454 is the sum of pre-run task forecasts, not 1,454 observed requests with redundant calls that can be identified empirically. The executor has no extra paid planning, grading, login-helper or retry request. Existing safe batching of known visible actions is already permitted. Each generated native turn must be followed by its required observation; unchanged pixels alone are not grounds for skipping a model turn or declaring success. The terminal observation/verification remains required.
+
+Historical raster frames are absent from later API inputs. The newest native call/output pair remains; if the provider emits multiple calls, each matching output is retained rather than violating the protocol. Intermediate local screenshots are evidence, not repeated API inputs. The final action frame is reused for its batch result. The new exact-suffix text deduplication removes repeated latest actions/observations without deleting history. Unit tests check the full task, reconstruction of action/text history, call IDs and one-image normal-turn behavior.
+
+No additional deterministic reduction in generation count was established, so the central **1,454** forecast remains. Text-dedup savings are deliberately not credited to the heuristic cost forecast before real token measurements. Initial fixture character counts remain valid. One additional token-count endpoint call per generation remains necessary for the spend reservation; it is not a paid model generation. There were zero such calls during this review.
+
+### Budget stop and reporting
+
+The $5 target is a planning milestone, not authorization. A later explicit approval must state the allowed ceiling (at most $10); approving $5 does not permit spending $10. Before each paid generation, reserve counted uncached input plus maximum output against that actual approved ceiling, including any unknown charge reservation. Stop before a request that cannot fit; never auto-retry a timeout.
+
+Persist `TOTAL_BUDGET_EXHAUSTED` in the ledger. A task with no generation remains NOT_RUN; a task interrupted after paid work is ERROR/incomplete, not PASS or an application FAIL. All remaining unstarted tasks are NOT_RUN. The fixed order is not reshuffled after exhaustion. A stopped run cannot automatically resume. Preserve raw calls, screenshots, action trace, per-task tokens/cost and independently reviewed criteria; no pooled success score substitutes for individual results.
 
 ## Evidence, preflight and publication
 
 See [offline fixture checks](logs/offline-fixture-preflight.json), [browser check](logs/infrastructure-check.json), and [local configuration preflight](preflight.json). Harness unit tests exercise approval rejection, lossless task context, native call pairing, durable spend reservations and timeout-without-retry through fake transports; they are **not native CUA task results**.
 
-Current findings: **100/100 isolated database prerequisites passed; 10/10 harness checks passed; desktop and narrow browser preflights passed.** Both native screenshots were visually inspected and showed the local sign-in page. The desktop screenshot is 1280×880; the narrow browser frame is 516×950 with a 390×844 emulated CSS viewport. Its 375-pixel content width excludes the 15-pixel scrollbar. A separate read-only measurement confirmed the viewport remains active after setup. The budget conservatively uses the larger desktop image cost for both narrow tasks. Earlier offline attempts exposed foreground instability and a scrollbar-width validation mistake; these are setup findings, not scored application failures. The user held the browser foreground for the successful check. Paid execution is gated on the matching successful preflight and still requires an uninterrupted desktop session.
+Current free validation: **14/14 harness checks passed; frozen suite and application unchanged.** Existing 100/100 isolated database checks are retained because fixture code is unchanged; they were not rerun in this budget-only revision. In the new browser preflight the desktop frame passed at 1280×880, but the narrow window failed to acquire a verifiable foreground window. This is an infrastructure failure, not a portal FAIL. **Readiness is blocked until a fresh successful desktop/narrow check matches the final executor fingerprint.** No paid call was made or retried.
+
+The [prior successful browser check](logs/infrastructure-check-prior-success.json) is preserved as historical evidence, not substituted for the current failed check. It measured a 516×950 narrow frame, requested 390×844 CSS viewport and 375-pixel content width excluding a 15-pixel scrollbar. The forecast still conservatively uses the larger desktop image cost for both narrow tasks. See the [current free-validation record](logs/stratified-plan-validation.json).
 
 Formal execution remains NOT_STARTED. Account entitlement, live native protocol compatibility and real model navigation remain unverified. Before paid execution, resolve any browser-preflight error, obtain a new explicit approval matching the frozen suite and executor fingerprint, and recheck local readiness. No approval file is supplied by this change.
 

@@ -10,6 +10,7 @@ from pathlib import Path
 from collections import Counter
 from efficient_context import SYSTEM,prompt_text,image_tokens,token_cost
 from run_native_cua import HERE,read,write,verify_freeze
+from execution_order import load_order
 
 # Human forecasts of screenshot-observation rounds for the unchanged workflows.
 # They include UI login, navigation, role switches, validation and final inspection.
@@ -40,6 +41,7 @@ def measure(suite):
 
 def calculate(inputs,cfg):
     scenarios={};frame=image_tokens(*cfg['desktop_window'])
+    order=load_order(read(HERE/'final_test_cases_100.json'))
     for name,p in SCENARIOS.items():
         rows=[]
         for row in inputs['tests']:
@@ -49,10 +51,17 @@ def calculate(inputs,cfg):
             text=n*initial+p['history_tokens_per_round']*n*(n-1)//2
             imgs=n*frame
             out=n*math.ceil(row['central_output_tokens_per_request']*p['output_factor'])
+            limit=cfg['limits'][row['difficulty']]
+            guard=token_cost(math.ceil((text+imgs)/n),cfg['max_output_tokens_per_request'])
+            guard_reasons=[]
+            if n>limit['model_requests']:guard_reasons.append('model_requests')
+            if text+imgs>limit['input_tokens']:guard_reasons.append('input_tokens')
+            if out+cfg['max_output_tokens_per_request']>limit['output_tokens']:guard_reasons.append('output_tokens_reservation')
+            if token_cost(text+imgs,out)+guard>limit['budget_usd']:guard_reasons.append('per_test_dollar_reservation')
             rows.append({'test_id':row['test_id'],'difficulty':row['difficulty'],'requests':n,
                          'text_input_tokens':text,'image_input_tokens':imgs,'input_tokens':text+imgs,
                          'output_tokens':out,'cost_usd':token_cost(text+imgs,out),
-                         'exceeds_request_guard':n>cfg['limits'][row['difficulty']]['model_requests']})
+                         'exceeds_request_guard':n>limit['model_requests'],'forecast_guard_exceedances':guard_reasons})
         groups=[]
         for difficulty in OUTPUT:
             group=[r for r in rows if r['difficulty']==difficulty]
@@ -60,19 +69,23 @@ def calculate(inputs,cfg):
                            **{k:sum(r[k] for r in group) for k in ['requests','text_input_tokens','image_input_tokens','input_tokens','output_tokens','cost_usd']},
                            'request_range_per_test':[min(r['requests'] for r in group),max(r['requests'] for r in group)]})
         budgets={}
-        for budget in [4,5,15]:
+        ranked={r['test_id']:r for r in rows}
+        for budget in [5,10,15]:
             spent=0;count=0;dist=Counter()
             # Small unspent reserve for the last request's max-output guard.
             # Conservative: use each test's average actual cost plus maximum guard reserve.
-            for r in rows:
+            for t in order:
+                r=ranked[t['id']]
                 guard=token_cost(math.ceil(r['input_tokens']/r['requests']),cfg['max_output_tokens_per_request'])
-                if spent+r['cost_usd']+guard>budget or r['exceeds_request_guard']:break
+                if spent+r['cost_usd']+guard>budget or r['forecast_guard_exceedances']:break
                 spent+=r['cost_usd'];count+=1;dist[r['difficulty']]+=1
-            budgets[str(budget)]={'estimated_fully_executed_in_suite_order':count,'difficulty_distribution':dict(dist),
+            budgets[str(budget)]={'estimated_fully_executed_in_fixed_order':count,'difficulty_distribution':{d:dist[d] for d in OUTPUT},
+                                 'difficulty_coverage_percent':{d:100*dist[d]/sum(x['difficulty']==d for x in rows) for d in OUTPUT},
                                  'cost_of_completed_forecasts_usd':spent,
                                  'caveat':'Conditional planning only: assumes no early stop for infrastructure/API error or unresolved review; not predicted PASS count.'}
         scenarios[name]={'assumptions':p,'totals':{k:sum(r[k] for r in rows) for k in ['requests','text_input_tokens','image_input_tokens','input_tokens','output_tokens','cost_usd']},
                          'difficulty':groups,'budget_coverage':budgets,'tests_exceeding_request_guard':[r['test_id'] for r in rows if r['exceeds_request_guard']],
+                         'tests_exceeding_forecast_guards':{r['test_id']:r['forecast_guard_exceedances'] for r in rows if r['forecast_guard_exceedances']},
                          'tests':rows}
     return {'state':'ESTIMATE_ONLY_NO_PAID_RUN','suite_sha256':inputs['suite_sha256'],'model':cfg['model'],
             'pricing_usd_per_million':cfg['pricing_usd_per_million'],'screenshot_budget_pixels':cfg['desktop_window'],

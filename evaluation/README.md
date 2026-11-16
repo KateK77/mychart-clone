@@ -2,9 +2,9 @@
 
 **Status: NOT_STARTED. Paid generation requests: 0. New explicit approval required.**
 
-Offline readiness: database prerequisites **100/100**, harness checks **10/10**, and both desktop/narrow browser preflights passed. The narrow viewport remains active after setup. These are infrastructure checks, not portal test scores; live OpenAI compatibility still requires a separately approved first native attempt.
+Free validation: **14/14 harness checks passed**, frozen suite/application unchanged, and existing **100/100 database prerequisite checks** retained (fixture code unchanged). This revision's desktop browser check passed; the narrow window failed foreground acquisition. **Browser readiness remains blocked until a fresh desktop/narrow preflight passes.** No paid calls occurred. These are infrastructure checks, not portal test scores.
 
-Current budget review: target **$4**, maximum **$5**; all 100 original tests unchanged. The offline central forecast is **$15.60** for the full suite, so $5 completion is not promised. [Read the comparison, per-difficulty estimates and coverage projections](OPTIMIZED_BUDGET.md).
+Current budget review: target **$5**, maximum **$10**; all 100 original tests unchanged. The offline central forecast is **$15.60** for the full suite, so $10 completion is not promised. [Read the comparison, per-difficulty estimates and coverage projections](OPTIMIZED_BUDGET.md).
 
 This is the user's replacement evaluation protocol: exactly100 specification-derived tests executed by native OpenAI computer-use, not the previous Playwright scripts.
 
@@ -23,7 +23,7 @@ Use the existing project Python environment with backend requirements and `pyaut
 3. `python evaluation/run_native_cua.py --preflight` checks local configuration without a paid request.
 4. `python evaluation/offline_fixture_preflight.py` checks all 100 isolated prerequisite databases; `python -m unittest discover -s evaluation -p test_execution_guards.py -v` tests the harness with fake transports. Neither executes native CUA tasks. Model metadata and live compatibility remain unverified in this offline review.
 5. After explicit user approval, record model/suite hash/execution fingerprint/budget/approval timestamp/approval text in ignored `evaluation/approval.local.json`. Do not create this from inferred consent or mere API-key availability.
-6. `python evaluation/run_native_cua.py --test T001` starts one native attempt. `--all` progresses in suite order, stopping for review or errors; it never silently retries an existing attempt.
+6. `python evaluation/run_native_cua.py --test T001` starts one native attempt. `--all` progresses in the [fixed stratified order](EXECUTION_ORDER.md), stopping for review or errors; it never silently retries an existing attempt.
 7. Inspect private screenshots, action logs, read-only before/after state and downloaded PDFs. Review every frozen criterion. Publish redacted evidence to `screenshots/` and `logs/`.
 8. Record independent review decisions in ignored `review.local.json`, keyed by test ID, with `status`, `actual_outcome`, `failure_reason`, `evidence` relative paths and one `criteria` item per frozen criterion (`met`, evidence/reason, and `application_failure` where relevant). PASS requires every criterion met. FAIL requires a demonstrated application failure.
 9. `python evaluation/generate_report.py` writes the requested100-row artifacts. It never treats agent self-report as PASS.
@@ -40,5 +40,7 @@ The specification/application remain unchanged. This branch must not be merged i
 - [100 isolated database preflight checks](logs/offline-fixture-preflight.json)
 - [Latest browser preflight](logs/infrastructure-check.json)
 - [Optimized runtime configuration](optimized_config.json)
+- [Precommitted execution order](EXECUTION_ORDER.md) / [JSON](execution_order.json)
+- [Current free validation](logs/stratified-plan-validation.json)
 
 A preflight or unit-test success is not a portal PASS. Real native calls, screenshots, traces and independent scores will be published after a separately approved run and evidence redaction.

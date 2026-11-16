@@ -38,7 +38,7 @@ class Guards(unittest.TestCase):
         inp=ctx.make_input(test,{},actions,['Observed screen'],b'OLD IMAGE',outputs,results)
         payload=json.loads(inp[0]['content'][0]['text'])
         self.assertEqual(payload['frozen_test'],test)
-        self.assertEqual(payload['prior_executed_actions'],actions)
+        self.assertEqual(payload.get('prior_executed_actions',[])+inp[1]['actions'],actions)
         self.assertEqual(json.dumps(inp).count('data:image/png;base64,'),1)
         self.assertEqual(inp[1:],outputs+results)
         with self.assertRaises(ValueError):ctx.make_input(test,{},[],[],b'',outputs,[])
@@ -49,6 +49,32 @@ class Guards(unittest.TestCase):
         self.assertNotIn('data:image/png',json.dumps(record))
         self.assertIn('unchanged',json.dumps(record))
         self.assertIn('data:image/png',json.dumps(body))
+
+    def test_latest_text_dedup_is_exact_and_lossless(self):
+        old=[{'type':'click','x':1,'y':2}];new=[{'type':'type','text':'test'}]
+        output=[{'type':'computer_call','call_id':'c','actions':new},{'type':'message','content':[{'type':'output_text','text':'latest'}]}]
+        returned=[{'type':'computer_call_output','call_id':'c','output':ctx.screenshot_output(b'new')}]
+        inp=ctx.make_input({}, {},old+new,['earlier','latest'],b'old',output,returned)
+        payload=json.loads(inp[0]['content'][0]['text'])
+        self.assertEqual(payload['prior_executed_actions']+inp[1]['actions'],old+new)
+        self.assertEqual(payload['prior_model_text_observations']+[inp[2]['content'][0]['text']],['earlier','latest'])
+        unmatched=ctx.make_input({}, {},old,['different'],b'old',output,returned)
+        self.assertEqual(json.loads(unmatched[0]['content'][0]['text'])['prior_executed_actions'],old)
+
+    def test_fixed_strata_and_no_skipping(self):
+        suite=runner.read(runner.HERE/'final_test_cases_100.json')
+        ordered=runner.load_order(suite)
+        self.assertEqual([t['id'] for t in ordered[:4]],['T001','T031','T071','T091'])
+        self.assertEqual(len({t['id'] for t in ordered}),100)
+        for start in range(0,100,10):
+            self.assertEqual(dict(runner.Counter(t['difficulty'] for t in ordered[start:start+10])),{'Easy':3,'Medium':4,'Hard':2,'Expert':1})
+        self.assertEqual(runner.require_next(ordered,[{'test_id':'T001'}]),'T031')
+        with self.assertRaises(RuntimeError):runner.require_next(ordered,[],'T091')
+        with self.assertRaises(RuntimeError):runner.require_next(ordered,[{'test_id':'T031'}])
+
+    def test_ten_dollar_stop_includes_unknown_charges(self):
+        ledger={**self.zero,'estimated_cost_usd':9.97,'reserved_unknown_usd':.01}
+        with self.assertRaises(ctx.TotalBudgetExhausted):ctx.reserve_request(3000,1024,self.zero,self.cfg['limits']['Easy'],ledger,10)
 
     def test_pricing_and_image_math(self):
         self.assertAlmostEqual(ctx.token_cost(1279839,12025),3.3799725)
@@ -71,6 +97,7 @@ class Guards(unittest.TestCase):
                   'execution_fingerprint':runner.execution_fingerprint(),'budget_usd':5,
                   'approved_at':'UNIT TEST ONLY','user_approval_text':'UNIT TEST ONLY; never saved'}
         runner.validate_approval(approval,self.frozen,self.cfg)
+        runner.validate_approval({**approval,'budget_usd':10},self.frozen,self.cfg)
         for change in [{'budget_usd':120},{'budget_usd':15},{'budget_usd':0},{'approved':False},{'execution_fingerprint':'old'}]:
             with self.assertRaises(RuntimeError):runner.validate_approval({**approval,**change},self.frozen,self.cfg)
 
@@ -80,7 +107,7 @@ class Guards(unittest.TestCase):
             with self.assertRaises(SystemExit) as stop:runner.main()
             self.assertIn('no paid calls made',str(stop.exception))
 
-    def rehearsal(self,timeout=False):
+    def rehearsal(self,timeout=False,exhausted=False):
         """Fake transport/native motor exercises accounting; makes zero real calls."""
         class Browser:
             def __init__(self,*args,**kwargs):pass
@@ -106,6 +133,7 @@ class Guards(unittest.TestCase):
                     'usage':{'input_tokens':3000,'output_tokens':40,'input_tokens_details':{'cached_tokens':0}}}
         with tempfile.TemporaryDirectory(prefix='harness-unit-') as tmp,ExitStack() as stack:
             root=Path(tmp);ledger=root/'ledger.json'
+            if exhausted:runner.write(ledger,{'attempts':[],'estimated_cost_usd':9.99,'reserved_unknown_usd':0})
             stack.enter_context(patch.object(runner,'HERE',root))
             stack.enter_context(patch.object(runner,'execution_fingerprint',return_value='OFFLINE'))
             stack.enter_context(patch.object(runner.subprocess,'run',side_effect=setup))
@@ -113,8 +141,14 @@ class Guards(unittest.TestCase):
             stack.enter_context(patch.object(runner,'snapshot'))
             stack.enter_context(patch.object(runner,'api',side_effect=transport))
             stack.enter_context(patch.dict('sys.modules',{'native_driver':SimpleNamespace(NativeBrowser=Browser)}))
-            result=runner.run_one({'id':'T001','difficulty':'Easy','expected_workflow':['unchanged']},self.cfg,{'budget_usd':5},ledger)
+            result=runner.run_one({'id':'T001','difficulty':'Easy','expected_workflow':['unchanged']},self.cfg,{'budget_usd':10 if exhausted else 5},ledger)
             persisted=runner.read(ledger)
+            if exhausted:
+                self.assertEqual(len(responses),0)
+                self.assertEqual(result['status'],'NOT_RUN')
+                self.assertEqual(persisted['stop_reason'],'TOTAL_BUDGET_EXHAUSTED')
+                self.assertAlmostEqual(persisted['estimated_cost_usd'],9.99)
+                return
             if timeout:
                 self.assertEqual(len(responses),1)
                 self.assertGreater(persisted['reserved_unknown_usd'],0)
@@ -131,5 +165,6 @@ class Guards(unittest.TestCase):
 
     def test_native_loop_accounting_and_pairing_with_fake_transport(self):self.rehearsal()
     def test_ambiguous_charge_is_reserved_without_retry(self):self.rehearsal(timeout=True)
+    def test_exhausted_run_dispatches_no_generation(self):self.rehearsal(exhausted=True)
 
 if __name__=='__main__':unittest.main()

@@ -19,15 +19,17 @@ Documentation confirms model/tool compatibility, **not this account's model enti
 
 ## Current budget review (supersedes the former $120 proposal)
 
-Target $4; maximum acceptable ceiling $5. **No paid run is authorized.** The $15 feasibility question is not approval for $15. Full comparison, assumptions, per-difficulty forecasts and coverage estimates are in [OPTIMIZED_BUDGET.md](OPTIMIZED_BUDGET.md).
+Target $5; maximum acceptable ceiling $10. **No paid run is authorized.** The $15 feasibility question is not approval for $15. Full comparison, assumptions, per-difficulty forecasts and coverage estimates are in [OPTIMIZED_BUDGET.md](OPTIMIZED_BUDGET.md).
 
-The central offline estimate is $15.60 for all 100 unchanged tasks (optimistic $9.45; cautious $29.04). This is not observed native performance. At $4/$5, central forecasts cover 49/56 complete task attempts in the original order, conditional on no early infrastructure/API stop. Completion and PASS are different measurements.
+The central offline estimate is $15.60 for all 100 unchanged tasks (optimistic $9.45; cautious $29.04). This is not observed native performance. At $5/$10, central forecasts cover 32/64 complete attempts in the precommitted stratified order, conditional on no early infrastructure/API stop. See [execution order](EXECUTION_ORDER.md); all four difficulties appear in the first four tasks. Completion and PASS are different measurements.
 
-The frozen `config.json` records the old plan and is unchanged. The runner loads `optimized_config.json`; approval must match the model, frozen suite hash and **execution fingerprint**, include an explicit user statement and timestamp, and specify at most $5. Historical approval cannot activate this executor. No approval file exists.
+The frozen `config.json` records the old plan and is unchanged. The runner loads `optimized_config.json`; approval must match the model, frozen suite hash and **execution fingerprint (including the fixed order)**, include an explicit user statement and timestamp, and specify at most $10. Historical approval cannot activate this executor. No approval file exists.
 
 Before each approved generation, count input tokens and reserve uncached input plus maximum output cost. Persist the reservation before dispatch. Retain unresolved reservations on timeout/unknown usage and stop without retry. Record reported input, cached input and output usage separately. The local ledger estimates token charges; provider invoice/taxes are not available here.
 
 The optimized protocol preserves every frozen requirement and all literal action history, while sending only the latest native call/output screenshot pair. All raw screenshots remain private review evidence. Local offline checks never invoke the provider endpoints and never score the 100 tasks.
+
+Current free validation: 14/14 harness checks passed; frozen artifacts unchanged. Latest desktop browser check passed, but narrow-window foreground acquisition failed. Paid readiness is blocked until a new successful browser preflight matches the final fingerprint. See [validation](logs/stratified-plan-validation.json).
 
 ## Isolation and scoring
 

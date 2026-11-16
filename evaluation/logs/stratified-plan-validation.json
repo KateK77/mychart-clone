@@ -1,0 +1,68 @@
+{
+  "checked_at": "2026-11-16T06:37:17.816418+00:00",
+  "state": "FREE_VALIDATION_COMPLETE_BROWSER_RECHECK_REQUIRED",
+  "suite_unchanged": true,
+  "application_unchanged": true,
+  "planned_tests": 100,
+  "difficulty_counts": {
+    "Easy": 30,
+    "Medium": 40,
+    "Hard": 20,
+    "Expert": 10
+  },
+  "first_four": [
+    "T001",
+    "T031",
+    "T071",
+    "T091"
+  ],
+  "execution_fingerprint": "14e76f5cc8f62fd4fbae1313b15e288166a88871954efc53bc5294bff406d3f5",
+  "approval_file_present": false,
+  "paid_generation_requests": 0,
+  "token_count_endpoint_requests": 0,
+  "harness_tests_passed": 14,
+  "harness_tests_total": 14,
+  "fixture_preflight_passed": 100,
+  "fixture_note": "Reused existing 100/100 isolated database checks; fixture preparation code unchanged. No claim of rerunning all fixtures in this budget revision.",
+  "browser_note": "Current desktop preflight passed; narrow window failed foreground acquisition. Latest browser evidence does not establish readiness for this executor. A fresh successful desktop/narrow preflight is mandatory before paid dispatch.",
+  "latest_browser_check": {
+    "checked_at": "2026-11-16T06:35:24.502877+00:00",
+    "paid_requests": 0,
+    "scored_tests": 0,
+    "execution_fingerprint": "c9a2f260e9944a268ea22b340970c9fd582adea25b9c27199475048ca0355d35",
+    "windows": [
+      {
+        "mode": "desktop",
+        "native_screenshot_pixels": [
+          1280,
+          880
+        ],
+        "screenshot_bytes": 93204,
+        "viewport": {
+          "viewport": {
+            "pageX": 0,
+            "pageY": 0,
+            "clientWidth": 1256,
+            "clientHeight": 788
+          },
+          "visualViewport": {
+            "offsetX": 0,
+            "offsetY": 0,
+            "pageX": 0,
+            "pageY": 0,
+            "clientWidth": 1256,
+            "clientHeight": 788,
+            "scale": 1,
+            "zoom": 1
+          },
+          "emulated": false,
+          "requestedViewport": null,
+          "measurementNote": "CDP layout clientWidth excludes the vertical scrollbar; the requested emulation width includes it."
+        },
+        "viewport_confirmed_after_setup": true
+      }
+    ],
+    "error": "Dedicated browser did not acquire a verifiable foreground window"
+  },
+  "estimated_only": true
+}

@@ -1,9 +1,8 @@
 {
-  "checked_at": "2026-11-16T06:22:41.344269+00:00",
-  "harness_checks": 10,
-  "passed": true,
+  "checked_at": "2026-11-16T06:37:17.678939+00:00",
+  "tests_run": 14,
+  "passed": 14,
   "paid_requests": 0,
-  "scored_cua_tests": 0,
-  "transport": "fake/mocked; no provider calls",
-  "log": "offline-harness-check.txt"
+  "scored_portal_tests": 0,
+  "method": "unittest with fake API transport and fake native motor; not native CUA execution"
 }

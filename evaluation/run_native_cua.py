@@ -17,7 +17,8 @@ import sys
 import time
 from urllib.request import Request,urlopen
 from urllib.error import HTTPError
-from efficient_context import SYSTEM,make_input,evidence_request,screenshot_output,token_cost,reserve_request
+from efficient_context import SYSTEM,make_input,evidence_request,screenshot_output,token_cost,reserve_request,TotalBudgetExhausted
+from execution_order import load_order,require_next
 
 HERE=Path(__file__).resolve().parent; REPO=HERE.parent
 def read(path): return json.loads(Path(path).read_text(encoding='utf-8'))
@@ -28,7 +29,7 @@ def stamp():return datetime.now(timezone.utc).isoformat()
 def sha(path):return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
 def execution_fingerprint():
-    names=['optimized_config.json','run_native_cua.py','efficient_context.py','native_driver.py','browser_environment.mjs']
+    names=['optimized_config.json','run_native_cua.py','efficient_context.py','native_driver.py','browser_environment.mjs','execution_order.py','execution_order.json']
     return hashlib.sha256(b'\n'.join(name.encode()+b'\0'+(HERE/name).read_bytes().replace(b'\r\n',b'\n') for name in names)).hexdigest()
 
 def validate_approval(approval,frozen,cfg):
@@ -36,8 +37,8 @@ def validate_approval(approval,frozen,cfg):
         raise RuntimeError('Approval does not match frozen suite and model')
     if approval.get('execution_fingerprint')!=execution_fingerprint():
         raise RuntimeError('New explicit approval must match this optimized executor and configuration')
-    if not isinstance(approval.get('budget_usd'),(int,float)) or not 0<approval['budget_usd']<=min(5,cfg['proposed_total_budget_usd']):
-        raise RuntimeError('Approved budget must be greater than zero and no more than $5')
+    if type(approval.get('budget_usd')) not in (int,float) or not 0<approval['budget_usd']<=min(10,cfg['proposed_total_budget_usd']):
+        raise RuntimeError('Approved budget must be greater than zero and no more than $10')
     if not approval.get('approved_at') or not approval.get('user_approval_text'):
         raise RuntimeError('Explicit approval timestamp and user statement required')
 
@@ -209,6 +210,10 @@ def run_one(test,cfg,approval,ledger_path):
                 if not actions:shot=browser.screenshot()
                 # The final action frame is already current; no duplicate batch screenshot.
                 last_results.append({'type':'computer_call_output','call_id':call['call_id'],'output':screenshot_output(shot)})
+    except TotalBudgetExhausted as exc:
+        result.update(status='ERROR' if result['model_requests'] else 'NOT_RUN',actual_outcome='Stopped at approved budget; no skipped steps or inferred success',failure_reason=str(exc))
+        ledger['stop_reason']='TOTAL_BUDGET_EXHAUSTED'
+        ledger['stopped_at_test']=tid
     except Exception as exc:
         result.update(status='ERROR',actual_outcome='Execution stopped without automatic retry',failure_reason=str(exc))
     finally:
@@ -245,7 +250,14 @@ def main():
     lock=private/'run.lock'
     fd=os.open(lock,os.O_CREAT|os.O_EXCL|os.O_WRONLY)
     try:
-        for test in suite['tests']:
+        ordered=load_order(suite)
+        initial=read(private/'ledger.json') if (private/'ledger.json').exists() else {'attempts':[]}
+        if initial.get('stop_reason'):raise RuntimeError('Run stopped: '+initial['stop_reason']+'; no automatic continuation')
+        require_next(ordered,initial['attempts'],None if args.all else args.test)
+        reviews=read(HERE/'review.local.json') if (HERE/'review.local.json').exists() else {}
+        if any(a['test_id'] not in reviews for a in initial['attempts']):
+            raise RuntimeError('Every previous attempt requires independent review before continuation')
+        for test in ordered:
             if not args.all and test['id']!=args.test:continue
             ledger_path=private/'ledger.json'
             prior=read(ledger_path) if ledger_path.exists() else {'attempts':[],'reserved_unknown_usd':0}
@@ -259,7 +271,7 @@ def main():
                 continue
             result=run_one(test,cfg,approval,private/'ledger.json')
             print(json.dumps({k:result[k] for k in ['test_id','status','model_requests','actions','estimated_cost_usd']}),flush=True)
-            if result['status']=='ERROR' or result['reserved_unknown_usd']:
+            if result['status'] in {'ERROR','BLOCKED','NOT_RUN'} or result['reserved_unknown_usd']:
                 print('Stopped for independent review/infrastructure triage; no batch continuation or hidden retry.');break
     finally:os.close(fd);lock.unlink()
 

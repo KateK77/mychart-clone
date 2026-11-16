@@ -93,38 +93,60 @@
         }
       ],
       "budget_coverage": {
-        "4": {
-          "estimated_fully_executed_in_suite_order": 67,
-          "difficulty_distribution": {
-            "Easy": 30,
-            "Medium": 37
-          },
-          "cost_of_completed_forecasts_usd": 3.966754999999999,
-          "caveat": "Conditional planning only: assumes no early stop for infrastructure/API error or unresolved review; not predicted PASS count."
-        },
         "5": {
-          "estimated_fully_executed_in_suite_order": 76,
+          "estimated_fully_executed_in_fixed_order": 53,
           "difficulty_distribution": {
-            "Easy": 30,
-            "Medium": 40,
-            "Hard": 6
+            "Easy": 16,
+            "Medium": 21,
+            "Hard": 11,
+            "Expert": 5
           },
-          "cost_of_completed_forecasts_usd": 4.888084999999999,
+          "difficulty_coverage_percent": {
+            "Easy": 53.333333333333336,
+            "Medium": 52.5,
+            "Hard": 55.0,
+            "Expert": 50.0
+          },
+          "cost_of_completed_forecasts_usd": 4.780210000000001,
           "caveat": "Conditional planning only: assumes no early stop for infrastructure/API error or unresolved review; not predicted PASS count."
         },
-        "15": {
-          "estimated_fully_executed_in_suite_order": 100,
+        "10": {
+          "estimated_fully_executed_in_fixed_order": 100,
           "difficulty_distribution": {
             "Easy": 30,
             "Medium": 40,
             "Hard": 20,
             "Expert": 10
           },
+          "difficulty_coverage_percent": {
+            "Easy": 100.0,
+            "Medium": 100.0,
+            "Hard": 100.0,
+            "Expert": 100.0
+          },
+          "cost_of_completed_forecasts_usd": 9.452185,
+          "caveat": "Conditional planning only: assumes no early stop for infrastructure/API error or unresolved review; not predicted PASS count."
+        },
+        "15": {
+          "estimated_fully_executed_in_fixed_order": 100,
+          "difficulty_distribution": {
+            "Easy": 30,
+            "Medium": 40,
+            "Hard": 20,
+            "Expert": 10
+          },
+          "difficulty_coverage_percent": {
+            "Easy": 100.0,
+            "Medium": 100.0,
+            "Hard": 100.0,
+            "Expert": 100.0
+          },
           "cost_of_completed_forecasts_usd": 9.452185,
           "caveat": "Conditional planning only: assumes no early stop for infrastructure/API error or unresolved review; not predicted PASS count."
         }
       },
       "tests_exceeding_request_guard": [],
+      "tests_exceeding_forecast_guards": {},
       "tests": [
         {
           "test_id": "T001",
@@ -135,7 +157,8 @@
           "input_tokens": 14200,
           "output_tokens": 225,
           "cost_usd": 0.038875,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T002",
@@ -146,7 +169,8 @@
           "input_tokens": 32747,
           "output_tokens": 495,
           "cost_usd": 0.0892925,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T003",
@@ -157,7 +181,8 @@
           "input_tokens": 26334,
           "output_tokens": 405,
           "cost_usd": 0.07191,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T004",
@@ -168,7 +193,8 @@
           "input_tokens": 11258,
           "output_tokens": 180,
           "cost_usd": 0.030845,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T005",
@@ -179,7 +205,8 @@
           "input_tokens": 14155,
           "output_tokens": 225,
           "cost_usd": 0.0387625,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T006",
@@ -190,7 +217,8 @@
           "input_tokens": 14290,
           "output_tokens": 225,
           "cost_usd": 0.0391,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T007",
@@ -201,7 +229,8 @@
           "input_tokens": 14155,
           "output_tokens": 225,
           "cost_usd": 0.0387625,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T008",
@@ -212,7 +241,8 @@
           "input_tokens": 14175,
           "output_tokens": 225,
           "cost_usd": 0.0388125,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T009",
@@ -223,7 +253,8 @@
           "input_tokens": 14195,
           "output_tokens": 225,
           "cost_usd": 0.0388625,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T010",
@@ -234,7 +265,8 @@
           "input_tokens": 14210,
           "output_tokens": 225,
           "cost_usd": 0.0389,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T011",
@@ -245,7 +277,8 @@
           "input_tokens": 8349,
           "output_tokens": 135,
           "cost_usd": 0.0228975,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T012",
@@ -256,7 +289,8 @@
           "input_tokens": 11234,
           "output_tokens": 180,
           "cost_usd": 0.030785,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T013",
@@ -267,7 +301,8 @@
           "input_tokens": 11246,
           "output_tokens": 180,
           "cost_usd": 0.030815,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T014",
@@ -278,7 +313,8 @@
           "input_tokens": 11198,
           "output_tokens": 180,
           "cost_usd": 0.030695,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T015",
@@ -289,7 +325,8 @@
           "input_tokens": 11162,
           "output_tokens": 180,
           "cost_usd": 0.030605,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T016",
@@ -300,7 +337,8 @@
           "input_tokens": 14125,
           "output_tokens": 225,
           "cost_usd": 0.0386875,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T017",
@@ -311,7 +349,8 @@
           "input_tokens": 14135,
           "output_tokens": 225,
           "cost_usd": 0.0387125,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T018",
@@ -322,7 +361,8 @@
           "input_tokens": 14170,
           "output_tokens": 225,
           "cost_usd": 0.0388,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T019",
@@ -333,7 +373,8 @@
           "input_tokens": 11214,
           "output_tokens": 180,
           "cost_usd": 0.030735,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T020",
@@ -344,7 +385,8 @@
           "input_tokens": 14155,
           "output_tokens": 225,
           "cost_usd": 0.0387625,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T021",
@@ -355,7 +397,8 @@
           "input_tokens": 11182,
           "output_tokens": 180,
           "cost_usd": 0.030655,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T022",
@@ -366,7 +409,8 @@
           "input_tokens": 11210,
           "output_tokens": 180,
           "cost_usd": 0.030725,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T023",
@@ -377,7 +421,8 @@
           "input_tokens": 11170,
           "output_tokens": 180,
           "cost_usd": 0.030625,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T024",
@@ -388,7 +433,8 @@
           "input_tokens": 11182,
           "output_tokens": 180,
           "cost_usd": 0.030655,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T025",
@@ -399,7 +445,8 @@
           "input_tokens": 11254,
           "output_tokens": 180,
           "cost_usd": 0.030835,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T026",
@@ -410,7 +457,8 @@
           "input_tokens": 14160,
           "output_tokens": 225,
           "cost_usd": 0.038775,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T027",
@@ -421,7 +469,8 @@
           "input_tokens": 14140,
           "output_tokens": 225,
           "cost_usd": 0.038725,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T028",
@@ -432,7 +481,8 @@
           "input_tokens": 14210,
           "output_tokens": 225,
           "cost_usd": 0.0389,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T029",
@@ -443,7 +493,8 @@
           "input_tokens": 20209,
           "output_tokens": 315,
           "cost_usd": 0.0552475,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T030",
@@ -454,7 +505,8 @@
           "input_tokens": 14135,
           "output_tokens": 225,
           "cost_usd": 0.0387125,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T031",
@@ -465,7 +517,8 @@
           "input_tokens": 26541,
           "output_tokens": 612,
           "cost_usd": 0.0755325,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T032",
@@ -476,7 +529,8 @@
           "input_tokens": 20097,
           "output_tokens": 476,
           "cost_usd": 0.0573825,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T033",
@@ -487,7 +541,8 @@
           "input_tokens": 26514,
           "output_tokens": 612,
           "cost_usd": 0.075465,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T034",
@@ -498,7 +553,8 @@
           "input_tokens": 20097,
           "output_tokens": 476,
           "cost_usd": 0.0573825,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T035",
@@ -509,7 +565,8 @@
           "input_tokens": 32879,
           "output_tokens": 748,
           "cost_usd": 0.0934175,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T036",
@@ -520,7 +577,8 @@
           "input_tokens": 36198,
           "output_tokens": 816,
           "cost_usd": 0.102735,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T037",
@@ -531,7 +589,8 @@
           "input_tokens": 20181,
           "output_tokens": 476,
           "cost_usd": 0.0575925,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T038",
@@ -542,7 +601,8 @@
           "input_tokens": 26307,
           "output_tokens": 612,
           "cost_usd": 0.0749475,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T039",
@@ -553,7 +613,8 @@
           "input_tokens": 20139,
           "output_tokens": 476,
           "cost_usd": 0.0574875,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T040",
@@ -564,7 +625,8 @@
           "input_tokens": 17049,
           "output_tokens": 408,
           "cost_usd": 0.0487425,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T041",
@@ -575,7 +637,8 @@
           "input_tokens": 20139,
           "output_tokens": 476,
           "cost_usd": 0.0574875,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T042",
@@ -586,7 +649,8 @@
           "input_tokens": 35958,
           "output_tokens": 816,
           "cost_usd": 0.102135,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T043",
@@ -597,7 +661,8 @@
           "input_tokens": 42651,
           "output_tokens": 952,
           "cost_usd": 0.1209075,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T044",
@@ -608,7 +673,8 @@
           "input_tokens": 23212,
           "output_tokens": 544,
           "cost_usd": 0.06619,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T045",
@@ -619,7 +685,8 @@
           "input_tokens": 26442,
           "output_tokens": 612,
           "cost_usd": 0.075285,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T046",
@@ -630,7 +697,8 @@
           "input_tokens": 26397,
           "output_tokens": 612,
           "cost_usd": 0.0751725,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T047",
@@ -641,7 +709,8 @@
           "input_tokens": 23228,
           "output_tokens": 544,
           "cost_usd": 0.06623,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T048",
@@ -652,7 +721,8 @@
           "input_tokens": 23244,
           "output_tokens": 544,
           "cost_usd": 0.06627,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T049",
@@ -663,7 +733,8 @@
           "input_tokens": 23316,
           "output_tokens": 544,
           "cost_usd": 0.06645,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T050",
@@ -674,7 +745,8 @@
           "input_tokens": 26298,
           "output_tokens": 612,
           "cost_usd": 0.074925,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T051",
@@ -685,7 +757,8 @@
           "input_tokens": 20125,
           "output_tokens": 476,
           "cost_usd": 0.0574525,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T052",
@@ -696,7 +769,8 @@
           "input_tokens": 20090,
           "output_tokens": 476,
           "cost_usd": 0.057365,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T053",
@@ -707,7 +781,8 @@
           "input_tokens": 32703,
           "output_tokens": 748,
           "cost_usd": 0.0929775,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T054",
@@ -718,7 +793,8 @@
           "input_tokens": 36030,
           "output_tokens": 816,
           "cost_usd": 0.102315,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T055",
@@ -729,7 +805,8 @@
           "input_tokens": 36006,
           "output_tokens": 816,
           "cost_usd": 0.102255,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T056",
@@ -740,7 +817,8 @@
           "input_tokens": 26388,
           "output_tokens": 612,
           "cost_usd": 0.07515,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T057",
@@ -751,7 +829,8 @@
           "input_tokens": 42665,
           "output_tokens": 952,
           "cost_usd": 0.1209425,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T058",
@@ -762,7 +841,8 @@
           "input_tokens": 20146,
           "output_tokens": 476,
           "cost_usd": 0.057505,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T059",
@@ -773,7 +853,8 @@
           "input_tokens": 26406,
           "output_tokens": 612,
           "cost_usd": 0.075195,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T060",
@@ -784,7 +865,8 @@
           "input_tokens": 26289,
           "output_tokens": 612,
           "cost_usd": 0.0749025,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T061",
@@ -795,7 +877,8 @@
           "input_tokens": 23276,
           "output_tokens": 544,
           "cost_usd": 0.06635,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T062",
@@ -806,7 +889,8 @@
           "input_tokens": 23292,
           "output_tokens": 544,
           "cost_usd": 0.06639,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T063",
@@ -817,7 +901,8 @@
           "input_tokens": 23164,
           "output_tokens": 544,
           "cost_usd": 0.06607,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T064",
@@ -828,7 +913,8 @@
           "input_tokens": 20083,
           "output_tokens": 476,
           "cost_usd": 0.0573475,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T065",
@@ -839,7 +925,8 @@
           "input_tokens": 29515,
           "output_tokens": 680,
           "cost_usd": 0.0839875,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T066",
@@ -850,7 +937,8 @@
           "input_tokens": 20167,
           "output_tokens": 476,
           "cost_usd": 0.0575575,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T067",
@@ -861,7 +949,8 @@
           "input_tokens": 43001,
           "output_tokens": 952,
           "cost_usd": 0.1217825,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T068",
@@ -872,7 +961,8 @@
           "input_tokens": 39429,
           "output_tokens": 884,
           "cost_usd": 0.1118325,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T069",
@@ -883,7 +973,8 @@
           "input_tokens": 39182,
           "output_tokens": 884,
           "cost_usd": 0.111215,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T070",
@@ -894,7 +985,8 @@
           "input_tokens": 39286,
           "output_tokens": 884,
           "cost_usd": 0.111475,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T071",
@@ -905,7 +997,8 @@
           "input_tokens": 29575,
           "output_tokens": 830,
           "cost_usd": 0.0863875,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T072",
@@ -916,7 +1009,8 @@
           "input_tokens": 20223,
           "output_tokens": 581,
           "cost_usd": 0.0592725,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T073",
@@ -927,7 +1021,8 @@
           "input_tokens": 36402,
           "output_tokens": 996,
           "cost_usd": 0.105945,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T074",
@@ -938,7 +1033,8 @@
           "input_tokens": 32901,
           "output_tokens": 913,
           "cost_usd": 0.0959475,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T075",
@@ -949,7 +1045,8 @@
           "input_tokens": 39507,
           "output_tokens": 1079,
           "cost_usd": 0.1149525,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T076",
@@ -960,7 +1057,8 @@
           "input_tokens": 42749,
           "output_tokens": 1162,
           "cost_usd": 0.1243025,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T077",
@@ -971,7 +1069,8 @@
           "input_tokens": 39390,
           "output_tokens": 1079,
           "cost_usd": 0.11466,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T078",
@@ -982,7 +1081,8 @@
           "input_tokens": 39286,
           "output_tokens": 1079,
           "cost_usd": 0.1144,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T079",
@@ -993,7 +1093,8 @@
           "input_tokens": 39312,
           "output_tokens": 1079,
           "cost_usd": 0.114465,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T080",
@@ -1004,7 +1105,8 @@
           "input_tokens": 42791,
           "output_tokens": 1162,
           "cost_usd": 0.1244075,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T081",
@@ -1015,7 +1117,8 @@
           "input_tokens": 49608,
           "output_tokens": 1328,
           "cost_usd": 0.14394,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T082",
@@ -1026,7 +1129,8 @@
           "input_tokens": 50056,
           "output_tokens": 1328,
           "cost_usd": 0.14506,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T083",
@@ -1037,7 +1141,8 @@
           "input_tokens": 36342,
           "output_tokens": 996,
           "cost_usd": 0.105795,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T084",
@@ -1048,7 +1153,8 @@
           "input_tokens": 39468,
           "output_tokens": 1079,
           "cost_usd": 0.114855,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T085",
@@ -1059,7 +1165,8 @@
           "input_tokens": 26370,
           "output_tokens": 747,
           "cost_usd": 0.07713,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T086",
@@ -1070,7 +1177,8 @@
           "input_tokens": 39364,
           "output_tokens": 1079,
           "cost_usd": 0.114595,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T087",
@@ -1081,7 +1189,8 @@
           "input_tokens": 49448,
           "output_tokens": 1328,
           "cost_usd": 0.14354,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T088",
@@ -1092,7 +1201,8 @@
           "input_tokens": 42833,
           "output_tokens": 1162,
           "cost_usd": 0.1245125,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T089",
@@ -1103,7 +1213,8 @@
           "input_tokens": 36138,
           "output_tokens": 996,
           "cost_usd": 0.105285,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T090",
@@ -1114,7 +1225,8 @@
           "input_tokens": 39689,
           "output_tokens": 1079,
           "cost_usd": 0.1154075,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T091",
@@ -1125,7 +1237,8 @@
           "input_tokens": 80292,
           "output_tokens": 2352,
           "cost_usd": 0.23601,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T092",
@@ -1136,7 +1249,8 @@
           "input_tokens": 143403,
           "output_tokens": 3822,
           "cost_usd": 0.4158375,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T093",
@@ -1147,7 +1261,8 @@
           "input_tokens": 95634,
           "output_tokens": 2744,
           "cost_usd": 0.280245,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T094",
@@ -1158,7 +1273,8 @@
           "input_tokens": 95802,
           "output_tokens": 2744,
           "cost_usd": 0.280665,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T095",
@@ -1169,7 +1285,8 @@
           "input_tokens": 64630,
           "output_tokens": 1960,
           "cost_usd": 0.190975,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T096",
@@ -1180,7 +1297,8 @@
           "input_tokens": 103815,
           "output_tokens": 2940,
           "cost_usd": 0.3036375,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T097",
@@ -1191,7 +1309,8 @@
           "input_tokens": 87997,
           "output_tokens": 2548,
           "cost_usd": 0.2582125,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T098",
@@ -1202,7 +1321,8 @@
           "input_tokens": 69300,
           "output_tokens": 2058,
           "cost_usd": 0.20412,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T099",
@@ -1213,7 +1333,8 @@
           "input_tokens": 177307,
           "output_tokens": 4508,
           "cost_usd": 0.5108875,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T100",
@@ -1224,7 +1345,8 @@
           "input_tokens": 76659,
           "output_tokens": 2254,
           "cost_usd": 0.2254575,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         }
       ]
     },
@@ -1303,37 +1425,60 @@
         }
       ],
       "budget_coverage": {
-        "4": {
-          "estimated_fully_executed_in_suite_order": 49,
+        "5": {
+          "estimated_fully_executed_in_fixed_order": 32,
           "difficulty_distribution": {
-            "Easy": 30,
-            "Medium": 19
+            "Easy": 10,
+            "Medium": 13,
+            "Hard": 6,
+            "Expert": 3
           },
-          "cost_of_completed_forecasts_usd": 3.8895049999999993,
+          "difficulty_coverage_percent": {
+            "Easy": 33.333333333333336,
+            "Medium": 32.5,
+            "Hard": 30.0,
+            "Expert": 30.0
+          },
+          "cost_of_completed_forecasts_usd": 4.900805000000001,
           "caveat": "Conditional planning only: assumes no early stop for infrastructure/API error or unresolved review; not predicted PASS count."
         },
-        "5": {
-          "estimated_fully_executed_in_suite_order": 56,
+        "10": {
+          "estimated_fully_executed_in_fixed_order": 64,
           "difficulty_distribution": {
-            "Easy": 30,
-            "Medium": 26
+            "Easy": 19,
+            "Medium": 25,
+            "Hard": 13,
+            "Expert": 7
           },
-          "cost_of_completed_forecasts_usd": 4.769457499999999,
+          "difficulty_coverage_percent": {
+            "Easy": 63.333333333333336,
+            "Medium": 62.5,
+            "Hard": 65.0,
+            "Expert": 70.0
+          },
+          "cost_of_completed_forecasts_usd": 9.9725575,
           "caveat": "Conditional planning only: assumes no early stop for infrastructure/API error or unresolved review; not predicted PASS count."
         },
         "15": {
-          "estimated_fully_executed_in_suite_order": 98,
+          "estimated_fully_executed_in_fixed_order": 95,
           "difficulty_distribution": {
-            "Easy": 30,
-            "Medium": 40,
-            "Hard": 20,
-            "Expert": 8
+            "Easy": 28,
+            "Medium": 38,
+            "Hard": 19,
+            "Expert": 10
           },
-          "cost_of_completed_forecasts_usd": 14.2486625,
+          "difficulty_coverage_percent": {
+            "Easy": 93.33333333333333,
+            "Medium": 95.0,
+            "Hard": 95.0,
+            "Expert": 100.0
+          },
+          "cost_of_completed_forecasts_usd": 14.903839999999999,
           "caveat": "Conditional planning only: assumes no early stop for infrastructure/API error or unresolved review; not predicted PASS count."
         }
       },
       "tests_exceeding_request_guard": [],
+      "tests_exceeding_forecast_guards": {},
       "tests": [
         {
           "test_id": "T001",
@@ -1344,7 +1489,8 @@
           "input_tokens": 18795,
           "output_tokens": 360,
           "cost_usd": 0.0523875,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T002",
@@ -1355,7 +1501,8 @@
           "input_tokens": 51420,
           "output_tokens": 900,
           "cost_usd": 0.14205,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T003",
@@ -1366,7 +1513,8 @@
           "input_tokens": 39882,
           "output_tokens": 720,
           "cost_usd": 0.110505,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T004",
@@ -1377,7 +1525,8 @@
           "input_tokens": 15485,
           "output_tokens": 300,
           "cost_usd": 0.0432125,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T005",
@@ -1388,7 +1537,8 @@
           "input_tokens": 22092,
           "output_tokens": 420,
           "cost_usd": 0.06153,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T006",
@@ -1399,7 +1549,8 @@
           "input_tokens": 18921,
           "output_tokens": 360,
           "cost_usd": 0.0527025,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T007",
@@ -1410,7 +1561,8 @@
           "input_tokens": 18735,
           "output_tokens": 360,
           "cost_usd": 0.0522375,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T008",
@@ -1421,7 +1573,8 @@
           "input_tokens": 22120,
           "output_tokens": 420,
           "cost_usd": 0.0616,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T009",
@@ -1432,7 +1585,8 @@
           "input_tokens": 22148,
           "output_tokens": 420,
           "cost_usd": 0.06167,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T010",
@@ -1443,7 +1597,8 @@
           "input_tokens": 22176,
           "output_tokens": 420,
           "cost_usd": 0.06174,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T011",
@@ -1454,7 +1609,8 @@
           "input_tokens": 12218,
           "output_tokens": 240,
           "cost_usd": 0.034145,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T012",
@@ -1465,7 +1621,8 @@
           "input_tokens": 15450,
           "output_tokens": 300,
           "cost_usd": 0.043125,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T013",
@@ -1476,7 +1633,8 @@
           "input_tokens": 15470,
           "output_tokens": 300,
           "cost_usd": 0.043175,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T014",
@@ -1487,7 +1645,8 @@
           "input_tokens": 15405,
           "output_tokens": 300,
           "cost_usd": 0.0430125,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T015",
@@ -1498,7 +1657,8 @@
           "input_tokens": 15355,
           "output_tokens": 300,
           "cost_usd": 0.0428875,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T016",
@@ -1509,7 +1669,8 @@
           "input_tokens": 18699,
           "output_tokens": 360,
           "cost_usd": 0.0521475,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T017",
@@ -1520,7 +1681,8 @@
           "input_tokens": 18711,
           "output_tokens": 360,
           "cost_usd": 0.0521775,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T018",
@@ -1531,7 +1693,8 @@
           "input_tokens": 18759,
           "output_tokens": 360,
           "cost_usd": 0.0522975,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T019",
@@ -1542,7 +1705,8 @@
           "input_tokens": 15425,
           "output_tokens": 300,
           "cost_usd": 0.0430625,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T020",
@@ -1553,7 +1717,8 @@
           "input_tokens": 22092,
           "output_tokens": 420,
           "cost_usd": 0.06153,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T021",
@@ -1564,7 +1729,8 @@
           "input_tokens": 15380,
           "output_tokens": 300,
           "cost_usd": 0.04295,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T022",
@@ -1575,7 +1741,8 @@
           "input_tokens": 15420,
           "output_tokens": 300,
           "cost_usd": 0.04305,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T023",
@@ -1586,7 +1753,8 @@
           "input_tokens": 15365,
           "output_tokens": 300,
           "cost_usd": 0.0429125,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T024",
@@ -1597,7 +1765,8 @@
           "input_tokens": 15380,
           "output_tokens": 300,
           "cost_usd": 0.04295,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T025",
@@ -1608,7 +1777,8 @@
           "input_tokens": 15480,
           "output_tokens": 300,
           "cost_usd": 0.0432,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T026",
@@ -1619,7 +1789,8 @@
           "input_tokens": 18741,
           "output_tokens": 360,
           "cost_usd": 0.0522525,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T027",
@@ -1630,7 +1801,8 @@
           "input_tokens": 18723,
           "output_tokens": 360,
           "cost_usd": 0.0522075,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T028",
@@ -1641,7 +1813,8 @@
           "input_tokens": 22176,
           "output_tokens": 420,
           "cost_usd": 0.06174,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T029",
@@ -1652,7 +1825,8 @@
           "input_tokens": 29097,
           "output_tokens": 540,
           "cost_usd": 0.0808425,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T030",
@@ -1663,7 +1837,8 @@
           "input_tokens": 22057,
           "output_tokens": 420,
           "cost_usd": 0.0614425,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T031",
@@ -1674,7 +1849,8 @@
           "input_tokens": 40194,
           "output_tokens": 1080,
           "cost_usd": 0.116685,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T032",
@@ -1685,7 +1861,8 @@
           "input_tokens": 28935,
           "output_tokens": 810,
           "cost_usd": 0.0844875,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T033",
@@ -1696,7 +1873,8 @@
           "input_tokens": 40146,
           "output_tokens": 1080,
           "cost_usd": 0.116565,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T034",
@@ -1707,7 +1885,8 @@
           "input_tokens": 28926,
           "output_tokens": 810,
           "cost_usd": 0.084465,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T035",
@@ -1718,7 +1897,8 @@
           "input_tokens": 51615,
           "output_tokens": 1350,
           "cost_usd": 0.1492875,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T036",
@@ -1729,7 +1909,8 @@
           "input_tokens": 59704,
           "output_tokens": 1530,
           "cost_usd": 0.17221,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T037",
@@ -1740,7 +1921,8 @@
           "input_tokens": 29061,
           "output_tokens": 810,
           "cost_usd": 0.0848025,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T038",
@@ -1751,7 +1933,8 @@
           "input_tokens": 39846,
           "output_tokens": 1080,
           "cost_usd": 0.115815,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T039",
@@ -1762,7 +1945,8 @@
           "input_tokens": 32535,
           "output_tokens": 900,
           "cost_usd": 0.0948375,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T040",
@@ -1773,7 +1957,8 @@
           "input_tokens": 25396,
           "output_tokens": 720,
           "cost_usd": 0.07429,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T041",
@@ -1784,7 +1969,8 @@
           "input_tokens": 28989,
           "output_tokens": 810,
           "cost_usd": 0.0846225,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T042",
@@ -1795,7 +1981,8 @@
           "input_tokens": 55304,
           "output_tokens": 1440,
           "cost_usd": 0.15986,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T043",
@@ -1806,7 +1993,8 @@
           "input_tokens": 71850,
           "output_tokens": 1800,
           "cost_usd": 0.206625,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T044",
@@ -1817,7 +2005,8 @@
           "input_tokens": 36179,
           "output_tokens": 990,
           "cost_usd": 0.1052975,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T045",
@@ -1828,7 +2017,8 @@
           "input_tokens": 40050,
           "output_tokens": 1080,
           "cost_usd": 0.116325,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T046",
@@ -1839,7 +2029,8 @@
           "input_tokens": 39978,
           "output_tokens": 1080,
           "cost_usd": 0.116145,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T047",
@@ -1850,7 +2041,8 @@
           "input_tokens": 36201,
           "output_tokens": 990,
           "cost_usd": 0.1053525,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T048",
@@ -1861,7 +2053,8 @@
           "input_tokens": 36223,
           "output_tokens": 990,
           "cost_usd": 0.1054075,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T049",
@@ -1872,7 +2065,8 @@
           "input_tokens": 36333,
           "output_tokens": 990,
           "cost_usd": 0.1056825,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T050",
@@ -1883,7 +2077,8 @@
           "input_tokens": 39834,
           "output_tokens": 1080,
           "cost_usd": 0.115785,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T051",
@@ -1894,7 +2089,8 @@
           "input_tokens": 28971,
           "output_tokens": 810,
           "cost_usd": 0.0845775,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T052",
@@ -1905,7 +2101,8 @@
           "input_tokens": 32465,
           "output_tokens": 900,
           "cost_usd": 0.0946625,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T053",
@@ -1916,7 +2113,8 @@
           "input_tokens": 51345,
           "output_tokens": 1350,
           "cost_usd": 0.1486125,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T054",
@@ -1927,7 +2125,8 @@
           "input_tokens": 55416,
           "output_tokens": 1440,
           "cost_usd": 0.16014,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T055",
@@ -1938,7 +2137,8 @@
           "input_tokens": 55384,
           "output_tokens": 1440,
           "cost_usd": 0.16006,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T056",
@@ -1949,7 +2149,8 @@
           "input_tokens": 39966,
           "output_tokens": 1080,
           "cost_usd": 0.116115,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T057",
@@ -1960,7 +2161,8 @@
           "input_tokens": 71890,
           "output_tokens": 1800,
           "cost_usd": 0.206725,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T058",
@@ -1971,7 +2173,8 @@
           "input_tokens": 32545,
           "output_tokens": 900,
           "cost_usd": 0.0948625,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T059",
@@ -1982,7 +2185,8 @@
           "input_tokens": 39990,
           "output_tokens": 1080,
           "cost_usd": 0.116175,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T060",
@@ -1993,7 +2197,8 @@
           "input_tokens": 39810,
           "output_tokens": 1080,
           "cost_usd": 0.115725,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T061",
@@ -2004,7 +2209,8 @@
           "input_tokens": 36278,
           "output_tokens": 990,
           "cost_usd": 0.105545,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T062",
@@ -2015,7 +2221,8 @@
           "input_tokens": 36300,
           "output_tokens": 990,
           "cost_usd": 0.1056,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T063",
@@ -2026,7 +2233,8 @@
           "input_tokens": 36113,
           "output_tokens": 990,
           "cost_usd": 0.1051325,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T064",
@@ -2037,7 +2245,8 @@
           "input_tokens": 32445,
           "output_tokens": 900,
           "cost_usd": 0.0946125,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T065",
@@ -2048,7 +2257,8 @@
           "input_tokens": 43667,
           "output_tokens": 1170,
           "cost_usd": 0.1267175,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T066",
@@ -2059,7 +2269,8 @@
           "input_tokens": 32585,
           "output_tokens": 900,
           "cost_usd": 0.0949625,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T067",
@@ -2070,7 +2281,8 @@
           "input_tokens": 68172,
           "output_tokens": 1710,
           "cost_usd": 0.19608,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T068",
@@ -2081,7 +2293,8 @@
           "input_tokens": 63675,
           "output_tokens": 1620,
           "cost_usd": 0.1834875,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T069",
@@ -2092,7 +2305,8 @@
           "input_tokens": 63297,
           "output_tokens": 1620,
           "cost_usd": 0.1825425,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T070",
@@ -2103,7 +2317,8 @@
           "input_tokens": 63459,
           "output_tokens": 1620,
           "cost_usd": 0.1829475,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T071",
@@ -2114,7 +2329,8 @@
           "input_tokens": 47593,
           "output_tokens": 1540,
           "cost_usd": 0.1420825,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T072",
@@ -2125,7 +2341,8 @@
           "input_tokens": 32685,
           "output_tokens": 1100,
           "cost_usd": 0.0982125,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T073",
@@ -2136,7 +2353,8 @@
           "input_tokens": 55976,
           "output_tokens": 1760,
           "cost_usd": 0.16634,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T074",
@@ -2147,7 +2365,8 @@
           "input_tokens": 51660,
           "output_tokens": 1650,
           "cost_usd": 0.1539,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T075",
@@ -2158,7 +2377,8 @@
           "input_tokens": 63801,
           "output_tokens": 1980,
           "cost_usd": 0.1892025,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T076",
@@ -2169,7 +2389,8 @@
           "input_tokens": 72010,
           "output_tokens": 2200,
           "cost_usd": 0.213025,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T077",
@@ -2180,7 +2401,8 @@
           "input_tokens": 63621,
           "output_tokens": 1980,
           "cost_usd": 0.1887525,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T078",
@@ -2191,7 +2413,8 @@
           "input_tokens": 63459,
           "output_tokens": 1980,
           "cost_usd": 0.1883475,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T079",
@@ -2202,7 +2425,8 @@
           "input_tokens": 63495,
           "output_tokens": 1980,
           "cost_usd": 0.1884375,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T080",
@@ -2213,7 +2437,8 @@
           "input_tokens": 72070,
           "output_tokens": 2200,
           "cost_usd": 0.213175,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T081",
@@ -2224,7 +2449,8 @@
           "input_tokens": 80685,
           "output_tokens": 2420,
           "cost_usd": 0.2380125,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T082",
@@ -2235,7 +2461,8 @@
           "input_tokens": 81367,
           "output_tokens": 2420,
           "cost_usd": 0.2397175,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T083",
@@ -2246,7 +2473,8 @@
           "input_tokens": 55896,
           "output_tokens": 1760,
           "cost_usd": 0.16614,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T084",
@@ -2257,7 +2485,8 @@
           "input_tokens": 63729,
           "output_tokens": 1980,
           "cost_usd": 0.1890225,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T085",
@@ -2268,7 +2497,8 @@
           "input_tokens": 39942,
           "output_tokens": 1320,
           "cost_usd": 0.119655,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T086",
@@ -2279,7 +2509,8 @@
           "input_tokens": 63585,
           "output_tokens": 1980,
           "cost_usd": 0.1886625,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T087",
@@ -2290,7 +2521,8 @@
           "input_tokens": 80443,
           "output_tokens": 2420,
           "cost_usd": 0.2374075,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T088",
@@ -2301,7 +2533,8 @@
           "input_tokens": 72150,
           "output_tokens": 2200,
           "cost_usd": 0.213375,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T089",
@@ -2312,7 +2545,8 @@
           "input_tokens": 55576,
           "output_tokens": 1760,
           "cost_usd": 0.16534,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T090",
@@ -2323,7 +2557,8 @@
           "input_tokens": 64089,
           "output_tokens": 1980,
           "cost_usd": 0.1899225,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T091",
@@ -2334,7 +2569,8 @@
           "input_tokens": 140437,
           "output_tokens": 4420,
           "cost_usd": 0.4173925,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T092",
@@ -2345,7 +2581,8 @@
           "input_tokens": 264385,
           "output_tokens": 7150,
           "cost_usd": 0.7682125,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T093",
@@ -2356,7 +2593,8 @@
           "input_tokens": 172100,
           "output_tokens": 5200,
           "cost_usd": 0.50825,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T094",
@@ -2367,7 +2605,8 @@
           "input_tokens": 172420,
           "output_tokens": 5200,
           "cost_usd": 0.50905,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T095",
@@ -2378,7 +2617,8 @@
           "input_tokens": 109438,
           "output_tokens": 3640,
           "cost_usd": 0.328195,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T096",
@@ -2389,7 +2629,8 @@
           "input_tokens": 183477,
           "output_tokens": 5460,
           "cost_usd": 0.5405925,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T097",
@@ -2400,7 +2641,8 @@
           "input_tokens": 150822,
           "output_tokens": 4680,
           "cost_usd": 0.447255,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T098",
@@ -2411,7 +2653,8 @@
           "input_tokens": 120765,
           "output_tokens": 3900,
           "cost_usd": 0.3604125,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T099",
@@ -2422,7 +2665,8 @@
           "input_tokens": 335010,
           "output_tokens": 8450,
           "cost_usd": 0.964275,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T100",
@@ -2433,7 +2677,8 @@
           "input_tokens": 130480,
           "output_tokens": 4160,
           "cost_usd": 0.3886,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         }
       ]
     },
@@ -2512,36 +2757,64 @@
         }
       ],
       "budget_coverage": {
-        "4": {
-          "estimated_fully_executed_in_suite_order": 35,
+        "5": {
+          "estimated_fully_executed_in_fixed_order": 14,
           "difficulty_distribution": {
-            "Easy": 30,
-            "Medium": 5
+            "Easy": 4,
+            "Medium": 5,
+            "Hard": 3,
+            "Expert": 2
           },
-          "cost_of_completed_forecasts_usd": 3.8840975,
+          "difficulty_coverage_percent": {
+            "Easy": 13.333333333333334,
+            "Medium": 12.5,
+            "Hard": 15.0,
+            "Expert": 20.0
+          },
+          "cost_of_completed_forecasts_usd": 4.68848,
           "caveat": "Conditional planning only: assumes no early stop for infrastructure/API error or unresolved review; not predicted PASS count."
         },
-        "5": {
-          "estimated_fully_executed_in_suite_order": 40,
+        "10": {
+          "estimated_fully_executed_in_fixed_order": 33,
           "difficulty_distribution": {
-            "Easy": 30,
-            "Medium": 10
+            "Easy": 10,
+            "Medium": 13,
+            "Hard": 7,
+            "Expert": 3
           },
-          "cost_of_completed_forecasts_usd": 4.8490475,
+          "difficulty_coverage_percent": {
+            "Easy": 33.333333333333336,
+            "Medium": 32.5,
+            "Hard": 35.0,
+            "Expert": 30.0
+          },
+          "cost_of_completed_forecasts_usd": 9.4427825,
           "caveat": "Conditional planning only: assumes no early stop for infrastructure/API error or unresolved review; not predicted PASS count."
         },
         "15": {
-          "estimated_fully_executed_in_suite_order": 79,
+          "estimated_fully_executed_in_fixed_order": 53,
           "difficulty_distribution": {
-            "Easy": 30,
-            "Medium": 40,
-            "Hard": 9
+            "Easy": 16,
+            "Medium": 21,
+            "Hard": 11,
+            "Expert": 5
           },
-          "cost_of_completed_forecasts_usd": 14.681305000000002,
+          "difficulty_coverage_percent": {
+            "Easy": 53.333333333333336,
+            "Medium": 52.5,
+            "Hard": 55.0,
+            "Expert": 50.0
+          },
+          "cost_of_completed_forecasts_usd": 14.5704225,
           "caveat": "Conditional planning only: assumes no early stop for infrastructure/API error or unresolved review; not predicted PASS count."
         }
       },
       "tests_exceeding_request_guard": [],
+      "tests_exceeding_forecast_guards": {
+        "T099": [
+          "input_tokens"
+        ]
+      },
       "tests": [
         {
           "test_id": "T001",
@@ -2552,7 +2825,8 @@
           "input_tokens": 32643,
           "output_tokens": 810,
           "cost_usd": 0.0937575,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T002",
@@ -2563,7 +2837,8 @@
           "input_tokens": 88200,
           "output_tokens": 1890,
           "cost_usd": 0.24885,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T003",
@@ -2574,7 +2849,8 @@
           "input_tokens": 68034,
           "output_tokens": 1530,
           "cost_usd": 0.193035,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T004",
@@ -2585,7 +2861,8 @@
           "input_tokens": 24703,
           "output_tokens": 630,
           "cost_usd": 0.0712075,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T005",
@@ -2596,7 +2873,8 @@
           "input_tokens": 36635,
           "output_tokens": 900,
           "cost_usd": 0.1050875,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T006",
@@ -2607,7 +2885,8 @@
           "input_tokens": 32859,
           "output_tokens": 810,
           "cost_usd": 0.0942975,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T007",
@@ -2618,7 +2897,8 @@
           "input_tokens": 32535,
           "output_tokens": 810,
           "cost_usd": 0.0934875,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T008",
@@ -2629,7 +2909,8 @@
           "input_tokens": 36685,
           "output_tokens": 900,
           "cost_usd": 0.1052125,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T009",
@@ -2640,7 +2921,8 @@
           "input_tokens": 36735,
           "output_tokens": 900,
           "cost_usd": 0.1053375,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T010",
@@ -2651,7 +2933,8 @@
           "input_tokens": 36775,
           "output_tokens": 900,
           "cost_usd": 0.1054375,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T011",
@@ -2662,7 +2945,8 @@
           "input_tokens": 20811,
           "output_tokens": 540,
           "cost_usd": 0.0601275,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T012",
@@ -2673,7 +2957,8 @@
           "input_tokens": 24640,
           "output_tokens": 630,
           "cost_usd": 0.07105,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T013",
@@ -2684,7 +2969,8 @@
           "input_tokens": 24675,
           "output_tokens": 630,
           "cost_usd": 0.0711375,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T014",
@@ -2695,7 +2981,8 @@
           "input_tokens": 24563,
           "output_tokens": 630,
           "cost_usd": 0.0708575,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T015",
@@ -2706,7 +2993,8 @@
           "input_tokens": 24486,
           "output_tokens": 630,
           "cost_usd": 0.070665,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T016",
@@ -2717,7 +3005,8 @@
           "input_tokens": 32472,
           "output_tokens": 810,
           "cost_usd": 0.09333,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T017",
@@ -2728,7 +3017,8 @@
           "input_tokens": 32499,
           "output_tokens": 810,
           "cost_usd": 0.0933975,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T018",
@@ -2739,7 +3029,8 @@
           "input_tokens": 32580,
           "output_tokens": 810,
           "cost_usd": 0.0936,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T019",
@@ -2750,7 +3041,8 @@
           "input_tokens": 24605,
           "output_tokens": 630,
           "cost_usd": 0.0709625,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T020",
@@ -2761,7 +3053,8 @@
           "input_tokens": 36635,
           "output_tokens": 900,
           "cost_usd": 0.1050875,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T021",
@@ -2772,7 +3065,8 @@
           "input_tokens": 24528,
           "output_tokens": 630,
           "cost_usd": 0.07077,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T022",
@@ -2783,7 +3077,8 @@
           "input_tokens": 24591,
           "output_tokens": 630,
           "cost_usd": 0.0709275,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T023",
@@ -2794,7 +3089,8 @@
           "input_tokens": 24500,
           "output_tokens": 630,
           "cost_usd": 0.0707,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T024",
@@ -2805,7 +3101,8 @@
           "input_tokens": 24535,
           "output_tokens": 630,
           "cost_usd": 0.0707875,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T025",
@@ -2816,7 +3113,8 @@
           "input_tokens": 24689,
           "output_tokens": 630,
           "cost_usd": 0.0711725,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T026",
@@ -2827,7 +3125,8 @@
           "input_tokens": 32553,
           "output_tokens": 810,
           "cost_usd": 0.0935325,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T027",
@@ -2838,7 +3137,8 @@
           "input_tokens": 32508,
           "output_tokens": 810,
           "cost_usd": 0.09342,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T028",
@@ -2849,7 +3149,8 @@
           "input_tokens": 36775,
           "output_tokens": 900,
           "cost_usd": 0.1054375,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T029",
@@ -2860,7 +3161,8 @@
           "input_tokens": 49660,
           "output_tokens": 1170,
           "cost_usd": 0.1417,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T030",
@@ -2871,7 +3173,8 @@
           "input_tokens": 36575,
           "output_tokens": 900,
           "cost_usd": 0.1049375,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T031",
@@ -2882,7 +3185,8 @@
           "input_tokens": 68544,
           "output_tokens": 2295,
           "cost_usd": 0.205785,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T032",
@@ -2893,7 +3197,8 @@
           "input_tokens": 49400,
           "output_tokens": 1755,
           "cost_usd": 0.149825,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T033",
@@ -2904,7 +3209,8 @@
           "input_tokens": 68459,
           "output_tokens": 2295,
           "cost_usd": 0.2055725,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T034",
@@ -2915,7 +3221,8 @@
           "input_tokens": 49387,
           "output_tokens": 1755,
           "cost_usd": 0.1497925,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T035",
@@ -2926,7 +3233,8 @@
           "input_tokens": 88515,
           "output_tokens": 2835,
           "cost_usd": 0.2638125,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T036",
@@ -2937,7 +3245,8 @@
           "input_tokens": 104748,
           "output_tokens": 3240,
           "cost_usd": 0.31047,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T037",
@@ -2948,7 +3257,8 @@
           "input_tokens": 49595,
           "output_tokens": 1755,
           "cost_usd": 0.1503125,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T038",
@@ -2959,7 +3269,8 @@
           "input_tokens": 67966,
           "output_tokens": 2295,
           "cost_usd": 0.20434,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T039",
@@ -2970,7 +3281,8 @@
           "input_tokens": 53949,
           "output_tokens": 1890,
           "cost_usd": 0.1632225,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T040",
@@ -2981,7 +3293,8 @@
           "input_tokens": 44922,
           "output_tokens": 1620,
           "cost_usd": 0.136605,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T041",
@@ -2992,7 +3305,8 @@
           "input_tokens": 49478,
           "output_tokens": 1755,
           "cost_usd": 0.15002,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T042",
@@ -3003,7 +3317,8 @@
           "input_tokens": 98693,
           "output_tokens": 3105,
           "cost_usd": 0.2933075,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T043",
@@ -3014,7 +3329,8 @@
           "input_tokens": 126994,
           "output_tokens": 3780,
           "cost_usd": 0.374185,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T044",
@@ -3025,7 +3341,8 @@
           "input_tokens": 63240,
           "output_tokens": 2160,
           "cost_usd": 0.1905,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T045",
@@ -3036,7 +3353,8 @@
           "input_tokens": 68306,
           "output_tokens": 2295,
           "cost_usd": 0.20519,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T046",
@@ -3047,7 +3365,8 @@
           "input_tokens": 68187,
           "output_tokens": 2295,
           "cost_usd": 0.2048925,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T047",
@@ -3058,7 +3377,8 @@
           "input_tokens": 63272,
           "output_tokens": 2160,
           "cost_usd": 0.19058,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T048",
@@ -3069,7 +3389,8 @@
           "input_tokens": 63320,
           "output_tokens": 2160,
           "cost_usd": 0.1907,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T049",
@@ -3080,7 +3401,8 @@
           "input_tokens": 63496,
           "output_tokens": 2160,
           "cost_usd": 0.19114,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T050",
@@ -3091,7 +3413,8 @@
           "input_tokens": 67949,
           "output_tokens": 2295,
           "cost_usd": 0.2042975,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T051",
@@ -3102,7 +3425,8 @@
           "input_tokens": 49452,
           "output_tokens": 1755,
           "cost_usd": 0.149955,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T052",
@@ -3113,7 +3437,8 @@
           "input_tokens": 53837,
           "output_tokens": 1890,
           "cost_usd": 0.1629425,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T053",
@@ -3124,7 +3449,8 @@
           "input_tokens": 88074,
           "output_tokens": 2835,
           "cost_usd": 0.26271,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T054",
@@ -3135,7 +3461,8 @@
           "input_tokens": 98854,
           "output_tokens": 3105,
           "cost_usd": 0.29371,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T055",
@@ -3146,7 +3473,8 @@
           "input_tokens": 98831,
           "output_tokens": 3105,
           "cost_usd": 0.2936525,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T056",
@@ -3157,7 +3485,8 @@
           "input_tokens": 68170,
           "output_tokens": 2295,
           "cost_usd": 0.20485,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T057",
@@ -3168,7 +3497,8 @@
           "input_tokens": 127022,
           "output_tokens": 3780,
           "cost_usd": 0.374255,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T058",
@@ -3179,7 +3509,8 @@
           "input_tokens": 53977,
           "output_tokens": 1890,
           "cost_usd": 0.1632925,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T059",
@@ -3190,7 +3521,8 @@
           "input_tokens": 68204,
           "output_tokens": 2295,
           "cost_usd": 0.204935,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T060",
@@ -3201,7 +3533,8 @@
           "input_tokens": 67915,
           "output_tokens": 2295,
           "cost_usd": 0.2042125,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T061",
@@ -3212,7 +3545,8 @@
           "input_tokens": 63400,
           "output_tokens": 2160,
           "cost_usd": 0.1909,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T062",
@@ -3223,7 +3557,8 @@
           "input_tokens": 63432,
           "output_tokens": 2160,
           "cost_usd": 0.19098,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T063",
@@ -3234,7 +3569,8 @@
           "input_tokens": 63112,
           "output_tokens": 2160,
           "cost_usd": 0.19018,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T064",
@@ -3245,7 +3581,8 @@
           "input_tokens": 53809,
           "output_tokens": 1890,
           "cost_usd": 0.1628725,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T065",
@@ -3256,7 +3593,8 @@
           "input_tokens": 77919,
           "output_tokens": 2565,
           "cost_usd": 0.2332725,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T066",
@@ -3267,7 +3605,8 @@
           "input_tokens": 54033,
           "output_tokens": 1890,
           "cost_usd": 0.1634325,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T067",
@@ -3278,7 +3617,8 @@
           "input_tokens": 122013,
           "output_tokens": 3645,
           "cost_usd": 0.3597075,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T068",
@@ -3289,7 +3629,8 @@
           "input_tokens": 115739,
           "output_tokens": 3510,
           "cost_usd": 0.3419975,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T069",
@@ -3300,7 +3641,8 @@
           "input_tokens": 115115,
           "output_tokens": 3510,
           "cost_usd": 0.3404375,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T070",
@@ -3311,7 +3653,8 @@
           "input_tokens": 115375,
           "output_tokens": 3510,
           "cost_usd": 0.3410875,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T071",
@@ -3322,7 +3665,8 @@
           "input_tokens": 83130,
           "output_tokens": 3300,
           "cost_usd": 0.257325,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T072",
@@ -3333,7 +3677,8 @@
           "input_tokens": 54187,
           "output_tokens": 2310,
           "cost_usd": 0.1701175,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T073",
@@ -3344,7 +3689,8 @@
           "input_tokens": 99774,
           "output_tokens": 3795,
           "cost_usd": 0.30636,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T074",
@@ -3355,7 +3701,8 @@
           "input_tokens": 88578,
           "output_tokens": 3465,
           "cost_usd": 0.27342,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T075",
@@ -3366,7 +3713,8 @@
           "input_tokens": 115947,
           "output_tokens": 4290,
           "cost_usd": 0.3542175,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T076",
@@ -3377,7 +3725,8 @@
           "input_tokens": 127246,
           "output_tokens": 4620,
           "cost_usd": 0.387415,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T077",
@@ -3388,7 +3737,8 @@
           "input_tokens": 115635,
           "output_tokens": 4290,
           "cost_usd": 0.3534375,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T078",
@@ -3399,7 +3749,8 @@
           "input_tokens": 115375,
           "output_tokens": 4290,
           "cost_usd": 0.3527875,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T079",
@@ -3410,7 +3761,8 @@
           "input_tokens": 115453,
           "output_tokens": 4290,
           "cost_usd": 0.3529825,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T080",
@@ -3421,7 +3773,8 @@
           "input_tokens": 127330,
           "output_tokens": 4620,
           "cost_usd": 0.387625,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T081",
@@ -3432,7 +3785,8 @@
           "input_tokens": 145359,
           "output_tokens": 5115,
           "cost_usd": 0.4401225,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T082",
@@ -3443,7 +3797,8 @@
           "input_tokens": 146475,
           "output_tokens": 5115,
           "cost_usd": 0.4429125,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T083",
@@ -3454,7 +3809,8 @@
           "input_tokens": 99636,
           "output_tokens": 3795,
           "cost_usd": 0.306015,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T084",
@@ -3465,7 +3821,8 @@
           "input_tokens": 115817,
           "output_tokens": 4290,
           "cost_usd": 0.3538925,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T085",
@@ -3476,7 +3833,8 @@
           "input_tokens": 68119,
           "output_tokens": 2805,
           "cost_usd": 0.2123725,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T086",
@@ -3487,7 +3845,8 @@
           "input_tokens": 115583,
           "output_tokens": 4290,
           "cost_usd": 0.3533075,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T087",
@@ -3498,7 +3857,8 @@
           "input_tokens": 144956,
           "output_tokens": 5115,
           "cost_usd": 0.439115,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T088",
@@ -3509,7 +3869,8 @@
           "input_tokens": 127470,
           "output_tokens": 4620,
           "cost_usd": 0.387975,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T089",
@@ -3520,7 +3881,8 @@
           "input_tokens": 99130,
           "output_tokens": 3795,
           "cost_usd": 0.30475,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T090",
@@ -3531,7 +3893,8 @@
           "input_tokens": 116415,
           "output_tokens": 4290,
           "cost_usd": 0.3553875,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T091",
@@ -3542,7 +3905,8 @@
           "input_tokens": 267816,
           "output_tokens": 9360,
           "cost_usd": 0.80994,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T092",
@@ -3553,7 +3917,8 @@
           "input_tokens": 535150,
           "output_tokens": 15015,
           "cost_usd": 1.5631,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T093",
@@ -3564,7 +3929,8 @@
           "input_tokens": 332276,
           "output_tokens": 10920,
           "cost_usd": 0.99449,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T094",
@@ -3575,7 +3941,8 @@
           "input_tokens": 332780,
           "output_tokens": 10920,
           "cost_usd": 0.99575,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T095",
@@ -3586,7 +3953,8 @@
           "input_tokens": 206780,
           "output_tokens": 7800,
           "cost_usd": 0.63395,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T096",
@@ -3597,7 +3965,8 @@
           "input_tokens": 358543,
           "output_tokens": 11505,
           "cost_usd": 1.0689325,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T097",
@@ -3608,7 +3977,8 @@
           "input_tokens": 291465,
           "output_tokens": 9945,
           "cost_usd": 0.8778375,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T098",
@@ -3619,7 +3989,8 @@
           "input_tokens": 223587,
           "output_tokens": 8190,
           "cost_usd": 0.6818175,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         },
         {
           "test_id": "T099",
@@ -3630,7 +4001,10 @@
           "input_tokens": 695331,
           "output_tokens": 17745,
           "cost_usd": 2.0045025,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": [
+            "input_tokens"
+          ]
         },
         {
           "test_id": "T100",
@@ -3641,7 +4015,8 @@
           "input_tokens": 245295,
           "output_tokens": 8775,
           "cost_usd": 0.7448625,
-          "exceeds_request_guard": false
+          "exceeds_request_guard": false,
+          "forecast_guard_exceedances": []
         }
       ]
     }

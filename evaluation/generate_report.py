@@ -4,10 +4,13 @@ from collections import Counter
 import json
 from pathlib import Path
 from datetime import datetime,timezone
+from execution_order import load_order
 
 HERE=Path(__file__).resolve().parent
 def read(p):return json.loads(p.read_text(encoding='utf-8'))
 suite=read(HERE/'final_test_cases_100.json'); frozen=read(HERE/'freeze.json')
+rank={t['id']:i+1 for i,t in enumerate(load_order(suite))}
+ledger=read(HERE/'.private/ledger.json') if (HERE/'.private/ledger.json').exists() else {}
 reviews=read(HERE/'review.local.json') if (HERE/'review.local.json').exists() else {}
 results=[]
 for t in suite['tests']:
@@ -15,10 +18,13 @@ for t in suite['tests']:
     if len(attempts)>1:raise SystemExit('Multiple attempts require explicit disclosed selection: '+t['id'])
     raw=read(attempts[0]) if attempts else None
     r={'test_id':t['id'],'description':t['task'],'difficulty':t['difficulty'],'functional_category':t['functional_category'],
+       'planned_execution_rank':rank[t['id']],
        'requirement_ids':t['requirement_ids'],'expected_outcome':t['expected_result'],
        'status':'NOT_RUN','actual_outcome':'No native CUA attempt yet. Awaiting matching API configuration and explicit budget approval.',
        'failure_reason':None,'evidence':[],'model_requests':0,'token_count_requests':0,'actions':0,'execution_seconds':0,
        'input_tokens':0,'output_tokens':0,'cached_input_tokens':0,'estimated_cost_usd':0,'actual_api_cost_usd':None}
+    if not raw and ledger.get('stop_reason'):
+        r.update(actual_outcome='Not run: execution stopped before this fixed-order task.',failure_reason=ledger['stop_reason'])
     if raw:
         for k in ['status','actual_outcome','failure_reason','model_requests','token_count_requests','actions','execution_seconds','input_tokens','output_tokens','cached_input_tokens','estimated_cost_usd']:
             if k in raw:r[k]=raw[k]
@@ -51,6 +57,7 @@ def grouped(field):
     return out
 totals={k:sum(r[k] for r in results) for k in ['model_requests','token_count_requests','actions','execution_seconds','input_tokens','output_tokens','cached_input_tokens','estimated_cost_usd']}
 report={'evaluation_complete':all_valid,'execution_state':'NOT_STARTED' if not totals['model_requests'] else ('COMPLETE' if all_valid else 'INCOMPLETE'),
+    'execution_order_file':'execution_order.json','run_stop_reason':ledger.get('stop_reason'),
     'specification':suite['description'],'application_commit':suite['application_commit'],'suite_frozen_at':frozen['frozen_at'],
     'cua_model_used':read(HERE/'optimized_config.json')['model'] if totals['model_requests'] else None,
     'total':100,'counts':dict(counts),'primary_overall_pass_rate_percent':counts['PASS'],

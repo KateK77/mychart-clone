@@ -1,6 +1,8 @@
 {
   "evaluation_complete": false,
   "execution_state": "NOT_STARTED",
+  "execution_order_file": "execution_order.json",
+  "run_stop_reason": null,
   "specification": {
     "path": "experiments/round-03/description.md",
     "version": "3.0.0 / Round 3",
@@ -420,6 +422,7 @@
       "description": "Review the patient dashboard against the seeded record inventory.",
       "difficulty": "Easy",
       "functional_category": "Dashboard",
+      "planned_execution_rank": 1,
       "requirement_ids": [
         "R01",
         "R03"
@@ -444,6 +447,7 @@
       "description": "Navigate all eleven patient areas and return to Dashboard.",
       "difficulty": "Easy",
       "functional_category": "Navigation",
+      "planned_execution_rank": 6,
       "requirement_ids": [
         "R02"
       ],
@@ -467,6 +471,7 @@
       "description": "Find and open each of the five dashboard quick actions.",
       "difficulty": "Easy",
       "functional_category": "Dashboard",
+      "planned_execution_rank": 9,
       "requirement_ids": [
         "R03"
       ],
@@ -490,6 +495,7 @@
       "description": "Reject incorrect sign-in credentials and accept correct credentials.",
       "difficulty": "Easy",
       "functional_category": "Authentication",
+      "planned_execution_rank": 11,
       "requirement_ids": [
         "R04",
         "R38"
@@ -514,6 +520,7 @@
       "description": "Sign out and switch from one patient to another without refreshing.",
       "difficulty": "Easy",
       "functional_category": "Authentication",
+      "planned_execution_rank": 16,
       "requirement_ids": [
         "R04",
         "R05"
@@ -538,6 +545,7 @@
       "description": "Inspect the account-type selection and the care-team role choices.",
       "difficulty": "Easy",
       "functional_category": "Registration",
+      "planned_execution_rank": 19,
       "requirement_ids": [
         "R08",
         "R09"
@@ -562,6 +570,7 @@
       "description": "Register a family caregiver and inspect the first landing page.",
       "difficulty": "Easy",
       "functional_category": "Registration",
+      "planned_execution_rank": 21,
       "requirement_ids": [
         "R08"
       ],
@@ -585,6 +594,7 @@
       "description": "Submit a care-team application and inspect its pending landing.",
       "difficulty": "Easy",
       "functional_category": "Registration",
+      "planned_execution_rank": 26,
       "requirement_ids": [
         "R09"
       ],
@@ -608,6 +618,7 @@
       "description": "Review upcoming and past appointment details and instructions.",
       "difficulty": "Easy",
       "functional_category": "Appointments",
+      "planned_execution_rank": 29,
       "requirement_ids": [
         "R10"
       ],
@@ -631,6 +642,7 @@
       "description": "Inspect all six appointment types when looking for a slot.",
       "difficulty": "Easy",
       "functional_category": "Appointments",
+      "planned_execution_rank": 31,
       "requirement_ids": [
         "R10"
       ],
@@ -654,6 +666,7 @@
       "description": "Browse the published laboratory result list.",
       "difficulty": "Easy",
       "functional_category": "Laboratory",
+      "planned_execution_rank": 36,
       "requirement_ids": [
         "R15",
         "R16"
@@ -678,6 +691,7 @@
       "description": "Read every specified field of a laboratory result.",
       "difficulty": "Easy",
       "functional_category": "Laboratory",
+      "planned_execution_rank": 39,
       "requirement_ids": [
         "R15"
       ],
@@ -701,6 +715,7 @@
       "description": "Inspect historical measurements and a trend chart.",
       "difficulty": "Easy",
       "functional_category": "Laboratory",
+      "planned_execution_rank": 41,
       "requirement_ids": [
         "R16"
       ],
@@ -724,6 +739,7 @@
       "description": "Review active medications and medication history.",
       "difficulty": "Easy",
       "functional_category": "Medications",
+      "planned_execution_rank": 46,
       "requirement_ids": [
         "R20"
       ],
@@ -747,6 +763,7 @@
       "description": "Read a complete prescription detail.",
       "difficulty": "Easy",
       "functional_category": "Medications",
+      "planned_execution_rank": 49,
       "requirement_ids": [
         "R20"
       ],
@@ -770,6 +787,7 @@
       "description": "Review the complete health summary.",
       "difficulty": "Easy",
       "functional_category": "Health summary",
+      "planned_execution_rank": 51,
       "requirement_ids": [
         "R23"
       ],
@@ -793,6 +811,7 @@
       "description": "Review a published encounter with shared notes and AVS.",
       "difficulty": "Easy",
       "functional_category": "Visits",
+      "planned_execution_rank": 56,
       "requirement_ids": [
         "R24"
       ],
@@ -816,6 +835,7 @@
       "description": "Browse the available document-type choices.",
       "difficulty": "Easy",
       "functional_category": "Documents",
+      "planned_execution_rank": 59,
       "requirement_ids": [
         "R27"
       ],
@@ -839,6 +859,7 @@
       "description": "Read a full unpaid invoice.",
       "difficulty": "Easy",
       "functional_category": "Billing",
+      "planned_execution_rank": 61,
       "requirement_ids": [
         "R25"
       ],
@@ -862,6 +883,7 @@
       "description": "Review insurance information and prior payment history.",
       "difficulty": "Easy",
       "functional_category": "Billing",
+      "planned_execution_rank": 66,
       "requirement_ids": [
         "R25"
       ],
@@ -885,6 +907,7 @@
       "description": "Find received and sent conversations.",
       "difficulty": "Easy",
       "functional_category": "Messaging",
+      "planned_execution_rank": 69,
       "requirement_ids": [
         "R18"
       ],
@@ -908,6 +931,7 @@
       "description": "Read a conversation and its non-emergency notice.",
       "difficulty": "Easy",
       "functional_category": "Messaging",
+      "planned_execution_rank": 71,
       "requirement_ids": [
         "R18"
       ],
@@ -931,6 +955,7 @@
       "description": "Browse notifications and follow one to its record.",
       "difficulty": "Easy",
       "functional_category": "Notifications",
+      "planned_execution_rank": 76,
       "requirement_ids": [
         "R36"
       ],
@@ -954,6 +979,7 @@
       "description": "Inspect category-specific notification preferences.",
       "difficulty": "Easy",
       "functional_category": "Notifications",
+      "planned_execution_rank": 79,
       "requirement_ids": [
         "R36"
       ],
@@ -977,6 +1003,7 @@
       "description": "Find the family-linking entry point and both consent directions.",
       "difficulty": "Easy",
       "functional_category": "Family access",
+      "planned_execution_rank": 81,
       "requirement_ids": [
         "R31"
       ],
@@ -1000,6 +1027,7 @@
       "description": "Open an already authorized linked family profile.",
       "difficulty": "Easy",
       "functional_category": "Family access",
+      "planned_execution_rank": 86,
       "requirement_ids": [
         "R34"
       ],
@@ -1023,6 +1051,7 @@
       "description": "Find a patient and a staff work area using search and grouping.",
       "difficulty": "Easy",
       "functional_category": "Staff navigation",
+      "planned_execution_rank": 89,
       "requirement_ids": [
         "R37"
       ],
@@ -1046,6 +1075,7 @@
       "description": "Open and close a staff record without hunting below a list.",
       "difficulty": "Easy",
       "functional_category": "Staff navigation",
+      "planned_execution_rank": 91,
       "requirement_ids": [
         "R37",
         "R38"
@@ -1070,6 +1100,7 @@
       "description": "Inspect English copy and the synthetic disclaimer across patient and staff pages.",
       "difficulty": "Easy",
       "functional_category": "Navigation",
+      "planned_execution_rank": 96,
       "requirement_ids": [
         "R01",
         "R02"
@@ -1094,6 +1125,7 @@
       "description": "Use patient navigation on a narrow screen.",
       "difficulty": "Easy",
       "functional_category": "Navigation",
+      "planned_execution_rank": 99,
       "requirement_ids": [
         "R02"
       ],
@@ -1117,6 +1149,7 @@
       "description": "Register a patient and confirm the account persists after a fresh sign-in.",
       "difficulty": "Medium",
       "functional_category": "Registration",
+      "planned_execution_rank": 2,
       "requirement_ids": [
         "R04",
         "R06",
@@ -1142,6 +1175,7 @@
       "description": "Change the registration account type before submitting.",
       "difficulty": "Medium",
       "functional_category": "Registration",
+      "planned_execution_rank": 5,
       "requirement_ids": [
         "R08"
       ],
@@ -1165,6 +1199,7 @@
       "description": "Exercise required, mismatched and weak-password registration validation.",
       "difficulty": "Medium",
       "functional_category": "Registration",
+      "planned_execution_rank": 8,
       "requirement_ids": [
         "R06",
         "R39"
@@ -1189,6 +1224,7 @@
       "description": "Edit and persist contact information.",
       "difficulty": "Medium",
       "functional_category": "Account settings",
+      "planned_execution_rank": 10,
       "requirement_ids": [
         "R04"
       ],
@@ -1212,6 +1248,7 @@
       "description": "Change a password with validation and verify old/new sign-in behavior.",
       "difficulty": "Medium",
       "functional_category": "Account settings",
+      "planned_execution_rank": 12,
       "requirement_ids": [
         "R04",
         "R06"
@@ -1236,6 +1273,7 @@
       "description": "Recover a local demo password using the simulated mailbox.",
       "difficulty": "Medium",
       "functional_category": "Password recovery",
+      "planned_execution_rank": 15,
       "requirement_ids": [
         "R06",
         "R07"
@@ -1260,6 +1298,7 @@
       "description": "Combine provider, appointment-type and date filters.",
       "difficulty": "Medium",
       "functional_category": "Appointments",
+      "planned_execution_rank": 18,
       "requirement_ids": [
         "R10"
       ],
@@ -1283,6 +1322,7 @@
       "description": "Book a slot and verify list/dashboard persistence.",
       "difficulty": "Medium",
       "functional_category": "Appointments",
+      "planned_execution_rank": 20,
       "requirement_ids": [
         "R03",
         "R11"
@@ -1307,6 +1347,7 @@
       "description": "Cancel an appointment with a reason and preserve history.",
       "difficulty": "Medium",
       "functional_category": "Appointments",
+      "planned_execution_rank": 22,
       "requirement_ids": [
         "R12"
       ],
@@ -1330,6 +1371,7 @@
       "description": "Save and reopen a pre-visit questionnaire.",
       "difficulty": "Medium",
       "functional_category": "Appointments",
+      "planned_execution_rank": 25,
       "requirement_ids": [
         "R12"
       ],
@@ -1353,6 +1395,7 @@
       "description": "Complete simulated eCheck-In for a prepared appointment.",
       "difficulty": "Medium",
       "functional_category": "Appointments",
+      "planned_execution_rank": 28,
       "requirement_ids": [
         "R12"
       ],
@@ -1376,6 +1419,7 @@
       "description": "Submit a patient rescheduling request and inspect staff visibility.",
       "difficulty": "Medium",
       "functional_category": "Appointments",
+      "planned_execution_rank": 30,
       "requirement_ids": [
         "R13"
       ],
@@ -1399,6 +1443,7 @@
       "description": "Create a provider and available slot then find it as a patient.",
       "difficulty": "Medium",
       "functional_category": "Staff scheduling",
+      "planned_execution_rank": 32,
       "requirement_ids": [
         "R14",
         "R11"
@@ -1423,6 +1468,7 @@
       "description": "Search laboratory results by name and date range, including an empty result.",
       "difficulty": "Medium",
       "functional_category": "Laboratory",
+      "planned_execution_rank": 35,
       "requirement_ids": [
         "R16"
       ],
@@ -1446,6 +1492,7 @@
       "description": "Compare normal/abnormal values and supported result statuses.",
       "difficulty": "Medium",
       "functional_category": "Laboratory",
+      "planned_execution_rank": 38,
       "requirement_ids": [
         "R15",
         "R16"
@@ -1470,6 +1517,7 @@
       "description": "Compose a categorized message to a care team and find it in Sent.",
       "difficulty": "Medium",
       "functional_category": "Messaging",
+      "planned_execution_rank": 40,
       "requirement_ids": [
         "R18"
       ],
@@ -1493,6 +1541,7 @@
       "description": "Read an unread thread and reply without losing conversation history.",
       "difficulty": "Medium",
       "functional_category": "Messaging",
+      "planned_execution_rank": 42,
       "requirement_ids": [
         "R18",
         "R36"
@@ -1517,6 +1566,7 @@
       "description": "Archive a conversation with confirmation and destination feedback.",
       "difficulty": "Medium",
       "functional_category": "Messaging",
+      "planned_execution_rank": 45,
       "requirement_ids": [
         "R19"
       ],
@@ -1540,6 +1590,7 @@
       "description": "Restore an archived conversation with confirmation and Inbox navigation.",
       "difficulty": "Medium",
       "functional_category": "Messaging",
+      "planned_execution_rank": 48,
       "requirement_ids": [
         "R19"
       ],
@@ -1563,6 +1614,7 @@
       "description": "Cancel Archive and Restore confirmation without changing state.",
       "difficulty": "Medium",
       "functional_category": "Messaging",
+      "planned_execution_rank": 50,
       "requirement_ids": [
         "R19"
       ],
@@ -1586,6 +1638,7 @@
       "description": "Search active and historical medications and recover from no matches.",
       "difficulty": "Medium",
       "functional_category": "Medications",
+      "planned_execution_rank": 52,
       "requirement_ids": [
         "R20"
       ],
@@ -1609,6 +1662,7 @@
       "description": "Request a simulated refill with a care-team note.",
       "difficulty": "Medium",
       "functional_category": "Refills",
+      "planned_execution_rank": 55,
       "requirement_ids": [
         "R21"
       ],
@@ -1632,6 +1686,7 @@
       "description": "Review, approve and complete an existing refill with a decision note.",
       "difficulty": "Medium",
       "functional_category": "Refills",
+      "planned_execution_rank": 58,
       "requirement_ids": [
         "R21"
       ],
@@ -1655,6 +1710,7 @@
       "description": "Report a medication information discrepancy and review it as staff.",
       "difficulty": "Medium",
       "functional_category": "Corrections",
+      "planned_execution_rank": 60,
       "requirement_ids": [
         "R22"
       ],
@@ -1678,6 +1734,7 @@
       "description": "Submit a health-summary correction without directly altering official history.",
       "difficulty": "Medium",
       "functional_category": "Corrections",
+      "planned_execution_rank": 62,
       "requirement_ids": [
         "R22",
         "R23"
@@ -1702,6 +1759,7 @@
       "description": "Maintain an official synthetic clinical-history entry from staff UI.",
       "difficulty": "Medium",
       "functional_category": "Health summary",
+      "planned_execution_rank": 65,
       "requirement_ids": [
         "R22",
         "R23"
@@ -1726,6 +1784,7 @@
       "description": "Create and publish a synthetic encounter with shared information.",
       "difficulty": "Medium",
       "functional_category": "Visits",
+      "planned_execution_rank": 68,
       "requirement_ids": [
         "R24"
       ],
@@ -1749,6 +1808,7 @@
       "description": "Filter documents by type and follow its associated encounter.",
       "difficulty": "Medium",
       "functional_category": "Documents",
+      "planned_execution_rank": 70,
       "requirement_ids": [
         "R27"
       ],
@@ -1772,6 +1832,7 @@
       "description": "Preview, print and download a laboratory report PDF.",
       "difficulty": "Medium",
       "functional_category": "PDF exports",
+      "planned_execution_rank": 72,
       "requirement_ids": [
         "R28",
         "R29"
@@ -1796,6 +1857,7 @@
       "description": "Preview, print and download an After Visit Summary PDF.",
       "difficulty": "Medium",
       "functional_category": "PDF exports",
+      "planned_execution_rank": 75,
       "requirement_ids": [
         "R28",
         "R29"
@@ -1820,6 +1882,7 @@
       "description": "Preview and download an exact-amount billing statement.",
       "difficulty": "Medium",
       "functional_category": "PDF exports",
+      "planned_execution_rank": 78,
       "requirement_ids": [
         "R25",
         "R28",
@@ -1845,6 +1908,7 @@
       "description": "Preview and download a simulated payment receipt.",
       "difficulty": "Medium",
       "functional_category": "PDF exports",
+      "planned_execution_rank": 80,
       "requirement_ids": [
         "R25",
         "R28",
@@ -1870,6 +1934,7 @@
       "description": "Make a partial simulated payment and reconcile balances.",
       "difficulty": "Medium",
       "functional_category": "Billing",
+      "planned_execution_rank": 82,
       "requirement_ids": [
         "R25",
         "R26",
@@ -1895,6 +1960,7 @@
       "description": "Pay the exact remaining balance and inspect paid state.",
       "difficulty": "Medium",
       "functional_category": "Billing",
+      "planned_execution_rank": 85,
       "requirement_ids": [
         "R25"
       ],
@@ -1918,6 +1984,7 @@
       "description": "Create a synthetic invoice as authorized billing staff.",
       "difficulty": "Medium",
       "functional_category": "Billing",
+      "planned_execution_rank": 88,
       "requirement_ids": [
         "R25",
         "R36"
@@ -1942,6 +2009,7 @@
       "description": "Mark one notification read, then mark the remaining notifications read.",
       "difficulty": "Medium",
       "functional_category": "Notifications",
+      "planned_execution_rank": 90,
       "requirement_ids": [
         "R36"
       ],
@@ -1965,6 +2033,7 @@
       "description": "Mute one category, generate a matching event, then restore that preference.",
       "difficulty": "Medium",
       "functional_category": "Notifications",
+      "planned_execution_rank": 92,
       "requirement_ids": [
         "R36"
       ],
@@ -1988,6 +2057,7 @@
       "description": "Invite an existing family account to selected own-record sections.",
       "difficulty": "Medium",
       "functional_category": "Family access",
+      "planned_execution_rank": 95,
       "requirement_ids": [
         "R31",
         "R32",
@@ -2013,6 +2083,7 @@
       "description": "Request access to another adult and obtain that owner consent.",
       "difficulty": "Medium",
       "functional_category": "Family access",
+      "planned_execution_rank": 98,
       "requirement_ids": [
         "R31",
         "R32",
@@ -2038,6 +2109,7 @@
       "description": "Decline one invitation and cancel a different pending invitation.",
       "difficulty": "Medium",
       "functional_category": "Family access",
+      "planned_execution_rank": 100,
       "requirement_ids": [
         "R31",
         "R33"
@@ -2062,6 +2134,7 @@
       "description": "Attempt another unrelated patient record and direct PDF access.",
       "difficulty": "Hard",
       "functional_category": "Authorization",
+      "planned_execution_rank": 3,
       "requirement_ids": [
         "R04",
         "R30",
@@ -2087,6 +2160,7 @@
       "description": "Verify protected links after logout and through browser Back.",
       "difficulty": "Hard",
       "functional_category": "Authorization",
+      "planned_execution_rank": 7,
       "requirement_ids": [
         "R04",
         "R05",
@@ -2113,6 +2187,7 @@
       "description": "Approve a care-team applicant only after a required verification note.",
       "difficulty": "Hard",
       "functional_category": "Staff onboarding",
+      "planned_execution_rank": 13,
       "requirement_ids": [
         "R09",
         "R39"
@@ -2137,6 +2212,7 @@
       "description": "Decline a care-team application and verify continued access denial.",
       "difficulty": "Hard",
       "functional_category": "Staff onboarding",
+      "planned_execution_rank": 17,
       "requirement_ids": [
         "R09",
         "R39"
@@ -2161,6 +2237,7 @@
       "description": "Try claiming an invitation by changing another account email.",
       "difficulty": "Hard",
       "functional_category": "Family access",
+      "planned_execution_rank": 23,
       "requirement_ids": [
         "R32",
         "R39"
@@ -2185,6 +2262,7 @@
       "description": "Invite a not-yet-registered synthetic family member and accept after signup.",
       "difficulty": "Hard",
       "functional_category": "Family access",
+      "planned_execution_rank": 27,
       "requirement_ids": [
         "R31",
         "R32"
@@ -2209,6 +2287,7 @@
       "description": "Reject duplicate pending requests and an expired acceptance.",
       "difficulty": "Hard",
       "functional_category": "Family access",
+      "planned_execution_rank": 33,
       "requirement_ids": [
         "R33"
       ],
@@ -2232,6 +2311,7 @@
       "description": "Prevent reused or old invitations from restoring revoked access.",
       "difficulty": "Hard",
       "functional_category": "Family access",
+      "planned_execution_rank": 37,
       "requirement_ids": [
         "R33"
       ],
@@ -2255,6 +2335,7 @@
       "description": "Enforce section scopes on visible navigation and direct exports.",
       "difficulty": "Hard",
       "functional_category": "Family access",
+      "planned_execution_rank": 43,
       "requirement_ids": [
         "R30",
         "R34"
@@ -2279,6 +2360,7 @@
       "description": "Revoke a live proxy grant and check already-open record access.",
       "difficulty": "Hard",
       "functional_category": "Family access",
+      "planned_execution_rank": 47,
       "requirement_ids": [
         "R30",
         "R33",
@@ -2304,6 +2386,7 @@
       "description": "Attempt to book the same slot from two patients with stale availability.",
       "difficulty": "Hard",
       "functional_category": "Appointments",
+      "planned_execution_rank": 53,
       "requirement_ids": [
         "R11"
       ],
@@ -2327,6 +2410,7 @@
       "description": "Reject unavailable scheduling and invalid appointment state changes.",
       "difficulty": "Hard",
       "functional_category": "Appointments",
+      "planned_execution_rank": 57,
       "requirement_ids": [
         "R11",
         "R12",
@@ -2352,6 +2436,7 @@
       "description": "Check earliest-first ordering and timezone consistency across views.",
       "difficulty": "Hard",
       "functional_category": "Appointments",
+      "planned_execution_rank": 63,
       "requirement_ids": [
         "R10",
         "R13"
@@ -2376,6 +2461,7 @@
       "description": "Reject expired and reused local reset links.",
       "difficulty": "Hard",
       "functional_category": "Password recovery",
+      "planned_execution_rank": 67,
       "requirement_ids": [
         "R06",
         "R07"
@@ -2400,6 +2486,7 @@
       "description": "Reject a second pending refill with patient-friendly feedback.",
       "difficulty": "Hard",
       "functional_category": "Refills",
+      "planned_execution_rank": 73,
       "requirement_ids": [
         "R21"
       ],
@@ -2423,6 +2510,7 @@
       "description": "Validate payment boundaries and prevent double processing.",
       "difficulty": "Hard",
       "functional_category": "Billing",
+      "planned_execution_rank": 77,
       "requirement_ids": [
         "R25",
         "R26",
@@ -2448,6 +2536,7 @@
       "description": "Withdraw a previously published result and test saved detail/PDF links.",
       "difficulty": "Hard",
       "functional_category": "Laboratory",
+      "planned_execution_rank": 83,
       "requirement_ids": [
         "R17",
         "R30"
@@ -2472,6 +2561,7 @@
       "description": "Hide private notes and unpublished visits/documents including direct exports.",
       "difficulty": "Hard",
       "functional_category": "Visits and documents",
+      "planned_execution_rank": 87,
       "requirement_ids": [
         "R24",
         "R27",
@@ -2497,6 +2587,7 @@
       "description": "Read and export a long multi-page clinical document.",
       "difficulty": "Hard",
       "functional_category": "PDF exports",
+      "planned_execution_rank": 93,
       "requirement_ids": [
         "R28",
         "R29"
@@ -2521,6 +2612,7 @@
       "description": "Use staff module search and a record drawer on a narrow screen with keyboard.",
       "difficulty": "Hard",
       "functional_category": "Staff navigation",
+      "planned_execution_rank": 97,
       "requirement_ids": [
         "R02",
         "R37"
@@ -2545,6 +2637,7 @@
       "description": "Complete booking, staff rescheduling and cancellation with consistent history.",
       "difficulty": "Expert",
       "functional_category": "Scheduling end-to-end",
+      "planned_execution_rank": 4,
       "requirement_ids": [
         "R03",
         "R11",
@@ -2573,6 +2666,7 @@
       "description": "Create, publish, correct and withdraw a result across staff and patient views.",
       "difficulty": "Expert",
       "functional_category": "Laboratory end-to-end",
+      "planned_execution_rank": 14,
       "requirement_ids": [
         "R15",
         "R16",
@@ -2601,6 +2695,7 @@
       "description": "Exchange messages across roles and verify per-user archive independence.",
       "difficulty": "Expert",
       "functional_category": "Messaging end-to-end",
+      "planned_execution_rank": 24,
       "requirement_ids": [
         "R18",
         "R19",
@@ -2626,6 +2721,7 @@
       "description": "Resolve a denied refill then process a separate new request to completion.",
       "difficulty": "Expert",
       "functional_category": "Refills end-to-end",
+      "planned_execution_rank": 34,
       "requirement_ids": [
         "R20",
         "R21",
@@ -2652,6 +2748,7 @@
       "description": "Create an invoice, partially pay, finish paying and reconcile both receipts.",
       "difficulty": "Expert",
       "functional_category": "Billing end-to-end",
+      "planned_execution_rank": 44,
       "requirement_ids": [
         "R03",
         "R25",
@@ -2680,6 +2777,7 @@
       "description": "Complete scoped invitation, owner revocation and a new consent after revocation.",
       "difficulty": "Expert",
       "functional_category": "Family access end-to-end",
+      "planned_execution_rank": 54,
       "requirement_ids": [
         "R30",
         "R31",
@@ -2708,6 +2806,7 @@
       "description": "Request dependent access, deny self-approval, then verify an administrator decision.",
       "difficulty": "Expert",
       "functional_category": "Guardian verification",
+      "planned_execution_rank": 64,
       "requirement_ids": [
         "R31",
         "R34",
@@ -2735,6 +2834,7 @@
       "description": "Recover access after a failed reset, then validate session/account isolation.",
       "difficulty": "Expert",
       "functional_category": "Account recovery end-to-end",
+      "planned_execution_rank": 74,
       "requirement_ids": [
         "R04",
         "R05",
@@ -2762,6 +2862,7 @@
       "description": "Onboard all four permitted staff roles and verify their appropriate workspaces.",
       "difficulty": "Expert",
       "functional_category": "Care-team onboarding end-to-end",
+      "planned_execution_rank": 84,
       "requirement_ids": [
         "R08",
         "R09",
@@ -2791,6 +2892,7 @@
       "description": "Verify an audited cross-module staff session and recover from a missing record.",
       "difficulty": "Expert",
       "functional_category": "Audit and error recovery",
+      "planned_execution_rank": 94,
       "requirement_ids": [
         "R14",
         "R17",
