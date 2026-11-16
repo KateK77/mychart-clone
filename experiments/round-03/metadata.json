@@ -24,5 +24,12 @@
     "browser_page_errors": 0,
     "pdf_samples": 5,
     "pdf_pages_inspected": 11
+  },
+  "implementation_commit": "b69b360586575136b4b1abbef3652ad20b9ea195",
+  "delivery_smoke": {
+    "patient": "Welcome, Jordan",
+    "admin": "Staff workspace",
+    "caregiver": "Family Access",
+    "v1_v2_v3_health": "ok"
   }
 }
