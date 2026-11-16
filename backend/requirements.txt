@@ -5,3 +5,5 @@ psycopg[binary]~=3.3.9
 
 reportlab==5.1.0
 pypdf==7.1.0
+gunicorn~=23.0
+whitenoise~=6.12.0

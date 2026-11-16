@@ -3,9 +3,14 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 DEBUG = os.getenv("CC_PRODUCTION") != "1"
+PUBLIC_DEMO = os.getenv("CC_PUBLIC_DEMO") == "1"
+SERVE_FRONTEND = os.getenv("CC_SERVE_FRONTEND") == "1"
 SECRET_KEY = os.environ["CC_SECRET_KEY"] if not DEBUG else os.getenv("CC_SECRET_KEY", "careconnect-local-synthetic-only")
 ALLOWED_HOSTS = os.getenv("CC_HOSTS", "localhost,127.0.0.1,testserver").split(",")
 CSRF_TRUSTED_ORIGINS = os.getenv("CC_TRUSTED_ORIGINS", "http://localhost:15270,http://127.0.0.1:15270").split(",")
+if os.getenv("RENDER_EXTERNAL_HOSTNAME"):
+    ALLOWED_HOSTS.append(os.environ["RENDER_EXTERNAL_HOSTNAME"])
+    CSRF_TRUSTED_ORIGINS.append("https://" + os.environ["RENDER_EXTERNAL_HOSTNAME"])
 INSTALLED_APPS = [
     "django.contrib.admin", "django.contrib.auth", "django.contrib.contenttypes",
     "django.contrib.sessions", "django.contrib.messages", "django.contrib.staticfiles",
@@ -17,6 +22,9 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware", "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
+if SERVE_FRONTEND:
+    MIDDLEWARE.insert(1, "whitenoise.middleware.WhiteNoiseMiddleware")
+    WHITENOISE_ROOT = BASE_DIR.parent / "frontend" / "dist"
 ROOT_URLCONF = "careconnect.urls"
 TEMPLATES = [{"BACKEND": "django.template.backends.django.DjangoTemplates", "APP_DIRS": True,
               "OPTIONS": {"context_processors": ["django.template.context_processors.request",
@@ -39,6 +47,13 @@ STATIC_URL = "/static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 SESSION_COOKIE_SECURE = CSRF_COOKIE_SECURE = not DEBUG
+if not DEBUG:
+    # The hosting proxy must overwrite, rather than forward, client-supplied headers.
+    SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+    SECURE_SSL_REDIRECT = True
+    SECURE_HSTS_SECONDS = 3600
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_HSTS_PRELOAD = True
 SESSION_COOKIE_AGE = 60 * 60 * 8
 SECURE_CONTENT_TYPE_NOSNIFF = True
 REST_FRAMEWORK = {"DEFAULT_PERMISSION_CLASSES": ["rest_framework.permissions.IsAuthenticated"],

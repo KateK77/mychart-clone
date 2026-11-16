@@ -1,18 +1,80 @@
-# CareConnect 3.0
+# CareConnect 3.0 · Your health, connected
 
-**DEMO — SYNTHETIC DATA ONLY — NOT FOR CLINICAL USE.**
+**A working patient portal, family access hub, and simulated hospital workspace.**
 
-CareConnect is an independent research prototype inspired by patient portal workflows. It has no affiliation with Epic Systems or MyChart. Synthetic billing, prescriptions, and communications are stored locally.
+CareConnect brings appointments, medical records, care-team conversations, medications, and bills into one place. Explore both sides of care: a patient makes a request, and hospital staff act on it in the same system.
 
-## Features
+![Patient dashboard with appointments, messages, and health information](docs/screenshots-v3/04-dashboard.png)
 
-Patients can manage appointments, check in, send messages, review published laboratory trends, request medication refills, review their health summary and visits, pay synthetic bills, download documents and receipts, switch to authorized family records, and manage notification preferences. Employees use the same portal sign-in and see a role-based workspace for scheduling, clinical records, publication, billing and proxy administration.
+<!-- LIVE_DEMO_START -->
+**Online demo: awaiting the owner's Render deployment.** A public website URL has not been issued yet. The local address below works only on the computer running the app.
+
+[Deployment setup](docs/deployment.md) · [Screenshots](#a-look-inside) · [Demo accounts](#demo-accounts) · [Quick walkthrough](docs/manual-checklist.md)
+<!-- LIVE_DEMO_END -->
+
+**DEMO — SYNTHETIC DATA ONLY — NOT FOR CLINICAL USE.** This independent project is inspired by patient portal workflows and is not affiliated with Epic Systems or MyChart. Use invented names, emails, and records. Billing and prescriptions are simulations.
+
+## What you can do
+
+| Area | Try it in CareConnect |
+| --- | --- |
+| Appointments | Find a time, book, complete check-in, request a change, or cancel. |
+| Messages | Talk to the care team, reply, archive, and restore conversations. |
+| Test results | View released results and trends, read reports online, and download PDFs. |
+| Medications | Request a refill and follow its progress through staff review. |
+| Health records | Review conditions, allergies, visits, shared notes, and visit summaries. |
+| Billing | Make simulated payments and view statements and PDF receipts. |
+| Family Access | Invite or request access to a family member's records with consent and scoped permissions. |
+| Hospital workspace | Manage requests, publish records, approve staff applications, and review family access. |
+
+## Demo accounts
+
+After the online deployment is complete, open its sign-in page and use any account below. These also work in a fresh local installation.
+
+**Shared demo password: `CareConnect-Demo-2026!`**
+
+| Username | Role | Best place to start |
+| --- | --- | --- |
+| `patient` | Patient · Jordan Vale | Dashboard, appointments, results, and bills |
+| `caregiver` | Family caregiver · Taylor Vale | Family Access → Link a family member |
+| `physician` | Physician · Maya Rowan | Staff workspace and care-team messages |
+| `admin` | Administrator · Morgan Wren | Staff workspace and Access reviews |
+| `nurse` | Nurse | Clinical workflows |
+| `frontdesk` | Front Desk | Scheduling |
+| `billing` | Billing Staff | Invoices and payments |
+| `dependent` | Patient · Avery Vale | Linked family profile example |
+
+Shared accounts use the same demonstration data for every visitor. Please leave their passwords unchanged. A demonstration administrator can manage synthetic patient records; creating an account here does not make it a private medical service.
+
+**Prefer your own account?** Choose **Create an account** on the sign-in page, then **Patient**, **Family caregiver**, or **Care team**. Patients and caregivers can sign in immediately; care-team applications require administrator approval. New accounts start with their own empty records. Use a unique invented email such as `your-demo-name@example.test` and a password you do not use elsewhere. Real email delivery is not enabled.
+
+For a short two-sided tour, use `patient` in a normal browser window and `admin` in a private window. Send a message or request a refill as the patient, process it as staff, then return to the patient view. Separate browser sessions prevent the accounts from replacing each other's login.
+
+## A look inside
+
+### Choose how you want to use the portal
+
+![Patient, caregiver, and care-team registration choices](docs/screenshots-v3/01-registration-roles.png)
+
+### Link family records with permission
+
+![Family invitation and access request form](docs/screenshots-v3/06-family-link.png)
+
+### Read online, print, or download a PDF
+
+![Laboratory report website preview](docs/screenshots-v3/08-preview-lab.png)
+
+Sample exports: [lab report](docs/pdf-samples/lab.pdf) · [visit summary](docs/pdf-samples/document.pdf) · [statement](docs/pdf-samples/invoice.pdf) · [receipt](docs/pdf-samples/receipt.pdf).
+
+### Review requests from the hospital side
+
+![Administrator access reviews](docs/screenshots-v3/10-access-reviews.png)
+
+Mobile layouts and more views are available in the [screenshot gallery](docs/screenshots-v3).
 
 ## Architecture
 
 Version 3 adds account-type registration and administrator-reviewed care-team applications, consent-based family linking, explicit message restoration, and website previews with real PDF downloads. It retains the version-2 interface around manual-test feedback: searchable staff work areas, immediate record drawers, clear patient context, reliable sign-out, readable errors, password confirmation and recovery. All interface copy and seeded records are in English.
-
-![CareConnect 3.0 registration](docs/screenshots-v3/01-registration-roles.png)
 
 React, TypeScript, Vite, Tailwind CSS, React Router and TanStack Query power the interface. Django and Django REST Framework handle authenticated sessions, CSRF, role checks, patient and proxy scoping, validation and persisted audit events. Local development uses SQLite. Production settings support PostgreSQL. Vite proxies API calls to Django, keeping browser requests same-origin during local development.
 
@@ -39,18 +101,7 @@ pnpm dev --host 127.0.0.1
 
 Open [CareConnect 3.0 locally](http://127.0.0.1:15270). Vite uses a strict dedicated port, failing visibly if occupied instead of silently opening another app. The second patient demonstrates scoped proxy access. Rerunning the seed command preserves edits and uses the current date when creating demo availability. To start fresh, set `CC_SQLITE` to a new writable SQLite path before migrating and seeding.
 
-| Username | Role |
-| --- | --- |
-| patient | Patient, Jordan Vale |
-| dependent | Patient, Avery Vale |
-| caregiver | Family caregiver, Taylor Vale |
-| physician | Physician |
-| nurse | Nurse |
-| frontdesk | Front Desk |
-| billing | Billing Staff |
-| admin | Administrator |
-
-The default local password is `CareConnect-Demo-2026!`. Set `CC_DEMO_PASSWORD` before first seeding to use another password. Production mode disables the seed command.
+Use the [demo accounts above](#demo-accounts). Set `CC_DEMO_PASSWORD` before first seeding to use another password. Production mode disables seeding unless `CC_PUBLIC_DEMO=1` explicitly enables a synthetic demonstration deployment.
 
 ## Password recovery
 
@@ -60,7 +111,11 @@ This mailbox is a local simulation for synthetic accounts. Messages go to the re
 
 ## Configuration and deployment
 
-See `.env.example` for process environment variables. For a production-style deployment configure PostgreSQL and set `CC_PRODUCTION=1`, `CC_SECRET_KEY`, database credentials, allowed hosts and the HTTPS trusted origin. Build the frontend and serve its output with SPA fallback for browser navigation and an HTTPS same-origin reverse proxy to Django for `/api/`. This repository provides local startup and production configuration, with hosting and infrastructure left to the deployer.
+The [Render deployment guide](docs/deployment.md) explains how to publish the complete application. The repository includes a Docker image definition, a Render Blueprint, and same-origin frontend/API serving with Gunicorn and WhiteNoise. PostgreSQL keeps accounts and records separate from the web service's temporary filesystem. Render provides the HTTPS address after deployment.
+
+The included Blueprint selects free instances for a short trial; Render's free database expires after 30 days. Review the host's pricing and choose paid compute/database plans for a lasting showcase. Hosting is not activated by pushing this repository to GitHub.
+
+See [.env.example](.env.example) for configuration. The hosted demo runs with debug disabled, secure cookies, explicit synthetic seeding, and the local password-reset mailbox disabled. Real email recovery is not yet configured.
 
 ## Verification
 

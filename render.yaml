@@ -1,0 +1,47 @@
+# Short trial only: free Postgres expires after 30 days. Review paid plans for a lasting demo.
+services:
+  - type: web
+    name: careconnect-demo
+    runtime: docker
+    plan: free
+    region: oregon
+    branch: main
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /api/healthcheck/
+    autoDeployTrigger: checksPass
+    envVars:
+      - key: CC_PRODUCTION
+        value: "1"
+      - key: CC_PUBLIC_DEMO
+        value: "1"
+      - key: CC_DEMO_MAILBOX
+        value: "0"
+      - key: CC_SECRET_KEY
+        generateValue: true
+      - key: CC_DB_NAME
+        fromDatabase:
+          name: careconnect-db
+          property: database
+      - key: CC_DB_USER
+        fromDatabase:
+          name: careconnect-db
+          property: user
+      - key: CC_DB_PASSWORD
+        fromDatabase:
+          name: careconnect-db
+          property: password
+      - key: CC_DB_HOST
+        fromDatabase:
+          name: careconnect-db
+          property: host
+      - key: CC_DB_PORT
+        fromDatabase:
+          name: careconnect-db
+          property: port
+databases:
+  - name: careconnect-db
+    plan: free
+    region: oregon
+    databaseName: careconnect
+    user: careconnect
+    ipAllowList: []

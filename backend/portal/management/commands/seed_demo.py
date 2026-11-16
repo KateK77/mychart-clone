@@ -16,8 +16,8 @@ class Command(BaseCommand):
 
     @transaction.atomic
     def handle(self, **options):
-        if not settings.DEBUG:
-            raise CommandError("Synthetic demo accounts can only be seeded in local mode.")
+        if not settings.DEBUG and not settings.PUBLIC_DEMO:
+            raise CommandError("Synthetic seeding requires local mode or explicit CC_PUBLIC_DEMO=1.")
         now = timezone.now()
         today = now.date()
         password = os.getenv("CC_DEMO_PASSWORD", "CareConnect-Demo-2026!")

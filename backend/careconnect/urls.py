@@ -1,6 +1,7 @@
 from django.http import JsonResponse
 from django.urls import path
 from django.db import connection
+from django.conf import settings
 
 from portal import auth, messages, patient, staff, recovery, access, exports
 
@@ -48,3 +49,9 @@ for route, view in (
     ("documents", patient.documents),
 ):
     urlpatterns.extend([path(f"api/{route}/", view), path(f"api/{route}/<int:pk>/", view)])
+
+if settings.SERVE_FRONTEND:
+    from django.urls import re_path
+    from portal.web import frontend
+    # Unknown API and asset URLs must remain 404s, never return the SPA shell.
+    urlpatterns.append(re_path(r"^(?!api(?:/|$)|assets(?:/|$)|static(?:/|$)).*$", frontend))
