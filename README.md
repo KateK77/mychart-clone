@@ -7,7 +7,9 @@ CareConnect brings appointments, medical records, care-team conversations, medic
 ![Patient dashboard with appointments, messages, and health information](docs/screenshots-v3/04-dashboard.png)
 
 <!-- LIVE_DEMO_START -->
-**Online demo: awaiting the owner's Render deployment.** A public website URL has not been issued yet. The local address below works only on the computer running the app.
+**Live demo:** [Open website](https://careconnect-demo-rc0t.onrender.com) · [Sign in](https://careconnect-demo-rc0t.onrender.com/login) · [Create an account](https://careconnect-demo-rc0t.onrender.com/register)
+
+No installation required. Use a demo account below or register your own test account. This free trial may take about a minute to wake after inactivity. Its free database expires on **December 16, 2026** unless upgraded.
 
 [Deployment setup](docs/deployment.md) · [Screenshots](#a-look-inside) · [Demo accounts](#demo-accounts) · [Quick walkthrough](docs/manual-checklist.md)
 <!-- LIVE_DEMO_END -->
@@ -29,7 +31,7 @@ CareConnect brings appointments, medical records, care-team conversations, medic
 
 ## Demo accounts
 
-After the online deployment is complete, open its sign-in page and use any account below. These also work in a fresh local installation.
+Open the [live sign-in page](https://careconnect-demo-rc0t.onrender.com/login) and use any account below. These also work in a fresh local installation.
 
 **Shared demo password: `CareConnect-Demo-2026!`**
 

@@ -4,9 +4,13 @@ GitHub hosts the project, screenshots, and source. Render runs the React app, Dj
 
 ## Current status
 
-The deployment package is prepared. No public application URL is claimed until the owner connects Render and deployment succeeds. The `v3.0.0` tag preserves the reviewed local release; subsequent `main` commits add the showcase and hosting package.
+**Live:** [CareConnect](https://careconnect-demo-rc0t.onrender.com) · [Sign in](https://careconnect-demo-rc0t.onrender.com/login) · [Register](https://careconnect-demo-rc0t.onrender.com/register).
 
-## Owner setup on Render
+The initial deployment became live on November 16, 2026 (UTC), from commit `bc2dea78f0e9715b96c0cb4587a8d0112b9152f4`. Public browser verification passed for registration, patient/physician/administrator/caregiver logins, report preview, PDF download, and deep-link refresh. The health endpoint returned HTTP 200. The `v3.0.0` tag preserves the reviewed local release; subsequent `main` commits add the showcase and hosting package.
+
+Both resources use the free plan in Oregon. The PostgreSQL 18 database expires on **December 16, 2026 at 03:58 UTC** unless upgraded. The website may sleep when idle. [Owner deployment dashboard](https://dashboard.render.com/web/srv-dbt7v6gae00c739ue07g).
+
+## Reproduce the deployment on Render
 
 1. Open [Render](https://dashboard.render.com/) and sign in or create an account. Connect GitHub and allow access to `KateK77/mychart-clone`.
 2. Choose **New → Blueprint**, select this repository, and use branch **main** with **render.yaml**.

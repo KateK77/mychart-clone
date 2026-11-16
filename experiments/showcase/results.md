@@ -21,8 +21,20 @@ Date: 2026-11-15
 - Restarted the disposable application container and logged back into the newly registered account, confirming PostgreSQL persistence.
 - Git whitespace check passed.
 
-## Deployment boundary
+## Public deployment verification
 
-The Docker service was validated locally, bound only to loopback. Render has not issued a public application URL in this task. The README deliberately marks the live demo as pending until the owner connects the hosting account and the actual deployment succeeds. GitHub source visibility is public; this alone does not deploy the application.
+Verified November 16, 2026 (UTC), November 15 in America/Chicago.
 
-The free Blueprint is a short trial because Render's free PostgreSQL database expires after 30 days. A paid web instance and database should be selected for an ongoing showcase. The public deployment keeps the existing simulated reset mailbox disabled; external email recovery remains unconfigured.
+- Render Blueprint `exs-dbt7uf3bc2fs73dchqv0` deployed the reviewed plan in the owner's confirmed My Workspace. Both web service and database use free plans in Oregon; no paid resources provisioned.
+- Deploy `dep-dbt7v6oae00c739ue1ig` reached `live` at 04:01:04 UTC, running commit `bc2dea78f0e9715b96c0cb4587a8d0112b9152f4`.
+- Public URL: https://careconnect-demo-rc0t.onrender.com. Its HTTPS health endpoint returned 200 with `status: ok`.
+- Browser smoke against the actual HTTPS website passed: new synthetic patient registration; patient, physician, administrator and caregiver demo logins; report preview and PDF signature/content type; deep-link refresh; secure session cookie; CSRF-less login rejected; public demo mailbox disabled; unknown API/assets return 404. No browser JavaScript errors observed.
+- The new test account is `public-smoke-20261115`, with invented contact information. This public check did not restart the service; restart persistence was verified separately in the local Docker/PostgreSQL test above.
+- GitHub Actions completed successfully for the deployed commit on both pushed branches.
+- Added the verified public website, sign-in and registration links to the README and deployment guide.
+
+## Deployment limitations
+
+The Render deployment uses PostgreSQL 18; the earlier disposable-container regression suite used PostgreSQL 17. Public deployment checks exercise the live database through the application. GitHub hosts the source and presentation; Render runs the interactive website and database.
+
+The free database expires December 16, 2026 at 03:58 UTC unless upgraded. Free web instances sleep when idle. A paid web instance and database should be selected for an ongoing showcase. The public deployment keeps the existing simulated reset mailbox disabled; external email recovery remains unconfigured.
