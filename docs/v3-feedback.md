@@ -9,4 +9,4 @@
 | Dependent access needs authorization | Guardian verification queue for administrators | Backend approval and no self-consent for minors |
 | Earlier v1 feedback | All v2 fixes retained | Existing v1/v2 automated regressions |
 
-The complete original requirements and both feedback sets are consolidated in [the v3 master prompt](../experiments/round-03/description.md). Version 1 and 2 evidence remain in their original experiment directories.
+The complete release requirements are specified in [the standalone v3 requirements document](../experiments/round-03/description.md). This feedback table is historical supporting evidence and is not needed to understand the requirements. Version 1 and 2 evidence remain in their original experiment directories.

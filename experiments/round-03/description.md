@@ -1,922 +1,250 @@
-# CareConnect 3.0 — Consolidated master prompt
+# CareConnect 3.0 — Complete Requirements Specification
 
-Version: 3.0.0 · Round: 3 · Date: 2026-11-15 · Repository: KateK77/mychart-clone (private)
+**Release:** 3.0.0 · **Development round:** 3 · **Requirements edition:** November 16, 2026 · **Repository:** KateK77/mychart-clone
 
-## Current delivery instruction and precedence
+This document defines the complete requirements for CareConnect 3.0. It can be read and implemented independently; no earlier prompt, feedback log, or conversation is required. It specifies expected behavior, not a claim that every requirement has passed verification.
 
-Build and verify CareConnect 3.0 using the full baseline specification below, the retained version-2 changes, and all version-3 feedback in this document. This is the complete consolidated prompt; no previous conversation is required. The current delivery instructions and feedback in this opening section override conflicting baseline wording. Preserve the established React/TypeScript and Django/DRF implementation and previous release history. Work in an isolated version-3 checkout. Do not disturb the running v1 or v2 databases. Keep all product copy, new synthetic records, documentation, and validation messages in English.
+## 1. Product purpose and scope
 
-Complete the implementation, automatically test it, visually inspect it, save this prompt and factual results, commit, push source and documentation to the existing private GitHub repository, create tag v3.0.0, verify the remote SHA, and leave the local v3 website running for the user's manual review. Stop for feedback after delivery. Do not begin another version or repeatedly ask the user to retest already working features.
+CareConnect is a standalone patient portal and simulated hospital workspace inspired by MyChart workflows. Patients and staff use the same persistent database, so a request made in the patient portal becomes an actionable record in the staff workspace, and staff decisions appear in the patient portal.
 
-Use frontend port 15270 and backend port 18270, a dedicated v3 session and CSRF cookie, and a clean delivery database. Preserve the original round-01 and round-02 experiment files unchanged. Save this consolidated prompt as experiments/round-03/description.md, with results.md and metadata.json alongside it. Use branch version-3 and a normal fast-forward update of main; no force push or history rewriting.
+Deliver a complete working application covering appointments, laboratory results, messages, medications, refills, health history, visits, documents, billing, family access, notifications, and account settings. Buttons must perform validated operations and persist their results; a success message alone is insufficient. The application must run locally without an existing EHR, hospital API, or paid third-party service.
 
-## Retained feedback from the first manual review
+CareConnect is an independent synthetic-data research prototype, not an Epic Systems or MyChart product. Use original branding and assets. Display **“DEMO — SYNTHETIC DATA ONLY — NOT FOR CLINICAL USE.”** throughout the application. Do not use real patient information, transmit real prescriptions, process real payments, or claim clinical certification or HIPAA compliance.
 
-1. Keep all portal and staff workflows operational: appointment booking, cancellation, questionnaire, eCheck-In, rescheduling, messages and unread counts, notifications, laboratory filtering/trends/publication, prescriptions and refills, health summary, corrections, visits, documents, billing, family proxy permissions, profile and password settings.
-2. Replace a long, hard-to-find staff navigation column with categorized work areas, search, group filters, and a compact module selector. Open selected records immediately in a focused drawer; never append details below a long list. Preserve the current patient and module context and give a clear close/back action. Support keyboard and narrow screens without horizontal overflow.
-3. Sign-out must clear cached session and patient records, return to sign-in immediately, and support switching accounts without a browser refresh.
-4. Confirm new passwords in registration, password change, and recovery; validate equality and strength, provide accessible visibility controls, and clear password fields on success. Provide Forgot password and expiring single-use reset links through a clearly marked local simulated mailbox. Do not ask the tester to reset passwords back simply to repeat a test.
-5. Show readable unavailable/permission messages and a way back, never internal model/query errors. Show staff names and readable dates instead of raw IDs and ISO timestamps wherever possible.
-6. Explain an existing refill request clearly, prevent duplicate pending requests, show progress and final decision notes in the patient portal.
-7. Sort upcoming appointments earliest first. Staff rescheduling opens the replacement appointment while preserving cancellation history. Preserve independent past cancellation records; the user's earlier manual cancellation and later reschedule are separate events.
-8. Keep report/visit details, reference ranges, units, status labels and date formats readable. Preserve the demo disclaimer and synthetic-only boundary.
-9. The sender-name complaint was withdrawn by the user after correcting the signed-in role. Do not treat it as an application defect. The unrelated Notepad missing-file message was not established as a portal failure.
+## 2. Architecture and technology
 
-## New version-3 feedback and acceptance criteria
+| Layer | Required technology and responsibility |
+| --- | --- |
+| Frontend | React, TypeScript, Vite, Tailwind CSS, React Router, and TanStack Query; responsive routing, forms, and server-state presentation |
+| Backend | Python, Django, and Django REST Framework; authentication, validation, permissions, transactions, and audit events |
+| Persistence | SQLite for local development; PostgreSQL-compatible deployment configuration; migrations and a repeatable synthetic seed command |
+| Automated verification | pytest/pytest-django, Vitest, React Testing Library, and Playwright for unit, integration, and browser workflows |
 
-### Message restoration (V2-MT-001)
+Use a modular architecture with a shared data model between patient and staff interfaces. Persist business state on the server. Refresh or invalidate affected frontend queries after mutations so dashboards, lists, details, and counters remain consistent. Local frontend requests must reach the matching backend through a same-origin development proxy. Configuration and secrets belong in environment variables, with documented examples and safe defaults.
 
-Archive and Restore to inbox must use a consistent flow: confirm intent, perform the action, then navigate to the destination folder with that tab selected. Show a specific success message, for example “Conversation restored to inbox.” The restored conversation must be visible. Only show the applicable Archive or Restore action. Cancelling confirmation leaves state unchanged. Errors preserve the detail page. Preserve messages, participants, per-user archive state, and unread behavior.
+## 3. Interface, navigation, and accessibility
 
-### Document previews and PDF downloads (V2-MT-002)
+All product copy, validation messages, documentation, and newly seeded records must be in English. Use clear typography, white backgrounds, blue/teal accents, and readable labels. Support desktop, tablet, and narrow mobile layouts without horizontal clipping.
 
-Provide readable website previews with Download PDF and Print controls for laboratory reports, clinical documents/after-visit summaries, billing statements, and simulated payment receipts. Replace plain-text download responses with actual PDFs, correct application/pdf content type, and descriptive .pdf filenames. Generate both preview data and PDF content from the same permission-checked representation. Include CareConnect branding, patient and available provider identifiers, document reference, relevant dates, values/units/ranges/status, exact financial amounts, the synthetic disclaimer, and PDF page numbers. Wrap long text and paginate long documents. Keep withdrawn reports, unpublished visits/documents, other patients' records, and disallowed/revoked proxy sections inaccessible through direct export URLs as well as the UI. Render and inspect representative PDFs, including a multi-page sample. No public hosting or real clinical integration is implied.
+Patient navigation must provide Dashboard, Appointments, Messages, Test Results, Medications, Health Summary, Visits, Billing, Documents, Family Access, and Account Settings. Include a notification entry point, a discoverable sign-out control, and breadcrumbs or equivalent return navigation.
 
-### Account-type registration and landing pages (V2-MT-003)
+Staff navigation must use categorized work areas, search, group filters, and a compact module selector. Selecting a record must immediately open a focused detail drawer with a visible title and close/back control. Preserve the selected patient and work area while inspecting or closing records. Do not insert the selected detail below a long list where it is difficult to discover. Support keyboard navigation, Escape-to-close behavior, accessible labels, visible focus, and usable mobile drawers.
 
-Create a dedicated registration page that first presents mutually exclusive Patient, Family caregiver, and Care team choices. Then show the corresponding form, confirm password, and let the user change the choice. Patients land in their portal; caregivers land in Family Access. Care-team applicants choose Physician, Nurse, Front Desk, or Billing Staff and provide organization details. They land on a clear pending application page and receive no staff privileges until an administrator verifies and approves them. Provide administrator application review with a required decision/verification note and approval or decline. After approval, the account opens its appropriate role-based workspace. Never allow public selection of Administrator or grant a privileged role merely from a client field. Pending and declined users must not access staff records.
+Provide loading, empty, validation, success, and error states. Explain unavailable records and missing permissions in plain English with a way back. Do not expose internal model names, query exceptions, or raw server tracebacks. Display patient/provider names and readable dates instead of bare database IDs or raw ISO timestamps. Financial amounts, laboratory units, reference ranges, and status labels must remain legible.
 
-### Linking family accounts (V2-MT-004)
+Confirm destructive or consequential changes where appropriate. Canceling a confirmation must leave data unchanged. A failed operation must not display success or discard information needed to retry manually.
 
-Family Access needs a visible Link a family member action. Support inviting someone to access the current user's records and requesting access to another family member's records. Select explicitly permitted sections. Display incoming and outgoing requests with status, expiry, relationship, scopes, and relevant actions. An email/name match alone does not grant access: an authenticated recipient must explicitly accept or decline. Bind recipient identity to the intended account, including invitations accepted after account creation; profile email edits must not claim invitations. Permit cancellation before acceptance. Block duplicate pending requests and expired/reused acceptance. After consent, show the linked profile and only permitted sections. Provide owner revocation and proxy removal, enforce it on subsequent API requests, and prevent an older invitation from silently restoring revoked access. Support dependent/guardian requests through administrator verification rather than self-granting access. Use local in-app invitation delivery and clearly disclose that no external email is sent. Demo identities are synthetic; do not claim real-world identity or guardianship verification.
+## 4. Accounts, registration, and authentication
 
-## Verification and delivery
+Provide a dedicated registration route that first asks the visitor to choose exactly one account type: **Patient**, **Family caregiver**, or **Care team**. Show the appropriate form after selection and allow the visitor to change the selection before submitting. All forms require validated identity/contact fields and confirmed passwords.
 
-Run existing regression tests and focused new backend/browser checks. Cover role escalation prevention, consent in both directions, guardian approval, recipient isolation, revocation, expiry, PDF content and object permissions, message restoration, and browser route changes. Capture representative desktop/tablet/mobile screenshots and inspect for clipping, overflow, or confusing navigation. Run TypeScript/build, unit tests, Django checks and migration-drift checks. Record exact results and limitations; never claim production certification or hosted deployment. Start a fresh seeded database for user testing, separate from automated test mutations. Give the user the local URL, demo credentials, GitHub version/prompt links, concise test results, and a short non-repetitive review checklist; then wait.
+| Account type | Registration requirements | Landing and access |
+| --- | --- | --- |
+| Patient | Patient account details and confirmed password | Patient portal with the account's own records |
+| Family caregiver | Caregiver account details and confirmed password | Family Access; other patients' records require a separate authorized relationship |
+| Care team | Choose Physician, Nurse, Front Desk, or Billing Staff; supply organization details and confirmed password | Pending-application page until administrator approval |
 
-## Complete baseline application specification, carried forward for Round 3
+Administrator must not be an option in public registration. Selecting a staff role must create an application, not immediately grant privileges. Pending and declined applicants must not access staff records or APIs.
 
-The following baseline is retained in full with round, tag and local-directory references updated for this release. The feedback and delivery rules above take precedence.
+Provide an administrator Access reviews area for care-team applications. Review must include a required verification/decision note and an approve or decline action. Approval grants only the approved role and sends the account to the corresponding workspace on subsequent access. Preserve application status and audit the decision. This is simulated verification of synthetic identities, not proof of professional credentials.
 
-# CODEX MASTER INSTRUCTION — MYCHART-INSPIRED PATIENT PORTAL
+Provide deterministic demo accounts for patients, a caregiver, Physician, Nurse, Front Desk, Billing Staff, and Administrator. Seeded staff accounts may be preauthorized for local demonstration.
 
-## 0. Read This First
+### Sessions, profiles, and passwords
 
-You are an autonomous senior full-stack software engineer, healthcare software architect, database engineer, and QA engineer.
+Implement login, logout, secure password hashing, profile editing, password change, and session management. Profile editing covers contact information such as email, phone, and address. Validate current credentials before a password change.
 
-Build a complete, functional, end-to-end patient portal inspired by Epic MyChart.
+Registration, password change, and password recovery must require the new password twice, enforce matching values and password-strength validation, provide accessible visibility controls, and clear password fields after success. Incorrect current passwords and invalid forms must be rejected with readable feedback.
 
-This is a standalone healthcare software engineering experiment.
+Sign-out must invalidate the session, clear cached identity and patient data, and return immediately to sign-in. Switching accounts must work without reloading the browser and must not briefly expose the previous account's records.
 
-You have no previous conversation context.
+Provide a discoverable Forgot password flow using expiring, single-use reset links in a clearly labeled local simulated mailbox. Isolate the mailbox to the requesting browser session; do not send external email. Reject expired, reused, and superseded links, and invalidate prior authenticated sessions after a successful reset. Protect recovery operations with CSRF validation and abuse controls. Clearly disclose that the mailbox is a local synthetic-data facility.
 
-Do not assume that an EHR system, hospital database, clinical API, or existing repository is available.
+## 5. Patient dashboard
 
-Build everything required for the application to function independently.
+Show the current patient's name, upcoming appointments, recent test results, unread messages, current medications, outstanding balance, recent visits, and important notifications. Provide working shortcuts for Schedule Appointment, Send Message, View Test Results, Request Refill, and Pay Bill.
 
-**Implement the entire specified application during Round 3.**
+All counts, balances, and summaries must derive from persisted records and current access permissions. Upcoming appointments are ordered earliest first. Each dashboard entry must lead to the corresponding authorized list or record. Account/profile changes must not leave another patient's information in the dashboard cache.
 
-Do not deliver only a scaffold, static interface, or limited MVP.
+## 6. Appointments and scheduling
 
-You may organize implementation internally, but do not divide delivery into multiple development phases.
+Patients must be able to view upcoming and past appointments, search available slots, filter by provider, appointment type, and date, select a time, book, inspect instructions, save a pre-visit questionnaire, complete simulated eCheck-In, request rescheduling, and cancel with a reason.
 
-## 1. Project Identity
+Supported appointment types are Primary Care, Follow-up, Annual Physical, Specialist Consultation, Telehealth, and Laboratory Visit. Represent slot availability and appointment states clearly: Available, Scheduled, Confirmed, Checked In, Completed, Cancelled, and No Show, as applicable to the record.
 
-Project name: CareConnect Patient Portal
+Authorized scheduling staff must manage providers, departments, availability, appointments, and valid status changes. The backend must validate provider availability, prevent double booking transactionally, reject scheduling conflicts, enforce state transitions, and apply consistent timezone handling.
 
-Reference product:
-https://www.mychart.org/
+Questionnaire answers, check-in status, rescheduling requests, and cancellation reasons must survive reload. A staff reschedule must reserve the replacement slot, preserve the original appointment as a historical cancellation with its reason, and open the replacement appointment immediately. Retain separate cancellation events as separate history records. Upcoming lists and the dashboard must show the current appointment in chronological order.
 
-GitHub owner:
-KateK77
+## 7. Laboratory results
 
-Target repository:
-KateK77/mychart-clone
+Provide a result list with test-name search and collection-date filtering, a dedicated detail view, historical measurements, a trend chart, and a downloadable summary. Each result must include its name, collection date, result date, value, unit, reference interval, status, abnormal flag, ordering provider, and comments.
 
-Preferred local directory:
-Use the authorized workspace and an isolated CareConnect-v3 checkout.
+Support Pending, Preliminary, Final, and Corrected result statuses. Associate reference intervals with the relevant test and units; show in-range and abnormal values clearly without inferring a diagnosis. Charts must correspond to the displayed test's historical measurements and expose understandable dates and values.
 
-Repository visibility:
-PRIVATE
+Authorized staff must create, edit, publish, correct, and withdraw synthetic results. Newly created unpublished results must not be visible to patients. Publication makes the authorized result available and creates an appropriate notification. Withdrawal must remove access from lists, saved detail links, and downloads. Result status and publication visibility are distinct fields.
 
-This is an independent synthetic-data research prototype inspired by patient portal workflows.
+## 8. Secure messaging
 
-It is not affiliated with Epic Systems or MyChart.
+Provide Inbox, Sent, and Archive folders, message details, threaded conversations, composition, recipient/care-team selection, replies, and read/unread state. Support Medical Question, Appointment Question, Medication Question, Billing Question, and General Request categories.
 
-Do not copy protected logos, branding, proprietary code, or restricted material.
+Persist messages, participants, authors, timestamps, and per-user folder state. Authorized clinical or billing staff must receive the applicable threads and reply within the same conversation. Patient views must show staff replies with the correct sender and update unread indicators. Restrict threads to authorized participants and staff scope. Display a clear non-emergency communication notice; no messages are sent to outside healthcare organizations.
 
-Display:
+Archive and Restore to inbox must follow the same interaction pattern: request confirmation, perform the state change, and navigate to the destination folder with the correct tab selected. The moved conversation must be visible there. Show a specific success notice such as “Conversation restored to inbox.” Only present the action applicable to the current archive state.
 
-"DEMO — SYNTHETIC DATA ONLY — NOT FOR CLINICAL USE."
+Canceling confirmation leaves the thread unchanged. A failed operation keeps the detail page available with an error. Moving a thread must preserve its messages, participants, other users' folder states, and correct unread behavior. A generic success notice on an unchanged detail page is insufficient.
 
-## 2. Experiment Context
+## 9. Medications and refill requests
 
-This application is part of a three-project AI software generation benchmark.
+Display active medications and medication history, with search and prescription details. Each record includes medication name, strength, dosage, route, frequency, start date, optional end date, prescriber, pharmacy, status, and instructions.
 
-The experiment evaluates the ability of an AI coding agent to generate complete healthcare software from detailed requirements.
+Patients must be able to request a refill for an eligible medication, include a note, and track Requested, Under Review, Approved, Denied, and Completed states. Authorized staff must review requests, make valid state changes, and record a decision note. Patient views must show the updated status and final decision note.
 
-There may be up to five development rounds.
+Prevent duplicate pending requests for the same medication. Explain that a request is already awaiting review instead of showing a generic database-conflict error. Keep completed and denied requests available as history.
 
-This instruction initiates Round 3 only.
+Provide a medication-information discrepancy form that creates a staff-review request. It must not directly overwrite clinician-maintained information. All refill and prescription actions are simulated; no dispensing or external prescription transmission is permitted.
 
-Round 3 objectives:
+## 10. Health summary and correction requests
 
-- Generate the complete application.
-- Implement all required modules.
-- Create and apply database migrations.
-- Seed realistic synthetic data.
-- Execute automated tests.
-- Verify core user workflows.
-- Commit and push code to GitHub.
-- Save the complete requirements and test results.
-- Stop and wait for feedback.
+Provide demographics, active conditions, allergies, current medications, immunizations, medical history, surgical history, family history, social history, care team, recent vital signs, and preventive care information.
 
-Do not automatically begin Round 2.
+Patients can inspect the summary and request a correction. Patient-entered clinical changes must be represented as requests or clearly identified self-reported information, not silently applied to official clinical records. Authorized staff must be able to maintain synthetic clinical records and inspect correction requests, mark them reviewed, and reopen them when appropriate. Preserve the request text, patient association, creation time, and review state.
 
-The final independent benchmark test suite will be introduced after development is complete.
+## 11. Visits and clinical notes
 
-## 3. Product Objective
+Provide past-visit lists and dedicated encounter details containing visit date, provider, department, visit type, reason, diagnoses, encounter summary, follow-up instructions, shared clinical notes, and an After Visit Summary.
 
-Build a complete web-based patient portal that enables patients to access their health information, communicate with healthcare staff, manage appointments, review test results, request medication refills, and manage healthcare billing.
+Authorized staff must create encounters, diagnoses, and notes, and control publication of patient-visible information. Private or unpublished notes must never appear in patient responses. Link the visit to its associated authorized documents. Display consistent information between the encounter summary and its downloadable After Visit Summary.
 
-The system must function as a standalone application.
+## 12. Billing and simulated payments
 
-Because no hospital EHR is available, implement a simulated clinical backend and administrative interface.
+Patients must be able to view outstanding balances, invoice lists and details, insurance information, payment history, and downloadable receipts. An invoice includes invoice number, service date, description, charges, insurance adjustment, patient responsibility, paid amount, remaining balance, due date, and status.
 
-The patient-facing features and clinical backend must use the same persistent database.
+Support Unpaid, Partially Paid, Paid, Overdue, and Voided states as appropriate. Authorized billing staff must create and manage invoices, maintain insurance records, and record simulated payments.
 
-Actions performed by patients must create real application records or state transitions.
+Use exact decimal amounts. A successful payment must atomically create a transaction and update the invoice, remaining balance, status, and dashboard total. Support partial payment and payment of the remaining amount. Validate invalid amounts and prevent duplicate processing of the same payment request. A settled or voided invoice must not continue to accept an ordinary payment.
 
-Do not implement buttons that only display success messages without changing application state.
+Receipts must identify the payment, invoice, date, and amount. Never collect real card details or connect to a live payment processor.
 
-## 4. Technology Stack
+## 13. Website previews, medical documents, and PDF exports
 
-Frontend:
+Provide a document list with type filtering, creation date, associated encounter, and an open action. Support After Visit Summary, Laboratory Report, Clinical Letter, Visit Instructions, Medication List, Billing Statement, and Care Plan document types with synthetic content.
 
-- React
-- TypeScript
-- Vite
-- Tailwind CSS
-- React Router
-- TanStack Query
+Laboratory reports, clinical documents including After Visit Summaries, invoice statements, and simulated payment receipts must open a readable website preview. Each preview provides **Download PDF** and **Print** controls. Print must invoke the browser's print flow.
 
-Backend:
+Generate genuine PDF files with `application/pdf` responses and descriptive `.pdf` filenames; a text file renamed to PDF is not acceptable. Use the same permission-checked data representation for preview and export so dates, laboratory values, reference intervals, and financial amounts agree.
 
-- Python
-- Django
-- Django REST Framework
+Include CareConnect branding, the patient identity, available provider identifiers, document reference, relevant dates, content-specific details, the synthetic-data disclaimer, and PDF page numbers. Laboratory reports include values, units, ranges, status, and comments; statements and receipts include exact charges, adjustments, balances or transaction amounts as relevant. Wrap long content and paginate multiple pages without clipping.
 
-Database:
+Every preview and export must enforce authentication, ownership, staff permissions, publication state, and active proxy-section permissions. Withdrawn results, unpublished documents or visits, another patient's records, and disallowed or revoked proxy sections must remain inaccessible even through saved direct export links. Associated documents must be discoverable from their encounter. Staff must be able to create and publish patient-visible documents.
 
-- PostgreSQL for production
-- SQLite for local development
+Render and visually inspect representative PDFs, including a multi-page document, in addition to verifying file structure, text, and authorization.
 
-Testing:
+## 14. Family linking, consent, and proxy access
 
-- pytest / pytest-django
-- Vitest
-- React Testing Library
-- Playwright
+Family Access must provide a visible **Link a family member** action, linked profiles, profile switching, and clear active-patient context. A caregiver account alone does not authorize access to another person's records.
 
-Use a modular architecture.
+Support two adult-account linking directions: inviting someone to access the current patient's records, and requesting access to another family member's records. Capture the intended recipient, relationship, and explicitly selected sections. Available sections include appointments, results, medications, health summary, visits, billing, and documents.
 
-The application should be fully usable locally without any paid third-party services.
+Show incoming and outgoing requests with sender/recipient context, relationship, requested scopes, status, expiry, and applicable actions. The authenticated intended recipient must explicitly accept or decline before a relationship becomes active. The sender can cancel a pending request. Block duplicate pending requests, expired requests, repeated acceptance, and acceptance by an unintended account.
 
-## 5. Design and Navigation
+Bind invitations to the intended account identity, including an invitation addressed to a person who registers afterward. An email/name match alone must not grant record access, and editing an existing profile email must not allow that account to claim another user's invitation. In-app invitation delivery must be labeled as local simulation; no external email is sent.
 
-Design a clean, modern, patient-friendly healthcare interface.
+After consent, display the linked profile and only permitted sections. The owner can revoke access and the proxy can remove their access. Enforce changes on subsequent API and export requests. Do not allow an old accepted invitation to silently reactivate a revoked relationship; renewed access requires a fresh valid authorization.
 
-Primary style:
+Dependent/guardian access must use an administrator verification queue with a required verification decision/note. A requester cannot grant themselves dependent access or substitute self-consent for guardian review. Administrative grant management must enforce the same section restrictions and audit requirements.
 
-- White backgrounds
-- Blue and teal accents
-- Clear typography
-- Accessible controls
-- Patient-friendly language
-- Responsive layout
-- Desktop and mobile support
+Record invitations, decisions, grants, scope changes, revocations, and removals. Do not claim verified real-world identity or guardianship; this workflow uses fictional accounts and simulated administrative review.
 
-Primary patient navigation:
+## 15. Notifications and preferences
 
-1. Dashboard
-2. Appointments
-3. Messages
-4. Test Results
-5. Medications
-6. Health Summary
-7. Visits
-8. Billing
-9. Documents
-10. Family Access
-11. Account Settings
+Provide an in-app notification center for published test results, new messages, appointments, cancellations, refill updates, billing statements, and payment confirmations. Notifications must belong to the correct account and link to the corresponding authorized record.
 
-Provide consistent sidebar or top navigation.
+Support individual read/unread state, marking one notification read, and marking all read. Dashboard counters and notification indicators must reflect stored state. Notification-read state and conversation-read state must be handled consistently without treating unrelated items as read.
 
-Include:
+Account Settings must allow individual categories to be muted or unmuted and persist preferences. Muting affects future notification delivery; existing notifications remain visible. Explain this behavior in the interface. Local operation must not require external email or SMS services.
 
-- Loading states
-- Empty states
-- Validation messages
-- Success notifications
-- Error handling
-- Confirmation dialogs
-- Breadcrumbs where appropriate
+## 16. Simulated hospital workspace
 
-## 6. Patient Dashboard
+Provide a functional staff interface backed by the same database as the patient portal. Authorized staff must be able to search patients, retain patient context, and access the work areas permitted by their role.
 
-The dashboard must show a personalized overview.
+Work areas must cover appointments, provider availability, providers, departments, laboratory results and publication, medications, refill requests, clinical history, patient correction requests, encounters, diagnoses, clinical notes, documents, invoices/payments, insurance policies, and family proxy administration. Staff must also receive and respond to patient message threads.
 
-Include:
+Enforce the distinction between clinical, scheduling, billing, and administrative responsibilities on the backend. Hiding an interface item alone is not an authorization control. Staff updates must become visible in the permitted patient view without manual database editing.
 
-- Patient name
-- Upcoming appointments
-- Recent test results
-- Unread messages
-- Current medications
-- Outstanding balances
-- Recent visits
-- Important notifications
-- Quick action buttons
+## 17. Data model, API, and security
 
-Quick actions:
+Use normalized relational entities for users, patients, patient/staff profiles, providers, departments, availability, appointments, encounters, diagnoses, clinical notes, laboratory orders/results, medications/prescriptions, refill requests, allergies, immunizations, vital signs, medical history, message threads/messages, invoices, billing transactions, insurance policies, documents, notifications, proxy relationships, and audit events. Additional entities may support recovery and other workflows. Use foreign keys, appropriate uniqueness constraints, indexes, and transactions; create and apply migrations.
 
-- Schedule Appointment
-- Send Message
-- View Test Results
-- Request Refill
-- Pay Bill
+Expose consistent REST APIs for authentication, profiles, dashboard, scheduling/providers, results, medications/refills, health summary, visits, messaging, billing, documents, notifications, proxy access, staff administration, and health checks. Validate inputs on the server and return predictable, readable errors.
 
-Dashboard values must come from actual persisted records.
+Enforce authenticated sessions, password hashing, CSRF protection, role permissions, object-level patient isolation, and document access checks. Patients cannot access another patient's records without an active scoped proxy grant. Staff access is restricted by role and applicable record scope. API requests and direct download URLs must enforce the same rules as navigation.
 
-Do not hardcode counts or balances in the UI.
+Audit significant logins, record access, appointment changes, result publication/withdrawal, medication updates, refill decisions, proxy changes, and billing mutations. Audit records must identify the actor, affected record, action, and time without exposing credentials.
 
-## 7. Authentication and Patient Accounts
+Seed deterministic fictional accounts for each supported role, multiple patients and providers, departments, past/upcoming appointments, lab history, medications, diagnoses, messages, invoices, notes, documents, and notifications. Provide repeatable setup and isolate disposable automated-test data from the clean manual-review database.
 
-Implement:
+## 18. Acceptance and verification
 
-- Patient registration
-- Login
-- Logout
-- Password hashing
-- Profile editing
-- Password change
-- Session management
-- Access control
+Verify the following complete workflows against persisted server state and the rendered interface. A visible success notice without the expected state change does not satisfy acceptance.
 
-Roles:
+| Workflow | Required observable outcome |
+| --- | --- |
+| Account and session | Register/sign in, edit profile, and sign out; state survives reload where appropriate, sign-out is immediate, and another account sees only its own records |
+| Password management | Reject incorrect current passwords, mismatched confirmation, and weak passwords; accept a valid change and authenticate with it; reject expired or reused recovery links |
+| Scheduling | Patient searches and books; dashboard and staff workspace show the booking; duplicate/conflicting booking is rejected; questionnaire and check-in persist |
+| Cancellation and rescheduling | Patient cancellation records its reason; staff rescheduling creates/opens a replacement, preserves historical cancellation, and updates patient views |
+| Laboratory publication | Staff creates an unpublished result; patient cannot see it; publication makes details/trends available and creates a notification; correction updates the record and withdrawal denies saved links |
+| Messaging | Patient sends, staff replies in the same thread, patient sees the correct sender; unread indicators and per-user archive state remain correct |
+| Refill | Patient requests once, duplicate pending submission is rejected clearly, staff progresses/reviews the request, and the patient sees the final status and decision note |
+| Health corrections | A patient correction creates a separate review request; staff review state persists without silently changing official clinical data |
+| Visits and documents | Patient opens a published visit, shared notes, and associated summary; private/unpublished information remains inaccessible |
+| Billing | Staff creates an invoice; partial and remaining simulated payments produce transactions/receipts, correct statuses, and a zero remaining balance after settlement; duplicate processing is prevented |
+| Proxy permissions | A valid grant permits only its sections; another patient and disallowed sections are denied; revocation prevents subsequent detail and download access |
+| Notifications | Authorized events produce the intended notifications; read states and category preferences persist; muting does not remove existing notifications |
+| Staff usability | Search/filter locates work areas; selecting a record immediately opens its drawer; closing returns to the preserved patient/module context |
+| Responsive interface | Desktop, tablet, and mobile views remain readable and operable; keyboard controls, drawers, loading/empty/error states, and navigation work without horizontal overflow |
 
-- Patient
-- Physician
-- Nurse
-- Front Desk
-- Billing Staff
-- Administrator
+Use deterministic synthetic fixtures for backend unit/integration tests and browser workflows. Cover role escalation, object isolation, invalid requests, appointment transitions/conflicts, result publication, billing arithmetic/idempotency, document permissions, proxy access, audit events, database integrity, and frontend interactions.
 
-Users must only access information permitted by their roles.
+Run TypeScript checks, the frontend production build, frontend unit tests, backend tests, Django system checks, and migration-drift checks. Inspect representative desktop/tablet/mobile screenshots. Record the exact commands, results, test environment, and limitations. Do not turn an untested feature into a claimed success. Keep independent benchmark scoring separate from development validation.
 
-Patients must not access other patients' records.
+Provide a short manual checklist that samples each distinct capability once. Do not require repetitive account resets or replay of already verified workflows solely to extend the checklist.
 
-Staff actions must be appropriately restricted.
+Additional acceptance requirements for onboarding, sharing, and exports:
 
-Provide deterministic synthetic demo accounts for each role.
+| Workflow | Required observable outcome |
+| --- | --- |
+| Registration routes | Patient and caregiver registrations open their corresponding destinations; each care-team role remains pending until approved; a crafted request cannot obtain Administrator or staff privileges |
+| Staff review | An administrator approves or declines with the required note; pending/declined accounts cannot read staff records and approved accounts receive only the authorized role |
+| Archive/restore navigation | Canceling confirmation does nothing; confirmed archive or restore opens the correct folder/tab and shows the moved thread with specific success feedback |
+| Adult family consent | Test both invite and request directions with separate accounts; only the intended recipient can accept; duplicate, canceled, expired, reused, and email-reassignment attempts cannot create access |
+| Dependent access | A guardian request requires administrative verification; no self-granted relationship appears before approval |
+| Revocation | Owner revocation/proxy removal blocks subsequent reads and exports; an older invitation cannot restore access |
+| PDF consistency | Lab, document, statement, and receipt previews match genuine downloaded PDFs; amounts, identities, units, dates, references, disclaimer, and page numbering are present as applicable |
+| Export denial | Direct PDF/preview URLs deny another patient, an unpublished/withdrawn record, and a revoked or out-of-scope proxy |
+| Pagination | A long multi-page PDF wraps and paginates correctly when rendered, with no clipped text or missing content |
+| Role changes and navigation | Browser route changes and sign-out clear prior role/patient state; subsequent login and proxy navigation use the new authorized context |
 
-Document demo credentials in local development instructions, not in publicly deployed production interfaces.
+Apply frontend, backend, and browser regression checks across the complete application as well as these scenarios.
 
-## 8. Appointment Management
+## 19. Release deliverables and reproducibility
 
-Implement a complete appointment workflow.
+Deliver version **3.0.0** in repository **KateK77/mychart-clone** with frontend, backend, tests, docs, experiments, CI configuration, README, AGENTS.md, CHANGELOG, an environment example, and a gitignore that excludes secrets and local data.
 
-Patient features:
+The release must include applied migrations, a repeatable synthetic seed command, documented role-based demo accounts, and a clean database for manual review separate from automated-test mutations. Use an isolated version-3 checkout and version-specific session/CSRF configuration so other local releases and their databases remain usable. Local frontend port is **15270**; backend port is **18270**. Port conflicts must fail visibly rather than redirect users to another running application.
 
-- View upcoming appointments
-- View past appointments
-- Search available appointment slots
-- Filter by provider
-- Filter by appointment type
-- Select date and time
-- Book an appointment
-- Request rescheduling
-- Cancel appointments
-- View appointment instructions
-- Complete pre-visit questionnaires
-- Perform simulated eCheck-In
+The README must enable a developer to clone and run the application without conversation context. Document purpose, synthetic-data boundaries, stack, architecture, module overview, prerequisites, installation, environment variables, migrations, seeding, demo credentials, startup, test commands, version identifiers, and known limits.
 
-Appointment types:
+Store this complete requirements document at `experiments/round-03/description.md`. Keep implementation/validation findings in `results.md` and machine-readable release facts in `metadata.json` beside it. Results must record completed modules, verified workflows, exact checks, environment, date, commit identity, available model identifier, and unresolved issues; they must not be mixed into the requirements as claims of acceptance.
 
-- Primary Care
-- Follow-up
-- Annual Physical
-- Specialist Consultation
-- Telehealth
-- Laboratory Visit
+Publish source and documentation to GitHub using normal commits and verify the remote commit. The release identifier is `v3.0.0` on development branch `version-3`. Preserve existing release tags and history; an editorial documentation correction must not move a release tag or rewrite historical test evidence.
 
-Appointment statuses:
+Provide the local URL, documented demo credentials, repository and requirements links, release commit/tag, migration status, concise verification results, known limitations, and the non-repetitive manual checklist. Leave the local release available for review and wait for feedback before another implementation version.
 
-- Available
-- Scheduled
-- Confirmed
-- Checked In
-- Completed
-- Cancelled
-- No Show
+## 20. Operational boundaries
 
-Backend requirements:
+All records, organizations, identities, prescriptions, and payments are synthetic. A Telehealth appointment type does not require live video consultation. Real hospital integration, electronic prescribing, live payment processing, external mail/SMS, and production clinical use are outside this release's required local behavior. Message attachments are optional and may be omitted if clearly documented.
 
-- Prevent double booking.
-- Enforce appointment state transitions.
-- Validate provider availability.
-- Handle scheduling conflicts.
-- Record cancellation reasons.
-- Preserve appointment history.
-- Apply consistent timezone handling.
-
-Build an administrative scheduling interface so staff can create providers, configure availability, manage appointments, and update appointment statuses.
-
-## 9. Test Results
-
-Patients must be able to view laboratory test results.
-
-Display:
-
-- Test name
-- Collection date
-- Result date
-- Result value
-- Unit
-- Reference range
-- Result status
-- Abnormal flag
-- Ordering provider
-- Related comments
-
-Features:
-
-- View results list
-- Filter by date
-- Search by test name
-- Open result details
-- View historical measurements
-- Display trends in charts
-- Download a result summary
-
-Support:
-
-- Pending
-- Preliminary
-- Final
-- Corrected
-
-Show normal and abnormal values clearly.
-
-Reference ranges must be associated with the relevant laboratory test and units.
-
-Do not infer medical diagnoses from abnormal results.
-
-Administrative users should be able to create and publish synthetic laboratory results.
-
-Unpublished results must not appear in the patient portal.
-
-## 10. Secure Messaging
-
-Build an internal patient-provider messaging system.
-
-Features:
-
-- Inbox
-- Sent messages
-- Message details
-- Threaded conversations
-- Compose new message
-- Select recipient or care team
-- Reply to messages
-- Read/unread states
-- Archive messages
-- Attachment support, if feasible
-
-Message categories:
-
-- Medical Question
-- Appointment Question
-- Medication Question
-- Billing Question
-- General Request
-
-Messages must persist in the database.
-
-Clinical staff must have a corresponding inbox and be able to reply.
-
-Patients must see replies in the same thread.
-
-Provide clear notices that messaging is for non-emergency communication.
-
-Do not send messages to external healthcare organizations.
-
-## 11. Medication Management
-
-Display the patient's medication information.
-
-Each medication record should contain:
-
-- Medication name
-- Strength
-- Dosage
-- Route
-- Frequency
-- Start date
-- End date, if applicable
-- Prescribing provider
-- Pharmacy
-- Status
-- Instructions
-
-Features:
-
-- View active medications
-- View medication history
-- Search medications
-- View prescription details
-- Request a refill
-- Track refill request status
-- Report medication information discrepancies
-
-Refill statuses:
-
-- Requested
-- Under Review
-- Approved
-- Denied
-- Completed
-
-Create a staff workflow to review and update refill requests.
-
-**No real prescriptions may be transmitted or dispensed.**
-
-All medication activity must be simulated.
-
-## 12. Health Summary
-
-Create a comprehensive patient health summary.
-
-Sections:
-
-- Demographics
-- Active medical conditions
-- Allergies
-- Current medications
-- Immunizations
-- Medical history
-- Surgical history
-- Family history
-- Social history
-- Care team
-- Recent vital signs
-- Preventive care information
-
-Allow patients to review this information.
-
-Appropriate patient-entered updates should be treated as requests or self-reported information, rather than silently changing clinician-verified data.
-
-Authorized staff should be able to maintain official synthetic clinical records.
-
-## 13. Visits and Clinical Notes
-
-Allow patients to review past encounters.
-
-Display:
-
-- Visit date
-- Provider
-- Department
-- Visit type
-- Reason for visit
-- Diagnoses
-- Encounter summary
-- Follow-up instructions
-- Shared clinical notes
-- After Visit Summary
-
-Create a dedicated visit detail page.
-
-Staff should be able to create synthetic encounters and publish appropriate information to the patient portal.
-
-Notes marked private or unpublished must not be shown.
-
-## 14. Billing and Payments
-
-Implement a simulated medical billing system.
-
-Features:
-
-- View outstanding balances
-- View invoices
-- View payment history
-- View billing details
-- View insurance information
-- Make simulated payments
-- Download payment receipts
-
-Each invoice should contain:
-
-- Invoice number
-- Service date
-- Description
-- Amount
-- Insurance adjustment
-- Patient responsibility
-- Paid amount
-- Remaining balance
-- Due date
-- Status
-
-Support:
-
-- Unpaid
-- Partially Paid
-- Paid
-- Overdue
-- Voided
-
-A simulated payment must update balances accurately and create a transaction record.
-
-Prevent duplicate processing of the same payment request.
-
-Do not collect or process real credit card information.
-
-Do not integrate live payment processing.
-
-## 15. Medical Documents
-
-Create a document management module.
-
-Document types:
-
-- After Visit Summary
-- Laboratory Report
-- Clinical Letter
-- Visit Instructions
-- Medication List
-- Billing Statement
-- Care Plan
-
-Features:
-
-- View document list
-- Filter by type
-- Open document
-- Download document
-- Display creation date
-- Display associated encounter
-
-Use generated synthetic documents.
-
-Implement authorization checks for every file access.
-
-## 16. Family and Proxy Access
-
-Implement basic family account management.
-
-Allow authorized users to:
-
-- View linked dependent profiles
-- Switch between permitted patient accounts
-- Access permitted records
-- Manage proxy relationships
-
-Use explicit permission rules.
-
-Do not assume that a family relationship automatically provides access to all medical records.
-
-Administrators should be able to create and revoke synthetic proxy access.
-
-Record proxy access changes in the audit log.
-
-## 17. Notifications
-
-Create an in-app notification center.
-
-Events:
-
-- New test result
-- New message
-- Upcoming appointment
-- Appointment cancellation
-- Refill request update
-- New billing statement
-- Payment confirmation
-
-Features:
-
-- Read/unread state
-- Notification list
-- Navigate to associated record
-- Mark notification as read
-- Notification preferences
-
-Use internal notifications by default.
-
-External email and SMS providers are optional and must not be required for local operation.
-
-## 18. Staff and Administrative Dashboard
-
-Because no real EHR integration exists, implement a functional simulated hospital backend.
-
-Authorized staff must be able to:
-
-- Search patients
-- View permitted patient records
-- Manage appointments
-- Configure provider availability
-- Create encounters
-- Maintain clinical history
-- Enter laboratory results
-- Publish results
-- Manage medication records
-- Review refill requests
-- Reply to messages
-- Create invoices
-- Record simulated payments
-- Publish documents
-
-This functionality is essential.
-
-The patient portal must not be a collection of disconnected frontend screens.
-
-Patient-facing features must reflect staff-side changes.
-
-## 19. Database Models
-
-Design normalized relational models.
-
-Suggested entities:
-
-- User
-- Patient
-- PatientProfile
-- StaffProfile
-- Provider
-- Department
-- Appointment
-- ProviderAvailability
-- Encounter
-- Diagnosis
-- ClinicalNote
-- LaboratoryOrder
-- LaboratoryResult
-- Medication
-- Prescription
-- RefillRequest
-- Allergy
-- Immunization
-- VitalSign
-- MedicalHistory
-- MessageThread
-- Message
-- Invoice
-- BillingTransaction
-- InsurancePolicy
-- MedicalDocument
-- Notification
-- ProxyAccess
-- AuditEvent
-
-Use appropriate foreign keys, unique constraints, indexes, and transactional updates.
-
-Create and apply database migrations.
-
-## 20. Workflow Requirements
-
-The following workflows must function end-to-end.
-
-### Workflow A: Scheduling
-
-Patient logs in → searches appointments → selects provider and slot → books appointment → appointment appears on dashboard → staff can view it → patient can cancel or request rescheduling.
-
-### Workflow B: Laboratory Results
-
-Staff creates a lab result → result is initially unpublished → authorized staff publishes the result → patient receives a notification → patient opens the result → patient can view details and historical trends.
-
-### Workflow C: Messaging
-
-Patient creates a message → staff receives it → staff replies → patient receives a notification → patient opens the thread and reads the response.
-
-### Workflow D: Medication Refill
-
-Patient opens an active medication → submits refill request → staff reviews request → status changes → patient sees the updated status.
-
-### Workflow E: Billing
-
-Staff creates invoice → patient sees outstanding balance → patient makes simulated payment → transaction is recorded → outstanding balance is updated → receipt becomes available.
-
-### Workflow F: Proxy Access
-
-Administrator grants access → proxy user switches to permitted patient profile → authorized records are visible → access is revoked → further access is denied.
-
-These workflows must have automated tests.
-
-## 21. Synthetic Data
-
-Seed the database with realistic synthetic records.
-
-Include:
-
-- Multiple patients
-- Multiple providers
-- Several departments
-- Past and upcoming appointments
-- Laboratory results
-- Medications
-- Diagnoses
-- Messages
-- Billing records
-- Clinical notes
-- Documents
-- Notifications
-
-Use clearly fictional identities.
-
-Do not use real patient records or protected health information.
-
-Provide a repeatable seed command.
-
-## 22. Security and Auditability
-
-Implement:
-
-- Role-based access control
-- Object-level authorization
-- Secure authentication
-- CSRF protection
-- Input validation
-- Secure document access
-- Audit logs
-- Transactional state changes
-- Sensitive data isolation
-- Safe error messages
-
-Audit important events:
-
-- Login
-- Record access
-- Appointment changes
-- Result publication
-- Medication updates
-- Refill decisions
-- Proxy permission changes
-- Billing changes
-
-Do not claim that this demonstration application is HIPAA compliant.
-
-## 23. REST API
-
-Implement endpoints for:
-
-- Authentication
-- Patient profile
-- Dashboard
-- Appointments
-- Providers
-- Laboratory results
-- Medications
-- Refill requests
-- Health summary
-- Visits
-- Messages
-- Billing
-- Documents
-- Notifications
-- Proxy access
-- Staff administration
-- Health checks
-
-Use consistent validation and error responses.
-
-## 24. Automated Testing
-
-Implement unit, integration, and end-to-end tests.
-
-Test:
-
-- Authentication
-- Authorization
-- Patient data isolation
-- Appointment conflicts
-- Appointment transitions
-- Lab publication visibility
-- Messaging
-- Refill workflow
-- Billing calculations
-- Duplicate payment prevention
-- Document authorization
-- Proxy access
-- Audit events
-- Database integrity
-- Invalid requests
-- Frontend interactions
-
-Tests must use deterministic synthetic data.
-
-Do not use live medical services.
-
-The final independent benchmark evaluation will be conducted after development iterations.
-
-## 25. GitHub and Experiment Tracking
-
-Target repository:
-
-KateK77/mychart-clone
-
-Create as PRIVATE if it does not exist.
-
-Inspect existing contents before changing anything.
-
-Required structure:
-
-- frontend/
-- backend/
-- tests/
-- docs/
-- experiments/
-- .github/workflows/
-- README.md
-- AGENTS.md
-- CHANGELOG.md
-- .env.example
-- .gitignore
-
-Create:
-
-experiments/round-03/description.md
-experiments/round-03/results.md
-experiments/round-03/metadata.json
-
-Save this complete original instruction as description.md.
-
-Record:
-
-- Model identifier, if available
-- Date
-- Git commit SHA
-- Completed modules
-- Test commands
-- Test results
-- Known limitations
-
-Create Git tag:
-
-v3.0.0
-
-Push source code, documentation, and tag.
-
-Verify the remote commit.
-
-Do not overwrite unrelated repository history.
-
-If GitHub access is unavailable, explain the blocker instead of claiming the push succeeded.
-
-## 26. README Requirements
-
-The README must explain:
-
-- Project purpose
-- Independent prototype disclaimer
-- Technology stack
-- Feature list
-- Architecture
-- Installation
-- Environment configuration
-- Database migrations
-- Synthetic data setup
-- Demo accounts
-- Startup commands
-- Test commands
-- Known limitations
-- GitHub versioning
-
-A developer should be able to clone the repository and run the application using only the README.
-
-## 27. Final Deliverables
-
-After Round 3, report:
-
-1. Completed modules
-2. Working workflows
-3. Application architecture
-4. GitHub repository URL
-5. Git commit SHA
-6. Git tag
-7. Database migration status
-8. Demo accounts
-9. Local startup instructions
-10. Automated test results
-11. Manual test checklist
-12. Known issues and incomplete features
-
-Be honest about incomplete functionality.
-
-Do not claim a feature is working unless it has been implemented and appropriately checked.
-
-## 28. Execution Instructions
-
-Begin implementation immediately.
-
-Build the complete patient portal and supporting synthetic clinical backend.
-
-Prioritize real end-to-end behavior over superficial UI completeness.
-
-Do not ask for repeated confirmation of ordinary engineering choices.
-
-Do not begin Round 4.
-
-After completing and verifying Round 3, stop and wait for feedback.
-
-**BEGIN ROUND 3: BUILD THE COMPLETE CARECONNECT PATIENT PORTAL.**
+A local demonstration mailbox does not prove control of an email address. A deployment without configured real recovery delivery must clearly report that limitation and must not expose the local mailbox as a public password-reset mechanism. Do not claim that a hosted website, automated test result, or visual review establishes clinical, accessibility, security, or compliance certification. Document unimplemented features and environmental dependencies factually.

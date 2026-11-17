@@ -142,7 +142,9 @@ pnpm e2e
 
 Playwright expects the two local services running with default seeded credentials. Use a disposable seeded database because browser tests write synthetic records. Optionally set `CC_BROWSER_BIN` to an installed Chromium binary.
 
-See [v3 consolidated prompt](experiments/round-03/description.md), [Round 3 results](experiments/round-03/results.md), and [v3 feedback decisions](docs/v3-feedback.md). Previous [Round 2 results](experiments/round-02/results.md), [feedback decisions](docs/v2-feedback.md), and the [short manual checklist](docs/manual-checklist.md). [Round 1 results](experiments/round-01/results.md) remain available.
+Complete release requirements: [Version 2.0](experiments/round-02/description.md) · [Version 3.0](experiments/round-03/description.md). Each document is self-contained and organized by product capability, with business rules and acceptance criteria.
+
+See [Round 3 results](experiments/round-03/results.md), and [v3 feedback decisions](docs/v3-feedback.md). Previous [Round 2 results](experiments/round-02/results.md), [feedback decisions](docs/v2-feedback.md), and the [short manual checklist](docs/manual-checklist.md). [Round 1 results](experiments/round-01/results.md) remain available.
 
 ## Known limits
 
@@ -150,7 +152,7 @@ PDF reports, statements and receipts are generated locally with ReportLab. Famil
 
 ## Versioning
 
-Version 3 uses Git tag `v3.0.0` and development branch `version-3`. Version 2 remains available as `v2.0.0`. Round 1 is preserved as `v0.1.0-r1`. The original brief remains under `experiments/round-01/`; v2 scope and validation are under `experiments/round-02/`.
+Version 3 uses Git tag `v3.0.0` and development branch `version-3`. Version 2 remains available as `v2.0.0`. Round 1 is preserved as `v0.1.0-r1`. The original brief remains under `experiments/round-01/`; v2 complete requirements and validation are under `experiments/round-02/`.
 
 ## Registration, family linking, and PDFs
 
